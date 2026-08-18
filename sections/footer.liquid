@@ -1,159 +1,596 @@
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <p class="footer__brand">
-          {% if settings.logo != blank %}
-            {{ settings.logo | image_url: width: 220 | image_tag: alt: shop.name }}
-          {% else %}
-            {{ shop.name }}
-          {% endif %}
-        </p>
-        <p class="footer__text">{{ section.settings.brand_text }}</p>
-        <div class="footer__social">
-          {% if settings.social_instagram_url != blank %}
-            <a href="{{ settings.social_instagram_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
-              {% render 'icon', name: 'instagram' %}
-            </a>
-          {% endif %}
-          {% if settings.social_facebook_url != blank %}
-            <a href="{{ settings.social_facebook_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
-              {% render 'icon', name: 'facebook' %}
-            </a>
-          {% endif %}
-          {% if settings.social_tiktok_url != blank %}
-            <a href="{{ settings.social_tiktok_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
-              {% render 'icon', name: 'tiktok' %}
-            </a>
-          {% endif %}
-          {% if settings.social_linkedin_url != blank %}
-            <a href="{{ settings.social_linkedin_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
-              {% render 'icon', name: 'linkedin' %}
-            </a>
-          {% endif %}
-        </div>
-      </div>
+{% comment %}
+  Zahowa — Footer Premium
+  Design sombre élégant, doré, typographique.
+{% endcomment %}
 
-      <nav aria-label="{{ 'sections.footer.name' | t }}">
-        <p class="footer__heading">{{ section.settings.menu_1_heading }}</p>
-        <ul class="footer__menu" role="list">
-          {% for link in section.settings.menu_1.links %}
-            <li><a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
+{%- liquid
+  assign is_dark = true
+  if section.settings.color_scheme == 'cream'
+    assign is_dark = false
+  endif
+-%}
 
-      <nav aria-label="{{ 'sections.footer.name' | t }}">
-        <p class="footer__heading">{{ section.settings.menu_2_heading }}</p>
-        <ul class="footer__menu" role="list">
-          {% for link in section.settings.menu_2.links %}
-            <li><a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
+<style>
+  #section-{{ section.id }}.zh-footer {
+    background: var(--zw-coffee-950, #241610);
+    color: var(--zw-cream-text, #efe6d8);
+    padding: clamp(3.5rem, 8vw, 6rem) 0 2rem;
+  }
 
-      <div>
-        <p class="footer__heading">{{ 'sections.footer.heading_newsletter' | t }}</p>
-        <p class="footer__text">{{ 'sections.footer.newsletter_text' | t }}</p>
-        {% form 'customer', class: 'footer__newsletter' %}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-          <div class="cercle__form">
-            <input
-              type="email"
-              name="contact[email]"
-              class="cercle__input"
-              placeholder="{{ 'general.newsletter.email_placeholder' | t }}"
-              required
+  #section-{{ section.id }} .zh-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  #section-{{ section.id }} .zh-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  /* --- Colonne marque --- */
+  #section-{{ section.id }} .zh-footer__brand {
+    max-width: 320px;
+  }
+
+  #section-{{ section.id }} .zh-footer__logo {
+    display: block;
+    max-width: 180px;
+    height: auto;
+  }
+
+  #section-{{ section.id }} .zh-footer__logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #section-{{ section.id }} .zh-footer__brand-name {
+    font-family: var(--zw-font-display, "Cormorant Garamond", Georgia, serif);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--zw-cream-text, #efe6d8);
+    margin: 0;
+  }
+
+  #section-{{ section.id }} .zh-footer__tagline {
+    margin: 0.9rem 0 0;
+    font-family: var(--zw-font-display, "Cormorant Garamond", Georgia, serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--zw-cream-muted, #a0968a);
+  }
+
+  /* --- Réseaux sociaux --- */
+  #section-{{ section.id }} .zh-footer__social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #section-{{ section.id }} .zh-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid color-mix(in srgb, var(--zw-gold-400, #c9a35c) 35%, transparent);
+    border-radius: 50%;
+    color: var(--zw-gold-400, #c9a35c);
+    transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  #section-{{ section.id }} .zh-footer__social-link:hover,
+  #section-{{ section.id }} .zh-footer__social-link:focus-visible {
+    color: var(--zw-coffee-950, #241610);
+    background: var(--zw-gold-400, #c9a35c);
+    border-color: var(--zw-gold-400, #c9a35c);
+    transform: translateY(-2px);
+  }
+
+  /* --- Paiements --- */
+  #section-{{ section.id }} .zh-footer__payments {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #section-{{ section.id }} .zh-footer__payment-icon {
+    display: block;
+    width: auto;
+    height: 1.6rem;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  #section-{{ section.id }} .zh-footer__payment-icon svg {
+    display: block;
+    width: auto;
+    height: 100%;
+  }
+
+  /* --- Colonnes --- */
+  #section-{{ section.id }} .zh-footer__heading {
+    margin: 0 0 1.1rem;
+    font-family: var(--zw-font-body, "Jost", sans-serif);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #section-{{ section.id }} .zh-footer__menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #section-{{ section.id }} .zh-footer__menu-link {
+    display: inline-block;
+    padding-block: 0.35rem;
+    font-family: var(--zw-font-body, "Jost", sans-serif);
+    font-size: 0.95rem;
+    color: var(--zw-cream-muted, #a0968a);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  #section-{{ section.id }} .zh-footer__menu-link:hover,
+  #section-{{ section.id }} .zh-footer__menu-link:focus-visible {
+    color: var(--zw-gold-400, #c9a35c);
+    transform: translateX(3px);
+  }
+
+  /* --- Barre basse --- */
+  #section-{{ section.id }} .zh-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid color-mix(in srgb, var(--zw-gold-400, #c9a35c) 12%, transparent);
+    font-family: var(--zw-font-body, "Jost", sans-serif);
+    font-size: 0.78rem;
+    color: var(--zw-cream-muted, #a0968a);
+  }
+
+  #section-{{ section.id }} .zh-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #section-{{ section.id }} .zh-footer__legal-link {
+    color: var(--zw-cream-muted, #a0968a);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  #section-{{ section.id }} .zh-footer__legal-link:hover,
+  #section-{{ section.id }} .zh-footer__legal-link:focus-visible {
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #section-{{ section.id }} .zh-footer__payment {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #section-{{ section.id }} .zh-footer__payment svg {
+    width: 2.4rem;
+    height: 1.5rem;
+    filter: grayscale(1) brightness(1.8);
+    opacity: 0.85;
+  }
+
+  /* ===== Variante Cream ===== */
+  #section-{{ section.id }}.zh-footer--cream {
+    background: var(--zw-cream-50, #f5f0e8);
+    color: var(--zw-ink-900, #241610);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__brand-name {
+    color: var(--zw-ink-900, #241610);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__tagline {
+    color: var(--zw-ink-500, #6b6057);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__heading {
+    color: var(--zw-gold-600, #b8954a);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__menu-link {
+    color: var(--zw-ink-500, #6b6057);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__menu-link:hover,
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__menu-link:focus-visible {
+    color: var(--zw-gold-600, #b8954a);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__bottom {
+    border-top-color: color-mix(in srgb, var(--zw-gold-600, #b8954a) 12%, transparent);
+    color: var(--zw-ink-500, #6b6057);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__legal-link {
+    color: var(--zw-ink-500, #6b6057);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__legal-link:hover,
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__legal-link:focus-visible {
+    color: var(--zw-gold-600, #b8954a);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__copyright {
+    color: var(--zw-ink-500, #6b6057);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__social-link {
+    border-color: color-mix(in srgb, var(--zw-gold-600, #b8954a) 35%, transparent);
+    color: var(--zw-gold-600, #b8954a);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__social-link:hover,
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__social-link:focus-visible {
+    background: var(--zw-gold-600, #b8954a);
+    border-color: var(--zw-gold-600, #b8954a);
+    color: var(--zw-cream-50, #f5f0e8);
+  }
+
+  #section-{{ section.id }}.zh-footer--cream .zh-footer__payment-icon {
+    background: var(--zw-cream-50, #f5f0e8);
+  }
+
+  /* Responsive */
+  @media (min-width: 750px) {
+    #section-{{ section.id }} .zh-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    #section-{{ section.id }} .zh-footer__bottom {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 990px) {
+    #section-{{ section.id }} .zh-footer__grid {
+      grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+      gap: 3.5rem;
+    }
+  }
+</style>
+
+<footer id="section-{{ section.id }}" class="zh-footer{% if is_dark %} zh-footer--dark{% else %} zh-footer--cream{% endif %}" role="contentinfo">
+  <div class="zh-container">
+    <div class="zh-footer__grid">
+      {%- comment -%} Colonne marque {%- endcomment -%}
+      <div class="zh-footer__brand">
+        {%- if section.settings.logo != blank -%}
+          <a href="/" class="zh-footer__logo" aria-label="{{ shop.name | escape }}">
+            <img
+              class="zh-footer__logo-img"
+              src="{{ section.settings.logo | image_url: width: 180 }}"
+              srcset="{{ section.settings.logo | image_url: width: 180 }} 180w, {{ section.settings.logo | image_url: width: 360 }} 360w"
+              sizes="180px"
+              alt="{{ shop.name | escape }}"
+              loading="lazy"
             >
-            <button type="submit" class="btn btn--gold">{{ 'general.newsletter.button' | t }}</button>
-          </div>
-          {% if form.posted_successfully? %}
-            <p class="form-success">{{ 'general.newsletter.success' | t }}</p>
-          {% endif %}
-          {% if form.errors %}
-            <div class="form-errors">{{ form.errors | default_errors }}</div>
-          {% endif %}
-        {% endform %}
+          </a>
+        {%- else -%}
+          <p class="zh-footer__brand-name">{{ shop.name }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.tagline != blank -%}
+          <p class="zh-footer__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+
+        {%- comment -%} Réseaux sociaux {%- endcomment -%}
+        {%- liquid
+          assign has_social = false
+          if settings.social_instagram_url != blank or settings.social_tiktok_url != blank or settings.social_facebook_url != blank or settings.social_linkedin_url != blank
+            assign has_social = true
+          endif
+        -%}
+        {%- if has_social -%}
+          <ul class="zh-footer__social" role="list">
+            {%- if settings.social_instagram_url != blank -%}
+              <li>
+                <a class="zh-footer__social-link" href="{{ settings.social_instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_tiktok_url != blank -%}
+              <li>
+                <a class="zh-footer__social-link" href="{{ settings.social_tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_facebook_url != blank -%}
+              <li>
+                <a class="zh-footer__social-link" href="{{ settings.social_facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if settings.social_linkedin_url != blank -%}
+              <li>
+                <a class="zh-footer__social-link" href="{{ settings.social_linkedin_url }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        {%- endif -%}
       </div>
+
+      {%- comment -%} Blocs colonnes (max 3) {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'menu' -%}
+            <div class="zh-footer__column" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h2 class="zh-footer__heading">{{ block.settings.heading }}</h2>
+              {%- endif -%}
+              {%- if block.settings.menu != blank and linklists[block.settings.menu].links.size > 0 -%}
+                <ul class="zh-footer__menu" role="list">
+                  {%- for link in linklists[block.settings.menu].links -%}
+                    <li>
+                      <a class="zh-footer__menu-link" href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+
+          {%- when 'payment' -%}
+            {%- liquid
+              assign show_visa = block.settings.show_visa
+              assign show_mastercard = block.settings.show_mastercard
+              assign show_paypal = block.settings.show_paypal
+              assign show_apple_pay = block.settings.show_apple_pay
+              assign show_google_pay = block.settings.show_google_pay
+              assign show_amex = block.settings.show_amex
+              assign has_payment = false
+              if show_visa or show_mastercard or show_paypal or show_apple_pay or show_google_pay or show_amex
+                assign has_payment = true
+              endif
+            -%}
+            {%- if has_payment -%}
+              <div class="zh-footer__column" {{ block.shopify_attributes }}>
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="zh-footer__heading">{{ block.settings.heading }}</h2>
+                {%- endif -%}
+                <ul class="zh-footer__payments" role="list" aria-label="Moyens de paiement acceptés">
+                  {%- if show_visa -%}
+                    <li class="zh-footer__payment-icon" aria-label="Visa">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#f5f0e8"/><text x="24" y="21" text-anchor="middle" fill="#1A1F71" font-size="12" font-weight="bold" font-style="italic" font-family="Arial, Helvetica, sans-serif">VISA</text></svg>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_mastercard -%}
+                    <li class="zh-footer__payment-icon" aria-label="MasterCard">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#f5f0e8"/><circle cx="19" cy="16" r="8" fill="#EB001B" opacity="0.9"/><circle cx="29" cy="16" r="8" fill="#F79E1B" opacity="0.9"/></svg>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_paypal -%}
+                    <li class="zh-footer__payment-icon" aria-label="PayPal">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#f5f0e8"/><text x="24" y="21" text-anchor="middle" fill="#003087" font-size="11" font-weight="bold" font-family="Arial, Helvetica, sans-serif">PayPal</text></svg>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_apple_pay -%}
+                    <li class="zh-footer__payment-icon" aria-label="Apple Pay">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#f5f0e8"/><text x="24" y="21" text-anchor="middle" fill="#000" font-size="10" font-weight="bold" font-family="Arial, Helvetica, sans-serif">Pay</text></svg>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_google_pay -%}
+                    <li class="zh-footer__payment-icon" aria-label="Google Pay">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#f5f0e8"/><text x="24" y="21" text-anchor="middle" fill="#333" font-size="10" font-weight="bold" font-family="Arial, Helvetica, sans-serif">G Pay</text></svg>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_amex -%}
+                    <li class="zh-footer__payment-icon" aria-label="American Express">
+                      <svg viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="21" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold" font-family="Arial, Helvetica, sans-serif">AMEX</text></svg>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
     </div>
 
-    <div class="footer__bottom">
-      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }} — {{ 'sections.footer.rights' | t }}</p>
-      <div class="footer__legal">
-        {% for link in section.settings.legal_menu.links %}
-          <a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a>
-        {% endfor %}
-      </div>
-      {% if section.settings.show_payment_icons %}
-        <div class="footer__payments" aria-label="{{ 'sections.footer.payment' | t }}">
-          {% for type in shop.enabled_payment_types %}
-            {{ type | payment_type_svg_tag }}
-          {% endfor %}
-        </div>
-      {% endif %}
+    {%- comment -%} Barre basse {%- endcomment -%}
+    <div class="zh-footer__bottom">
+      <p class="zh-footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} — Tous droits réservés
+      </p>
+
+      {%- assign has_policies = false -%}
+      {%- if shop.privacy_policy != blank or shop.terms_of_service != blank or shop.refund_policy != blank -%}
+        {%- assign has_policies = true -%}
+      {%- endif -%}
+
+      {%- if has_policies -%}
+        <ul class="zh-footer__legal" role="list">
+          {%- if shop.privacy_policy != blank -%}
+            <li><a class="zh-footer__legal-link" href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>
+          {%- endif -%}
+          {%- if shop.terms_of_service != blank -%}
+            <li><a class="zh-footer__legal-link" href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>
+          {%- endif -%}
+          {%- if shop.refund_policy != blank -%}
+            <li><a class="zh-footer__legal-link" href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title }}</a></li>
+          {%- endif -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.show_payment_icons and shop.enabled_payment_types != blank -%}
+        <ul class="zh-footer__payment" role="list" aria-label="Moyens de paiement acceptés">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     </div>
   </div>
 </footer>
 
 {% schema %}
 {
-  "name": "t:sections.footer.name",
+  "name": "Pied de page Zahowa",
+  "max_blocks": 3,
   "settings": [
     {
-      "type": "textarea",
-      "id": "brand_text",
-      "label": "t:sections.footer.brand_text",
-      "default": "Café épicé artisanal, inspiré des villes du Maroc. Arabica & épices naturelles."
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Style du panneau texte",
+      "default": "dark",
+      "options": [
+        { "value": "dark", "label": "Café (foncé)" },
+        { "value": "cream", "label": "Crème" }
+      ]
     },
     {
-      "type": "header",
-      "content": "t:sections.footer.menu_1_header"
-    },
-    {
-      "type": "text",
-      "id": "menu_1_heading",
-      "label": "t:sections.footer.menu_heading",
-      "default": "La Maison"
-    },
-    {
-      "type": "link_list",
-      "id": "menu_1",
-      "label": "t:sections.footer.menu"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.menu_2_header"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (remplace le nom du shop)"
     },
     {
       "type": "text",
-      "id": "menu_2_heading",
-      "label": "t:sections.footer.menu_heading",
-      "default": "Aide"
-    },
-    {
-      "type": "link_list",
-      "id": "menu_2",
-      "label": "t:sections.footer.menu"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.legal_header"
-    },
-    {
-      "type": "link_list",
-      "id": "legal_menu",
-      "label": "t:sections.footer.legal_menu"
+      "id": "tagline",
+      "label": "Baseline",
+      "default": "Un café épicé, comme tu ne l'as jamais bu"
     },
     {
       "type": "checkbox",
       "id": "show_payment_icons",
-      "label": "t:sections.footer.show_payment_icons",
+      "label": "Afficher les icônes de paiement (barre basse)",
       "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Colonne menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre",
+          "default": "Découvrir"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "payment",
+      "name": "Colonne paiement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre",
+          "default": "Paiement"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_visa",
+          "label": "Visa",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_mastercard",
+          "label": "MasterCard",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_paypal",
+          "label": "PayPal",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_apple_pay",
+          "label": "Apple Pay",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_google_pay",
+          "label": "Google Pay",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_amex",
+          "label": "American Express",
+          "default": false
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "t:sections.footer.name"
+      "name": "Pied de page Zahowa",
+      "blocks": [
+        {
+          "type": "menu",
+          "settings": {
+            "heading": "Menu"
+          }
+        },
+        {
+          "type": "payment",
+          "settings": {
+            "heading": "Paiement",
+            "show_visa": true,
+            "show_mastercard": true,
+            "show_paypal": true
+          }
+        },
+        {
+          "type": "menu",
+          "settings": {
+            "heading": "Suivre"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,197 @@
+{% comment %}
+  ZAHOWA — Section 4 Villes
+  Usage: Grille de cartes ville avec blocs repetables (2 a 4 villes)
+  Parametres: titre, eyebrow, blocs ville avec image/nom/epice/description
+{% endcomment %}
+
+<section
+  id="section-{{ section.id }}"
+  class="zh-cities-section"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.title != blank -%}
+      <div class="zh-cities-header">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="zh-cities-eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <div class="zh-cities-title">{{ section.settings.title }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="zh-cities-grid zh-cities-count-{{ section.blocks.size }}">
+        {%- for block in section.blocks -%}
+          <div class="zh-city-card" {{ block.shopify_attributes }}>
+            <div class="zh-city-image">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="800" height="1067">
+              {%- else -%}
+                <div class="zh-city-ph" style="background: {{ block.settings.fallback_color | default: '#3D1F0E' }};"></div>
+              {%- endif -%}
+              <div class="zh-city-shade"></div>
+            </div>
+            <div class="zh-city-info">
+              <span class="zh-city-num">0{{ forloop.index }}</span>
+              {%- if block.settings.name != blank -%}<h3 class="zh-city-name">{{ block.settings.name }}</h3>{%- endif -%}
+              {%- if block.settings.spice != blank -%}<span class="zh-city-spice">{{ block.settings.spice }}</span>{%- endif -%}
+              {%- if block.settings.description != blank -%}<p class="zh-city-desc">{{ block.settings.description }}</p>{%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="zh-cities-empty">Ajoutez des villes dans les blocs ci-dessus.</div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+#section-{{ section.id }}.zh-cities-section { width: 100%; background: {{ section.settings.background_color }}; margin: 0; }
+#section-{{ section.id }} .zh-cities-header { text-align: center; margin-bottom: 60px; }
+#section-{{ section.id }} .zh-cities-eyebrow { font-family: var(--zw-font-body, 'Jost', sans-serif); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3em; color: var(--zw-gold-400, #C49A2C); margin-bottom: 16px; display: block; }
+#section-{{ section.id }} .zh-cities-title { font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif); font-size: clamp(28px, 4vw, 52px); font-weight: 400; color: #2A150A; line-height: 1.1; margin: 0; }
+#section-{{ section.id }} .zh-cities-title em, #section-{{ section.id }} .zh-cities-title i { font-style: italic; color: #7B3A1A; }
+#section-{{ section.id }} .zh-cities-grid { display: grid; gap: 20px; max-width: 1100px; margin: 0 auto; }
+#section-{{ section.id }} .zh-cities-count-2 { grid-template-columns: repeat(2, 1fr); }
+#section-{{ section.id }} .zh-cities-count-3 { grid-template-columns: repeat(3, 1fr); }
+#section-{{ section.id }} .zh-cities-count-4 { grid-template-columns: repeat(4, 1fr); }
+#section-{{ section.id }} .zh-city-card { position: relative; aspect-ratio: 3 / 4; overflow: hidden; cursor: pointer; border-radius: 2px; }
+#section-{{ section.id }} .zh-city-image { position: absolute; inset: 0; transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
+#section-{{ section.id }} .zh-city-card:hover .zh-city-image { transform: scale(1.08); }
+#section-{{ section.id }} .zh-city-image img, #section-{{ section.id }} .zh-city-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+#section-{{ section.id }} .zh-city-shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,21,10,0.88) 0%, rgba(42,21,10,0.15) 55%, transparent 100%); z-index: 1; transition: background 0.5s; }
+#section-{{ section.id }} .zh-city-card:hover .zh-city-shade { background: linear-gradient(to top, rgba(42,21,10,0.95) 0%, rgba(42,21,10,0.35) 60%, rgba(42,21,10,0.05) 100%); }
+#section-{{ section.id }} .zh-city-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; z-index: 2; }
+#section-{{ section.id }} .zh-city-num { font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif); font-size: 44px; font-weight: 400; color: rgba(196,154,44,0.35); line-height: 1; margin-bottom: 8px; }
+#section-{{ section.id }} .zh-city-name { font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif); font-size: 24px; font-weight: 500; color: #F7F3EC; margin: 0 0 4px; }
+#section-{{ section.id }} .zh-city-spice { font-family: var(--zw-font-body, 'Jost', sans-serif); font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--zw-gold-400, #C49A2C); margin-bottom: 8px; display: block; }
+#section-{{ section.id }} .zh-city-desc { font-family: var(--zw-font-body, 'Jost', sans-serif); font-size: 13px; color: rgba(247,243,236,0.6); line-height: 1.6; margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); }
+#section-{{ section.id }} .zh-city-card:hover .zh-city-desc { max-height: 120px; opacity: 1; margin-top: 8px; }
+#section-{{ section.id }} .zh-cities-empty { text-align: center; font-family: var(--zw-font-body, 'Jost', sans-serif); font-size: 14px; color: rgba(42,21,10,0.4); padding: 60px; }
+@media (max-width: 1024px) { #section-{{ section.id }} .zh-cities-count-4, #section-{{ section.id }} .zh-cities-count-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { #section-{{ section.id }} .zh-cities-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; } #section-{{ section.id }} .zh-city-card { aspect-ratio: 1 / 1; } #section-{{ section.id }} .zh-cities-header { margin-bottom: 40px; } }
+@media (max-width: 480px) { #section-{{ section.id }} .zh-cities-grid { grid-template-columns: 1fr !important; } #section-{{ section.id }} .zh-city-card { aspect-ratio: 16 / 9; } }
+</style>
+
+{% schema %}
+{
+  "name": "Zahowa — 4 Villes",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Couleur de fond",
+      "default": "#1a0f08"
+    },
+    {
+      "type": "header",
+      "content": "En-tete"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Label (eyebrow)",
+      "default": "Les origines"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Titre",
+      "default": "<p>Quatre villes,<br><em>quatre caracteres</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "Espacement"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "Espacement haut"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "unit": "px",
+      "label": "Espacement bas"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "city",
+      "name": "Ville",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image de la ville"
+        },
+        {
+          "type": "color",
+          "id": "fallback_color",
+          "label": "Couleur de remplacement (si pas d'image)",
+          "default": "#3D1F0E",
+          "info": "Couleur de fond si aucune image n'est selectionnee"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom de la ville",
+          "default": "Fes"
+        },
+        {
+          "type": "text",
+          "id": "spice",
+          "label": "Epice / Caracteristique",
+          "default": "Cannelle"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — 4 Villes",
+      "blocks": {
+        "city_1": {
+          "type": "city"
+        },
+        "city_2": {
+          "type": "city"
+        },
+        "city_3": {
+          "type": "city"
+        },
+        "city_4": {
+          "type": "city"
+        }
+      },
+      "block_order": [
+        "city_1",
+        "city_2",
+        "city_3",
+        "city_4"
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -36,6 +36,16 @@
         "reverse": false
       }
     },
+    "cities": {
+      "type": "cities",
+      "settings": {
+        "background_color": "#1a0f08",
+        "eyebrow": "Les origines",
+        "title": "<p>Quatre villes,<br><em>quatre caractères</em></p>",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
     "maison": {
       "type": "maison",
       "settings": {
@@ -153,6 +163,7 @@
   "order": [
     "hero",
     "marquee",
+    "cities",
     "maison",
     "featured_collection",
     "recipes_grid",

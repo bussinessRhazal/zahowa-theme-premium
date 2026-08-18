@@ -3,7 +3,18 @@
     "main": {
       "type": "main-article",
       "settings": {}
+    },
+    "article_footer": {
+      "type": "article-footer",
+      "settings": {
+        "color_scheme": "dark",
+        "show_share": true,
+        "show_nav": true
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "article_footer"
+  ]
 }
