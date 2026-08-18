@@ -1,68 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "color_bg": "#faf6ef",
-    "color_bg_alt": "#f5f0e8",
-    "color_bg_card": "#fffdf8",
-    "color_ink": "#241610",
-    "color_ink_soft": "#5c4a3d",
-    "color_gold": "#c9a35c",
-    "color_gold_dark": "#a8843f",
-    "color_accent": "#c96f4a",
-    "color_border": "#e3d8c8",
-    "color_button_bg": "#241610",
-    "color_button_text": "#f5f0e8",
-    "color_error": "#b3261e",
-    "color_success": "#2e7d32",
-    "color_dark_bg": "#150c07",
-    "color_dark_bg_alt": "#1a120e",
-    "color_dark_bg_card": "#241610",
-    "color_dark_ink": "#efe6d8",
-    "color_dark_ink_soft": "#a0968a",
-    "color_dark_gold": "#c9a35c",
-    "color_dark_gold_dark": "#a8843f",
-    "color_dark_accent": "#d98a5f",
-    "color_dark_border": "#3a2a1c",
-    "color_dark_button_bg": "#c9a35c",
-    "color_dark_button_text": "#150c07",
-    "font_display": "cormorant_garamond_n4",
-    "font_body": "jost_n4",
-    "base_font_size": 16,
-    "heading_scale": 100,
-    "page_width": 1320,
-    "section_spacing": 72,
-    "border_radius": 12,
-    "header_sticky": true,
-    "header_transparent": true,
-    "logo_width": 120,
-    "enable_announcement": false,
-    "announcement_text": "Livraison offerte dès 39€ d'achat",
-    "announcement_link": "",
-    "badges_enable": true,
-    "badge_1_tag": "premium",
-    "badge_1_label": "Premium",
-    "badge_1_color": "#f5f0e8",
-    "badge_1_bg": "#241610",
-    "badge_2_tag": "best-seller",
-    "badge_2_label": "Best-seller",
-    "badge_2_color": "#150c07",
-    "badge_2_bg": "#c9a35c",
-    "badge_3_tag": "nouveau",
-    "badge_3_label": "Nouveau",
-    "badge_3_color": "#150c07",
-    "badge_3_bg": "#c96f4a",
-    "badge_4_tag": "edition-limitee",
-    "badge_4_label": "Édition limitée",
-    "badge_4_color": "#f5f0e8",
-    "badge_4_bg": "#5c4a3d",
-    "animations_enable": true,
-    "animations_reveal_offset": 120,
-    "marquee_speed": 40,
-    "hero_parallax": true,
-    "social_instagram": "https://www.instagram.com/zahowacoffee",
-    "social_facebook": "",
-    "social_tiktok": "",
-    "social_whatsapp": "",
-    "contact_email": "bonjour@zahowa.fr",
-    "contact_phone": ""
+    "logo": "shopify://shop_images/new_version_logo_SOLO-removebg-preview.webp",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "brand_text": "Café épicé artisanal, inspiré des villes du Maroc. Arabica & épices naturelles.",
+          "menu_1_heading": "La Maison",
+          "menu_1": "",
+          "menu_2_heading": "Aide",
+          "menu_2": "",
+          "legal_menu": "",
+          "show_payment_icons": true
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
   }
 }
