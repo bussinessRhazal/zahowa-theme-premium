@@ -1,0 +1,293 @@
+{%- comment -%}
+  Zahowa — Compte à rebours (lancement, offre limitée)
+  JS minimal et vanilla, dates selon le fuseau de la boutique.
+{%- endcomment -%}
+
+{%- liquid
+  assign is_dark = true
+  if section.settings.color_scheme == 'cream'
+    assign is_dark = false
+  endif
+-%}
+
+<section class="section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <div
+      class="zh-countdown"
+      data-countdown
+      data-target="{{ section.settings.end_date }}T{{ section.settings.end_time }}:00"
+      data-timezone="{{ shop.timezone }}"
+      role="timer"
+      aria-live="polite"
+    >
+      {%- if section.settings.kicker != blank -%}
+        <p class="zh-countdown__kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="zh-countdown__title">
+          {{ section.settings.title | replace_first: '*', '<em>' | replace_first: '*', '</em>' }}
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="zh-countdown__text">{{ section.settings.text }}</p>
+      {%- endif -%}
+
+      <div class="zh-countdown__timer" data-countdown-timer>
+        <div class="zh-countdown__unit">
+          <span class="zh-countdown__number" data-days>00</span>
+          <span class="zh-countdown__label">Jours</span>
+        </div>
+        <div class="zh-countdown__unit">
+          <span class="zh-countdown__number" data-hours>00</span>
+          <span class="zh-countdown__label">Heures</span>
+        </div>
+        <div class="zh-countdown__unit">
+          <span class="zh-countdown__number" data-minutes>00</span>
+          <span class="zh-countdown__label">Minutes</span>
+        </div>
+        <div class="zh-countdown__unit">
+          <span class="zh-countdown__number" data-seconds>00</span>
+          <span class="zh-countdown__label">Secondes</span>
+        </div>
+      </div>
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="zh-countdown__btn">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-countdown {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    {% if is_dark %}
+      background: var(--zw-coffee-950, #241610);
+      color: var(--zw-cream-text, #efe6d8);
+    {% else %}
+      background: var(--zw-cream-50, #f5f0e8);
+      color: var(--zw-ink-900, #241610);
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__kicker {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+    margin: 0 0 0.75rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__title {
+    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+  }
+  #shopify-section-{{ section.id }} .zh-countdown__title em {
+    font-style: italic;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__text {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 84px;
+    padding: 1rem 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--zw-gold-400, #c9a35c) 30%, transparent);
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__number {
+    font-family: var(--font-data, 'JetBrains Mono', monospace);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__label {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+  }
+
+  #shopify-section-{{ section.id }} .zh-countdown__btn {
+    display: inline-flex;
+    padding: 0.9rem 2.2rem;
+    background: var(--zw-gold-400, #c9a35c);
+    color: var(--zw-coffee-950, #241610);
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all var(--zw-transition);
+  }
+  #shopify-section-{{ section.id }} .zh-countdown__btn:hover {
+    background: transparent;
+    color: var(--zw-gold-400, #c9a35c);
+    {% if is_dark %}
+      border: 1px solid var(--zw-gold-400, #c9a35c);
+    {% endif %}
+  }
+
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .zh-countdown__timer {
+      gap: 0.5rem;
+    }
+    #shopify-section-{{ section.id }} .zh-countdown__unit {
+      min-width: 64px;
+      padding: 0.75rem 0.5rem;
+    }
+  }
+{%- endstyle -%}
+
+{%- javascript -%}
+  (function () {
+    var root = document.querySelector('[data-countdown]');
+    if (!root) return;
+
+    var target = root.dataset.target;
+    if (!target) return;
+
+    var deadline = new Date(target + (root.dataset.timezone ? ' ' + root.dataset.timezone : ''));
+    if (isNaN(deadline.getTime())) return;
+
+    var days = root.querySelector('[data-days]');
+    var hours = root.querySelector('[data-hours]');
+    var minutes = root.querySelector('[data-minutes]');
+    var seconds = root.querySelector('[data-seconds]');
+
+    var pad = function (n) {
+      return n < 10 ? '0' + n : String(n);
+    };
+
+    var tick = function () {
+      var diff = deadline - new Date();
+      if (diff <= 0) {
+        days.textContent = '00';
+        hours.textContent = '00';
+        minutes.textContent = '00';
+        seconds.textContent = '00';
+        root.removeAttribute('role');
+        return;
+      }
+      days.textContent = pad(Math.floor(diff / 86400000));
+      hours.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      minutes.textContent = pad(Math.floor((diff % 3600000) / 60000));
+      seconds.textContent = pad(Math.floor((diff % 60000) / 1000));
+    };
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+{%- endjavascript -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Compte à rebours",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Style du panneau",
+      "default": "dark",
+      "options": [
+        { "value": "dark", "label": "Café (foncé)" },
+        { "value": "cream", "label": "Crème" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Label (eyebrow)",
+      "default": "Bientôt disponible"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent)",
+      "default": "Le lancement approche *...*"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Préparez-vous à découvrir les 4 rituels de Zahowa. Le grand jour arrive."
+    },
+    {
+      "type": "header",
+      "content": "Date de fin"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "Date (AAAA-MM-JJ)",
+      "default": "2026-12-25",
+      "info": "Fuseau horaire de la boutique."
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "Heure (HH:MM)",
+      "default": "18:00"
+    },
+    {
+      "type": "header",
+      "content": "Bouton"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Libellé du bouton"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Compte à rebours",
+      "category": "Zahowa"
+    }
+  ]
+}
+{% endschema %}

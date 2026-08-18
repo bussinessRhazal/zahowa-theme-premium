@@ -1,0 +1,275 @@
+{%- comment -%}
+  Zahowa — Bandeau image plein écran (image + overlay + CTA)
+{%- endcomment -%}
+
+{%- liquid
+  assign is_dark = true
+  if section.settings.color_scheme == 'cream'
+    assign is_dark = false
+  endif
+
+  assign text_align = section.settings.text_align
+-%}
+
+{%- style -%}
+  #section-{{ section.id }}.zh-image-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: {{ section.settings.min_height }}vh;
+    overflow: hidden;
+    {% if is_dark %}
+      color: var(--zw-cream-text, #efe6d8);
+    {% else %}
+      color: var(--zw-ink-900, #241610);
+    {% endif %}
+  }
+
+  #section-{{ section.id }} .zh-image-banner__media,
+  #section-{{ section.id }} .zh-image-banner__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #section-{{ section.id }} .zh-image-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: {{ section.settings.overlay_color }};
+    opacity: 0.55;
+    z-index: 1;
+  }
+
+  #section-{{ section.id }} .zh-image-banner__content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    padding: 4rem 1.5rem;
+    text-align: {{ text_align }};
+  }
+
+  #section-{{ section.id }} .zh-image-banner__eyebrow {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+    margin: 0 0 1rem;
+    display: block;
+  }
+
+  #section-{{ section.id }} .zh-image-banner__title {
+    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    margin: 0 0 1.25rem;
+  }
+
+  #section-{{ section.id }} .zh-image-banner__title em,
+  #section-{{ section.id }} .zh-image-banner__title i {
+    font-style: italic;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #section-{{ section.id }} .zh-image-banner__text {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin: 0 auto 2rem;
+    max-width: 560px;
+  }
+
+  #section-{{ section.id }} .zh-image-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: {% if text_align == 'center' %}center{% elsif text_align == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+
+  #section-{{ section.id }} .zh-image-banner__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all var(--zw-transition);
+  }
+
+  #section-{{ section.id }} .zh-image-banner__btn--primary {
+    background: var(--zw-gold-400, #c9a35c);
+    color: var(--zw-coffee-950, #241610);
+    border: 1px solid var(--zw-gold-400, #c9a35c);
+  }
+  #section-{{ section.id }} .zh-image-banner__btn--primary:hover {
+    background: transparent;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #section-{{ section.id }} .zh-image-banner__btn--secondary {
+    background: transparent;
+    color: inherit;
+    border: 1px solid currentColor;
+  }
+  #section-{{ section.id }} .zh-image-banner__btn--secondary:hover {
+    background: var(--zw-gold-400, #c9a35c);
+    border-color: var(--zw-gold-400, #c9a35c);
+    color: var(--zw-coffee-950, #241610);
+  }
+{%- endstyle -%}
+
+<section id="section-{{ section.id }}" class="zh-image-banner" aria-labelledby="section-{{ section.id }}-title">
+  {%- if section.settings.image != blank -%}
+    <div class="zh-image-banner__media">
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', sizes: '100vw', widths: '600, 900, 1200, 1800, 2400', alt: section.settings.image.alt | escape }}
+    </div>
+  {%- endif -%}
+  <div class="zh-image-banner__overlay" aria-hidden="true"></div>
+
+  <div class="zh-image-banner__content" data-reveal>
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="zh-image-banner__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2 id="section-{{ section.id }}-title" class="zh-image-banner__title">
+        {{ section.settings.title | replace_first: '*', '<em>' | replace_first: '*', '</em>' }}
+      </h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="zh-image-banner__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank or section.settings.button_label_2 != blank -%}
+      <div class="zh-image-banner__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="zh-image-banner__btn zh-image-banner__btn--primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 | default: '#' }}" class="zh-image-banner__btn zh-image-banner__btn--secondary">
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Zahowa — Bandeau image",
+  "tag": "section",
+  "class": "zh-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Style du texte",
+      "default": "dark",
+      "options": [
+        { "value": "dark", "label": "Clair (sur image sombre)" },
+        { "value": "cream", "label": "Sombre (sur image claire)" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Alignement du texte",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Gauche" },
+        { "value": "center", "label": "Centré" },
+        { "value": "right", "label": "Droite" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Hauteur du bandeau",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "vh"
+    },
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Couleur de l'overlay",
+      "default": "#111111"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Label (eyebrow)",
+      "default": "La Maison Zahowa"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent doré)",
+      "default": "L'héritage de *Fès,* dans chaque tasse"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Découvrez un café épicé, 100% naturel, inspiré des rituels marocains."
+    },
+    {
+      "type": "header",
+      "content": "Boutons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bouton principal — libellé"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Bouton principal — lien"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Bouton secondaire — libellé"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Bouton secondaire — lien"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Bandeau image",
+      "category": "Zahowa"
+    }
+  ]
+}
+{% endschema %}

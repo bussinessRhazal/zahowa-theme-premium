@@ -1,0 +1,208 @@
+{%- comment -%}
+  Zahowa — Multi-colonnes (valeurs, services, réassurance)
+{%- endcomment -%}
+
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    {%- if section.settings.kicker != blank or section.settings.title != blank -%}
+      <div class="section__header" data-reveal>
+        {%- if section.settings.kicker != blank -%}
+          <p class="section__kicker">{{ section.settings.kicker }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="section__title">
+            {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {%- endif -%}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="zh-multicolumn zh-multicolumn--{{ section.blocks.size }}" role="list">
+      {%- for block in section.blocks -%}
+        <div class="zh-multicolumn__item" data-reveal role="listitem" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}
+            <div class="zh-multicolumn__icon" aria-hidden="true">
+              {% render 'icon', name: block.settings.icon %}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.title != blank -%}
+            <h3 class="zh-multicolumn__title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}
+            <p class="zh-multicolumn__text">{{ block.settings.text }}</p>
+          {%- endif -%}
+          {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="zh-multicolumn__link">{{ block.settings.link_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-multicolumn {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+  #shopify-section-{{ section.id }} .zh-multicolumn--2 { grid-template-columns: repeat(2, 1fr); }
+  #shopify-section-{{ section.id }} .zh-multicolumn--3 { grid-template-columns: repeat(3, 1fr); }
+  #shopify-section-{{ section.id }} .zh-multicolumn--4 { grid-template-columns: repeat(4, 1fr); }
+
+  #shopify-section-{{ section.id }} .zh-multicolumn__item {
+    text-align: center;
+    padding: 2rem 1.25rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+  }
+
+  #shopify-section-{{ section.id }} .zh-multicolumn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--zw-gold-400, #c9a35c) 40%, transparent);
+    border-radius: 50%;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+  #shopify-section-{{ section.id }} .zh-multicolumn__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #shopify-section-{{ section.id }} .zh-multicolumn__title {
+    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0 0 0.6rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-multicolumn__text {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zh-multicolumn__link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--zw-transition);
+  }
+  #shopify-section-{{ section.id }} .zh-multicolumn__link:hover {
+    border-color: currentColor;
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zh-multicolumn--2,
+    #shopify-section-{{ section.id }} .zh-multicolumn--3,
+    #shopify-section-{{ section.id }} .zh-multicolumn--4 {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Multi-colonnes",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Label (eyebrow)",
+      "default": "Nos promesses"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent)",
+      "default": "Le café, *simplement*"
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "Fond alterné",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Colonne",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "default": "spark",
+          "options": [
+            { "value": "none", "label": "Aucune" },
+            { "value": "spark", "label": "Éclat" },
+            { "value": "cup", "label": "Tasse" },
+            { "value": "leaf", "label": "Feuille" },
+            { "value": "star", "label": "Étoile" },
+            { "value": "flower", "label": "Fleur" },
+            { "value": "diamond", "label": "Diamant" },
+            { "value": "check", "label": "Coche" },
+            { "value": "mail", "label": "Enveloppe" },
+            { "value": "phone", "label": "Téléphone" },
+            { "value": "lock", "label": "Cadenas" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre",
+          "default": "100% Naturel"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte",
+          "default": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Libellé du lien"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Multi-colonnes",
+      "category": "Zahowa",
+      "blocks": [
+        { "type": "column", "settings": { "icon": "leaf", "title": "100% Naturel" } },
+        { "type": "column", "settings": { "icon": "lock", "title": "Paiement sécurisé" } },
+        { "type": "column", "settings": { "icon": "check", "title": "Livraison soignée" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

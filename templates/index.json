@@ -148,14 +148,71 @@
         "id": ""
       }
     },
-    "cercle": {
-      "type": "cercle",
+    "collection_list": {
+      "type": "collection-list",
       "settings": {
-        "kicker": "Le cercle privilège",
-        "title": "Cercle *Fondateur*",
-        "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
-        "button_label": "Rejoindre le Cercle",
-        "email_placeholder": "",
+        "kicker": "Découvrir",
+        "title": "Nos *collections*",
+        "collection_list": "",
+        "alt_bg": false,
+        "id": ""
+      }
+    },
+    "multi_column": {
+      "type": "multi-column",
+      "settings": {
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
+        "id": ""
+      }
+    },
+    "featured_blog": {
+      "type": "featured-blog",
+      "settings": {
+        "kicker": "Le Journal",
+        "title": "Le *Journal* Zahowa",
+        "blog": "",
+        "read_more_label": "Lire l'article",
+        "alt_bg": true,
+        "id": ""
+      }
+    },
+    "instagram_gallery": {
+      "type": "instagram-gallery",
+      "settings": {
+        "kicker": "@zahowacoffee",
+        "title": "La communauté *Zahowa*",
+        "handle": "zahowacoffee",
+        "instagram_url": "https://www.instagram.com/zahowacoffee/",
+        "cta_label": "Suivre @",
+        "id": ""
+      }
+    },
+    "countdown_launch": {
+      "type": "countdown",
+      "settings": {
+        "color_scheme": "dark",
+        "kicker": "Bientôt disponible",
+        "title": "Le lancement approche *...*",
+        "text": "Préparez-vous à découvrir les 4 rituels de Zahowa. Le grand jour arrive.",
+        "end_date": "2026-12-25",
+        "end_time": "18:00",
+        "button_label": "",
+        "button_link": "",
+        "id": ""
+      }
+    },
+    "newsletter_section": {
+      "type": "newsletter",
+      "settings": {
+        "kicker": "Le Cercle Zahowa",
+        "title": "Rejoignez *l'aventure*",
+        "text": "Histoires, recettes et accès en avant-première. Un email par mois, jamais plus.",
+        "placeholder": "Votre adresse email",
+        "button_label": "S'inscrire",
+        "success_message": "Merci ! Votre inscription est confirmée.",
+        "note": "Désinscription en un clic, à tout moment.",
         "id": ""
       }
     }
@@ -164,14 +221,19 @@
     "hero",
     "marquee",
     "cities",
+    "collection_list",
     "maison",
     "featured_collection",
+    "multi_column",
     "recipes_grid",
     "rituel",
     "video_demo",
     "coffret",
     "testimonials",
+    "featured_blog",
     "faq",
-    "cercle"
+    "instagram_gallery",
+    "countdown_launch",
+    "newsletter_section"
   ]
 }

@@ -1,0 +1,201 @@
+{%- comment -%}
+  Zahowa — Grille des collections
+  Affiche les collections d'un menu (link_list) en grille premium.
+{%- endcomment -%}
+
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    {%- if section.settings.kicker != blank or section.settings.title != blank -%}
+      <div class="section__header" data-reveal>
+        {%- if section.settings.kicker != blank -%}
+          <p class="section__kicker">{{ section.settings.kicker }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="section__title">
+            {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {%- endif -%}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+    {%- endif -%}
+
+    {%- liquid
+      if section.settings.collection_list != blank
+        assign collection_links = linklists[section.settings.collection_list].links
+      else
+        assign collection_links = nil
+      endif
+    -%}
+
+    {%- if collection_links != nil and collection_links.size > 0 -%}
+      <div class="zh-collection-list" data-reveal>
+        {%- for link in collection_links limit: 6 -%}
+          {%- assign target_collection = link.object -%}
+          <a href="{{ link.url }}" class="zh-collection-list__card">
+            <div class="zh-collection-list__media">
+              {%- if target_collection.featured_image != blank -%}
+                {{ target_collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '400px', widths: '400, 600, 800', alt: target_collection.featured_image.alt | escape }}
+              {%- else -%}
+                <div class="zh-collection-list__placeholder" aria-hidden="true">
+                  {% render 'icon', name: 'diamond' %}
+                </div>
+              {%- endif -%}
+              <span class="zh-collection-list__shade" aria-hidden="true"></span>
+            </div>
+            <div class="zh-collection-list__info">
+              <p class="zh-collection-list__name">{{ link.title | escape }}</p>
+              {%- if target_collection.products_count > 0 -%}
+                <span class="zh-collection-list__count">{{ target_collection.products_count }} produits</span>
+              {%- endif -%}
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="zh-collection-list__empty">
+        Sélectionnez un menu de collections dans les réglages de la section.
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-collection-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__card {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__media img,
+  #shopify-section-{{ section.id }} .zh-collection-list__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__card:hover .zh-collection-list__media img {
+    transform: scale(1.06);
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--zw-coffee-950, #241610);
+    color: var(--zw-gold-400, #c9a35c);
+  }
+  #shopify-section-{{ section.id }} .zh-collection-list__placeholder svg {
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.85) 0%, rgba(17, 17, 17, 0.1) 60%, transparent 100%);
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__name {
+    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #f5f0e8;
+    margin: 0 0 0.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__count {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #shopify-section-{{ section.id }} .zh-collection-list__empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zh-collection-list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .zh-collection-list {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Liste des collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Label (eyebrow)",
+      "default": "Découvrir"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent)",
+      "default": "Nos *collections*"
+    },
+    {
+      "type": "link_list",
+      "id": "collection_list",
+      "label": "Menu des collections"
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "Fond alterné",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Liste des collections",
+      "category": "Zahowa"
+    }
+  ]
+}
+{% endschema %}

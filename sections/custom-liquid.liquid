@@ -1,0 +1,48 @@
+{%- comment -%}
+  Zahowa — Liquid personnalisé (bloc de code libre)
+{%- endcomment -%}
+
+<section class="section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <div class="zh-custom-liquid">
+      {{ section.settings.custom_liquid }}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-custom-liquid {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+  }
+  #shopify-section-{{ section.id }} .zh-custom-liquid > *:first-child {
+    margin-top: 0;
+  }
+  #shopify-section-{{ section.id }} .zh-custom-liquid > *:last-child {
+    margin-bottom: 0;
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Liquid personnalisé",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Code Liquid / HTML",
+      "info": "Ajoutez du code Liquid ou HTML personnalisé. Utilisez avec précaution."
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Liquid personnalisé",
+      "category": "Zahowa"
+    }
+  ]
+}
+{% endschema %}

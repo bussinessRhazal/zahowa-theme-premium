@@ -1,0 +1,223 @@
+{%- comment -%}
+  Zahowa — Galerie Instagram (grille d'images + lien vers le profil)
+{%- endcomment -%}
+
+<section class="section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    {%- if section.settings.kicker != blank or section.settings.title != blank -%}
+      <div class="section__header" data-reveal>
+        {%- if section.settings.kicker != blank -%}
+          <p class="section__kicker">{{ section.settings.kicker }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="section__title">
+            {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {%- endif -%}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+    {%- endif -%}
+
+    <div class="zh-instagram__grid" data-reveal>
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ section.settings.instagram_url | default: 'https://www.instagram.com/' }}"
+          target="_blank"
+          rel="noopener"
+          class="zh-instagram__tile"
+          aria-label="Voir sur Instagram"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '300px', widths: '300, 450, 600', alt: block.settings.image.alt | escape }}
+          {%- else -%}
+            <div class="zh-instagram__placeholder" aria-hidden="true">
+              {% render 'icon', name: 'instagram' %}
+            </div>
+          {%- endif -%}
+          <span class="zh-instagram__overlay" aria-hidden="true">
+            {% render 'icon', name: 'instagram' %}
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.handle != blank -%}
+      <div class="zh-instagram__footer" data-reveal>
+        <a
+          href="{{ section.settings.instagram_url | default: 'https://www.instagram.com/' }}"
+          target="_blank"
+          rel="noopener"
+          class="zh-instagram__cta"
+        >
+          {{ section.settings.cta_label | default: 'Suivre @' | append: section.settings.handle | escape }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-instagram__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-instagram__tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__tile img,
+  #shopify-section-{{ section.id }} .zh-instagram__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__tile:hover img {
+    transform: scale(1.08);
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--zw-coffee-950, #241610);
+    color: var(--zw-gold-400, #c9a35c);
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__placeholder svg {
+    width: 28px;
+    height: 28px;
+    opacity: 0.55;
+  }
+
+  #shopify-section-{{ section.id }} .zh-instagram__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 43, 33, 0.65);
+    color: #f5f0e8;
+    opacity: 0;
+    transition: opacity var(--zw-transition);
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__tile:hover .zh-instagram__overlay,
+  #shopify-section-{{ section.id }} .zh-instagram__tile:focus-visible .zh-instagram__overlay {
+    opacity: 1;
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__overlay svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #shopify-section-{{ section.id }} .zh-instagram__footer {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-instagram__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border: 1px solid var(--zw-gold-400, #c9a35c);
+    color: var(--zw-gold-400, #c9a35c);
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all var(--zw-transition);
+  }
+  #shopify-section-{{ section.id }} .zh-instagram__cta:hover {
+    background: var(--zw-gold-400, #c9a35c);
+    color: var(--zw-coffee-950, #241610);
+  }
+
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .zh-instagram__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 480px) {
+    #shopify-section-{{ section.id }} .zh-instagram__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Galerie Instagram",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Label (eyebrow)",
+      "default": "@zahowacoffee"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent)",
+      "default": "La communauté *Zahowa*"
+    },
+    {
+      "type": "text",
+      "id": "handle",
+      "label": "Nom du compte Instagram (sans @)",
+      "default": "zahowacoffee"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Lien vers le profil"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Libellé du bouton (le @ sera ajouté)",
+      "default": "Suivre @"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Galerie Instagram",
+      "category": "Zahowa",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

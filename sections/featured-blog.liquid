@@ -1,0 +1,225 @@
+{%- comment -%}
+  Zahowa — Articles à la une (3 derniers articles d'un blog)
+{%- endcomment -%}
+
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    {%- if section.settings.kicker != blank or section.settings.title != blank -%}
+      <div class="section__header" data-reveal>
+        {%- if section.settings.kicker != blank -%}
+          <p class="section__kicker">{{ section.settings.kicker }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="section__title">
+            {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {%- endif -%}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+    {%- endif -%}
+
+    {%- liquid
+      if section.settings.blog != blank
+        assign featured_blog = blogs[section.settings.blog]
+      else
+        assign featured_blog = blogs.first
+      endif
+    -%}
+
+    {%- if featured_blog != nil and featured_blog.articles.size > 0 -%}
+      <div class="zh-featured-blog" data-reveal>
+        {%- for article in featured_blog.articles limit: 3 -%}
+          <article class="zh-featured-blog__card">
+            <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
+              {%- if article.image != blank -%}
+                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '450px', widths: '450, 700, 900', alt: article.image.alt | escape }}
+              {%- else -%}
+                <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
+              {%- endif -%}
+            </a>
+            <div class="zh-featured-blog__body">
+              <p class="zh-featured-blog__meta">
+                <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %B %Y' }}</time>
+              </p>
+              <h3 class="zh-featured-blog__title">
+                <a href="{{ article.url }}">{{ article.title | escape }}</a>
+              </h3>
+              {%- if article.excerpt_or_content != blank -%}
+                <p class="zh-featured-blog__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 130 }}</p>
+              {%- endif -%}
+              <a href="{{ article.url }}" class="zh-featured-blog__link">
+                {{ section.settings.read_more_label | default: 'Lire l\'article' | escape }}
+              </a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="zh-featured-blog__empty">
+        Sélectionnez un blog dans les réglages de la section (ou créez des articles).
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .zh-featured-blog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__media {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__card:hover .zh-featured-blog__media img {
+    transform: scale(1.05);
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--zw-coffee-950, #241610);
+    color: var(--zw-gold-400, #c9a35c);
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__placeholder svg {
+    width: 26px;
+    height: 26px;
+    opacity: 0.5;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__meta {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+    margin: 0 0 0.6rem;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__title {
+    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 0.6rem;
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__title a:hover {
+    color: var(--zw-gold-400, #c9a35c);
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__excerpt {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__link {
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--zw-gold-400, #c9a35c);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--zw-transition);
+    align-self: flex-start;
+  }
+  #shopify-section-{{ section.id }} .zh-featured-blog__link:hover {
+    border-color: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} .zh-featured-blog__empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-family: var(--zw-font-body, 'Jost', sans-serif);
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .zh-featured-blog {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Zahowa — Articles à la une",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Label (eyebrow)",
+      "default": "Le Journal"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre (utilisez *mot* pour l'accent)",
+      "default": "Le *Journal* Zahowa"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "Libellé du lien \"Lire la suite\"",
+      "default": "Lire l'article"
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "Fond alterné",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Ancre (id HTML)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zahowa — Articles à la une",
+      "category": "Zahowa"
+    }
+  ]
+}
+{% endschema %}
