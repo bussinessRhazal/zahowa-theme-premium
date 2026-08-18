@@ -1,0 +1,106 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.kicker != blank %}
+        <p class="section__kicker">{{ section.settings.kicker }}</p>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="section__title">
+          {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="section__intro">{{ section.settings.text }}</p>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    <div class="rituel__steps">
+      {% for block in section.blocks %}
+        <div class="rituel__step" data-reveal {{ block.shopify_attributes }}>
+          <p class="rituel__number">0{{ forloop.index }}</p>
+          <div class="rituel__icon">
+            {% case block.type %}
+              {% when 'step' %}
+                {% if forloop.index == 1 %}{% render 'icon', name: 'cup' %}{% endif %}
+                {% if forloop.index == 2 %}{% render 'icon', name: 'leaf' %}{% endif %}
+                {% if forloop.index == 3 %}{% render 'icon', name: 'spark' %}{% endif %}
+            {% endcase %}
+          </div>
+          <h3 class="rituel__title">{{ block.settings.title }}</h3>
+          {% if block.settings.text != blank %}
+            <p class="rituel__text">{{ block.settings.text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.rituel.name",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.recipes_grid.kicker_label",
+      "default": "La méthode"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.recipes_grid.title_label",
+      "default": "Le *Rituel*"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.recipes_grid.text_label",
+      "default": "Trois gestes pour une infusion parfaite."
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "t:sections.maison.alt_bg_label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "t:sections.rituel.step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.rituel.title_label",
+          "default": "Ouvrez"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.rituel.text_label",
+          "default": "et installez le sachet sur votre tasse."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rituel.name",
+      "blocks": [
+        { "type": "step" },
+        { "type": "step" },
+        { "type": "step" }
+      ]
+    }
+  ]
+}
+{% endschema %}

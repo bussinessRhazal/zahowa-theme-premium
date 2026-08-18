@@ -1,0 +1,641 @@
+{
+  "sections": {
+    "header": {
+      "name": "En-tête",
+      "menu": "Menu",
+      "open_menu": "Ouvrir le menu",
+      "close_menu": "Fermer le menu",
+      "search": "Rechercher",
+      "account": "Mon compte",
+      "cart": "Panier",
+      "toggle_theme": "Basculer le thème clair/sombre"
+    },
+    "footer": {
+      "name": "Pied de page",
+      "heading_newsletter": "Rejoignez l'univers Zahowa",
+      "newsletter_text": "Rituels, nouveautés et offres exclusives.",
+      "rights": "Tous droits réservés.",
+      "payment": "Paiement sécurisé",
+      "contact": "Contact",
+      "brand_text": "Texte de marque",
+      "menu_1_header": "Menu 1",
+      "menu_2_header": "Menu 2",
+      "menu_heading": "Titre du menu",
+      "menu": "Menu",
+      "legal_header": "Liens légaux",
+      "legal_menu": "Menu légal",
+      "show_payment_icons": "Afficher les icônes de paiement"
+    },
+    "hero": {
+      "name": "Héro plein écran",
+      "scroll": "Défiler",
+      "image_info": "Recommandé : 2400px de large, orientation paysage ou carré.",
+      "kicker_label": "Petit sur-titre",
+      "title_label": "Titre",
+      "title_info": "Encadrez un mot avec des *astérisques* pour le mettre en or italique.",
+      "text_label": "Sous-titre",
+      "buttons_header": "Boutons",
+      "button_primary_label": "Texte du bouton principal",
+      "button_primary_link": "Lien du bouton principal",
+      "button_secondary_label": "Texte du bouton secondaire",
+      "button_secondary_link": "Lien du bouton secondaire",
+      "note_label": "Note (ex. sondage)",
+      "layout_header": "Mise en page",
+      "height_label": "Hauteur",
+      "height_full": "Plein écran",
+      "height_short": "Écran réduit (70%)",
+      "center_label": "Texte centré",
+      "overlay_label": "Opacité de l'ombre",
+      "show_scroll_label": "Afficher l'indicateur « Défiler »",
+      "anchor_label": "Ancre (id HTML)"
+    },
+    "marquee": {
+      "name": "Bandeau défilant",
+      "add_item": "Ajouter un élément",
+      "item": "Élément",
+      "text_label": "Texte",
+      "separator": "Séparateur",
+      "items_label": "Éléments (un par ligne)",
+      "items_info": "Chaque ligne devient un élément défilant.",
+      "dark_label": "Fond sombre",
+      "reverse_label": "Sens inverse"
+    },
+    "maison": {
+      "name": "La Maison",
+      "kicker_default": "Notre histoire",
+      "title_default": "La Maison",
+      "text_default": "Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.",
+      "button_default": "Découvrir l'histoire",
+      "image_label": "Image",
+      "image_alt": "La Maison Zahowa",
+      "kicker_label": "Sur-titre",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "button_header": "Bouton",
+      "button_label": "Texte du bouton",
+      "button_link": "Lien du bouton",
+      "alt_bg_label": "Fond alterné"
+    },
+    "featured_collection": {
+      "name": "Collection mise en avant",
+      "view_all": "Tout voir",
+      "title_default": "Nos Recettes",
+      "collection_label": "Collection",
+      "products_label": "Produits à afficher",
+      "kicker_label": "Sur-titre",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "portrait_label": "Médias au format portrait (4:5)",
+      "show_view_all_label": "Afficher le bouton « Tout voir »"
+    },
+    "recipes_grid": {
+      "name": "Grille de recettes",
+      "title_default": "Quatre recettes.",
+      "subtitle_default": "Laquelle est la tienne ?",
+      "intro_default": "Chacune inspirée du caractère d'une ville marocaine. Chacune un rituel.",
+      "add_card": "Ajouter une carte recette",
+      "card": "Carte recette",
+      "composition_label": "Composition",
+      "usage_label": "Moment idéal",
+      "city_label": "Ville",
+      "tagline_label": "Tagline",
+      "description_label": "Description",
+      "usage_label_setting": "Moment de dégustation",
+      "composition_setting": "Composition",
+      "image_label": "Photo de la ville",
+      "product_label": "Produit lié (optionnel)",
+      "kicker_label": "Sur-titre",
+      "title_label": "Titre",
+      "subtitle_label": "Sous-titre (script)",
+      "text_label": "Texte d'introduction"
+    },
+    "rituel": {
+      "name": "Le Rituel",
+      "title_default": "Le Rituel",
+      "intro_default": "Trois gestes pour une infusion parfaite.",
+      "add_step": "Ajouter une étape",
+      "step": "Étape",
+      "title_label": "Titre",
+      "text_label": "Texte"
+    },
+    "coffret": {
+      "name": "Coffret Découverte",
+      "kicker_default": "L'idée cadeau",
+      "title_default": "Coffret Découverte",
+      "text_default": "Quatre villes. Quatre caractères. Une expérience à offrir ou à s'offrir.",
+      "button_default": "Découvrir le coffret",
+      "image_label": "Image de la boîte",
+      "image_alt": "Coffret Zahowa",
+      "kicker_label": "Sur-titre",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "button_label": "Texte du bouton",
+      "button_link": "Lien du bouton",
+      "reverse_label": "Inverser (image à droite)"
+    },
+    "cercle": {
+      "name": "Cercle Fondateur",
+      "kicker_default": "Le cercle privilège",
+      "title_default": "Cercle Fondateur",
+      "text_default": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
+      "button_default": "Rejoindre le Cercle",
+      "email_placeholder": "Votre adresse e-mail",
+      "kicker_label": "Sur-titre",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "button_label": "Texte du bouton"
+    },
+    "rich_text": {
+      "name": "Texte enrichi",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "button_label": "Bouton",
+      "button_link": "Lien du bouton"
+    },
+    "testimonials": {
+      "name": "Témoignages",
+      "empty": "Ajoutez des témoignages dans les réglages de la section.",
+      "block_name": "Témoignage",
+      "photo_label": "Photo",
+      "photo_info": "Carré recommandé (500×500). Si vide, les initiales s'affichent.",
+      "name_label": "Nom",
+      "location_label": "Ville / rôle",
+      "rating_label": "Note (1 à 5 étoiles)",
+      "columns_label": "Colonnes",
+      "columns_info": "Utilisées pour la grille (≤3 témoignages) et le nombre de cartes visibles du carrousel.",
+      "columns_1": "1 colonne",
+      "columns_2": "2 colonnes",
+      "columns_3": "3 colonnes",
+      "carousel_header": "Carrousel",
+      "carousel_info": "Dès 4 témoignages, la section défile en boucle automatiquement.",
+      "autoplay_label": "Défilement automatique",
+      "autoplay_delay_label": "Délai entre chaque défilement",
+      "show_arrows_label": "Afficher les flèches",
+      "show_dots_label": "Afficher les points",
+      "prev": "Témoignage précédent",
+      "next": "Témoignage suivant",
+      "dots": "Navigation",
+      "goto": "Aller au témoignage"
+    },
+    "faq": {
+      "name": "FAQ",
+      "block_name": "Question",
+      "question_label": "Question",
+      "answer_label": "Réponse",
+      "open_first_label": "Ouvrir la première question"
+    },
+    "related_products": {
+      "name": "Produits recommandés",
+      "recommendations_label": "Utiliser les recommandations Shopify",
+      "recommendations_info": "Basées sur le panier du visiteur.",
+      "collection_label": "Collection de secours",
+      "collection_info": "Si les recommandations sont vides, produits de cette collection (le produit courant est exclu)."
+    },
+    "video": {
+      "name": "Vidéo",
+      "hint": "Collez un lien YouTube ou Vimeo dans les réglages de la section.",
+      "video_header": "Vidéo",
+      "video_url_label": "Lien vidéo (YouTube ou Vimeo)",
+      "video_url_info": "Ex. https://www.youtube.com/watch?v=XXXXXXXX",
+      "aspect_label": "Format",
+      "ratio_169": "16:9 (paysage)",
+      "ratio_43": "4:3",
+      "ratio_11": "1:1 (carré)",
+      "ratio_916": "9:16 (portrait)",
+      "autoplay_label": "Lecture automatique",
+      "autoplay_info": "La vidéo démarre en muet automatiquement (utile en bandeau).",
+      "loop_label": "Boucle",
+      "cover_label": "Image de couverture",
+      "cover_info": "Affichée si aucun lien vidéo n'est fourni."
+    },
+    "image_with_text": {
+      "name": "Image et texte",
+      "image_label": "Image",
+      "title_label": "Titre",
+      "text_label": "Texte",
+      "button_label": "Bouton"
+    },
+    "main_product": {
+      "name": "Page produit",
+      "add_to_cart": "Ajouter au panier",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "quantity": "Quantité",
+      "price": "Prix",
+      "sku": "Référence",
+      "description": "Description",
+      "composition": "Composition",
+      "infusion": "Instruction d'infusion",
+      "profil": "Profil gustatif",
+      "reviews": "Avis",
+      "share": "Partager",
+      "show_vendor": "Afficher la marque",
+      "show_sku": "Afficher la référence",
+      "show_description": "Afficher la description",
+      "show_reviews": "Afficher le résumé d'avis",
+      "review_count_text": "Texte du résumé d'avis",
+      "review_info": "Placeholder en attendant l'installation d'une app d'avis (Judge.me, Loox…).",
+      "trust_header": "Bloc de confiance",
+      "show_trust": "Afficher le bloc de confiance",
+      "trust_title": "Titre",
+      "trust_text": "Sous-titre",
+      "accordions_header": "Accordéons personnalisables",
+      "accordion_title": "Titre de l'accordéon",
+      "accordion_content": "Contenu"
+    },
+    "main_collection": {
+      "name": "Page collection",
+      "products_count": "{count} recettes",
+      "sort_by": "Trier par",
+      "sort_featured": "En vedette",
+      "sort_best_selling": "Meilleures ventes",
+      "sort_title_asc": "Titre, A-Z",
+      "sort_title_desc": "Titre, Z-A",
+      "sort_price_asc": "Prix croissant",
+      "sort_price_desc": "Prix décroissant",
+      "sort_date_desc": "Date, récentes d'abord",
+      "sort_date_asc": "Date, anciennes d'abord",
+      "empty": "Aucun produit dans cette collection pour le moment.",
+      "products_per_page": "Produits par page"
+    },
+    "main_list_collections": {
+      "name": "Page collections",
+      "title": "Nos collections"
+    },
+    "main_blog": {
+      "name": "Page blog",
+      "title": "Le Journal",
+      "read_more": "Lire la suite",
+      "empty": "Aucun article pour le moment.",
+      "posts_per_page": "Articles par page"
+    },
+    "main_article": {
+      "name": "Page article",
+      "back_to_blog": "Retour au journal",
+      "share": "Partager",
+      "tags": "Mots-clés",
+      "author": "Par",
+      "comments": "Commentaires",
+      "leave_comment": "Laisser un commentaire",
+      "comment_name": "Nom",
+      "comment_email": "E-mail",
+      "comment_body": "Commentaire",
+      "comment_submit": "Publier",
+      "comments_closed": "Les commentaires sont fermés.",
+      "moderated": "Votre commentaire sera publié après modération."
+    },
+    "main_page": {
+      "name": "Page"
+    },
+    "main_contact": {
+      "name": "Page contact",
+      "title": "Contact",
+      "text": "Une question, une envie ? Écrivez-nous.",
+      "name_label": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "message": "Votre message",
+      "submit": "Envoyer",
+      "success": "Merci, votre message a bien été envoyé."
+    },
+    "main_cart": {
+      "name": "Page panier",
+      "title": "Votre panier",
+      "empty": "Votre panier est vide",
+      "empty_button": "Découvrir nos recettes",
+      "product": "Produit",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "total": "Total",
+      "remove": "Retirer",
+      "subtotal": "Sous-total",
+      "checkout": "Commander",
+      "note": "Note de commande",
+      "continue": "Continuer mes achats",
+      "free_shipping_progress": "Plus que <strong>{amount}</strong> pour la livraison offerte",
+      "free_shipping_met": "Félicitations, la livraison est offerte !"
+    },
+    "main_search": {
+      "name": "Page recherche"
+    },
+    "main_404": {
+      "name": "Page 404",
+      "title": "Page introuvable",
+      "text": "Cette page n'existe pas ou a été déplacée.",
+      "button": "Retour à l'accueil"
+    },
+    "main_password": {
+      "name": "Page mot de passe",
+      "title": "La boutique ouvre bientôt",
+      "text": "Entrez le mot de passe pour accéder à la boutique.",
+      "password": "Mot de passe",
+      "submit": "Entrer",
+      "admin": "Se connecter en tant que propriétaire"
+    },
+    "main_account": {
+      "name": "Espace client",
+      "title": "Mon compte",
+      "orders": "Commandes",
+      "no_orders": "Aucune commande pour le moment.",
+      "addresses": "Adresses",
+      "addresses_link": "Gérer mes adresses",
+      "logout": "Se déconnecter",
+      "order": "Commande",
+      "date": "Date",
+      "payment_status": "Paiement",
+      "fulfillment_status": "Expédition",
+      "total": "Total",
+      "view": "Voir"
+    },
+    "main_activate": {
+      "name": "Activation du compte"
+    },
+    "main_reset": {
+      "name": "Réinitialisation du mot de passe"
+    },
+    "main_login": {
+      "name": "Connexion",
+      "title": "Se connecter",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "create": "Créer un compte",
+      "guest": "Continuer en tant qu'invité",
+      "recover_title": "Réinitialiser le mot de passe",
+      "recover_text": "Entrez votre e-mail pour recevoir un lien de réinitialisation.",
+      "recover_submit": "Envoyer le lien",
+      "recover_back": "Retour à la connexion",
+      "recover_success": "Si un compte existe avec cet e-mail, un lien de réinitialisation a été envoyé."
+    },
+    "main_register": {
+      "name": "Inscription",
+      "title": "Créer un compte",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "submit": "Créer mon compte",
+      "login": "Déjà un compte ? Se connecter"
+    },
+    "main_addresses": {
+      "name": "Adresses",
+      "title": "Mes adresses",
+      "add": "Ajouter une adresse",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "default": "Adresse par défaut",
+      "set_default": "Définir par défaut",
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "company": "Société",
+      "address1": "Adresse",
+      "address2": "Complément",
+      "city": "Ville",
+      "province": "Région",
+      "zip": "Code postal",
+      "country": "Pays",
+      "phone": "Téléphone",
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "empty": "Aucune adresse enregistrée."
+    },
+    "main_order": {
+      "name": "Commande",
+      "back": "Retour au compte",
+      "placed": "Passée le",
+      "details": "Détails",
+      "billing": "Adresse de facturation",
+      "shipping": "Adresse de livraison",
+      "product": "Produit",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "total": "Total",
+      "subtotal": "Sous-total",
+      "shipping_method": "Livraison",
+      "payment_status": "Paiement",
+      "fulfillment_status": "Expédition",
+      "discount": "Remise",
+      "tax": "Taxes",
+      "download": "Télécharger la facture",
+      "track": "Suivre la commande"
+    }
+  },
+  "settings_schema": {
+    "colors_light": {
+      "name": "Couleurs — Mode clair",
+      "paragraph": "Personnalisez la palette utilisée en mode clair.",
+      "settings": {
+        "color_bg": {
+          "label": "Fond principal"
+        },
+        "color_bg_alt": {
+          "label": "Fond alterné"
+        },
+        "color_bg_card": {
+          "label": "Fond des cartes"
+        },
+        "color_ink": {
+          "label": "Texte principal"
+        },
+        "color_ink_soft": {
+          "label": "Texte secondaire"
+        },
+        "color_gold": {
+          "label": "Or"
+        },
+        "color_gold_dark": {
+          "label": "Or foncé"
+        },
+        "color_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_border": {
+          "label": "Bordures"
+        },
+        "color_button_bg": {
+          "label": "Fond des boutons"
+        },
+        "color_button_text": {
+          "label": "Texte des boutons"
+        },
+        "color_error": {
+          "label": "Erreur"
+        },
+        "color_success": {
+          "label": "Succès"
+        }
+      }
+    },
+    "colors_dark": {
+      "name": "Couleurs — Mode sombre",
+      "paragraph": "Personnalisez la palette utilisée en mode sombre.",
+      "settings": {
+        "color_dark_bg": {
+          "label": "Fond principal"
+        },
+        "color_dark_bg_alt": {
+          "label": "Fond alterné"
+        },
+        "color_dark_bg_card": {
+          "label": "Fond des cartes"
+        },
+        "color_dark_ink": {
+          "label": "Texte principal"
+        },
+        "color_dark_ink_soft": {
+          "label": "Texte secondaire"
+        },
+        "color_dark_gold": {
+          "label": "Or"
+        },
+        "color_dark_gold_dark": {
+          "label": "Or foncé"
+        },
+        "color_dark_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_dark_border": {
+          "label": "Bordures"
+        },
+        "color_dark_button_bg": {
+          "label": "Fond des boutons"
+        },
+        "color_dark_button_text": {
+          "label": "Texte des boutons"
+        }
+      }
+    },
+    "typography": {
+      "name": "Typographie",
+      "settings": {
+        "font_display": {
+          "label": "Police des titres"
+        },
+        "font_body": {
+          "label": "Police du texte"
+        },
+        "base_font_size": {
+          "label": "Taille de base du texte"
+        },
+        "heading_scale": {
+          "label": "Échelle des titres"
+        }
+      }
+    },
+    "layout": {
+      "name": "Mise en page",
+      "settings": {
+        "page_width": {
+          "label": "Largeur de page"
+        },
+        "section_spacing": {
+          "label": "Espacement des sections"
+        },
+        "border_radius": {
+          "label": "Arrondi des coins"
+        }
+      }
+    },
+    "header": {
+      "name": "En-tête",
+      "settings": {
+        "favicon": {
+          "label": "Favicon"
+        },
+        "logo": {
+          "label": "Logo"
+        },
+        "free_shipping_threshold": {
+          "label": "Seuil de livraison offerte (€)",
+          "info": "Laissez 0 pour désactiver la barre de progression du panier."
+        },
+        "header_sticky": {
+          "label": "En-tête collant"
+        },
+        "header_transparent": {
+          "label": "En-tête transparent sur le héro",
+          "info": "L'en-tête devient transparent au-dessus du héro plein écran."
+        },
+        "logo_width": {
+          "label": "Largeur du logo"
+        },
+        "enable_announcement": {
+          "label": "Afficher le bandeau d'annonce"
+        },
+        "announcement_text": {
+          "label": "Texte du bandeau"
+        },
+        "announcement_link": {
+          "label": "Lien du bandeau"
+        }
+      }
+    },
+    "badges": {
+      "name": "Badges produits",
+      "paragraph": "Associez un tag produit à un badge affiché sur les cartes et les fiches produit. Ajoutez le tag correspondant au produit dans l'admin (ex. « premium », « best-seller », « nouveau »).",
+      "settings": {
+        "badges_enable": {
+          "label": "Activer les badges"
+        },
+        "badge_1_header": "Badge 1",
+        "badge_2_header": "Badge 2",
+        "badge_3_header": "Badge 3",
+        "badge_4_header": "Badge 4",
+        "badge_tag": {
+          "label": "Tag du produit"
+        },
+        "badge_label": {
+          "label": "Texte du badge"
+        },
+        "badge_color": {
+          "label": "Couleur du texte"
+        },
+        "badge_bg": {
+          "label": "Couleur de fond"
+        }
+      }
+    },
+    "animations": {
+      "name": "Animations",
+      "settings": {
+        "animations_enable": {
+          "label": "Activer les animations d'apparition"
+        },
+        "animations_reveal_offset": {
+          "label": "Déclenchement du scroll"
+        },
+        "marquee_speed": {
+          "label": "Vitesse du bandeau défilant"
+        },
+        "hero_parallax": {
+          "label": "Effet parallaxe du héro"
+        }
+      }
+    },
+    "social": {
+      "name": "Réseaux sociaux & contact",
+      "settings": {
+        "social_instagram": {
+          "label": "Instagram"
+        },
+        "social_facebook": {
+          "label": "Facebook"
+        },
+        "social_tiktok": {
+          "label": "TikTok"
+        },
+        "social_whatsapp": {
+          "label": "WhatsApp"
+        },
+        "social_info": "URL complète (https://…)",
+        "contact_email": {
+          "label": "E-mail de contact"
+        },
+        "contact_phone": {
+          "label": "Téléphone"
+        }
+      }
+    }
+  }
+}

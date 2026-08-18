@@ -1,0 +1,105 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    {% assign related = collections[section.settings.collection] %}
+    {%- assign show_products = false -%}
+    {% if section.settings.recommendations %}
+      {% if recommendations.products_count > 0 %}
+        {% assign show_products = true %}
+      {% endif %}
+    {% elsif related != blank and related.products.size > 0 %}
+      {% assign show_products = true %}
+    {% endif %}
+
+    {% if show_products %}
+      <div class="section__header" data-reveal>
+        {% if section.settings.kicker != blank %}
+          <p class="section__kicker">{{ section.settings.kicker }}</p>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="section__title">
+            {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {% endif %}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+
+      <div class="collection-grid">
+        {% if section.settings.recommendations and recommendations.products_count > 0 %}
+          {% for product in recommendations.products limit: section.settings.products_to_show %}
+            {% render 'product-card', product: product, portrait: section.settings.portrait %}
+          {% endfor %}
+        {% elsif related != blank %}
+          {% for product in related.products limit: section.settings.products_to_show %}
+            {% if product.id != section.settings.current_product_id %}
+              {% render 'product-card', product: product, portrait: section.settings.portrait %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.related_products.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "recommendations",
+      "label": "t:sections.related_products.recommendations_label",
+      "default": true,
+      "info": "t:sections.related_products.recommendations_info"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.related_products.collection_label",
+      "info": "t:sections.related_products.collection_info"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "t:sections.featured_collection.products_label",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.maison.kicker_label",
+      "default": "Pour continuer"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.rich_text.title_label",
+      "default": "Vous aimerez *aussi*"
+    },
+    {
+      "type": "checkbox",
+      "id": "portrait",
+      "label": "t:sections.featured_collection.portrait_label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "t:sections.maison.alt_bg_label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.related_products.name"
+    }
+  ]
+}
+{% endschema %}

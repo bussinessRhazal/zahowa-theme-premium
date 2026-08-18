@@ -1,0 +1,568 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "search": {
+      "search": "Search",
+      "no_results": "No results for",
+      "results_for": "Results for",
+      "placeholder": "Search a product, a recipe…",
+      "submit": "Search"
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "empty_button": "Discover our recipes",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "items_count": "item(s)",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "note": "Order note",
+      "continue": "Continue shopping",
+      "free_shipping_progress": "<strong>{amount}</strong> away from free shipping",
+      "free_shipping_met": "Congratulations, shipping is free!"
+    },
+    "newsletter": {
+      "success": "Thank you! You are subscribed.",
+      "email_placeholder": "Your email address",
+      "button": "Subscribe"
+    },
+    "social": {
+      "follow": "Follow us"
+    },
+    "pagination": {
+      "next": "Next",
+      "previous": "Previous",
+      "page": "Page"
+    }
+  },
+  "sections": {
+    "header": {
+      "name": "Header",
+      "menu": "Menu",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "search": "Search",
+      "account": "My account",
+      "cart": "Cart",
+      "toggle_theme": "Toggle light/dark theme"
+    },
+    "footer": {
+      "name": "Footer",
+      "heading_newsletter": "Join the Zahowa universe",
+      "newsletter_text": "Rituals, new releases and exclusive offers.",
+      "rights": "All rights reserved.",
+      "payment": "Secure payment",
+      "contact": "Contact",
+      "brand_text": "Brand text",
+      "menu_1_header": "Menu 1",
+      "menu_2_header": "Menu 2",
+      "menu_heading": "Menu heading",
+      "menu": "Menu",
+      "legal_header": "Legal links",
+      "legal_menu": "Legal menu",
+      "show_payment_icons": "Show payment icons"
+    },
+    "hero": {
+      "name": "Full-screen hero",
+      "scroll": "Scroll",
+      "image_info": "Recommended: 2400px wide, landscape or square orientation.",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "title_info": "Wrap a word with *asterisks* to render it in gold italic.",
+      "text_label": "Subheading",
+      "buttons_header": "Buttons",
+      "button_primary_label": "Primary button text",
+      "button_primary_link": "Primary button link",
+      "button_secondary_label": "Secondary button text",
+      "button_secondary_link": "Secondary button link",
+      "note_label": "Note (e.g. survey)",
+      "layout_header": "Layout",
+      "height_label": "Height",
+      "height_full": "Full screen",
+      "height_short": "Reduced screen (70%)",
+      "center_label": "Centered text",
+      "overlay_label": "Overlay opacity",
+      "show_scroll_label": "Show scroll indicator",
+      "anchor_label": "Anchor (HTML id)"
+    },
+    "marquee": {
+      "name": "Marquee band",
+      "add_item": "Add item",
+      "item": "Item",
+      "text_label": "Text",
+      "separator": "Separator",
+      "items_label": "Items (one per line)",
+      "items_info": "Each line becomes a scrolling item.",
+      "dark_label": "Dark background",
+      "reverse_label": "Reverse direction"
+    },
+    "maison": {
+      "name": "The House",
+      "kicker_default": "Our story",
+      "title_default": "The House",
+      "text_default": "Born in Fès, Zahowa celebrates the marriage of arabica coffee and Moroccan spices. Each recipe tells a city, each cup a ritual.",
+      "button_default": "Discover the story",
+      "image_label": "Image",
+      "image_alt": "Zahowa House",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "text_label": "Text",
+      "button_header": "Button",
+      "button_label": "Button text",
+      "button_link": "Button link",
+      "alt_bg_label": "Alternate background"
+    },
+    "featured_collection": {
+      "name": "Featured collection",
+      "view_all": "View all",
+      "title_default": "Our Recipes",
+      "collection_label": "Collection",
+      "products_label": "Products to show",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "text_label": "Text",
+      "portrait_label": "Portrait media (4:5)",
+      "show_view_all_label": "Show \"View all\" button"
+    },
+    "recipes_grid": {
+      "name": "Recipes grid",
+      "title_default": "Four recipes.",
+      "subtitle_default": "Which one is yours?",
+      "intro_default": "Each inspired by the character of a Moroccan city. Each a ritual.",
+      "add_card": "Add recipe card",
+      "card": "Recipe card",
+      "composition_label": "Composition",
+      "usage_label": "Perfect moment",
+      "city_label": "City",
+      "tagline_label": "Tagline",
+      "description_label": "Description",
+      "usage_label_setting": "Serving moment",
+      "composition_setting": "Composition",
+      "image_label": "City photo",
+      "product_label": "Linked product (optional)",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "subtitle_label": "Subtitle (script)",
+      "text_label": "Intro text"
+    },
+    "rituel": {
+      "name": "The Ritual",
+      "title_default": "The Ritual",
+      "intro_default": "Three steps to the perfect infusion.",
+      "add_step": "Add step",
+      "step": "Step",
+      "title_label": "Title",
+      "text_label": "Text"
+    },
+    "coffret": {
+      "name": "Discovery box",
+      "kicker_default": "The gift idea",
+      "title_default": "Discovery Box",
+      "text_default": "Four cities. Four characters. An experience to give or to keep.",
+      "button_default": "Discover the box",
+      "image_label": "Box image",
+      "image_alt": "Zahowa box",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "text_label": "Text",
+      "button_label": "Button text",
+      "button_link": "Button link",
+      "reverse_label": "Reverse (image right)"
+    },
+    "cercle": {
+      "name": "Founder Circle",
+      "kicker_default": "The privilege circle",
+      "title_default": "Founder Circle",
+      "text_default": "Join the Circle and help shape our recipes. Early access, limited editions and private rituals.",
+      "button_default": "Join the Circle",
+      "email_placeholder": "Your email address",
+      "kicker_label": "Kicker",
+      "title_label": "Title",
+      "text_label": "Text",
+      "button_label": "Button text"
+    },
+    "rich_text": {
+      "name": "Rich text",
+      "title_label": "Title",
+      "text_label": "Text",
+      "button_label": "Button",
+      "button_link": "Button link"
+    },
+    "testimonials": {
+      "name": "Testimonials",
+      "empty": "Add testimonials in the section settings.",
+      "block_name": "Testimonial",
+      "photo_label": "Photo",
+      "photo_info": "Square recommended (500×500). If empty, initials are shown.",
+      "name_label": "Name",
+      "location_label": "City / role",
+      "rating_label": "Rating (1 to 5 stars)",
+      "columns_label": "Columns",
+      "columns_info": "Used for the grid (≤3 testimonials) and the number of visible carousel cards.",
+      "columns_1": "1 column",
+      "columns_2": "2 columns",
+      "columns_3": "3 columns",
+      "carousel_header": "Carousel",
+      "carousel_info": "From 4 testimonials on, the section loops automatically.",
+      "autoplay_label": "Autoplay",
+      "autoplay_delay_label": "Delay between slides",
+      "show_arrows_label": "Show arrows",
+      "show_dots_label": "Show dots",
+      "prev": "Previous testimonial",
+      "next": "Next testimonial",
+      "dots": "Navigation",
+      "goto": "Go to testimonial"
+    },
+    "faq": {
+      "name": "FAQ",
+      "block_name": "Question",
+      "question_label": "Question",
+      "answer_label": "Answer",
+      "open_first_label": "Open first question"
+    },
+    "related_products": {
+      "name": "Related products",
+      "recommendations_label": "Use Shopify recommendations",
+      "recommendations_info": "Based on the visitor's cart.",
+      "collection_label": "Fallback collection",
+      "collection_info": "If recommendations are empty, products of this collection (current product excluded)."
+    },
+    "video": {
+      "name": "Video",
+      "hint": "Paste a YouTube or Vimeo link in the section settings.",
+      "video_header": "Video",
+      "video_url_label": "Video link (YouTube or Vimeo)",
+      "video_url_info": "e.g. https://www.youtube.com/watch?v=XXXXXXXX",
+      "aspect_label": "Aspect ratio",
+      "ratio_169": "16:9 (landscape)",
+      "ratio_43": "4:3",
+      "ratio_11": "1:1 (square)",
+      "ratio_916": "9:16 (portrait)",
+      "autoplay_label": "Autoplay",
+      "autoplay_info": "Video starts muted automatically (useful as a band).",
+      "loop_label": "Loop",
+      "cover_label": "Cover image",
+      "cover_info": "Shown when no video link is provided."
+    },
+    "image_with_text": {
+      "name": "Image with text",
+      "image_label": "Image",
+      "title_label": "Title",
+      "text_label": "Text",
+      "button_label": "Button"
+    },
+    "main_product": {
+      "name": "Product page",
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "price": "Price",
+      "sku": "SKU",
+      "description": "Description",
+      "composition": "Composition",
+      "infusion": "Brewing instructions",
+      "profil": "Tasting profile",
+      "reviews": "Reviews",
+      "share": "Share",
+      "show_vendor": "Show vendor",
+      "show_sku": "Show SKU",
+      "show_description": "Show description",
+      "show_reviews": "Show review summary",
+      "review_count_text": "Review summary text",
+      "review_info": "Placeholder until a review app is installed (Judge.me, Loox…).",
+      "trust_header": "Trust block",
+      "show_trust": "Show trust block",
+      "trust_title": "Title",
+      "trust_text": "Subtitle",
+      "accordions_header": "Custom accordions",
+      "accordion_title": "Accordion title",
+      "accordion_content": "Content"
+    },
+    "main_collection": {
+      "name": "Collection page",
+      "products_count": "{count} recipes",
+      "sort_by": "Sort by",
+      "sort_featured": "Featured",
+      "sort_best_selling": "Best selling",
+      "sort_title_asc": "Title, A-Z",
+      "sort_title_desc": "Title, Z-A",
+      "sort_price_asc": "Price, low to high",
+      "sort_price_desc": "Price, high to low",
+      "sort_date_desc": "Date, new to old",
+      "sort_date_asc": "Date, old to new",
+      "empty": "No products in this collection yet.",
+      "products_per_page": "Products per page"
+    },
+    "main_list_collections": {
+      "name": "Collections page",
+      "title": "Our collections"
+    },
+    "main_blog": {
+      "name": "Blog page",
+      "title": "The Journal",
+      "read_more": "Read more",
+      "empty": "No articles yet.",
+      "posts_per_page": "Posts per page"
+    },
+    "main_article": {
+      "name": "Article page",
+      "back_to_blog": "Back to the journal",
+      "share": "Share",
+      "tags": "Tags",
+      "author": "By",
+      "comments": "Comments",
+      "leave_comment": "Leave a comment",
+      "comment_name": "Name",
+      "comment_email": "Email",
+      "comment_body": "Comment",
+      "comment_submit": "Post",
+      "comments_closed": "Comments are closed.",
+      "moderated": "Your comment will be published after moderation."
+    },
+    "main_page": {
+      "name": "Page"
+    },
+    "main_contact": {
+      "name": "Contact page",
+      "title": "Contact",
+      "text": "A question? Write to us.",
+      "name_label": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Your message",
+      "submit": "Send",
+      "success": "Thank you, your message has been sent."
+    },
+    "main_cart": {
+      "name": "Cart page",
+      "title": "Your cart",
+      "empty": "Your cart is empty",
+      "empty_button": "Discover our recipes",
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "note": "Order note",
+      "continue": "Continue shopping",
+      "free_shipping_progress": "<strong>{amount}</strong> away from free shipping",
+      "free_shipping_met": "Congratulations, shipping is free!"
+    },
+    "main_search": {
+      "name": "Search page"
+    },
+    "main_404": {
+      "name": "404 page",
+      "title": "Page not found",
+      "text": "This page doesn't exist or has been moved.",
+      "button": "Back to home"
+    },
+    "main_password": {
+      "name": "Password page",
+      "title": "The shop opens soon",
+      "text": "Enter the password to access the shop.",
+      "password": "Password",
+      "submit": "Enter",
+      "admin": "Log in as store owner"
+    },
+    "main_account": {
+      "name": "Customer account",
+      "title": "My account",
+      "orders": "Orders",
+      "no_orders": "No orders yet.",
+      "addresses": "Addresses",
+      "addresses_link": "Manage my addresses",
+      "logout": "Log out",
+      "order": "Order",
+      "date": "Date",
+      "payment_status": "Payment",
+      "fulfillment_status": "Fulfillment",
+      "total": "Total",
+      "view": "View"
+    },
+    "main_activate": {
+      "name": "Account activation"
+    },
+    "main_reset": {
+      "name": "Password reset"
+    },
+    "main_login": {
+      "name": "Login",
+      "title": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Log in",
+      "forgot": "Forgot your password?",
+      "create": "Create account",
+      "guest": "Continue as guest",
+      "recover_title": "Reset password",
+      "recover_text": "Enter your email to receive a reset link.",
+      "recover_submit": "Send link",
+      "recover_back": "Back to login",
+      "recover_success": "If an account exists with this email, a reset link has been sent."
+    },
+    "main_register": {
+      "name": "Register",
+      "title": "Create account",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create my account",
+      "login": "Already have an account? Log in"
+    },
+    "main_addresses": {
+      "name": "Addresses",
+      "title": "My addresses",
+      "add": "Add address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "default": "Default address",
+      "set_default": "Set as default",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address",
+      "address2": "Apartment",
+      "city": "City",
+      "province": "Province",
+      "zip": "ZIP",
+      "country": "Country",
+      "phone": "Phone",
+      "save": "Save",
+      "cancel": "Cancel",
+      "empty": "No addresses saved."
+    },
+    "main_order": {
+      "name": "Order",
+      "back": "Back to account",
+      "placed": "Placed on",
+      "details": "Details",
+      "billing": "Billing address",
+      "shipping": "Shipping address",
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping_method": "Shipping",
+      "payment_status": "Payment",
+      "fulfillment_status": "Fulfillment",
+      "discount": "Discount",
+      "tax": "Tax",
+      "download": "Download invoice",
+      "track": "Track order"
+    }
+  },
+  "settings_schema": {
+    "colors_light": {
+      "name": "Colors — Light mode",
+      "paragraph": "Customize the light mode palette.",
+      "settings": {
+        "color_bg": { "label": "Main background" },
+        "color_bg_alt": { "label": "Alternate background" },
+        "color_bg_card": { "label": "Card background" },
+        "color_ink": { "label": "Main text" },
+        "color_ink_soft": { "label": "Secondary text" },
+        "color_gold": { "label": "Gold" },
+        "color_gold_dark": { "label": "Dark gold" },
+        "color_accent": { "label": "Accent (terracotta)" },
+        "color_border": { "label": "Borders" },
+        "color_button_bg": { "label": "Button background" },
+        "color_button_text": { "label": "Button text" },
+        "color_error": { "label": "Error" },
+        "color_success": { "label": "Success" }
+      }
+    },
+    "colors_dark": {
+      "name": "Colors — Dark mode",
+      "paragraph": "Customize the dark mode palette.",
+      "settings": {
+        "color_dark_bg": { "label": "Main background" },
+        "color_dark_bg_alt": { "label": "Alternate background" },
+        "color_dark_bg_card": { "label": "Card background" },
+        "color_dark_ink": { "label": "Main text" },
+        "color_dark_ink_soft": { "label": "Secondary text" },
+        "color_dark_gold": { "label": "Gold" },
+        "color_dark_gold_dark": { "label": "Dark gold" },
+        "color_dark_accent": { "label": "Accent (terracotta)" },
+        "color_dark_border": { "label": "Borders" },
+        "color_dark_button_bg": { "label": "Button background" },
+        "color_dark_button_text": { "label": "Button text" }
+      }
+    },
+    "typography": {
+      "name": "Typography",
+      "settings": {
+        "font_display": { "label": "Heading font" },
+        "font_body": { "label": "Body font" },
+        "base_font_size": { "label": "Base font size" },
+        "heading_scale": { "label": "Heading scale" }
+      }
+    },
+    "layout": {
+      "name": "Layout",
+      "settings": {
+        "page_width": { "label": "Page width" },
+        "section_spacing": { "label": "Section spacing" },
+        "border_radius": { "label": "Border radius" }
+      }
+    },
+    "header": {
+      "name": "Header",
+      "settings": {
+        "favicon": { "label": "Favicon" },
+        "logo": { "label": "Logo" },
+        "free_shipping_threshold": { "label": "Free shipping threshold (€)", "info": "Set 0 to disable the cart progress bar." },
+        "header_sticky": { "label": "Sticky header" },
+        "header_transparent": { "label": "Transparent header over hero", "info": "Header becomes transparent over the full-screen hero." },
+        "logo_width": { "label": "Logo width" },
+        "enable_announcement": { "label": "Show announcement bar" },
+        "announcement_text": { "label": "Bar text" },
+        "announcement_link": { "label": "Bar link" }
+      }
+    },
+    "badges": {
+      "name": "Product badges",
+      "paragraph": "Map a product tag to a badge shown on cards and product pages. Add the tag to the product in the admin (e.g. \"premium\", \"best-seller\", \"new\").",
+      "settings": {
+        "badges_enable": { "label": "Enable badges" },
+        "badge_1_header": "Badge 1",
+        "badge_2_header": "Badge 2",
+        "badge_3_header": "Badge 3",
+        "badge_4_header": "Badge 4",
+        "badge_tag": { "label": "Product tag" },
+        "badge_label": { "label": "Badge text" },
+        "badge_color": { "label": "Text color" },
+        "badge_bg": { "label": "Background color" }
+      }
+    },
+    "animations": {
+      "name": "Animations",
+      "settings": {
+        "animations_enable": { "label": "Enable reveal animations" },
+        "animations_reveal_offset": { "label": "Scroll trigger offset" },
+        "marquee_speed": { "label": "Marquee speed" },
+        "hero_parallax": { "label": "Hero parallax" }
+      }
+    },
+    "social": {
+      "name": "Social & contact",
+      "settings": {
+        "social_instagram": { "label": "Instagram" },
+        "social_facebook": { "label": "Facebook" },
+        "social_tiktok": { "label": "TikTok" },
+        "social_whatsapp": { "label": "WhatsApp" },
+        "social_info": "Full URL (https://…)",
+        "contact_email": { "label": "Contact email" },
+        "contact_phone": { "label": "Phone" }
+      }
+    }
+  }
+}

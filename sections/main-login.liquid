@@ -1,0 +1,70 @@
+<section class="auth-wrap">
+  <div class="container">
+    <div class="auth-card">
+      <h1>{{ 'sections.main_login.title' | t }}</h1>
+
+      {% form 'customer_login' %}
+        {% if form.errors %}
+          <div class="form-errors">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        <div class="form-field">
+          <label for="CustomerEmail">{{ 'sections.main_login.email' | t }}</label>
+          <input type="email" name="customer[email]" id="CustomerEmail" autocomplete="email" required autofocus>
+        </div>
+        <div class="form-field">
+          <label for="CustomerPassword">{{ 'sections.main_login.password' | t }}</label>
+          <input type="password" name="customer[password]" id="CustomerPassword" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">{{ 'sections.main_login.submit' | t }}</button>
+      {% endform %}
+
+      <div class="auth-links">
+        <a href="{{ routes.account_register_url }}">{{ 'sections.main_login.create' | t }}</a>
+        <a href="#recover" onclick="document.getElementById('recover').style.display='block';this.parentElement.style.display='none';return false;">
+          {{ 'sections.main_login.forgot' | t }}
+        </a>
+      </div>
+    </div>
+
+    <div id="recover" class="auth-card" style="display:none;margin-top:1.5rem;">
+      <h2>{{ 'sections.main_login.recover_title' | t }}</h2>
+      <p style="color:var(--color-ink-soft);">{{ 'sections.main_login.recover_text' | t }}</p>
+      {% form 'recover_customer_password' %}
+        {% if form.posted_successfully? %}
+          <p class="form-success">{{ 'sections.main_login.recover_success' | t }}</p>
+        {% endif %}
+        {% if form.errors %}
+          <div class="form-errors">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        <div class="form-field">
+          <label for="RecoverEmail">{{ 'sections.main_login.email' | t }}</label>
+          <input type="email" name="email" id="RecoverEmail" autocomplete="email" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">{{ 'sections.main_login.recover_submit' | t }}</button>
+      {% endform %}
+      <div class="auth-links">
+        <a href="#" onclick="document.getElementById('recover').style.display='none';return false;">{{ 'sections.main_login.recover_back' | t }}</a>
+      </div>
+    </div>
+
+    {% if shop.checkout.guest_login %}
+      <div class="auth-links" style="margin-top:1.5rem;">
+        {% form 'guest_login' %}
+          <button type="submit" class="btn btn--outline">{{ 'sections.main_login.guest' | t }}</button>
+        {% endform %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_login.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_login.name"
+    }
+  ]
+}
+{% endschema %}

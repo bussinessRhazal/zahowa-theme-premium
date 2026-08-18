@@ -1,0 +1,160 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand">
+          {% if settings.logo != blank %}
+            {{ settings.logo | image_url: width: 220 | image_tag: alt: shop.name }}
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
+        </p>
+        <p class="footer__text">{{ section.settings.brand_text }}</p>
+        <div class="footer__social">
+          {% if settings.social_instagram != blank %}
+            <a href="{{ settings.social_instagram }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              {% render 'icon', name: 'instagram' %}
+            </a>
+          {% endif %}
+          {% if settings.social_facebook != blank %}
+            <a href="{{ settings.social_facebook }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              {% render 'icon', name: 'facebook' %}
+            </a>
+          {% endif %}
+          {% if settings.social_tiktok != blank %}
+            <a href="{{ settings.social_tiktok }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
+              {% render 'icon', name: 'tiktok' %}
+            </a>
+          {% endif %}
+          {% if settings.social_whatsapp != blank %}
+            <a href="{{ settings.social_whatsapp }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+              {% render 'icon', name: 'whatsapp' %}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <nav aria-label="{{ 'sections.footer.name' | t }}">
+        <p class="footer__heading">{{ section.settings.menu_1_heading }}</p>
+        <ul class="footer__menu" role="list">
+          {% for link in section.settings.menu_1.links %}
+            <li><a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <nav aria-label="{{ 'sections.footer.name' | t }}">
+        <p class="footer__heading">{{ section.settings.menu_2_heading }}</p>
+        <ul class="footer__menu" role="list">
+          {% for link in section.settings.menu_2.links %}
+            <li><a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <div>
+        <p class="footer__heading">{{ 'sections.footer.heading_newsletter' | t }}</p>
+        <p class="footer__text">{{ 'sections.footer.newsletter_text' | t }}</p>
+        {% form 'customer', class: 'footer__newsletter' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="cercle__form">
+            <input
+              type="email"
+              name="contact[email]"
+              class="cercle__input"
+              placeholder="{{ 'general.newsletter.email_placeholder' | t }}"
+              required
+            >
+            <button type="submit" class="btn btn--gold">{{ 'general.newsletter.button' | t }}</button>
+          </div>
+          {% if form.posted_successfully? %}
+            <p class="form-success">{{ 'general.newsletter.success' | t }}</p>
+          {% endif %}
+          {% if form.errors %}
+            <div class="form-errors">{{ form.errors | default_errors }}</div>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }} — {{ 'sections.footer.rights' | t }}</p>
+      <div class="footer__legal">
+        {% for link in section.settings.legal_menu.links %}
+          <a href="{{ link.url }}" class="footer__menu-link">{{ link.title | escape }}</a>
+        {% endfor %}
+      </div>
+      {% if section.settings.show_payment_icons %}
+        <div class="footer__payments" aria-label="{{ 'sections.footer.payment' | t }}">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "brand_text",
+      "label": "t:sections.footer.brand_text",
+      "default": "Café épicé artisanal, inspiré des villes du Maroc. Arabica & épices naturelles."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.menu_1_header"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "t:sections.footer.menu_heading",
+      "default": "La Maison"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "t:sections.footer.menu"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.menu_2_header"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "t:sections.footer.menu_heading",
+      "default": "Aide"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "t:sections.footer.menu"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.legal_header"
+    },
+    {
+      "type": "link_list",
+      "id": "legal_menu",
+      "label": "t:sections.footer.legal_menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:sections.footer.show_payment_icons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.footer.name"
+    }
+  ]
+}
+{% endschema %}

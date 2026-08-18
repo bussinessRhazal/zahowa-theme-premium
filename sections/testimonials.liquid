@@ -1,0 +1,215 @@
+<section class="section testimonials{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.kicker != blank %}
+        <p class="section__kicker">{{ section.settings.kicker }}</p>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="section__title">
+          {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="section__intro">{{ section.settings.text }}</p>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      {%- assign use_carousel = false -%}
+      {%- if section.blocks.size > 3 -%}
+        {%- assign use_carousel = true -%}
+      {%- endif -%}
+
+      <div
+        class="testimonials__wrap{% if use_carousel %} testimonials__wrap--carousel{% endif %}"
+        data-testimonials
+        {% if use_carousel %}
+          data-autoplay="{{ section.settings.autoplay }}"
+          data-autoplay-delay="{{ section.settings.autoplay_delay | times: 1000 }}"
+        {% endif %}
+      >
+        {% if use_carousel %}
+          <div class="testimonials__viewport">
+            <div class="testimonials__track">
+              {% for block in section.blocks %}
+                <div class="testimonials__slide" {{ block.shopify_attributes }}>
+                  {% render 'testimonial-card', block: block %}
+                </div>
+              {% endfor %}
+              {%- comment -%} Clone for seamless infinite loop {%- endcomment -%}
+              {% for block in section.blocks limit: 3 %}
+                <div class="testimonials__slide testimonials__slide--clone" aria-hidden="true">
+                  {% render 'testimonial-card', block: block %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% if section.settings.show_arrows %}
+            <button type="button" class="testimonials__arrow testimonials__arrow--prev" data-testimonials-prev aria-label="{{ 'sections.testimonials.prev' | t }}">
+              {% render 'icon', name: 'arrow' %}
+            </button>
+            <button type="button" class="testimonials__arrow testimonials__arrow--next" data-testimonials-next aria-label="{{ 'sections.testimonials.next' | t }}">
+              {% render 'icon', name: 'arrow' %}
+            </button>
+          {% endif %}
+
+          {% if section.settings.show_dots %}
+            <div class="testimonials__dots" data-testimonials-dots role="tablist" aria-label="{{ 'sections.testimonials.dots' | t }}">
+              {% for block in section.blocks %}
+                <button type="button" class="testimonials__dot" data-testimonials-dot data-index="{{ forloop.index0 }}" aria-label="{{ 'sections.testimonials.goto' | t }} {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="testimonials__grid testimonials__grid--{{ section.settings.columns }}">
+            {% for block in section.blocks %}
+              <div class="testimonials__grid-item" data-reveal>
+                {% render 'testimonial-card', block: block %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="empty-state">{{ 'sections.testimonials.empty' | t }}</div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.testimonials.name",
+  "max_blocks": 18,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.maison.kicker_label",
+      "default": "Ils ont adopté le rituel"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.rich_text.title_label",
+      "default": "Ils *en parlent* mieux que nous"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.rich_text.text_label"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "t:sections.testimonials.columns_label",
+      "options": [
+        { "value": "1", "label": "t:sections.testimonials.columns_1" },
+        { "value": "2", "label": "t:sections.testimonials.columns_2" },
+        { "value": "3", "label": "t:sections.testimonials.columns_3" }
+      ],
+      "default": "3",
+      "info": "t:sections.testimonials.columns_info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.testimonials.carousel_header"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.testimonials.carousel_info"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.testimonials.autoplay_label",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "t:sections.testimonials.autoplay_delay_label",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "t:sections.testimonials.show_arrows_label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "t:sections.testimonials.show_dots_label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "t:sections.maison.alt_bg_label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "t:sections.testimonials.block_name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "t:sections.testimonials.photo_label",
+          "info": "t:sections.testimonials.photo_info"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "t:sections.testimonials.name_label",
+          "default": "Camille R."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "t:sections.testimonials.location_label",
+          "default": "Paris"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "t:sections.testimonials.rating_label",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.rich_text.text_label",
+          "default": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.testimonials.name",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

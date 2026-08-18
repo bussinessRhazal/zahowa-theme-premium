@@ -1,0 +1,29 @@
+{% doc %}
+Renders a product card with media, badges and price.
+@param {product} product - The product to render
+@param {boolean} [portrait] - Use 4:5 media instead of 1:1
+@example
+{% render 'product-card', product: product %}
+{% enddoc %}
+{% if product != blank %}
+  <article class="card" data-reveal>
+    <a href="{{ product.url }}" class="card__link" aria-label="{{ product.title | escape }}">
+      <div class="card__media{% if portrait %} card__media--portrait{% endif %}">
+        {% if product.featured_image != blank %}
+          {% assign card_alt = product.featured_image.alt | escape | default: product.title %}
+          {{ product.featured_image | image_url: width: 800 | image_tag: alt: card_alt, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw' }}
+        {% else %}
+          <div class="card__placeholder"></div>
+        {% endif %}
+        {% render 'badges', product: product %}
+      </div>
+      <div class="card__body">
+        <p class="card__subtitle">
+          {% if product.type != blank %}{{ product.type }}{% else %}{{ product.vendor }}{% endif %}
+        </p>
+        <h3 class="card__title">{{ product.title }}</h3>
+        <div class="card__price">{% render 'price', product: product %}</div>
+      </div>
+    </a>
+  </article>
+{% endif %}

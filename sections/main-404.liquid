@@ -1,0 +1,23 @@
+<section class="section" style="min-height:60vh;display:flex;align-items:center;">
+  <div class="container" style="text-align:center;max-width:640px;">
+    <p class="section__kicker" style="font-size:4rem;line-height:1;color:var(--color-gold);margin-bottom:0.5rem;">404</p>
+    <h1 class="page-header__title">{{ 'sections.main_404.title' | t }}</h1>
+    <p class="page-header__text">{{ 'sections.main_404.text' | t }}</p>
+    <a href="{{ routes.root_url }}" class="btn btn--primary" style="margin-top:1.5rem;">
+      {{ 'sections.main_404.button' | t }}
+      {% render 'icon', name: 'arrow' %}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_404.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_404.name"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-header__title">{{ blog.title | default: 'sections.main_blog.title' | t }}</h1>
+      {% if blog.description != blank %}
+        <p class="page-header__text">{{ blog.description }}</p>
+      {% endif %}
+    </div>
+
+    {% paginate blog.articles by section.settings.posts_per_page %}
+      {% if blog.articles.size > 0 %}
+        <div class="blog-grid">
+          {% for article in blog.articles %}
+            <article class="article-card" data-reveal>
+              {% if article.image != blank %}
+                {% assign blog_alt = article.image.alt | escape | default: article.title %}
+                <a href="{{ article.url }}" class="article-card__media">
+                  {{ article.image | image_url: width: 900 | image_tag: alt: blog_alt, loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw' }}
+                </a>
+              {% endif %}
+              <div class="article-card__body">
+                <p class="article-card__date">{{ article.published_at | date: '%d %B %Y' }}</p>
+                <h2 class="article-card__title">
+                  <a href="{{ article.url }}">{{ article.title }}</a>
+                </h2>
+                {% if article.excerpt_or_content != blank %}
+                  <p class="article-card__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 26 }}</p>
+                {% endif %}
+                <a href="{{ article.url }}" class="article-card__link">
+                  {{ 'sections.main_blog.read_more' | t }}
+                  {% render 'icon', name: 'arrow' %}
+                </a>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <nav class="pagination" aria-label="Pagination">
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}" class="pagination__link">{{ 'general.pagination.previous' | t }}</a>
+            {% endif %}
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <a href="{{ part.url }}" class="pagination__link">{{ part.title }}</a>
+              {% else %}
+                <span class="pagination__link{% if part.title == paginate.current_page %} is-active{% endif %}">{{ part.title }}</span>
+              {% endif %}
+            {% endfor %}
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}" class="pagination__link">{{ 'general.pagination.next' | t }}</a>
+            {% endif %}
+          </nav>
+        {% endif %}
+      {% else %}
+        <div class="empty-state">{{ 'sections.main_blog.empty' | t }}</div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_blog.name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "posts_per_page",
+      "label": "t:sections.main_blog.posts_per_page",
+      "min": 3,
+      "max": 24,
+      "step": 3,
+      "default": 9
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.main_blog.name"
+    }
+  ]
+}
+{% endschema %}

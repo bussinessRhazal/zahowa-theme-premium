@@ -1,0 +1,38 @@
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-header__title">{{ 'sections.main_list_collections.title' | t }}</h1>
+    </div>
+    <div class="collection-grid">
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' or collection.handle == 'all' %}
+          <a href="{{ collection.url }}" class="card" data-reveal>
+            <div class="card__media">
+              {% if collection.image != blank %}
+                {{ collection.image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw' }}
+              {% elsif collection.products.first != blank and collection.products.first.featured_image != blank %}
+                {{ collection.products.first.featured_image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw' }}
+              {% endif %}
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">{{ collection.title }}</h3>
+              <p class="card__subtitle">{{ collection.products_count }} {{ 'general.cart.items_count' | t }}</p>
+            </div>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_list_collections.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_list_collections.name"
+    }
+  ]
+}
+{% endschema %}

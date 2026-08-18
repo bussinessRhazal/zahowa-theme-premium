@@ -1,0 +1,23 @@
+<div class="announcement" {% if settings.enable_announcement == false %}hidden{% endif %}>
+  <div class="container">
+    {% if settings.announcement_link != blank %}
+      <a href="{{ settings.announcement_link }}">
+        {{ settings.announcement_text }}
+      </a>
+    {% else %}
+      {{ settings.announcement_text }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.header.name"
+    }
+  ]
+}
+{% endschema %}

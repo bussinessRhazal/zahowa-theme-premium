@@ -1,0 +1,92 @@
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-header__title">{{ 'sections.main_cart.title' | t }}</h1>
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" style="max-width:860px;margin-inline:auto;">
+        <div style="overflow-x:auto;">
+          <table class="account-table">
+            <thead>
+              <tr>
+                <th>{{ 'sections.main_cart.product' | t }}</th>
+                <th>{{ 'sections.main_cart.price' | t }}</th>
+                <th>{{ 'sections.main_cart.quantity' | t }}</th>
+                <th>{{ 'sections.main_cart.total' | t }}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart.items %}
+                <tr>
+                  <td>
+                    <div style="display:flex;gap:0.9rem;align-items:center;">
+                      {% if item.image %}
+                        <img src="{{ item.image | image_url: width: 80 }}" alt="{{ item.image.alt | escape | default: item.product.title }}" width="80" height="80" loading="lazy" style="border-radius:8px;object-fit:cover;">
+                      {% endif %}
+                      <div>
+                        <a href="{{ item.url }}" style="font-weight:500;">{{ item.product.title }}</a>
+                        {% unless item.product.has_only_default_variant %}
+                          <p style="font-size:0.85rem;color:var(--color-ink-soft);margin:0;">{{ item.variant.title }}</p>
+                        {% endunless %}
+                      </div>
+                    </div>
+                  </td>
+                  <td>{{ item.final_price | money }}</td>
+                  <td>
+                    <div class="product__qty" data-qty-container>
+                      <button type="button" data-qty-minus aria-label="−">−</button>
+                      <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" inputmode="numeric" data-line-key="{{ item.key }}">
+                      <button type="button" data-qty-plus aria-label="+">+</button>
+                    </div>
+                  </td>
+                  <td><strong>{{ item.final_line_price | money }}</strong></td>
+                  <td>
+                    <a href="{{ item.url_to_remove }}" class="btn btn--link">{{ 'sections.main_cart.remove' | t }}</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;margin-top:2rem;align-items:flex-start;">
+          <div style="flex:1;min-width:260px;">
+            <label for="CartNote" class="form-field" style="margin:0;">
+              <span>{{ 'sections.main_cart.note' | t }}</span>
+              <textarea name="note" id="CartNote">{{ cart.note }}</textarea>
+            </label>
+          </div>
+          <div style="flex:1;min-width:260px;display:grid;gap:1rem;">
+            {% render 'free-shipping-progress', cart: cart %}
+            <p style="font-size:1.2rem;display:flex;justify-content:space-between;margin:0;">
+              <span>{{ 'sections.main_cart.subtotal' | t }}</span>
+              <strong>{{ cart.total_price | money }}</strong>
+            </p>
+            <button type="submit" name="update" class="btn btn--outline">{{ 'general.cart.quantity' | t }}</button>
+            <button type="submit" name="checkout" class="btn btn--primary">{{ 'sections.main_cart.checkout' | t }}</button>
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn--link">{{ 'sections.main_cart.continue' | t }}</a>
+          </div>
+        </div>
+      </form>
+    {% else %}
+      <div class="empty-state">
+        <p>{{ 'sections.main_cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">{{ 'sections.main_cart.empty_button' | t }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_cart.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_cart.name"
+    }
+  ]
+}
+{% endschema %}

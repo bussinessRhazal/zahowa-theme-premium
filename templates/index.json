@@ -1,0 +1,289 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/hero-coffee.jpg",
+        "kicker": "— LANCEMENT BIENTÔT",
+        "title": "Un café *épicé,* comme tu ne l'as jamais bu.",
+        "text": "Pour qui refuse le café sans âme.",
+        "button_primary_label": "Rejoindre le Cercle Zahowa Privilège",
+        "button_secondary_label": "Découvrir l'histoire",
+        "note": "Tu veux influencer nos recettes ? Réponds au sondage de 5 min",
+        "height": "full",
+        "center": false,
+        "overlay_opacity": 55,
+        "show_scroll": true
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "items": "CASABLANCA\nFÈS\nMARRAKECH\nRABAT",
+        "dark": true,
+        "reverse": false
+      }
+    },
+    "maison": {
+      "type": "maison",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/couple.jpg",
+        "kicker": "Notre histoire",
+        "title": "La *Maison*",
+        "text": "<p>Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.</p>",
+        "button_label": "Découvrir l'histoire",
+        "alt_bg": true
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "kicker": "Nos créations",
+        "title": "Nos *Recettes*",
+        "text": "Quatre villes. Quatre caractères. Chacune un rituel.",
+        "portrait": false,
+        "show_view_all": true,
+        "alt_bg": false
+      }
+    },
+    "recipes_grid": {
+      "type": "recipes-grid",
+      "settings": {
+        "kicker": "La collection",
+        "title": "Quatre recettes.",
+        "subtitle": "Laquelle est la tienne ?",
+        "text": "Chacune inspirée du caractère d'une ville marocaine. Chacune un rituel.",
+        "alt_bg": true
+      },
+      "blocks": {
+        "recipe-1": {
+          "type": "recipe",
+          "settings": {
+            "tagline": "Atlantique — Douceur",
+            "title": "Aube de Casablanca",
+            "description": "Sucré & Équilibré. L'éveil sucré de l'Atlantique.",
+            "usage": "Le matin, pour un réveil tout en douceur",
+            "composition": "Anis vert, Fenouil, Cannelle Ceylan, Vanille Bourbon"
+          }
+        },
+        "recipe-2": {
+          "type": "recipe",
+          "settings": {
+            "tagline": "Royale — Feutrée",
+            "title": "Grâce de Rabat",
+            "description": "Chaud & Réconfortant. Le cocon royal.",
+            "usage": "Après le déjeuner ou en fin d'après-midi",
+            "composition": "Cannelle Ceylan, Gingembre séché, Cardamome verte, Miel d'acacia"
+          }
+        },
+        "recipe-3": {
+          "type": "recipe",
+          "settings": {
+            "tagline": "Spirituelle — Millénaire",
+            "title": "Âme de Fès",
+            "description": "Floral & Subtil. La contemplation florale.",
+            "usage": "Le soir, pour un moment de contemplation",
+            "composition": "Rosa damascena, Safran de Taliouine, Cardamome verte, Lavande de Provence"
+          }
+        },
+        "recipe-4": {
+          "type": "recipe",
+          "settings": {
+            "tagline": "Intense — Charnelle",
+            "title": "Fièvre de Marrakech",
+            "description": "Intense & Complexe. Le caractère du Sud.",
+            "usage": "L'après-midi ou après un repas généreux",
+            "composition": "Poivre noir Tellicherry, Clou de girofle, Anis étoilé, Cacao cru"
+          }
+        }
+      }
+    },
+    "rituel": {
+      "type": "rituel",
+      "settings": {
+        "kicker": "La méthode",
+        "title": "Le *Rituel*",
+        "text": "Trois gestes pour une infusion parfaite.",
+        "alt_bg": false
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Ouvrez",
+            "text": "et installez le sachet sur votre tasse."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Versez",
+            "text": "lentement de l'eau chaude (92–96°C)."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Savourez",
+            "text": "un café épicé riche et équilibré."
+          }
+        }
+      }
+    },
+    "video_demo": {
+      "type": "video",
+      "settings": {
+        "kicker": "Démo",
+        "title": "Le *rituel* en vidéo",
+        "text": "Découvrez en une minute comment infuser votre drip bag Zahowa.",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=XXXXXXXXXXX",
+        "aspect_ratio": "16-9",
+        "autoplay": false,
+        "loop": false,
+        "alt_bg": false
+      }
+    },
+    "coffret": {
+      "type": "coffret",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/memepackagingpremium.png",
+        "kicker": "L'idée cadeau",
+        "title": "Coffret *Découverte*",
+        "text": "<p>Quatre villes. Quatre caractères. Une expérience à offrir ou à s'offrir. Une boîte précieuse, des sachets biodégradables, un rituel à partager.</p>",
+        "button_label": "Découvrir le coffret",
+        "reverse": false,
+        "alt_bg": true
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "kicker": "Ils ont adopté le rituel",
+        "title": "Ils *en parlent* mieux que nous",
+        "text": "Des milliers de matins transformés à travers la France.",
+        "columns": "3",
+        "alt_bg": true
+      },
+      "blocks": {
+        "t-1": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Camille R.",
+            "location": "Paris",
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "t-2": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Julien M.",
+            "location": "Lyon",
+            "rating": 5,
+            "text": "Offert en coffret, adopté au quotidien. Le safran de Fès est une révélation."
+          }
+        },
+        "t-3": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Aïcha B.",
+            "location": "Bordeaux",
+            "rating": 4,
+            "text": "Enfin un café épicé sans sucre ajouté, avec une vraie histoire derrière chaque recette."
+          }
+        },
+        "t-4": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Thomas L.",
+            "location": "Nantes",
+            "rating": 5,
+            "text": "Le Coffret Découverte est devenu mon cadeau signature. Tout le monde adore, tout le monde redemande."
+          }
+        },
+        "t-5": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Salomé D.",
+            "location": "Marseille",
+            "rating": 5,
+            "text": "La Grâce de Rabat au miel d'acacia, c'est un câlin en tasse. Sublime après le déjeuner."
+          }
+        },
+        "t-6": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Karim E.",
+            "location": "Strasbourg",
+            "rating": 5,
+            "text": "Fidèle du Cercle Fondateur : les éditions limitées valent vraiment le détour. Bravo Zahowa !"
+          }
+        }
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "kicker": "Questions fréquentes",
+        "title": "Vos *questions*",
+        "text": "Tout ce que vous devez savoir avant votre première infusion.",
+        "open_first": true,
+        "alt_bg": false
+      },
+      "blocks": {
+        "f-1": {
+          "type": "question",
+          "settings": {
+            "question": "Comment utiliser un drip bag Zahowa ?",
+            "answer": "<p>Ouvrez le sachet, installez les ailes sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C) et laissez infuser 3 à 4 minutes. C'est tout !</p>"
+          }
+        },
+        "f-2": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de tasses y a-t-il dans un sachet ?",
+            "answer": "<p>Chaque drip bag est conçu pour une tasse (200 ml). Les recettes sont disponibles en format découverte (10 sachets) ou en boîte de 25.</p>"
+          }
+        },
+        "f-3": {
+          "type": "question",
+          "settings": {
+            "question": "Les sachets sont-ils biodégradables ?",
+            "answer": "<p>Oui — nos drip bags sont en matériau biodégradable, sans blanchiment au chlore. Après l'infusion, compostez le sachet et les épices.</p>"
+          }
+        },
+        "f-4": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la différence entre les 4 recettes ?",
+            "answer": "<p>Chaque recette est inspirée du caractère d'une ville marocaine : Casablanca (sucré, anis), Rabat (réconfortant, miel), Fès (floral, safran) et Marrakech (intense, cacao).</p>"
+          }
+        }
+      }
+    },
+    "cercle": {
+      "type": "cercle",
+      "settings": {
+        "kicker": "Le cercle privilège",
+        "title": "Cercle *Fondateur*",
+        "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
+        "button_label": "Rejoindre le Cercle"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "maison",
+    "featured_collection",
+    "recipes_grid",
+    "rituel",
+    "video_demo",
+    "coffret",
+    "testimonials",
+    "faq",
+    "cercle"
+  ]
+}

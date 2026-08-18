@@ -1,0 +1,74 @@
+<section class="account-wrap">
+  <div class="container">
+    <div class="account-header">
+      <h1>{{ 'sections.main_account.title' | t }}</h1>
+      <a href="{{ routes.account_logout_url }}" class="btn btn--outline">{{ 'sections.main_account.logout' | t }}</a>
+    </div>
+
+    <h2 class="section__title" style="font-size:1.4rem;">{{ 'sections.main_account.orders' | t }}</h2>
+    {% if customer.orders.size > 0 %}
+      <div style="overflow-x:auto;">
+        <table class="account-table">
+          <thead>
+            <tr>
+              <th>{{ 'sections.main_account.order' | t }}</th>
+              <th>{{ 'sections.main_account.date' | t }}</th>
+              <th>{{ 'sections.main_account.payment_status' | t }}</th>
+              <th>{{ 'sections.main_account.fulfillment_status' | t }}</th>
+              <th>{{ 'sections.main_account.total' | t }}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in customer.orders %}
+              <tr>
+                <td>{{ order.name }}</td>
+                <td>{{ order.created_at | date: '%d %B %Y' }}</td>
+                <td>{{ order.financial_status_label }}</td>
+                <td>{{ order.fulfillment_status_label }}</td>
+                <td>{{ order.total_price | money }}</td>
+                <td><a href="{{ order.customer_url }}" class="btn btn--link">{{ 'sections.main_account.view' | t }}</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">{{ 'sections.main_account.no_orders' | t }}</div>
+    {% endif %}
+
+    <h2 class="section__title" style="font-size:1.4rem;margin-top:3rem;">{{ 'sections.main_account.addresses' | t }}</h2>
+    <div class="address-grid">
+      {% for address in customer.addresses %}
+        <div class="address-card">
+          {% if address == customer.default_address %}
+            <span class="badge" style="--badge-color:#150c07;--badge-bg:var(--color-gold);position:absolute;top:0.8rem;right:0.8rem;">{{ 'sections.main_addresses.default' | t }}</span>
+          {% endif %}
+          <p><strong>{{ address.name }}</strong></p>
+          <p>{{ address.street }}</p>
+          <p>{{ address.city }}, {{ address.province }} {{ address.zip }}</p>
+          <p>{{ address.country }}</p>
+          <div class="address-card__actions">
+            <a href="{{ address.url }}">{{ 'sections.main_addresses.edit' | t }}</a>
+            <a href="{{ address.url }}/delete" onclick="return confirm('{{ 'sections.main_addresses.delete' | t }} ?')">{{ 'sections.main_addresses.delete' | t }}</a>
+          </div>
+        </div>
+      {% else %}
+        <div class="empty-state" style="grid-column:1/-1;">{{ 'sections.main_addresses.empty' | t }}</div>
+      {% endfor %}
+      <a href="{{ routes.account_addresses_url }}" class="address-card address-card--new">+ {{ 'sections.main_addresses.add' | t }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_account.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_account.name"
+    }
+  ]
+}
+{% endschema %}

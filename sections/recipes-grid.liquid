@@ -1,0 +1,166 @@
+<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.kicker != blank %}
+        <p class="section__kicker">{{ section.settings.kicker }}</p>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="section__title">
+          {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="section__title section__subtitle" style="font-style:italic;font-family:var(--font-display);color:var(--color-gold-dark);font-size:1.3rem;">
+          {{ section.settings.subtitle }}
+        </p>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="section__intro">{{ section.settings.text }}</p>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    <div class="recipes-grid">
+      {% for block in section.blocks %}
+        <article class="recipe-card" data-reveal {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {% assign recipe_alt = block.settings.image.alt | escape | default: block.settings.title %}
+            <div class="recipe-card__media">
+              {{ block.settings.image | image_url: width: 900 | image_tag: alt: recipe_alt, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 100vw' }}
+            </div>
+          {% endif %}
+          <div class="recipe-card__body">
+            {% if block.settings.tagline != blank %}
+              <p class="recipe-card__tagline">{{ block.settings.tagline }}</p>
+            {% endif %}
+            <h3 class="recipe-card__title">
+              {% if block.settings.product != blank %}
+                <a href="{{ block.settings.product.url }}">{{ block.settings.title }}</a>
+              {% else %}
+                {{ block.settings.title }}
+              {% endif %}
+            </h3>
+            {% if block.settings.description != blank %}
+              <p class="recipe-card__desc">{{ block.settings.description }}</p>
+            {% endif %}
+            {% if block.settings.usage != blank %}
+              <p class="recipe-card__usage">
+                {% render 'icon', name: 'flower' %}
+                {{ block.settings.usage }}
+              </p>
+            {% endif %}
+            {% if block.settings.composition != blank %}
+              <p class="recipe-card__composition">
+                <strong>{{ 'sections.recipes_grid.composition_label' | t }}</strong>
+                {{ block.settings.composition }}
+              </p>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.recipes_grid.name",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.recipes_grid.kicker_label",
+      "default": "La collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.recipes_grid.title_label",
+      "default": "Quatre recettes."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:sections.recipes_grid.subtitle_label",
+      "default": "Laquelle est la tienne ?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.recipes_grid.text_label",
+      "default": "Chacune inspirée du caractère d'une ville marocaine. Chacune un rituel."
+    },
+    {
+      "type": "checkbox",
+      "id": "alt_bg",
+      "label": "t:sections.maison.alt_bg_label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "t:sections.recipes_grid.card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.recipes_grid.image_label"
+        },
+        {
+          "type": "text",
+          "id": "tagline",
+          "label": "t:sections.recipes_grid.tagline_label",
+          "default": "Atlantique — Douceur"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.recipes_grid.city_label",
+          "default": "Aube de Casablanca"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:sections.recipes_grid.description_label",
+          "default": "Sucré & Équilibré. L'éveil sucré de l'Atlantique."
+        },
+        {
+          "type": "text",
+          "id": "usage",
+          "label": "t:sections.recipes_grid.usage_label_setting",
+          "default": "Le matin, pour un réveil tout en douceur"
+        },
+        {
+          "type": "textarea",
+          "id": "composition",
+          "label": "t:sections.recipes_grid.composition_setting",
+          "default": "Anis vert, Fenouil, Cannelle Ceylan, Vanille Bourbon"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.recipes_grid.product_label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.recipes_grid.name",
+      "blocks": [
+        { "type": "recipe" },
+        { "type": "recipe" },
+        { "type": "recipe" },
+        { "type": "recipe" }
+      ]
+    }
+  ]
+}
+{% endschema %}

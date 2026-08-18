@@ -1,0 +1,33 @@
+<section class="auth-wrap">
+  <div class="container">
+    <div class="auth-card">
+      <h1>{{ 'sections.main_register.title' | t }}</h1>
+      {% form 'activate_customer_password' %}
+        {% if form.errors %}
+          <div class="form-errors">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        <div class="form-field">
+          <label for="ActivatePassword">{{ 'sections.main_login.password' | t }}</label>
+          <input type="password" name="customer[password]" id="ActivatePassword" autocomplete="new-password" required>
+        </div>
+        <div class="form-field">
+          <label for="ActivatePasswordConfirmation">{{ 'sections.main_login.password' | t }} (confirmation)</label>
+          <input type="password" name="customer[password_confirmation]" id="ActivatePasswordConfirmation" autocomplete="new-password" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Activer</button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_activate.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_activate.name"
+    }
+  ]
+}
+{% endschema %}

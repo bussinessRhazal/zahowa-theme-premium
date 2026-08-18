@@ -1,0 +1,173 @@
+<section
+  class="hero{% if section.settings.center %} hero--center{% endif %}{% if section.settings.height == 'short' %} hero--short{% endif %}{% if settings.hero_parallax %} hero--parallax{% endif %}"
+  data-parallax
+  {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}
+>
+  <div class="hero__media">
+    {% if section.settings.image != blank %}
+      {% assign hero_alt = section.settings.image.alt | escape | default: shop.name %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: alt: hero_alt, loading: 'eager', fetchpriority: 'high', sizes: '100vw' }}
+    {% else %}
+      <div class="hero__placeholder"></div>
+    {% endif %}
+  </div>
+  <div class="hero__overlay" style="--overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+
+  <div class="hero__content">
+    {% if section.settings.kicker != blank %}
+      <p class="hero__kicker" data-reveal>{{ section.settings.kicker }}</p>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="hero__title" data-reveal>
+        {{ section.settings.title | replace_first: '*', '<em class="hero__title-accent">' | replace_first: '*', '</em>' }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <p class="hero__text" data-reveal>{{ section.settings.text }}</p>
+    {% endif %}
+
+    <div class="hero__ctas" data-reveal>
+      {% if section.settings.button_primary_label != blank %}
+        <a href="{{ section.settings.button_primary_link | default: routes.root_url }}" class="btn btn--gold">
+          {{ section.settings.button_primary_label }}
+          {% render 'icon', name: 'arrow' %}
+        </a>
+      {% endif %}
+      {% if section.settings.button_secondary_label != blank %}
+        <a href="{{ section.settings.button_secondary_link | default: routes.root_url }}" class="btn btn--outline hero__btn-outline">
+          {{ section.settings.button_secondary_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.note != blank %}
+      <p class="hero__note" data-reveal>{{ section.settings.note }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.settings.show_scroll %}
+    <span class="hero__scroll" aria-hidden="true">
+      {{ 'sections.hero.scroll' | t }}
+      <span class="hero__scroll-line"></span>
+    </span>
+  {% endif %}
+</section>
+
+{% style %}
+  .hero__overlay {
+    opacity: var(--overlay-opacity, 0.55);
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "t:sections.hero.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.maison.image_label",
+      "info": "t:sections.hero.image_info"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.hero.kicker_label",
+      "default": "— LANCEMENT BIENTÔT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.hero.title_label",
+      "info": "t:sections.hero.title_info",
+      "default": "Un café *épicé,* comme tu ne l'as jamais bu."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.hero.text_label",
+      "default": "Pour qui refuse le café sans âme."
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero.buttons_header"
+    },
+    {
+      "type": "text",
+      "id": "button_primary_label",
+      "label": "t:sections.hero.button_primary_label",
+      "default": "Rejoindre le Cercle Zahowa Privilège"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_link",
+      "label": "t:sections.hero.button_primary_link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_label",
+      "label": "t:sections.hero.button_secondary_label",
+      "default": "Découvrir l'histoire"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "t:sections.hero.button_secondary_link"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "t:sections.hero.note_label",
+      "default": "Tu veux influencer nos recettes ? Réponds au sondage de 5 min"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.hero.layout_header"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:sections.hero.height_label",
+      "options": [
+        { "value": "full", "label": "t:sections.hero.height_full" },
+        { "value": "short", "label": "t:sections.hero.height_short" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "checkbox",
+      "id": "center",
+      "label": "t:sections.hero.center_label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:sections.hero.overlay_label",
+      "min": 10,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll",
+      "label": "t:sections.hero.show_scroll_label",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.hero.name"
+    }
+  ]
+}
+{% endschema %}

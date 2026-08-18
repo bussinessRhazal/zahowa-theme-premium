@@ -1,0 +1,80 @@
+<section class="account-wrap">
+  <div class="container">
+    <div class="account-header">
+      <h1>{{ 'sections.main_order.details' | t }} {{ order.name }}</h1>
+      <a href="{{ routes.account_url }}" class="btn btn--outline">{{ 'sections.main_order.back' | t }}</a>
+    </div>
+
+    <p class="toolbar__count" style="margin-bottom:1.5rem;">
+      {{ 'sections.main_order.placed' | t }} {{ order.created_at | date: '%d %B %Y' }}
+      — {{ 'sections.main_order.payment_status' | t }} : {{ order.financial_status_label }}
+      — {{ 'sections.main_order.fulfillment_status' | t }} : {{ order.fulfillment_status_label }}
+    </p>
+
+    <div style="overflow-x:auto;">
+      <table class="account-table">
+        <thead>
+          <tr>
+            <th>{{ 'sections.main_order.product' | t }}</th>
+            <th>{{ 'sections.main_order.price' | t }}</th>
+            <th>{{ 'sections.main_order.quantity' | t }}</th>
+            <th>{{ 'sections.main_order.total' | t }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for line_item in order.line_items %}
+            <tr>
+              <td>{{ line_item.title }}
+                {% if line_item.fulfillment %}
+                  <p style="font-size:0.85rem;color:var(--color-ink-soft);margin:0;">{{ line_item.fulfillment.tracking_company }} — {{ line_item.fulfillment.tracking_number }}</p>
+                {% endif %}
+              </td>
+              <td>{{ line_item.final_price | money }}</td>
+              <td>{{ line_item.quantity }}</td>
+              <td>{{ line_item.final_line_price | money }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;">
+      <div class="address-card">
+        <p class="section__kicker">{{ 'sections.main_order.shipping' | t }}</p>
+        <p>{{ order.shipping_address.name }}</p>
+        <p>{{ order.shipping_address.street }}</p>
+        <p>{{ order.shipping_address.city }}, {{ order.shipping_address.province }} {{ order.shipping_address.zip }}</p>
+        <p>{{ order.shipping_address.country }}</p>
+      </div>
+      <div class="address-card">
+        <p class="section__kicker">{{ 'sections.main_order.billing' | t }}</p>
+        <p>{{ order.billing_address.name }}</p>
+        <p>{{ order.billing_address.street }}</p>
+        <p>{{ order.billing_address.city }}, {{ order.billing_address.province }} {{ order.billing_address.zip }}</p>
+        <p>{{ order.billing_address.country }}</p>
+      </div>
+      <div class="address-card">
+        <p class="section__kicker">Résumé</p>
+        <p style="display:flex;justify-content:space-between;"><span>{{ 'sections.main_order.subtotal' | t }}</span><strong>{{ order.subtotal_price | money }}</strong></p>
+        {% for discount in order.discounts %}
+          <p style="display:flex;justify-content:space-between;"><span>{{ 'sections.main_order.discount' | t }}</span><strong>{{ discount.amount | money }}</strong></p>
+        {% endfor %}
+        <p style="display:flex;justify-content:space-between;"><span>{{ 'sections.main_order.shipping_method' | t }}</span><strong>{{ order.shipping_price | money }}</strong></p>
+        <p style="display:flex;justify-content:space-between;"><span>{{ 'sections.main_order.tax' | t }}</span><strong>{{ order.tax_price | money }}</strong></p>
+        <p style="display:flex;justify-content:space-between;font-size:1.15rem;"><span>{{ 'sections.main_order.total' | t }}</span><strong>{{ order.total_price | money }}</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_order.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_order.name"
+    }
+  ]
+}
+{% endschema %}

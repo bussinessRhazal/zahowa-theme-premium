@@ -1,0 +1,93 @@
+<header class="header{% if settings.header_transparent and template.name == 'index' %} header--transparent{% endif %}" data-header>
+  <div class="container header__inner">
+    <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name }}
+      {%- else -%}
+        {{ shop.name }}
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+      <ul class="header__menu" role="list">
+        {% for link in section.settings.menu.links %}
+          <li>
+            <a href="{{ link.url }}" class="header__menu-link{% if link.active %} is-active{% endif %}">
+              {{ link.title | escape }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button type="button" class="header__action" data-theme-toggle aria-label="{{ 'sections.header.toggle_theme' | t }}" aria-pressed="false">
+        <span class="header__theme-sun">{% render 'icon', name: 'sun' %}</span>
+        <span class="header__theme-moon" hidden>{% render 'icon', name: 'moon' %}</span>
+      </button>
+
+      <a href="{{ routes.search_url }}" class="header__action" aria-label="{{ 'sections.header.search' | t }}">
+        {% render 'icon', name: 'search' %}
+      </a>
+
+      {% if shop.customer_accounts_enabled %}
+        <a href="{{ routes.account_url }}" class="header__action header__account" aria-label="{{ 'sections.header.account' | t }}">
+          {% render 'icon', name: 'account' %}
+        </a>
+      {% endif %}
+
+      <button type="button" class="header__action" data-cart-open aria-label="{{ 'sections.header.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="header__cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </button>
+
+      <button type="button" class="header__action header__burger" data-menu-open aria-label="{{ 'sections.header.open_menu' | t }}" aria-expanded="false">
+        {% render 'icon', name: 'menu' %}
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" data-mobile-menu aria-hidden="true">
+  <div class="mobile-menu__backdrop" data-menu-close></div>
+  <div class="mobile-menu__panel">
+    <button type="button" class="mobile-menu__close" data-menu-close aria-label="{{ 'sections.header.close_menu' | t }}">
+      {% render 'icon', name: 'close' %}
+    </button>
+    <ul class="mobile-menu__list" role="list">
+      {% for link in section.settings.menu.links %}
+        <li>
+          <a href="{{ link.url }}" class="mobile-menu__link{% if link.active %} is-active{% endif %}">
+            {{ link.title | escape }}
+          </a>
+        </li>
+      {% endfor %}
+      {% if shop.customer_accounts_enabled %}
+        <li>
+          <a href="{{ routes.account_url }}" class="mobile-menu__link">
+            {{ 'sections.header.account' | t }}
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:sections.header.menu",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.header.name"
+    }
+  ]
+}
+{% endschema %}

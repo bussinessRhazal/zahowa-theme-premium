@@ -1,0 +1,85 @@
+<section class="cercle" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container cercle__content">
+    {% if section.settings.kicker != blank %}
+      <p class="cercle__kicker" data-reveal>{{ section.settings.kicker }}</p>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="cercle__title" data-reveal>
+        {{ section.settings.title | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+      </h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <p class="cercle__text" data-reveal>{{ section.settings.text }}</p>
+    {% endif %}
+
+    {% form 'customer', class: 'cercle__form-wrap' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="cercle__form" data-reveal>
+        <input
+          type="email"
+          name="contact[email]"
+          class="cercle__input"
+          placeholder="{{ section.settings.email_placeholder | default: 'general.newsletter.email_placeholder' | t }}"
+          aria-label="{{ 'general.newsletter.email_placeholder' | t }}"
+          required
+        >
+        <button type="submit" class="btn btn--gold">
+          {{ section.settings.button_label | default: 'general.newsletter.button' | t }}
+        </button>
+      </div>
+      {% if form.posted_successfully? %}
+        <p class="form-success">{{ 'general.newsletter.success' | t }}</p>
+      {% endif %}
+      {% if form.errors %}
+        <div class="form-errors">{{ form.errors | default_errors }}</div>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.cercle.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "t:sections.cercle.kicker_label",
+      "default": "Le cercle privilège"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.cercle.title_label",
+      "default": "Cercle *Fondateur*"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "t:sections.cercle.text_label",
+      "default": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.cercle.button_label",
+      "default": "Rejoindre le Cercle"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "t:sections.cercle.email_placeholder"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.cercle.name"
+    }
+  ]
+}
+{% endschema %}

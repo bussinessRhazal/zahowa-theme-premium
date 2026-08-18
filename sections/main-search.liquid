@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-header__title">{{ 'general.search.search' | t }}</h1>
+    </div>
+
+    <div style="max-width:640px;margin-inline:auto;margin-bottom:2.5rem;">
+      {% form 'search', class: 'search-form' %}
+        <div style="display:flex;gap:0.6rem;">
+          <input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search.placeholder' | t }}"
+            class="cercle__input"
+            style="color:var(--color-ink);background:var(--color-bg-card);border-color:var(--color-border);"
+            autofocus
+          >
+          <button type="submit" class="btn btn--primary">{{ 'general.search.submit' | t }}</button>
+        </div>
+      {% endform %}
+    </div>
+
+    {% if search.performed %}
+      {% if search.results_count > 0 %}
+        <p class="toolbar__count" style="text-align:center;margin-bottom:1.5rem;">
+          {{ 'general.search.results_for' | t }} « {{ search.terms }} » ({{ search.results_count }})
+        </p>
+        <div class="collection-grid">
+          {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+              {% render 'product-card', product: item %}
+            {% else %}
+              <a href="{{ item.url }}" class="card" data-reveal>
+                <div class="card__body">
+                  <h3 class="card__title">{{ item.title }}</h3>
+                  <p class="card__subtitle">{{ item.object_type }}</p>
+                </div>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">{{ 'general.search.no_results' | t }} « {{ search.terms }} »</div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_search.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_search.name"
+    }
+  ]
+}
+{% endschema %}

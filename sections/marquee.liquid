@@ -1,0 +1,46 @@
+<section class="marquee{% if section.settings.dark %} marquee--dark{% endif %}{% if section.settings.reverse %} marquee--reverse{% endif %}" aria-hidden="true">
+  {% assign items = section.settings.items | split: '
+' %}
+  <div class="marquee__track">
+    {% for i in (1..2) %}
+      {% for item in items %}
+        <span class="marquee__item">
+          {{ item }}
+          {% render 'icon', name: 'diamond' %}
+        </span>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.marquee.name",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "t:sections.marquee.items_label",
+      "info": "t:sections.marquee.items_info",
+      "default": "CASABLANCA\nFÈS\nMARRAKECH\nRABAT"
+    },
+    {
+      "type": "checkbox",
+      "id": "dark",
+      "label": "t:sections.marquee.dark_label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse",
+      "label": "t:sections.marquee.reverse_label",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.marquee.name"
+    }
+  ]
+}
+{% endschema %}

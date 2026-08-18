@@ -1,0 +1,368 @@
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ shop.url | append: product.url | json }},
+    "image": {% if product.featured_image != blank %}{{ product.featured_image | image_url: width: 1200 | json }}{% else %}null{% endif %},
+    "description": {{ product.description | strip_html | json }},
+    "sku": {% if product.sku != blank %}{{ product.sku | json }}{% else %}null{% endif %},
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    "offers": {
+      "@type": "Offer",
+      "url": {{ shop.url | append: product.url | json }},
+      "priceCurrency": {{ cart.currency.iso_code | default: shop.currency | json }},
+      "price": {{ product.selected_or_first_available_variant.price | divided_by: 100.0 | json }},
+      "availability": {% if product.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %}
+    }
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ shop.name | json }},
+        "item": {{ shop.url | json }}
+      },
+      {% if collection != blank %}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ collection.title | json }},
+          "item": {{ shop.url | append: collection.url | json }}
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ product.title | json }},
+          "item": {{ shop.url | append: product.url | json }}
+        }
+      {% else %}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ product.title | json }},
+          "item": {{ shop.url | append: product.url | json }}
+        }
+      {% endif %}
+    ]
+  }
+</script>
+
+<section class="product" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="{{ routes.root_url }}">{{ 'sections.header.name' | t }}</a>
+      <span aria-hidden="true">/</span>
+      {% if collection != blank %}
+        <a href="{{ collection.url }}">{{ collection.title }}</a>
+        <span aria-hidden="true">/</span>
+      {% endif %}
+      <span aria-current="page">{{ product.title }}</span>
+    </nav>
+
+    <div class="product__grid">
+      <div class="product__gallery" data-reveal>
+        <div class="product__gallery-main" data-gallery-main>
+          {% if product.featured_image != blank %}
+            {% assign pdp_alt = product.featured_image.alt | escape | default: product.title %}
+            {{ product.featured_image | image_url: width: 1200 | image_tag: alt: pdp_alt, loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw' }}
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="product__gallery-thumbs">
+            {% for image in product.images %}
+              <button
+                type="button"
+                class="product__gallery-thumb{% if forloop.first %} is-active{% endif %}"
+                data-gallery-thumb
+                aria-label="{{ image.alt | escape | default: product.title }}"
+              >
+                <img
+                  src="{{ image | image_url: width: 200 }}"
+                  data-full="{{ image | image_url: width: 1200 }}"
+                  alt="{{ image.alt | escape | default: product.title }}"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                >
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product__info" data-reveal>
+        {% render 'badges', product: product, static: true %}
+
+        <h1 class="product__title">{{ product.title }}</h1>
+
+        {% if section.settings.show_vendor and product.vendor != blank %}
+          <p class="card__subtitle">{{ product.vendor }}</p>
+        {% endif %}
+
+        <div class="product__price-row" data-currency="{{ cart.currency.iso_code | default: shop.currency }}">
+          {% render 'price', product: product %}
+        </div>
+
+        {% if section.settings.show_reviews %}
+          <div class="review-summary" data-reveal>
+            <span class="review-summary__stars" aria-hidden="true">
+              {% for i in (1..5) %}{% render 'icon', name: 'star' %}{% endfor %}
+            </span>
+            <span data-review-count>{{ section.settings.review_count_text }}</span>
+          </div>
+        {% endif %}
+
+        {% if product.sku != blank and section.settings.show_sku %}
+          <p class="product__sku">{{ 'sections.main_product.sku' | t }} : {{ product.sku }}</p>
+        {% endif %}
+
+        <script type="application/json" data-variant-json>
+          {{ product.variants | json }}
+        </script>
+
+        {% form 'product', product, data-product-form: '', class: 'product__form' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-id>
+
+          {% unless product.has_only_default_variant %}
+            <div class="product__options">
+              {% for option in product.options_with_values %}
+                <div class="product__option">
+                  <span class="product__option-label">{{ option.name }}</span>
+                  <div class="product__option-values">
+                    {% for value in option.values %}
+                      <label class="product__option-value">
+                        <input
+                          type="radio"
+                          name="option-{{ option.position }}"
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}checked{% endif %}
+                          data-option-input
+                        >
+                        <span>{{ value }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+
+          <div class="product__qty" data-qty-container>
+            <button type="button" data-qty-minus aria-label="−">−</button>
+            <input type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="{{ 'sections.main_product.quantity' | t }}">
+            <button type="button" data-qty-plus aria-label="+">+</button>
+          </div>
+
+          <button type="submit" name="add" class="btn btn--primary btn--full" data-submit-button>
+            {% if product.selected_or_first_available_variant.available %}
+              {{ 'sections.main_product.add_to_cart' | t }}
+            {% else %}
+              {{ 'sections.main_product.sold_out' | t }}
+            {% endif %}
+          </button>
+        {% endform %}
+
+        {% if section.settings.show_trust %}
+          <div class="trust-block" data-reveal>
+            <div class="trust-block__item">
+              {% render 'icon', name: 'lock' %}
+              <span><strong>{{ section.settings.trust_1_title }}</strong>{{ section.settings.trust_1_text }}</span>
+            </div>
+            <div class="trust-block__item">
+              {% render 'icon', name: 'leaf' %}
+              <span><strong>{{ section.settings.trust_2_title }}</strong>{{ section.settings.trust_2_text }}</span>
+            </div>
+            <div class="trust-block__item">
+              {% render 'icon', name: 'check' %}
+              <span><strong>{{ section.settings.trust_3_title }}</strong>{{ section.settings.trust_3_text }}</span>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if product.description != blank and section.settings.show_description %}
+          <details class="product__accordion" open>
+            <summary>
+              {{ 'sections.main_product.description' | t }}
+              {% render 'icon', name: 'chevron' %}
+            </summary>
+            <div class="product__accordion-body">
+              {{ product.description }}
+            </div>
+          </details>
+        {% endif %}
+
+        {% if section.settings.accordion_1_title != blank %}
+          <details class="product__accordion">
+            <summary>
+              {{ section.settings.accordion_1_title }}
+              {% render 'icon', name: 'chevron' %}
+            </summary>
+            <div class="product__accordion-body">{{ section.settings.accordion_1_content }}</div>
+          </details>
+        {% endif %}
+
+        {% if section.settings.accordion_2_title != blank %}
+          <details class="product__accordion">
+            <summary>
+              {{ section.settings.accordion_2_title }}
+              {% render 'icon', name: 'chevron' %}
+            </summary>
+            <div class="product__accordion-body">{{ section.settings.accordion_2_content }}</div>
+          </details>
+        {% endif %}
+
+        {% if section.settings.accordion_3_title != blank %}
+          <details class="product__accordion">
+            <summary>
+              {{ section.settings.accordion_3_title }}
+              {% render 'icon', name: 'chevron' %}
+            </summary>
+            <div class="product__accordion-body">{{ section.settings.accordion_3_content }}</div>
+          </details>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_product.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "t:sections.main_product.show_vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "t:sections.main_product.show_sku",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:sections.main_product.show_description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "t:sections.main_product.show_reviews",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_count_text",
+      "label": "t:sections.main_product.review_count_text",
+      "default": "4,9/5 — 127 avis",
+      "info": "t:sections.main_product.review_info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main_product.trust_header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust",
+      "label": "t:sections.main_product.show_trust",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_1_title",
+      "label": "t:sections.main_product.trust_title",
+      "default": "Paiement sécurisé"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_text",
+      "label": "t:sections.main_product.trust_text",
+      "default": "Visa, Mastercard, PayPal"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_title",
+      "label": "t:sections.main_product.trust_title",
+      "default": "Livraison offerte"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_text",
+      "label": "t:sections.main_product.trust_text",
+      "default": "dès 39€ d'achat"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_title",
+      "label": "t:sections.main_product.trust_title",
+      "default": "Retour facile"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_text",
+      "label": "t:sections.main_product.trust_text",
+      "default": "30 jours, satisfait ou remboursé"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main_product.accordions_header"
+    },
+    {
+      "type": "text",
+      "id": "accordion_1_title",
+      "label": "t:sections.main_product.accordion_title",
+      "default": "Composition"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_1_content",
+      "label": "t:sections.main_product.accordion_content",
+      "default": "<p>Arabica & épices naturelles.</p>"
+    },
+    {
+      "type": "text",
+      "id": "accordion_2_title",
+      "label": "t:sections.main_product.accordion_title",
+      "default": "Instruction d'infusion"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_2_content",
+      "label": "t:sections.main_product.accordion_content",
+      "default": "<p>Ouvrez le sachet, installez-le sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C), laissez infuser 3–4 minutes.</p>"
+    },
+    {
+      "type": "text",
+      "id": "accordion_3_title",
+      "label": "t:sections.main_product.accordion_title",
+      "default": "Profil gustatif"
+    },
+    {
+      "type": "richtext",
+      "id": "accordion_3_content",
+      "label": "t:sections.main_product.accordion_content",
+      "default": "<p>Notes épicées et florales, rondeur du café arabica.</p>"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.main_product.name"
+    }
+  ]
+}
+{% endschema %}

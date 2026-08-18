@@ -1,0 +1,28 @@
+{% doc %}
+Renders product badges mapped from product tags. Configured in Theme settings → Product badges.
+@param {product} product - The product to evaluate tags on
+@param {boolean} [static] - If true, renders badges in normal flow instead of absolute position
+@example
+{% render 'badges', product: product %}
+{% enddoc %}
+{% if settings.badges_enable and product != blank %}
+  <div class="badges{% if static %} badges--static{% endif %}">
+    {% for i in (1..4) %}
+      {% assign tag_key = 'badge_' | append: i | append: '_tag' %}
+      {% assign label_key = 'badge_' | append: i | append: '_label' %}
+      {% assign color_key = 'badge_' | append: i | append: '_color' %}
+      {% assign bg_key = 'badge_' | append: i | append: '_bg' %}
+      {% if settings[tag_key] != blank and product.tags contains settings[tag_key] %}
+        <span
+          class="badge"
+          style="--badge-color: {{ settings[color_key] }}; --badge-bg: {{ settings[bg_key] }};"
+        >
+          {% if i == 3 %}
+            {% render 'icon', name: 'spark' %}
+          {% endif %}
+          {{ settings[label_key] }}
+        </span>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}

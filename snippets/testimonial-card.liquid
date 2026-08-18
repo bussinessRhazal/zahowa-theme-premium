@@ -1,0 +1,34 @@
+{% doc %}
+Renders a single testimonial card (stars, quote, author photo/initials).
+@param {block} block - The testimonial block
+@example
+{% render 'testimonial-card', block: block %}
+{% enddoc %}
+<figure class="testimonial" {{ block.shopify_attributes }}>
+  <div class="testimonial__stars" aria-label="{{ block.settings.rating }}/5">
+    {% for i in (1..5) %}
+      <span class="testimonial__star{% if i > block.settings.rating %} testimonial__star--empty{% endif %}">
+        {% render 'icon', name: 'star' %}
+      </span>
+    {% endfor %}
+  </div>
+  <blockquote class="testimonial__text">“{{ block.settings.text }}”</blockquote>
+  <figcaption class="testimonial__author">
+    {% if block.settings.photo != blank %}
+      {% assign photo_alt = block.settings.photo.alt | escape | default: block.settings.name %}
+      <div class="testimonial__photo">
+        {{ block.settings.photo | image_url: width: 160 | image_tag: alt: photo_alt, loading: 'lazy', class: 'testimonial__img' }}
+      </div>
+    {% else %}
+      <div class="testimonial__photo testimonial__photo--initials" aria-hidden="true">
+        {{ block.settings.name | slice: 0, 1 | upcase }}
+      </div>
+    {% endif %}
+    <div class="testimonial__meta">
+      <cite class="testimonial__name">{{ block.settings.name }}</cite>
+      {% if block.settings.location != blank %}
+        <span class="testimonial__location">{{ block.settings.location }}</span>
+      {% endif %}
+    </div>
+  </figcaption>
+</figure>

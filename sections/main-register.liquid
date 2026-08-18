@@ -1,0 +1,46 @@
+<section class="auth-wrap">
+  <div class="container">
+    <div class="auth-card">
+      <h1>{{ 'sections.main_register.title' | t }}</h1>
+
+      {% form 'create_customer' %}
+        {% if form.errors %}
+          <div class="form-errors">{{ form.errors | default_errors }}</div>
+        {% endif %}
+        <div class="form-field">
+          <label for="RegisterFirstName">{{ 'sections.main_register.first_name' | t }}</label>
+          <input type="text" name="customer[first_name]" id="RegisterFirstName" autocomplete="given-name" required>
+        </div>
+        <div class="form-field">
+          <label for="RegisterLastName">{{ 'sections.main_register.last_name' | t }}</label>
+          <input type="text" name="customer[last_name]" id="RegisterLastName" autocomplete="family-name" required>
+        </div>
+        <div class="form-field">
+          <label for="RegisterEmail">{{ 'sections.main_register.email' | t }}</label>
+          <input type="email" name="customer[email]" id="RegisterEmail" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="RegisterPassword">{{ 'sections.main_register.password' | t }}</label>
+          <input type="password" name="customer[password]" id="RegisterPassword" autocomplete="new-password" required>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">{{ 'sections.main_register.submit' | t }}</button>
+      {% endform %}
+
+      <div class="auth-links">
+        <a href="{{ routes.account_login_url }}">{{ 'sections.main_register.login' | t }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_register.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_register.name"
+    }
+  ]
+}
+{% endschema %}

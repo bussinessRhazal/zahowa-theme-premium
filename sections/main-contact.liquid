@@ -1,0 +1,49 @@
+<section class="section">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-header__title">{{ 'sections.main_contact.title' | t }}</h1>
+      <p class="page-header__text">{{ 'sections.main_contact.text' | t }}</p>
+    </div>
+
+    <div style="max-width:640px;margin-inline:auto;">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p class="form-success">{{ 'sections.main_contact.success' | t }}</p>
+        {% endif %}
+        {% if form.errors %}
+          <div class="form-errors">{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        <div class="form-field">
+          <label for="ContactName">{{ 'sections.main_contact.name_label' | t }}</label>
+          <input type="text" name="contact[name]" id="ContactName" required>
+        </div>
+        <div class="form-field">
+          <label for="ContactEmail">{{ 'sections.main_contact.email' | t }}</label>
+          <input type="email" name="contact[email]" id="ContactEmail" required>
+        </div>
+        <div class="form-field">
+          <label for="ContactPhone">{{ 'sections.main_contact.phone' | t }}</label>
+          <input type="tel" name="contact[phone]" id="ContactPhone">
+        </div>
+        <div class="form-field">
+          <label for="ContactMessage">{{ 'sections.main_contact.message' | t }}</label>
+          <textarea name="contact[body]" id="ContactMessage" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary">{{ 'sections.main_contact.submit' | t }}</button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_contact.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_contact.name"
+    }
+  ]
+}
+{% endschema %}

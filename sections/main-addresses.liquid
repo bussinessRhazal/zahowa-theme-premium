@@ -1,0 +1,94 @@
+<section class="account-wrap">
+  <div class="container">
+    <div class="account-header">
+      <h1>{{ 'sections.main_addresses.title' | t }}</h1>
+      <button type="button" class="btn btn--outline" onclick="document.getElementById('new-address').style.display='block';this.style.display='none';">
+        + {{ 'sections.main_addresses.add' | t }}
+      </button>
+    </div>
+
+    <div id="new-address" class="auth-card" style="display:none;margin-bottom:2rem;">
+      {% form 'customer_address', customer.new_address %}
+        <div class="form-field">
+          <label for="AddressFirstNameNew">{{ 'sections.main_addresses.first_name' | t }}</label>
+          <input type="text" name="address[first_name]" id="AddressFirstNameNew" autocomplete="given-name">
+        </div>
+        <div class="form-field">
+          <label for="AddressLastNameNew">{{ 'sections.main_addresses.last_name' | t }}</label>
+          <input type="text" name="address[last_name]" id="AddressLastNameNew" autocomplete="family-name">
+        </div>
+        <div class="form-field">
+          <label for="AddressCompanyNew">{{ 'sections.main_addresses.company' | t }}</label>
+          <input type="text" name="address[company]" id="AddressCompanyNew" autocomplete="organization">
+        </div>
+        <div class="form-field">
+          <label for="AddressAddress1New">{{ 'sections.main_addresses.address1' | t }}</label>
+          <input type="text" name="address[address1]" id="AddressAddress1New" autocomplete="address-line1" required>
+        </div>
+        <div class="form-field">
+          <label for="AddressAddress2New">{{ 'sections.main_addresses.address2' | t }}</label>
+          <input type="text" name="address[address2]" id="AddressAddress2New" autocomplete="address-line2">
+        </div>
+        <div class="form-field">
+          <label for="AddressCityNew">{{ 'sections.main_addresses.city' | t }}</label>
+          <input type="text" name="address[city]" id="AddressCityNew" autocomplete="address-level2" required>
+        </div>
+        <div class="form-field">
+          <label for="AddressZipNew">{{ 'sections.main_addresses.zip' | t }}</label>
+          <input type="text" name="address[zip]" id="AddressZipNew" autocomplete="postal-code" required>
+        </div>
+        <div class="form-field">
+          <label for="AddressCountryNew">{{ 'sections.main_addresses.country' | t }}</label>
+          <select name="address[country]" id="AddressCountryNew" data-country>{{ all_country_option_tags }}</select>
+        </div>
+        <div class="form-field">
+          <label for="AddressPhoneNew">{{ 'sections.main_addresses.phone' | t }}</label>
+          <input type="tel" name="address[phone]" id="AddressPhoneNew" autocomplete="tel">
+        </div>
+        <label style="display:flex;gap:0.5rem;align-items:center;margin-bottom:1.2rem;cursor:pointer;">
+          <input type="checkbox" name="address[default]" value="1">
+          {{ 'sections.main_addresses.set_default' | t }}
+        </label>
+        <button type="submit" class="btn btn--primary">{{ 'sections.main_addresses.save' | t }}</button>
+      {% endform %}
+    </div>
+
+    <div class="address-grid">
+      {% for address in customer.addresses %}
+        <div class="address-card">
+          {% if address == customer.default_address %}
+            <span class="badge" style="--badge-color:#150c07;--badge-bg:var(--color-gold);position:absolute;top:0.8rem;right:0.8rem;">{{ 'sections.main_addresses.default' | t }}</span>
+          {% endif %}
+          <p><strong>{{ address.name }}</strong></p>
+          <p>{{ address.street }}</p>
+          <p>{{ address.city }}, {{ address.province }} {{ address.zip }}</p>
+          <p>{{ address.country }}</p>
+          <p>{{ address.phone }}</p>
+          <div class="address-card__actions">
+            <a href="{{ address.url }}">{{ 'sections.main_addresses.edit' | t }}</a>
+            {% unless address == customer.default_address %}
+              <form method="post" action="/account/addresses/{{ address.id }}">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn--link" onclick="return confirm('{{ 'sections.main_addresses.delete' | t }} ?')">{{ 'sections.main_addresses.delete' | t }}</button>
+              </form>
+            {% endunless %}
+          </div>
+        </div>
+      {% else %}
+        <div class="empty-state" style="grid-column:1/-1;">{{ 'sections.main_addresses.empty' | t }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.main_addresses.name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "t:sections.main_addresses.name"
+    }
+  ]
+}
+{% endschema %}
