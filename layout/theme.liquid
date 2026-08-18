@@ -18,7 +18,7 @@
       })();
     </script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     >
     {%- if settings.favicon != blank -%}
@@ -103,6 +103,7 @@
       :root {
         --font-display: {{ settings.font_display.family }}, "Cormorant Garamond", "Playfair Display", Georgia, serif;
         --font-body: {{ settings.font_body.family }}, "Jost", system-ui, sans-serif;
+        --font-data: {{ settings.font_data.family | default: 'JetBrains Mono' }}, "JetBrains Mono", ui-monospace, monospace;
         --base-font-size: {{ settings.base_font_size }}px;
         --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
         --page-width: {{ settings.page_width }}px;

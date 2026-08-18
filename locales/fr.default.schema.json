@@ -525,6 +525,9 @@
         },
         "heading_scale": {
           "label": "Échelle des titres"
+        },
+        "font_data": {
+          "label": "Police des données (JetBrains Mono)"
         }
       }
     },

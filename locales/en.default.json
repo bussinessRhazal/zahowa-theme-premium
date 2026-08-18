@@ -559,6 +559,9 @@
         },
         "heading_scale": {
           "label": "Heading scale"
+        },
+        "font_data": {
+          "label": "Data font (JetBrains Mono)"
         }
       }
     },

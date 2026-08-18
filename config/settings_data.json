@@ -10,6 +10,31 @@
 {
   "current": {
     "logo": "shopify://shop_images/new_version_logo_SOLO-removebg-preview.webp",
+    "font_display": "serif",
+    "font_body": "sans-serif",
+    "font_data": "monospace",
+    "color_bg": "#F5EFE0",
+    "color_bg_alt": "#EDE5D3",
+    "color_bg_card": "#FBF7EE",
+    "color_ink": "#0D2B21",
+    "color_ink_soft": "#3E5A4F",
+    "color_gold": "#C49A2C",
+    "color_gold_dark": "#9A7A22",
+    "color_accent": "#C49A2C",
+    "color_border": "#D9CDB4",
+    "color_button_bg": "#0D2B21",
+    "color_button_text": "#F5EFE0",
+    "color_dark_bg": "#111111",
+    "color_dark_bg_alt": "#0D2B21",
+    "color_dark_bg_card": "#241610",
+    "color_dark_ink": "#EFE6D8",
+    "color_dark_ink_soft": "#A0968A",
+    "color_dark_gold": "#C49A2C",
+    "color_dark_gold_dark": "#9A7A22",
+    "color_dark_accent": "#C49A2C",
+    "color_dark_border": "#2E4A3D",
+    "color_dark_button_bg": "#C49A2C",
+    "color_dark_button_text": "#111111",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -24,12 +49,8 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "brand_text": "Café épicé artisanal, inspiré des villes du Maroc. Arabica & épices naturelles.",
-          "menu_1_heading": "La Maison",
-          "menu_1": "",
-          "menu_2_heading": "Aide",
-          "menu_2": "",
-          "legal_menu": "",
+          "color_scheme": "dark",
+          "tagline": "Un café épicé, comme tu ne l'as jamais bu",
           "show_payment_icons": true
         }
       },
