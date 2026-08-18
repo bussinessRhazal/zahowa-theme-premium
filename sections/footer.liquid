@@ -11,24 +11,24 @@
         </p>
         <p class="footer__text">{{ section.settings.brand_text }}</p>
         <div class="footer__social">
-          {% if settings.social_instagram != blank %}
-            <a href="{{ settings.social_instagram }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
+          {% if settings.social_instagram_url != blank %}
+            <a href="{{ settings.social_instagram_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
               {% render 'icon', name: 'instagram' %}
             </a>
           {% endif %}
-          {% if settings.social_facebook != blank %}
-            <a href="{{ settings.social_facebook }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+          {% if settings.social_facebook_url != blank %}
+            <a href="{{ settings.social_facebook_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
               {% render 'icon', name: 'facebook' %}
             </a>
           {% endif %}
-          {% if settings.social_tiktok != blank %}
-            <a href="{{ settings.social_tiktok }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
+          {% if settings.social_tiktok_url != blank %}
+            <a href="{{ settings.social_tiktok_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
               {% render 'icon', name: 'tiktok' %}
             </a>
           {% endif %}
-          {% if settings.social_whatsapp != blank %}
-            <a href="{{ settings.social_whatsapp }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
-              {% render 'icon', name: 'whatsapp' %}
+          {% if settings.social_linkedin_url != blank %}
+            <a href="{{ settings.social_linkedin_url }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              {% render 'icon', name: 'linkedin' %}
             </a>
           {% endif %}
         </div>

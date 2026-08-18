@@ -470,30 +470,30 @@
   {
     "name": "t:settings_schema.social.name",
     "settings": [
-      {
-        "type": "text",
-        "id": "social_instagram",
-        "label": "t:settings_schema.social.settings.social_instagram.label",
-        "info": "t:settings_schema.social.settings.social_info"
-      },
-      {
-        "type": "text",
-        "id": "social_facebook",
-        "label": "t:settings_schema.social.settings.social_facebook.label",
-        "info": "t:settings_schema.social.settings.social_info"
-      },
-      {
-        "type": "text",
-        "id": "social_tiktok",
-        "label": "t:settings_schema.social.settings.social_tiktok.label",
-        "info": "t:settings_schema.social.settings.social_info"
-      },
-      {
-        "type": "text",
-        "id": "social_whatsapp",
-        "label": "t:settings_schema.social.settings.social_whatsapp.label",
-        "info": "t:settings_schema.social.settings.social_info"
-      },
+    {
+      "type": "text",
+      "id": "social_instagram_url",
+      "label": "t:settings_schema.social.settings.social_instagram.label",
+      "info": "t:settings_schema.social.settings.social_info"
+    },
+    {
+      "type": "text",
+      "id": "social_facebook_url",
+      "label": "t:settings_schema.social.settings.social_facebook.label",
+      "info": "t:settings_schema.social.settings.social_info"
+    },
+    {
+      "type": "text",
+      "id": "social_tiktok_url",
+      "label": "t:settings_schema.social.settings.social_tiktok.label",
+      "info": "t:settings_schema.social.settings.social_info"
+    },
+    {
+      "type": "text",
+      "id": "social_linkedin_url",
+      "label": "t:settings_schema.social.settings.social_linkedin.label",
+      "info": "t:settings_schema.social.settings.social_info"
+    },
       {
         "type": "text",
         "id": "contact_email",

@@ -1,0 +1,38 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ 'gift_cards.issued.title' | t: value: gift_card.balance | escape }} — {{ shop.name }}</title>
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body class="template-gift-card">
+    <main class="gift-card" role="main">
+      <div class="gift-card__inner">
+        <p class="gift-card__brand">{{ shop.name }}</p>
+        <h1 class="gift-card__title">{{ 'gift_cards.issued.title' | t: value: gift_card.balance | escape }}</h1>
+
+        {%- assign initial_value = gift_card.initial_value -%}
+        <p class="gift-card__value">{{ initial_value | money }}</p>
+
+        {%- if gift_card.enabled == false or gift_card.expired -%}
+          <p class="gift-card__status">{{ 'gift_cards.issued.disabled' | t }}</p>
+        {%- else -%}
+          <p class="gift-card__balance">{{ 'gift_cards.issued.remaining' | t: balance: gift_card.balance }}</p>
+          <input
+            type="text"
+            class="gift-card__code"
+            value="{{ gift_card.code | format_code }}"
+            aria-label="{{ 'gift_cards.issued.code' | t }}"
+            readonly
+          >
+          <p class="gift-card__instructions">{{ 'gift_cards.issued.instructions' | t }}</p>
+          <div class="gift-card__actions">
+            <a href="{{ shop.url }}" class="btn btn--primary">{{ 'gift_cards.issued.shop_link' | t }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </main>
+  </body>
+</html>

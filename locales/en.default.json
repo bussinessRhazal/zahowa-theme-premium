@@ -465,103 +465,215 @@
       "name": "Colors — Light mode",
       "paragraph": "Customize the light mode palette.",
       "settings": {
-        "color_bg": { "label": "Main background" },
-        "color_bg_alt": { "label": "Alternate background" },
-        "color_bg_card": { "label": "Card background" },
-        "color_ink": { "label": "Main text" },
-        "color_ink_soft": { "label": "Secondary text" },
-        "color_gold": { "label": "Gold" },
-        "color_gold_dark": { "label": "Dark gold" },
-        "color_accent": { "label": "Accent (terracotta)" },
-        "color_border": { "label": "Borders" },
-        "color_button_bg": { "label": "Button background" },
-        "color_button_text": { "label": "Button text" },
-        "color_error": { "label": "Error" },
-        "color_success": { "label": "Success" }
+        "color_bg": {
+          "label": "Main background"
+        },
+        "color_bg_alt": {
+          "label": "Alternate background"
+        },
+        "color_bg_card": {
+          "label": "Card background"
+        },
+        "color_ink": {
+          "label": "Main text"
+        },
+        "color_ink_soft": {
+          "label": "Secondary text"
+        },
+        "color_gold": {
+          "label": "Gold"
+        },
+        "color_gold_dark": {
+          "label": "Dark gold"
+        },
+        "color_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_border": {
+          "label": "Borders"
+        },
+        "color_button_bg": {
+          "label": "Button background"
+        },
+        "color_button_text": {
+          "label": "Button text"
+        },
+        "color_error": {
+          "label": "Error"
+        },
+        "color_success": {
+          "label": "Success"
+        }
       }
     },
     "colors_dark": {
       "name": "Colors — Dark mode",
       "paragraph": "Customize the dark mode palette.",
       "settings": {
-        "color_dark_bg": { "label": "Main background" },
-        "color_dark_bg_alt": { "label": "Alternate background" },
-        "color_dark_bg_card": { "label": "Card background" },
-        "color_dark_ink": { "label": "Main text" },
-        "color_dark_ink_soft": { "label": "Secondary text" },
-        "color_dark_gold": { "label": "Gold" },
-        "color_dark_gold_dark": { "label": "Dark gold" },
-        "color_dark_accent": { "label": "Accent (terracotta)" },
-        "color_dark_border": { "label": "Borders" },
-        "color_dark_button_bg": { "label": "Button background" },
-        "color_dark_button_text": { "label": "Button text" }
+        "color_dark_bg": {
+          "label": "Main background"
+        },
+        "color_dark_bg_alt": {
+          "label": "Alternate background"
+        },
+        "color_dark_bg_card": {
+          "label": "Card background"
+        },
+        "color_dark_ink": {
+          "label": "Main text"
+        },
+        "color_dark_ink_soft": {
+          "label": "Secondary text"
+        },
+        "color_dark_gold": {
+          "label": "Gold"
+        },
+        "color_dark_gold_dark": {
+          "label": "Dark gold"
+        },
+        "color_dark_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_dark_border": {
+          "label": "Borders"
+        },
+        "color_dark_button_bg": {
+          "label": "Button background"
+        },
+        "color_dark_button_text": {
+          "label": "Button text"
+        }
       }
     },
     "typography": {
       "name": "Typography",
       "settings": {
-        "font_display": { "label": "Heading font" },
-        "font_body": { "label": "Body font" },
-        "base_font_size": { "label": "Base font size" },
-        "heading_scale": { "label": "Heading scale" }
+        "font_display": {
+          "label": "Heading font"
+        },
+        "font_body": {
+          "label": "Body font"
+        },
+        "base_font_size": {
+          "label": "Base font size"
+        },
+        "heading_scale": {
+          "label": "Heading scale"
+        }
       }
     },
     "layout": {
       "name": "Layout",
       "settings": {
-        "page_width": { "label": "Page width" },
-        "section_spacing": { "label": "Section spacing" },
-        "border_radius": { "label": "Border radius" }
+        "page_width": {
+          "label": "Page width"
+        },
+        "section_spacing": {
+          "label": "Section spacing"
+        },
+        "border_radius": {
+          "label": "Border radius"
+        }
       }
     },
     "header": {
       "name": "Header",
       "settings": {
-        "favicon": { "label": "Favicon" },
-        "logo": { "label": "Logo" },
-        "free_shipping_threshold": { "label": "Free shipping threshold (€)", "info": "Set 0 to disable the cart progress bar." },
-        "header_sticky": { "label": "Sticky header" },
-        "header_transparent": { "label": "Transparent header over hero", "info": "Header becomes transparent over the full-screen hero." },
-        "logo_width": { "label": "Logo width" },
-        "enable_announcement": { "label": "Show announcement bar" },
-        "announcement_text": { "label": "Bar text" },
-        "announcement_link": { "label": "Bar link" }
+        "favicon": {
+          "label": "Favicon"
+        },
+        "logo": {
+          "label": "Logo"
+        },
+        "free_shipping_threshold": {
+          "label": "Free shipping threshold (€)",
+          "info": "Set 0 to disable the cart progress bar."
+        },
+        "header_sticky": {
+          "label": "Sticky header"
+        },
+        "header_transparent": {
+          "label": "Transparent header over hero",
+          "info": "Header becomes transparent over the full-screen hero."
+        },
+        "logo_width": {
+          "label": "Logo width"
+        },
+        "enable_announcement": {
+          "label": "Show announcement bar"
+        },
+        "announcement_text": {
+          "label": "Bar text"
+        },
+        "announcement_link": {
+          "label": "Bar link"
+        }
       }
     },
     "badges": {
       "name": "Product badges",
       "paragraph": "Map a product tag to a badge shown on cards and product pages. Add the tag to the product in the admin (e.g. \"premium\", \"best-seller\", \"new\").",
       "settings": {
-        "badges_enable": { "label": "Enable badges" },
+        "badges_enable": {
+          "label": "Enable badges"
+        },
         "badge_1_header": "Badge 1",
         "badge_2_header": "Badge 2",
         "badge_3_header": "Badge 3",
         "badge_4_header": "Badge 4",
-        "badge_tag": { "label": "Product tag" },
-        "badge_label": { "label": "Badge text" },
-        "badge_color": { "label": "Text color" },
-        "badge_bg": { "label": "Background color" }
+        "badge_tag": {
+          "label": "Product tag"
+        },
+        "badge_label": {
+          "label": "Badge text"
+        },
+        "badge_color": {
+          "label": "Text color"
+        },
+        "badge_bg": {
+          "label": "Background color"
+        }
       }
     },
     "animations": {
       "name": "Animations",
       "settings": {
-        "animations_enable": { "label": "Enable reveal animations" },
-        "animations_reveal_offset": { "label": "Scroll trigger offset" },
-        "marquee_speed": { "label": "Marquee speed" },
-        "hero_parallax": { "label": "Hero parallax" }
+        "animations_enable": {
+          "label": "Enable reveal animations"
+        },
+        "animations_reveal_offset": {
+          "label": "Scroll trigger offset"
+        },
+        "marquee_speed": {
+          "label": "Marquee speed"
+        },
+        "hero_parallax": {
+          "label": "Hero parallax"
+        }
       }
     },
     "social": {
       "name": "Social & contact",
       "settings": {
-        "social_instagram": { "label": "Instagram" },
-        "social_facebook": { "label": "Facebook" },
-        "social_tiktok": { "label": "TikTok" },
-        "social_whatsapp": { "label": "WhatsApp" },
+        "social_instagram": {
+          "label": "Instagram"
+        },
+        "social_facebook": {
+          "label": "Facebook"
+        },
+        "social_tiktok": {
+          "label": "TikTok"
+        },
+        "social_linkedin": {
+          "label": "WhatsApp"
+        },
         "social_info": "Full URL (https://…)",
-        "contact_email": { "label": "Contact email" },
-        "contact_phone": { "label": "Phone" }
+        "contact_email": {
+          "label": "Contact email"
+        },
+        "contact_phone": {
+          "label": "Phone"
+        }
       }
     }
   }

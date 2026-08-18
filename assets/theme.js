@@ -309,6 +309,7 @@
       const variant = selectedVariant();
       if (!variant) return;
       variantInput.value = variant.id;
+      variantInput.dispatchEvent(new Event('change', { bubbles: true }));
       const money = formatMoney(variant.price);
       if (priceRow) {
         priceRow.innerHTML = '<span class="product__price">' + money + '</span>';

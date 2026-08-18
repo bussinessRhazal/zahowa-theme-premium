@@ -465,103 +465,215 @@
       "name": "Couleurs — Mode clair",
       "paragraph": "Personnalisez la palette utilisée en mode clair.",
       "settings": {
-        "color_bg": { "label": "Fond principal" },
-        "color_bg_alt": { "label": "Fond alterné" },
-        "color_bg_card": { "label": "Fond des cartes" },
-        "color_ink": { "label": "Texte principal" },
-        "color_ink_soft": { "label": "Texte secondaire" },
-        "color_gold": { "label": "Or" },
-        "color_gold_dark": { "label": "Or foncé" },
-        "color_accent": { "label": "Accent (terracotta)" },
-        "color_border": { "label": "Bordures" },
-        "color_button_bg": { "label": "Fond des boutons" },
-        "color_button_text": { "label": "Texte des boutons" },
-        "color_error": { "label": "Erreur" },
-        "color_success": { "label": "Succès" }
+        "color_bg": {
+          "label": "Fond principal"
+        },
+        "color_bg_alt": {
+          "label": "Fond alterné"
+        },
+        "color_bg_card": {
+          "label": "Fond des cartes"
+        },
+        "color_ink": {
+          "label": "Texte principal"
+        },
+        "color_ink_soft": {
+          "label": "Texte secondaire"
+        },
+        "color_gold": {
+          "label": "Or"
+        },
+        "color_gold_dark": {
+          "label": "Or foncé"
+        },
+        "color_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_border": {
+          "label": "Bordures"
+        },
+        "color_button_bg": {
+          "label": "Fond des boutons"
+        },
+        "color_button_text": {
+          "label": "Texte des boutons"
+        },
+        "color_error": {
+          "label": "Erreur"
+        },
+        "color_success": {
+          "label": "Succès"
+        }
       }
     },
     "colors_dark": {
       "name": "Couleurs — Mode sombre",
       "paragraph": "Personnalisez la palette utilisée en mode sombre.",
       "settings": {
-        "color_dark_bg": { "label": "Fond principal" },
-        "color_dark_bg_alt": { "label": "Fond alterné" },
-        "color_dark_bg_card": { "label": "Fond des cartes" },
-        "color_dark_ink": { "label": "Texte principal" },
-        "color_dark_ink_soft": { "label": "Texte secondaire" },
-        "color_dark_gold": { "label": "Or" },
-        "color_dark_gold_dark": { "label": "Or foncé" },
-        "color_dark_accent": { "label": "Accent (terracotta)" },
-        "color_dark_border": { "label": "Bordures" },
-        "color_dark_button_bg": { "label": "Fond des boutons" },
-        "color_dark_button_text": { "label": "Texte des boutons" }
+        "color_dark_bg": {
+          "label": "Fond principal"
+        },
+        "color_dark_bg_alt": {
+          "label": "Fond alterné"
+        },
+        "color_dark_bg_card": {
+          "label": "Fond des cartes"
+        },
+        "color_dark_ink": {
+          "label": "Texte principal"
+        },
+        "color_dark_ink_soft": {
+          "label": "Texte secondaire"
+        },
+        "color_dark_gold": {
+          "label": "Or"
+        },
+        "color_dark_gold_dark": {
+          "label": "Or foncé"
+        },
+        "color_dark_accent": {
+          "label": "Accent (terracotta)"
+        },
+        "color_dark_border": {
+          "label": "Bordures"
+        },
+        "color_dark_button_bg": {
+          "label": "Fond des boutons"
+        },
+        "color_dark_button_text": {
+          "label": "Texte des boutons"
+        }
       }
     },
     "typography": {
       "name": "Typographie",
       "settings": {
-        "font_display": { "label": "Police des titres" },
-        "font_body": { "label": "Police du texte" },
-        "base_font_size": { "label": "Taille de base du texte" },
-        "heading_scale": { "label": "Échelle des titres" }
+        "font_display": {
+          "label": "Police des titres"
+        },
+        "font_body": {
+          "label": "Police du texte"
+        },
+        "base_font_size": {
+          "label": "Taille de base du texte"
+        },
+        "heading_scale": {
+          "label": "Échelle des titres"
+        }
       }
     },
     "layout": {
       "name": "Mise en page",
       "settings": {
-        "page_width": { "label": "Largeur de page" },
-        "section_spacing": { "label": "Espacement des sections" },
-        "border_radius": { "label": "Arrondi des coins" }
+        "page_width": {
+          "label": "Largeur de page"
+        },
+        "section_spacing": {
+          "label": "Espacement des sections"
+        },
+        "border_radius": {
+          "label": "Arrondi des coins"
+        }
       }
     },
     "header": {
       "name": "En-tête",
       "settings": {
-        "favicon": { "label": "Favicon" },
-        "logo": { "label": "Logo" },
-        "free_shipping_threshold": { "label": "Seuil de livraison offerte (€)", "info": "Laissez 0 pour désactiver la barre de progression du panier." },
-        "header_sticky": { "label": "En-tête collant" },
-        "header_transparent": { "label": "En-tête transparent sur le héro", "info": "L'en-tête devient transparent au-dessus du héro plein écran." },
-        "logo_width": { "label": "Largeur du logo" },
-        "enable_announcement": { "label": "Afficher le bandeau d'annonce" },
-        "announcement_text": { "label": "Texte du bandeau" },
-        "announcement_link": { "label": "Lien du bandeau" }
+        "favicon": {
+          "label": "Favicon"
+        },
+        "logo": {
+          "label": "Logo"
+        },
+        "free_shipping_threshold": {
+          "label": "Seuil de livraison offerte (€)",
+          "info": "Laissez 0 pour désactiver la barre de progression du panier."
+        },
+        "header_sticky": {
+          "label": "En-tête collant"
+        },
+        "header_transparent": {
+          "label": "En-tête transparent sur le héro",
+          "info": "L'en-tête devient transparent au-dessus du héro plein écran."
+        },
+        "logo_width": {
+          "label": "Largeur du logo"
+        },
+        "enable_announcement": {
+          "label": "Afficher le bandeau d'annonce"
+        },
+        "announcement_text": {
+          "label": "Texte du bandeau"
+        },
+        "announcement_link": {
+          "label": "Lien du bandeau"
+        }
       }
     },
     "badges": {
       "name": "Badges produits",
       "paragraph": "Associez un tag produit à un badge affiché sur les cartes et les fiches produit. Ajoutez le tag correspondant au produit dans l'admin (ex. « premium », « best-seller », « nouveau »).",
       "settings": {
-        "badges_enable": { "label": "Activer les badges" },
+        "badges_enable": {
+          "label": "Activer les badges"
+        },
         "badge_1_header": "Badge 1",
         "badge_2_header": "Badge 2",
         "badge_3_header": "Badge 3",
         "badge_4_header": "Badge 4",
-        "badge_tag": { "label": "Tag du produit" },
-        "badge_label": { "label": "Texte du badge" },
-        "badge_color": { "label": "Couleur du texte" },
-        "badge_bg": { "label": "Couleur de fond" }
+        "badge_tag": {
+          "label": "Tag du produit"
+        },
+        "badge_label": {
+          "label": "Texte du badge"
+        },
+        "badge_color": {
+          "label": "Couleur du texte"
+        },
+        "badge_bg": {
+          "label": "Couleur de fond"
+        }
       }
     },
     "animations": {
       "name": "Animations",
       "settings": {
-        "animations_enable": { "label": "Activer les animations d'apparition" },
-        "animations_reveal_offset": { "label": "Déclenchement du scroll" },
-        "marquee_speed": { "label": "Vitesse du bandeau défilant" },
-        "hero_parallax": { "label": "Effet parallaxe du héro" }
+        "animations_enable": {
+          "label": "Activer les animations d'apparition"
+        },
+        "animations_reveal_offset": {
+          "label": "Déclenchement du scroll"
+        },
+        "marquee_speed": {
+          "label": "Vitesse du bandeau défilant"
+        },
+        "hero_parallax": {
+          "label": "Effet parallaxe du héro"
+        }
       }
     },
     "social": {
       "name": "Réseaux sociaux & contact",
       "settings": {
-        "social_instagram": { "label": "Instagram" },
-        "social_facebook": { "label": "Facebook" },
-        "social_tiktok": { "label": "TikTok" },
-        "social_whatsapp": { "label": "WhatsApp" },
+        "social_instagram": {
+          "label": "Instagram"
+        },
+        "social_facebook": {
+          "label": "Facebook"
+        },
+        "social_tiktok": {
+          "label": "TikTok"
+        },
+        "social_linkedin": {
+          "label": "WhatsApp"
+        },
         "social_info": "URL complète (https://…)",
-        "contact_email": { "label": "E-mail de contact" },
-        "contact_phone": { "label": "Téléphone" }
+        "contact_email": {
+          "label": "E-mail de contact"
+        },
+        "contact_phone": {
+          "label": "Téléphone"
+        }
       }
     }
   }

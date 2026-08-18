@@ -189,7 +189,9 @@
       "recommendations_label": "Utiliser les recommandations Shopify",
       "recommendations_info": "Basées sur le panier du visiteur.",
       "collection_label": "Collection de secours",
-      "collection_info": "Si les recommandations sont vides, produits de cette collection (le produit courant est exclu)."
+      "collection_info": "Si les recommandations sont vides, produits de cette collection (le produit courant est exclu).",
+      "current_product_label": "ID du produit courant",
+      "current_product_info": "ID du produit à exclure des recommandations (rempli automatiquement)."
     },
     "video": {
       "name": "Vidéo",
@@ -419,6 +421,9 @@
       "tax": "Taxes",
       "download": "Télécharger la facture",
       "track": "Suivre la commande"
+    },
+    "announcement-bar": {
+      "name": "Bandeau d'annonce"
     }
   },
   "settings_schema": {
@@ -625,7 +630,7 @@
         "social_tiktok": {
           "label": "TikTok"
         },
-        "social_whatsapp": {
+        "social_linkedin": {
           "label": "WhatsApp"
         },
         "social_info": "URL complète (https://…)",

@@ -1,6 +1,5 @@
 <section class="marquee{% if section.settings.dark %} marquee--dark{% endif %}{% if section.settings.reverse %} marquee--reverse{% endif %}" aria-hidden="true">
-  {% assign items = section.settings.items | split: '
-' %}
+  {%- assign items = section.settings.items | newline_to_br | split: '<br />' -%}
   <div class="marquee__track">
     {% for i in (1..2) %}
       {% for item in items %}

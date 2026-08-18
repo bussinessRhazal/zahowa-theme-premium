@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}" data-theme="light" data-animations="{{ settings.animations_enable }}">
+<html lang="{{ request.locale.iso_code }}" data-theme="light" data-animations="{% if settings.animations_enable %}enabled{% else %}disabled{% endif %}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -45,10 +45,13 @@
         "url": {{ shop.url | json }},
         "logo": "{% if settings.logo != blank %}{{ settings.logo | image_url: width: 600 }}{% else %}{{ shop.url }}{% endif %}",
         "sameAs": [
-          {% if settings.social_instagram != blank %}{{ settings.social_instagram | json }}{% endif %}
-          {% if settings.social_facebook != blank %},{{ settings.social_facebook | json }}{% endif %}
-          {% if settings.social_tiktok != blank %},{{ settings.social_tiktok | json }}{% endif %}
-          {% if settings.social_whatsapp != blank %},{{ settings.social_whatsapp | json }}{% endif %}
+          {%- assign social_urls = '' -%}
+          {%- if settings.social_instagram_url != blank -%}{% assign social_urls = social_urls | append: settings.social_instagram_url | append: '|' %}{% endif -%}
+          {%- if settings.social_facebook_url != blank -%}{% assign social_urls = social_urls | append: settings.social_facebook_url | append: '|' %}{% endif -%}
+          {%- if settings.social_tiktok_url != blank -%}{% assign social_urls = social_urls | append: settings.social_tiktok_url | append: '|' %}{% endif -%}
+          {%- if settings.social_linkedin_url != blank -%}{% assign social_urls = social_urls | append: settings.social_linkedin_url | append: '|' %}{% endif -%}
+          {%- assign social_parts = social_urls | split: '|' -%}
+          {%- for url in social_parts -%}{% unless url == blank %}{% unless forloop.first %},{% endunless %}{{ url | json }}{% endunless %}{%- endfor -%}
         ]
       }
     </script>

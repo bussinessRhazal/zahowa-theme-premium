@@ -20,7 +20,7 @@
     <div
       class="video-frame video-frame--{{ section.settings.aspect_ratio }}"
       data-reveal
-      {% if section.settings.video_url != blank %}data-video-url="{{ section.settings.video_url | escape }}"{% endif %}
+      {% if section.settings.video_url != blank %}data-video-url="{{ section.settings.video_url }}"{% endif %}
     >
       {%- if section.settings.video_url.type == 'youtube' -%}
         <iframe
