@@ -141,20 +141,12 @@
             "title": "Step 3",
             "text": "et installez le sachet sur votre tasse."
           }
-        },
-        "step_dCeejf": {
-          "type": "step",
-          "settings": {
-            "title": "Step 4",
-            "text": "et installez le sachet sur votre tasse."
-          }
         }
       },
       "block_order": [
         "step_pRjLwm",
         "step_GAmYqL",
-        "step_XtYDUz",
-        "step_dCeejf"
+        "step_XtYDUz"
       ],
       "settings": {
         "color_scheme": "creme",
