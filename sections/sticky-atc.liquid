@@ -1,0 +1,127 @@
+{{ 'new-sections.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<section
+  class="zw-scheme-{{ section.settings.color_scheme }} sticky-atc{% if section.settings.show_on_desktop %} sticky-atc--desktop{% endif %}"
+  data-sticky-atc
+  aria-hidden="true"
+  role="region"
+  aria-label="{{ section.settings.button_label }}"
+>
+  <div class="sticky-atc__inner">
+    <div class="sticky-atc__info">
+      <p class="sticky-atc__title">{{ product.title | escape }}</p>
+      {% if section.settings.show_variant_title %}
+        <p class="sticky-atc__variant" data-sticky-atc-variant>
+          {%- unless product.has_only_default_variant %}{{ current_variant.title }}{% endunless -%}
+        </p>
+      {% endif %}
+    </div>
+    <p class="sticky-atc__price" data-sticky-atc-price>{{ current_variant.price | money }}</p>
+    <button
+      type="button"
+      class="btn btn--gold sticky-atc__button"
+      data-sticky-atc-button
+      aria-label="{{ section.settings.button_label }} — {{ product.title | escape }}"
+    >
+      {{ section.settings.button_label }}
+    </button>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-sticky-atc]');
+    if (!root) return;
+
+    var button = root.querySelector('[data-sticky-atc-button]');
+
+    // Trouve le vrai bouton "Ajouter au panier" du formulaire produit principal.
+    function findMainButton() {
+      return (
+        document.querySelector('.section-main-product form[action*="/cart/add"] [type="submit"]') ||
+        document.querySelector('form[action*="/cart/add"] [type="submit"]') ||
+        document.querySelector('[data-product-form-submit]')
+      );
+    }
+
+    // Clic délégué : on clique le vrai bouton, aucune logique d'ajout dupliquée.
+    button.addEventListener('click', function () {
+      var main = findMainButton();
+      if (main) {
+        main.click();
+      } else {
+        var form = document.querySelector('form[action*="/cart/add"]');
+        if (form && form.requestSubmit) form.requestSubmit();
+      }
+    });
+
+    // Prix / variante synchronisés au changement de variante (événement natif du form).
+    var priceEl = root.querySelector('[data-sticky-atc-price]');
+    var variantEl = root.querySelector('[data-sticky-atc-variant]');
+    document.addEventListener('variant:change', function (event) {
+      var v = event.detail && event.detail.variant;
+      if (!v) return;
+      if (priceEl && typeof v.price === 'number') {
+        priceEl.textContent = (v.price / 100).toLocaleString('fr-FR', { style: 'currency', currency: (window.Shopify && Shopify.currency && Shopify.currency.active) || 'EUR' });
+      }
+      if (variantEl) variantEl.textContent = v.title || '';
+    });
+
+    // Affichage via IntersectionObserver dès que le bouton principal sort du viewport.
+    var target = findMainButton();
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) root.classList.add('sticky-atc--no-motion');
+    if (!target || !('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        root.classList.toggle('sticky-atc--visible', show);
+        root.setAttribute('aria-hidden', show ? 'false' : 'true');
+      });
+    }, { threshold: 0 });
+    observer.observe(target);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Sticky ATC",
+  "tag": "section",
+  "class": "section-sticky-atc",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
+      ],
+      "default": "cafe"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "Afficher aussi sur desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variant_title",
+      "label": "Afficher la variante sélectionnée",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Libellé du bouton",
+      "default": "Ajouter au panier"
+    }
+  ],
+  "presets": [{ "name": "Sticky ATC" }]
+}
+{% endschema %}
