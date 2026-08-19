@@ -1,0 +1,119 @@
+{{ 'new-sections.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="zw-scheme-{{ section.settings.color_scheme }} section brewing brewing--{{ section.settings.layout }}"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.heading != blank %}
+        <h2 class="section__title">
+          {{ section.settings.heading | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <ol class="brewing__steps" role="list">
+        {% for block in section.blocks %}
+          <li class="brewing__step" data-reveal {{ block.shopify_attributes }}>
+            <p class="brewing__number" aria-hidden="true">0{{ forloop.index }}</p>
+            {% if block.settings.image != blank %}
+              <div class="brewing__media">
+                {{ block.settings.image | image_url: width: 750 | image_tag: loading: 'lazy', class: 'brewing__image', widths: '375, 550, 750, 1100', sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 100vw', alt: block.settings.title }}
+              </div>
+            {% endif %}
+            <h3 class="brewing__title">{{ block.settings.title }}</h3>
+            {% if block.settings.text != blank %}
+              <p class="brewing__text">{{ block.settings.text }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+      <div class="brewing__cta" data-reveal>
+        <a href="{{ section.settings.cta_link }}" class="btn btn--gold">{{ section.settings.cta_label }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Étapes de préparation",
+  "tag": "section",
+  "class": "section-brewing-steps",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
+      ],
+      "default": "creme"
+    },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Le geste, en *quatre temps*" },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Mise en page",
+      "options": [
+        { "value": "compact", "label": "Compacte (fiche produit)" },
+        { "value": "editorial", "label": "Éditoriale (page Méthode)" }
+      ],
+      "default": "compact"
+    },
+    { "type": "text", "id": "cta_label", "label": "Libellé du lien", "default": "Découvrir la Méthode" },
+    { "type": "url", "id": "cta_link", "label": "Lien" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espacement haut",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espacement bas",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Étape",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image (4:5)" },
+        { "type": "text", "id": "title", "label": "Titre de l'étape", "default": "Déchirer" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Ouvrez le sachet le long de la ligne pointillée." }
+      ]
+    }
+  ],
+  "min_blocks": 3,
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Étapes de préparation",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Déchirer", "text": "Ouvrez le sachet le long de la ligne pointillée." } },
+        { "type": "step", "settings": { "title": "Accrocher", "text": "Dépliez les anses et posez le drip bag sur votre tasse." } },
+        { "type": "step", "settings": { "title": "Verser", "text": "Versez lentement 180 ml d'eau à 92 °C, en trois fois." } },
+        { "type": "step", "settings": { "title": "Déguster", "text": "Laissez s'égoutter, retirez le sachet, respirez." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
