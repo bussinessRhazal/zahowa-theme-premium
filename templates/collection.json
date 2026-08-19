@@ -1,9 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "multi_column_jzjGFW": {
+      "type": "multi-column",
+      "blocks": {
+        "column_GqANcK": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Naturel",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9Qaz8r": {
+          "type": "column",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mEn7Dq": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison soignée",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GqANcK",
+        "column_9Qaz8r",
+        "column_mEn7Dq"
+      ],
+      "name": "Zahowa — Multi-colonnes",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
+        "id": ""
+      }
+    },
     "main": {
       "type": "main-collection",
-      "settings": {}
+      "settings": {
+        "color_scheme": "creme",
+        "products_per_page": 12,
+        "portrait": false
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "multi_column_jzjGFW",
+    "main"
+  ]
 }
