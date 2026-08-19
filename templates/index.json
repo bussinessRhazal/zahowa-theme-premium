@@ -56,6 +56,7 @@
         "city_VfKq7b": {
           "type": "city",
           "settings": {
+            "image": "shopify://shop_images/recipe-rabat.webp",
             "fallback_color": "#2e1c13",
             "name": "Grâce de Rabat",
             "spice": "Royale · Feutrée",
@@ -67,23 +68,24 @@
         "city_6REmXR": {
           "type": "city",
           "settings": {
+            "image": "shopify://shop_images/recipe-fes.webp",
             "fallback_color": "#2e1c13",
-            "name": "Fes",
-            "spice": "Cannelle",
+            "name": "Âme de Fès",
+            "spice": "Spirituelle · Millénaire",
             "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
-            "link": "",
+            "link": "shopify://products/ame-de-fes",
             "link_label": "Lire la recette"
           }
         },
         "city_JJpzgc": {
           "type": "city",
           "settings": {
-            "image": "shopify://shop_images/recipe-casablanca_487e7821-6ca9-42f6-b8e9-628133713e74.webp",
+            "image": "shopify://shop_images/recipe-marrakech.webp",
             "fallback_color": "#2e1c13",
-            "name": "Aube de Casablanca",
-            "spice": "Cannelle",
+            "name": "Fièvre de Marrakech",
+            "spice": "Intense · Charnelle",
             "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
-            "link": "",
+            "link": "shopify://products/fievre-de-marrakech",
             "link_label": "Lire la recette"
           }
         }
