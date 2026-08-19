@@ -38,6 +38,20 @@
         "reverse": false
       }
     },
+    "maison": {
+      "type": "maison",
+      "settings": {
+        "color_scheme": "creme",
+        "image": "shopify://shop_images/couple.jpg",
+        "kicker": "Notre histoire",
+        "title": "La *Maison*",
+        "text": "<p>Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.</p>",
+        "button_label": "Découvrir l'histoire",
+        "button_link": "",
+        "alt_bg": false,
+        "id": ""
+      }
+    },
     "cities": {
       "type": "cities",
       "blocks": {
@@ -104,16 +118,13 @@
         "padding_bottom": 100
       }
     },
-    "maison": {
-      "type": "maison",
+    "rituel": {
+      "type": "rituel",
       "settings": {
         "color_scheme": "creme",
-        "image": "shopify://shop_images/couple.jpg",
-        "kicker": "Notre histoire",
-        "title": "La *Maison*",
-        "text": "<p>Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.</p>",
-        "button_label": "Découvrir l'histoire",
-        "button_link": "",
+        "kicker": "La méthode",
+        "title": "Le *Rituel*",
+        "text": "Trois gestes pour une infusion parfaite.",
         "alt_bg": false,
         "id": ""
       }
@@ -122,7 +133,7 @@
       "type": "featured-collection",
       "settings": {
         "color_scheme": "creme",
-        "collection": "frontpage",
+        "collection": "notre-collection",
         "products_to_show": 4,
         "kicker": "Nos créations",
         "title": "Nos *Recettes*",
@@ -141,17 +152,6 @@
         "title": "Quatre recettes.",
         "subtitle": "Laquelle est la tienne ?",
         "text": "Chacune inspirée du caractère d'une ville marocaine. Chacune un rituel.",
-        "alt_bg": false,
-        "id": ""
-      }
-    },
-    "rituel": {
-      "type": "rituel",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "La méthode",
-        "title": "Le *Rituel*",
-        "text": "Trois gestes pour une infusion parfaite.",
         "alt_bg": false,
         "id": ""
       }
@@ -232,11 +232,11 @@
   "order": [
     "hero",
     "marquee",
-    "cities",
     "maison",
+    "cities",
+    "rituel",
     "featured_collection",
     "recipes_grid",
-    "rituel",
     "video_demo",
     "coffret",
     "testimonials",
