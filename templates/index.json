@@ -124,6 +124,8 @@
         "step_pRjLwm": {
           "type": "step",
           "settings": {
+            "icon": "cup",
+            "icon_size": "lg",
             "title": "Step 1",
             "text": "et installez le sachet sur votre tasse."
           }
@@ -131,6 +133,8 @@
         "step_GAmYqL": {
           "type": "step",
           "settings": {
+            "icon": "cup",
+            "icon_size": "lg",
             "title": "Step 2",
             "text": "et installez le sachet sur votre tasse."
           }
@@ -138,6 +142,8 @@
         "step_XtYDUz": {
           "type": "step",
           "settings": {
+            "icon": "cup",
+            "icon_size": "lg",
             "title": "Step 3",
             "text": "et installez le sachet sur votre tasse."
           }
@@ -153,6 +159,9 @@
         "kicker": "La méthode",
         "title": "Le *Rituel*",
         "text": "Trois gestes pour une infusion parfaite.",
+        "columns": "3",
+        "button_label": "Découvrir la méthode complète",
+        "button_link": "",
         "alt_bg": false,
         "id": ""
       }
@@ -225,6 +234,8 @@
             "photo": "shopify://shop_images/welcome-to-my-business.jpg",
             "name": "Camille R.",
             "location": "Paris",
+            "product": "",
+            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -235,6 +246,8 @@
             "photo": "shopify://shop_images/professional-man-smiling.jpg",
             "name": "Camille R.",
             "location": "Paris",
+            "product": "",
+            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -245,6 +258,8 @@
             "photo": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg",
             "name": "Camille R.",
             "location": "Paris",
+            "product": "",
+            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -255,6 +270,8 @@
             "photo": "shopify://shop_images/Mains_realistes_tasse.webp",
             "name": "Camille R.",
             "location": "Paris",
+            "product": "Âme de Fès",
+            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -272,6 +289,10 @@
         "title": "Ils *en parlent* mieux que nous",
         "text": "Des milliers de matins transformés à travers la France.",
         "columns": "3",
+        "show_stars": true,
+        "show_verified": true,
+        "verified_text": "Avis vérifié",
+        "per_view": "3",
         "autoplay": true,
         "autoplay_delay": 5,
         "show_arrows": true,
