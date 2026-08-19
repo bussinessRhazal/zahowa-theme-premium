@@ -57,30 +57,17 @@
         "id": ""
       }
     },
-    "collection_list_xFJHxX": {
-      "type": "collection-list",
-      "name": "Zahowa — Liste des collections",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Découvrir",
-        "title": "Nos *collections*",
-        "collection_list": "main-menu",
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "main": {
       "type": "main-collection",
       "settings": {
         "color_scheme": "creme",
         "products_per_page": 12,
-        "portrait": false
+        "portrait": true
       }
     }
   },
   "order": [
     "multi_column_jzjGFW",
-    "collection_list_xFJHxX",
     "main"
   ]
 }
