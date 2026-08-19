@@ -1,0 +1,57 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Accès prioritaire",
+        "title": "Le Cercle *Fondateur*"
+      }
+    },
+    "offer": {
+      "type": "founder-offer",
+      "settings": {
+        "color_scheme": "creme"
+      }
+    },
+    "countdown": {
+      "type": "countdown",
+      "settings": {
+        "color_scheme": "cafe"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Premiers cercles",
+        "title": "Ils *y croient* déjà"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Conditions",
+        "title": "Tout savoir sur le *Cercle*"
+      }
+    },
+    "cercle": {
+      "type": "cercle",
+      "settings": {
+        "color_scheme": "creme"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "offer",
+    "countdown",
+    "testimonials",
+    "faq",
+    "cercle"
+  ]
+}
