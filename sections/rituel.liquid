@@ -15,18 +15,19 @@
       <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
     </div>
 
-    <div class="rituel__steps">
+    <div class="rituel__steps rituel__steps--{{ section.settings.columns }}">
       {% for block in section.blocks %}
         <div class="rituel__step" data-reveal {{ block.shopify_attributes }}>
           <p class="rituel__number">0{{ forloop.index }}</p>
-          <div class="rituel__icon">
-            {% case block.type %}
-              {% when 'step' %}
-                {% if forloop.index == 1 %}{% render 'icon', name: 'cup' %}{% endif %}
-                {% if forloop.index == 2 %}{% render 'icon', name: 'leaf' %}{% endif %}
-                {% if forloop.index == 3 %}{% render 'icon', name: 'spark' %}{% endif %}
-            {% endcase %}
-          </div>
+          {% if block.settings.image != blank %}
+            <div class="rituel__media">
+              {{ block.settings.image | image_url: width: 320 | image_tag: loading: 'lazy', class: 'rituel__image', widths: '160, 240, 320', sizes: '112px' }}
+            </div>
+          {% else %}
+            <div class="rituel__icon rituel__icon--{{ block.settings.icon_size }}">
+              {% render 'icon', name: block.settings.icon %}
+            </div>
+          {% endif %}
           <h3 class="rituel__title">{{ block.settings.title }}</h3>
           {% if block.settings.text != blank %}
             <p class="rituel__text">{{ block.settings.text }}</p>
@@ -34,6 +35,12 @@
         </div>
       {% endfor %}
     </div>
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="rituel__cta" data-reveal>
+        <a href="{{ section.settings.button_link }}" class="btn btn--gold">{{ section.settings.button_label }}</a>
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -77,6 +84,32 @@
       "default": "Trois gestes pour une infusion parfaite."
     },
     {
+      "type": "select",
+      "id": "columns",
+      "label": "Étapes par rangée",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "header",
+      "content": "Bouton « En savoir plus »"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Découvrir la méthode complète"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
       "type": "checkbox",
       "id": "alt_bg",
       "label": "t:sections.maison.alt_bg_label",
@@ -93,6 +126,37 @@
       "type": "step",
       "name": "t:sections.rituel.step",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (optionnel)",
+          "info": "Si une image est choisie, elle remplace l'icône. Format conseillé : carré, min. 320 × 320 px."
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icône",
+          "options": [
+            { "value": "cup", "label": "Tasse" },
+            { "value": "leaf", "label": "Feuille" },
+            { "value": "spark", "label": "Éclat" },
+            { "value": "flower", "label": "Fleur" },
+            { "value": "star", "label": "Étoile" },
+            { "value": "diamond", "label": "Diamant" }
+          ],
+          "default": "cup",
+          "info": "Utilisée uniquement si aucune image n'est choisie."
+        },
+        {
+          "type": "select",
+          "id": "icon_size",
+          "label": "Taille de l'icône",
+          "options": [
+            { "value": "md", "label": "Moyenne" },
+            { "value": "lg", "label": "Grande" }
+          ],
+          "default": "lg"
+        },
         {
           "type": "text",
           "id": "title",
@@ -113,13 +177,16 @@
       "name": "t:sections.rituel.name",
       "blocks": [
         {
-          "type": "step"
+          "type": "step",
+          "settings": { "icon": "cup" }
         },
         {
-          "type": "step"
+          "type": "step",
+          "settings": { "icon": "leaf" }
         },
         {
-          "type": "step"
+          "type": "step",
+          "settings": { "icon": "spark" }
         }
       ]
     }

@@ -372,8 +372,9 @@
 
       function computePerView() {
         const w = viewport.clientWidth;
-        if (w >= 990) perView = 3;
-        else if (w >= 640) perView = 2;
+        const configured = parseInt(wrap.dataset.perView, 10) || 3;
+        if (w >= 990) perView = configured;
+        else if (w >= 640) perView = Math.min(2, configured);
         else perView = 1;
       }
 
@@ -382,6 +383,7 @@
         if (total === 0) return;
         index = (i % total + total) % total;
         computePerView();
+        track.style.setProperty('--per-view', perView);
         const slideWidth = viewport.clientWidth / perView;
         const shift = index * slideWidth;
         track.style.transition = instant ? 'none' : '';

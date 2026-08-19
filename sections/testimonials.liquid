@@ -27,6 +27,7 @@
         {% if use_carousel %}
           data-autoplay="{{ section.settings.autoplay }}"
           data-autoplay-delay="{{ section.settings.autoplay_delay | times: 1000 }}"
+          data-per-view="{{ section.settings.per_view }}"
         {% endif %}
       >
         {% if use_carousel %}
@@ -34,13 +35,13 @@
             <div class="testimonials__track">
               {% for block in section.blocks %}
                 <div class="testimonials__slide" {{ block.shopify_attributes }}>
-                  {% render 'testimonial-card', block: block %}
+                  {% render 'testimonial-card', block: block, show_stars: section.settings.show_stars, show_verified: section.settings.show_verified, verified_text: section.settings.verified_text %}
                 </div>
               {% endfor %}
               {%- comment -%} Clone for seamless infinite loop {%- endcomment -%}
-              {% for block in section.blocks limit: 3 %}
+              {% for block in section.blocks limit: 4 %}
                 <div class="testimonials__slide testimonials__slide--clone" aria-hidden="true">
-                  {% render 'testimonial-card', block: block %}
+                  {% render 'testimonial-card', block: block, show_stars: section.settings.show_stars, show_verified: section.settings.show_verified, verified_text: section.settings.verified_text %}
                 </div>
               {% endfor %}
             </div>
@@ -66,7 +67,7 @@
           <div class="testimonials__grid testimonials__grid--{{ section.settings.columns }}">
             {% for block in section.blocks %}
               <div class="testimonials__grid-item" data-reveal>
-                {% render 'testimonial-card', block: block %}
+                {% render 'testimonial-card', block: block, show_stars: section.settings.show_stars, show_verified: section.settings.show_verified, verified_text: section.settings.verified_text %}
               </div>
             {% endfor %}
           </div>
@@ -139,11 +140,44 @@
     },
     {
       "type": "header",
+      "content": "Cartes d'avis"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "Afficher les étoiles",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_verified",
+      "label": "Afficher le badge « Avis vérifié »",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Texte du badge",
+      "default": "Avis vérifié"
+    },
+    {
+      "type": "header",
       "content": "t:sections.testimonials.carousel_header"
     },
     {
       "type": "paragraph",
       "content": "t:sections.testimonials.carousel_info"
+    },
+    {
+      "type": "select",
+      "id": "per_view",
+      "label": "Avis visibles à la fois (ordinateur)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
     },
     {
       "type": "checkbox",
@@ -207,6 +241,18 @@
           "id": "location",
           "label": "t:sections.testimonials.location_label",
           "default": "Paris"
+        },
+        {
+          "type": "text",
+          "id": "product",
+          "label": "Recette concernée (optionnel)",
+          "info": "Ex. : Âme de Fès. Affiché sous l'avis."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Avis vérifié",
+          "default": true
         },
         {
           "type": "range",
