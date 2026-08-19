@@ -2,7 +2,7 @@
   <div class="container header__inner">
     <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
       {%- if settings.logo != blank -%}
-        {{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name }}
+        {{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name, sizes: '160px', widths: '160, 320' }}
       {%- else -%}
         {{ shop.name }}
       {%- endif -%}
