@@ -1,3 +1,6 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
@@ -11,10 +14,26 @@
         "show_share": true,
         "show_nav": true
       }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "La boutique",
+        "title": "Les recettes *évoquées*"
+      }
+    },
+    "cercle": {
+      "type": "cercle",
+      "settings": {
+        "color_scheme": "creme"
+      }
     }
   },
   "order": [
     "main",
-    "article_footer"
+    "article_footer",
+    "featured",
+    "cercle"
   ]
 }
