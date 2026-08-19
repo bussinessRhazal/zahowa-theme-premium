@@ -1,14 +1,62 @@
 /*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
  */
 {
   "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "color_scheme": "creme",
+        "products_per_page": 12,
+        "portrait": true
+      }
+    },
+    "reassurance": {
+      "type": "reassurance-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison suivie en Europe",
+            "text": "Offerte dès 49 €"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "CB, PayPal, Apple Pay"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "spark",
+            "title": "Torréfaction artisanale",
+            "text": "En petits lots"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "arrow",
+            "title": "Satisfait ou remboursé",
+            "text": "30 jours"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "color_scheme": "creme"
+      }
+    },
     "multi_column_jzjGFW": {
       "type": "multi-column",
       "blocks": {
@@ -104,18 +152,29 @@
         "id": ""
       }
     },
-    "main": {
-      "type": "main-collection",
+    "coffret": {
+      "type": "coffret",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Coffrets",
+        "title": "Plutôt un *coffret* ?"
+      }
+    },
+    "faq": {
+      "type": "faq",
       "settings": {
         "color_scheme": "creme",
-        "products_per_page": 12,
-        "portrait": true
+        "kicker": "Questions",
+        "title": "On vous *répond*"
       }
     }
   },
   "order": [
+    "main",
+    "reassurance",
     "multi_column_jzjGFW",
     "instagram_gallery_GEP49B",
-    "main"
+    "coffret",
+    "faq"
   ]
 }
