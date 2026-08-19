@@ -478,7 +478,7 @@
         if (title) title.textContent = form.querySelector('.product__title')?.textContent || '';
         if (priceEl) priceEl.textContent = variantInput.dataset.price || priceEl.textContent;
       });
-    });
+    }
   }
 
   /* ---------- Init ---------- */
