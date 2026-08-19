@@ -54,7 +54,7 @@
   }
 </script>
 
-<section class="product" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} product" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <a href="{{ routes.root_url }}">{{ 'sections.header.name' | t }}</a>
@@ -236,6 +236,22 @@
 {
   "name": "t:sections.main_product.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "checkbox",
       "id": "show_vendor",
