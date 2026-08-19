@@ -52,7 +52,40 @@
           "color_scheme": "dark",
           "tagline": "Un café épicé, comme tu ne l'as jamais bu",
           "show_payment_icons": true
-        }
+        },
+        "blocks": {
+          "maison": {
+            "type": "menu",
+            "settings": {
+              "heading": "La Maison",
+              "menu": "main-menu"
+            }
+          },
+          "infos": {
+            "type": "menu",
+            "settings": {
+              "heading": "Informations",
+              "menu": "footer"
+            }
+          },
+          "paiement": {
+            "type": "payment",
+            "settings": {
+              "heading": "Paiement sécurisé",
+              "show_visa": true,
+              "show_mastercard": true,
+              "show_paypal": true,
+              "show_apple_pay": true,
+              "show_google_pay": false,
+              "show_amex": false
+            }
+          }
+        },
+        "block_order": [
+          "maison",
+          "infos",
+          "paiement"
+        ]
       },
       "cart-drawer": {
         "type": "cart-drawer",
