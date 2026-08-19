@@ -1,7 +1,8 @@
 <section class="zw-scheme-{{ section.settings.color_scheme }} section">
   <div class="container">
     <div class="page-header">
-      <h1 class="page-header__title">{{ blog.title | default: 'sections.main_blog.title' | t }}</h1>
+      {%- assign blog_title_default = 'sections.main_blog.title' | t -%}
+      <h1 class="page-header__title">{{ blog.title | default: blog_title_default }}</h1>
       {% if blog.description != blank %}
         <p class="page-header__text">{{ blog.description }}</p>
       {% endif %}

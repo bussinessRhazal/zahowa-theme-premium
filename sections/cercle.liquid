@@ -14,17 +14,19 @@
 
     {% form 'customer', class: 'cercle__form-wrap' %}
       <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- assign cercle_placeholder_default = 'general.newsletter.email_placeholder' | t -%}
+      {%- assign cercle_button_default = 'general.newsletter.button' | t -%}
       <div class="cercle__form" data-reveal>
         <input
           type="email"
           name="contact[email]"
           class="cercle__input"
-          placeholder="{{ section.settings.email_placeholder | default: 'general.newsletter.email_placeholder' | t }}"
+          placeholder="{{ section.settings.email_placeholder | default: cercle_placeholder_default }}"
           aria-label="{{ 'general.newsletter.email_placeholder' | t }}"
           required
         >
         <button type="submit" class="btn btn--gold">
-          {{ section.settings.button_label | default: 'general.newsletter.button' | t }}
+          {{ section.settings.button_label | default: cercle_button_default }}
         </button>
       </div>
       {% if form.posted_successfully? %}
