@@ -5,7 +5,21 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "scores": {
+          "type": "tasting_scores",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "scores",
+        "share"
+      ]
     },
     "sticky_atc": {
       "type": "sticky-atc",
