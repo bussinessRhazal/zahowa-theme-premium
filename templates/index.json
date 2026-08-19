@@ -80,7 +80,7 @@
         "title": "Quatre recettes.",
         "subtitle": "Laquelle est la tienne ?",
         "text": "Chacune inspirée du caractère d'une ville marocaine. Chacune un rituel.",
-        "alt_bg": true,
+        "alt_bg": false,
         "id": ""
       }
     },
@@ -118,7 +118,7 @@
         "button_label": "Découvrir le coffret",
         "button_link": "",
         "reverse": false,
-        "alt_bg": true,
+        "alt_bg": false,
         "id": ""
       }
     },
