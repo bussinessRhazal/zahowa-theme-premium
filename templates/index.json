@@ -32,7 +32,7 @@
     "marquee": {
       "type": "marquee",
       "settings": {
-        "color_scheme": "cafe",
+        "color_scheme": "creme",
         "items": "CASABLANCA\nFÈS\nMARRAKECH\nRABAT",
         "dark": true,
         "reverse": false
@@ -40,10 +40,27 @@
     },
     "cities": {
       "type": "cities",
+      "blocks": {
+        "city_JJpzgc": {
+          "type": "city",
+          "settings": {
+            "image": "shopify://shop_images/recipe-casablanca_487e7821-6ca9-42f6-b8e9-628133713e74.webp",
+            "fallback_color": "#2e1c13",
+            "name": "Aube de Casablanca",
+            "spice": "Cannelle",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "",
+            "link_label": "Lire la recette"
+          }
+        }
+      },
+      "block_order": [
+        "city_JJpzgc"
+      ],
       "settings": {
         "color_scheme": "cafe",
         "eyebrow": "Les origines",
-        "title": "<p>Quatre villes,<br><em>quatre caractères</em></p>",
+        "title": "<p>Quatre villes,<br/><em>quatre caractères</em></p>",
         "padding_top": 100,
         "padding_bottom": 100
       }
