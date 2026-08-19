@@ -1,8 +1,67 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "settings": {}
+    },
+    "sticky_atc": {
+      "type": "sticky-atc",
+      "settings": {
+        "color_scheme": "cafe"
+      }
+    },
+    "spices": {
+      "type": "ingredients-spices",
+      "settings": {
+        "color_scheme": "cafe",
+        "heading": "L'*assemblage*"
+      }
+    },
+    "brewing": {
+      "type": "brewing-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Déchirer",
+            "text": "Ouvrez le sachet le long de la ligne pointillée."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Accrocher",
+            "text": "Dépliez les anses et posez le drip bag sur votre tasse."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Verser",
+            "text": "Versez lentement 180 ml d'eau à 92 °C, en trois fois."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Déguster",
+            "text": "Laissez s'égoutter, retirez le sachet, respirez."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "color_scheme": "creme",
+        "layout": "compact"
+      }
     },
     "video_demo": {
       "type": "video",
@@ -15,6 +74,20 @@
         "autoplay": false,
         "loop": false,
         "alt_bg": true
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Ils l'ont goûtée",
+        "title": "Ils *en parlent* mieux que nous"
+      }
+    },
+    "subscription": {
+      "type": "subscription-offer",
+      "settings": {
+        "color_scheme": "cafe"
       }
     },
     "related": {
@@ -30,5 +103,14 @@
       }
     }
   },
-  "order": ["main", "video_demo", "related"]
+  "order": [
+    "main",
+    "sticky_atc",
+    "spices",
+    "brewing",
+    "video_demo",
+    "testimonials",
+    "subscription",
+    "related"
+  ]
 }
