@@ -1,4 +1,4 @@
-<section class="marquee{% if section.settings.dark %} marquee--dark{% endif %}{% if section.settings.reverse %} marquee--reverse{% endif %}" aria-hidden="true">
+<section class="zw-scheme-{{ section.settings.color_scheme }} marquee{% if section.settings.dark %} marquee--dark{% endif %}{% if section.settings.reverse %} marquee--reverse{% endif %}" aria-hidden="true">
   {%- assign items = section.settings.items | newline_to_br | split: '<br />' -%}
   <div class="marquee__track">
     {% for i in (1..2) %}
@@ -16,6 +16,22 @@
 {
   "name": "t:sections.marquee.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "cafe"
+    },
     {
       "type": "textarea",
       "id": "items",

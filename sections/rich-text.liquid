@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container" style="max-width: 760px;">
     <div class="section__header" data-reveal>
       {% if section.settings.kicker != blank %}
@@ -25,6 +25,22 @@
 {
   "name": "t:sections.rich_text.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "text",
       "id": "kicker",

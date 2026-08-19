@@ -2,7 +2,7 @@
   Zahowa — Multi-colonnes (valeurs, services, réassurance)
 {%- endcomment -%}
 
-<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     {%- if section.settings.kicker != blank or section.settings.title != blank -%}
       <div class="section__header" data-reveal>
@@ -121,6 +121,22 @@
   "max_blocks": 4,
   "settings": [
     {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
+    {
       "type": "text",
       "id": "kicker",
       "label": "Label (eyebrow)",
@@ -155,17 +171,50 @@
           "label": "Icône",
           "default": "spark",
           "options": [
-            { "value": "none", "label": "Aucune" },
-            { "value": "spark", "label": "Éclat" },
-            { "value": "cup", "label": "Tasse" },
-            { "value": "leaf", "label": "Feuille" },
-            { "value": "star", "label": "Étoile" },
-            { "value": "flower", "label": "Fleur" },
-            { "value": "diamond", "label": "Diamant" },
-            { "value": "check", "label": "Coche" },
-            { "value": "mail", "label": "Enveloppe" },
-            { "value": "phone", "label": "Téléphone" },
-            { "value": "lock", "label": "Cadenas" }
+            {
+              "value": "none",
+              "label": "Aucune"
+            },
+            {
+              "value": "spark",
+              "label": "Éclat"
+            },
+            {
+              "value": "cup",
+              "label": "Tasse"
+            },
+            {
+              "value": "leaf",
+              "label": "Feuille"
+            },
+            {
+              "value": "star",
+              "label": "Étoile"
+            },
+            {
+              "value": "flower",
+              "label": "Fleur"
+            },
+            {
+              "value": "diamond",
+              "label": "Diamant"
+            },
+            {
+              "value": "check",
+              "label": "Coche"
+            },
+            {
+              "value": "mail",
+              "label": "Enveloppe"
+            },
+            {
+              "value": "phone",
+              "label": "Téléphone"
+            },
+            {
+              "value": "lock",
+              "label": "Cadenas"
+            }
           ]
         },
         {
@@ -198,9 +247,27 @@
       "name": "Zahowa — Multi-colonnes",
       "category": "Zahowa",
       "blocks": [
-        { "type": "column", "settings": { "icon": "leaf", "title": "100% Naturel" } },
-        { "type": "column", "settings": { "icon": "lock", "title": "Paiement sécurisé" } },
-        { "type": "column", "settings": { "icon": "check", "title": "Livraison soignée" } }
+        {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Naturel"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison soignée"
+          }
+        }
       ]
     }
   ]
