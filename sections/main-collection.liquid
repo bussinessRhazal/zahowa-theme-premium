@@ -1,4 +1,4 @@
-<section class="section">
+<section class="zw-scheme-{{ section.settings.color_scheme }} section">
   <div class="container">
     <div class="page-header">
       <h1 class="page-header__title">{{ collection.title }}</h1>
@@ -59,6 +59,22 @@
 {
   "name": "t:sections.main_collection.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "range",
       "id": "products_per_page",

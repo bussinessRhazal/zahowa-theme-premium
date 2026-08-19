@@ -1,4 +1,4 @@
-<section class="section">
+<section class="zw-scheme-{{ section.settings.color_scheme }} section">
   <div class="container">
     <div class="page-header">
       <h1 class="page-header__title">{{ 'sections.main_cart.title' | t }}</h1>
@@ -82,7 +82,24 @@
 {% schema %}
 {
   "name": "t:sections.main_cart.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    }
+  ],
   "presets": [
     {
       "name": "t:sections.main_cart.name"
