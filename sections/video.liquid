@@ -1,4 +1,13 @@
 <section class="zw-scheme-{{ section.settings.color_scheme }} section video-section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+  
+{%- style -%}
+  #section-{{ section.id }} .video-facade { position: relative; display: block; width: 100%; height: 100%; padding: 0; border: 0; background: #150c07; cursor: pointer; }
+  #section-{{ section.id }} .video-facade img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.45s ease; }
+  #section-{{ section.id }} .video-facade:hover img { opacity: 1; }
+  #section-{{ section.id }} .video-facade__play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; display: grid; place-items: center; border: 1px solid var(--color-gold, #c9a35c); border-radius: 50%; color: #f5f0e8; background: rgba(21, 12, 7, 0.55); backdrop-filter: blur(6px); transition: background 0.45s ease, transform 0.45s ease; }
+  #section-{{ section.id }} .video-facade:hover .video-facade__play { background: rgba(201, 163, 92, 0.85); color: #150c07; transform: translate(-50%, -50%) scale(1.06); }
+{%- endstyle -%}
+
   <div class="container">
     {% if section.settings.kicker != blank or section.settings.title != blank %}
       <div class="section__header" data-reveal>
@@ -23,13 +32,36 @@
       {% if section.settings.video_url != blank %}data-video-url="{{ section.settings.video_url }}"{% endif %}
     >
       {%- if section.settings.video_url.type == 'youtube' -%}
-        <iframe
-          src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}{% if section.settings.autoplay %}?autoplay=1&mute=1{% if section.settings.loop %}&loop=1&playlist={{ section.settings.video_url.id }}{% endif %}{% endif %}"
-          title="{{ section.settings.title | default: shop.name | escape }}"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <button
+          type="button"
+          class="video-facade"
+          data-video-facade
+          data-yt-id="{{ section.settings.video_url.id }}"
+          data-autoplay="{% if section.settings.autoplay %}1{% else %}0{% endif %}"
+          data-loop="{% if section.settings.loop %}1{% else %}0{% endif %}"
+          aria-label="{{ section.settings.title | default: 'Lire la vidéo' | escape }}"
+        >
+          <img
+            src="https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/hqdefault.jpg"
+            srcset="https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/mqdefault.jpg 320w, https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/hqdefault.jpg 480w, https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/maxresdefault.jpg 1280w"
+            sizes="(max-width: 749px) 100vw, 66vw"
+            alt="{{ section.settings.title | default: shop.name | escape }}"
+            loading="lazy"
+            width="1280" height="720"
+          >
+          <span class="video-facade__play" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+        <noscript>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{ section.settings.video_url.id }}"
+            title="{{ section.settings.title | default: shop.name | escape }}"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </noscript>
       {%- elsif section.settings.video_url.type == 'vimeo' -%}
         <iframe
           src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}{% if section.settings.autoplay %}?autoplay=1&muted=1{% if section.settings.loop %}&loop=1{% endif %}{% endif %}"
