@@ -236,7 +236,7 @@
         "testimonial_TLRNh9"
       ],
       "settings": {
-        "color_scheme": "creme",
+        "color_scheme": "cafe",
         "kicker": "Ils ont adopté le rituel",
         "title": "Ils *en parlent* mieux que nous",
         "text": "Des milliers de matins transformés à travers la France.",
@@ -253,51 +253,50 @@
         "id": ""
       }
     },
-    "multi_column_FB3RtQ": {
-      "type": "multi-column",
+    "instagram_gallery_BtHqwj": {
+      "type": "instagram-gallery",
       "blocks": {
-        "column_RXjQA4": {
-          "type": "column",
-          "settings": {
-            "icon": "leaf",
-            "title": "100% Naturel",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
+        "image_pHiBpi": {
+          "type": "image",
+          "settings": {}
         },
-        "column_me4k8k": {
-          "type": "column",
-          "settings": {
-            "icon": "lock",
-            "title": "Paiement sécurisé",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
+        "image_bHGNCz": {
+          "type": "image",
+          "settings": {}
         },
-        "column_Dj4EYR": {
-          "type": "column",
-          "settings": {
-            "icon": "check",
-            "title": "Livraison soignée",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
+        "image_M3KBDb": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_aQzMMF": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_RYUD79": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_XziFtE": {
+          "type": "image",
+          "settings": {}
         }
       },
       "block_order": [
-        "column_RXjQA4",
-        "column_me4k8k",
-        "column_Dj4EYR"
+        "image_pHiBpi",
+        "image_bHGNCz",
+        "image_M3KBDb",
+        "image_aQzMMF",
+        "image_RYUD79",
+        "image_XziFtE"
       ],
-      "name": "Zahowa — Multi-colonnes",
+      "name": "Zahowa — Galerie Instagram",
       "settings": {
-        "color_scheme": "cafe",
-        "kicker": "Nos promesses",
-        "title": "Le café, *simplement*",
-        "alt_bg": true,
+        "color_scheme": "creme",
+        "kicker": "@zahowacoffee",
+        "title": "La communauté *Zahowa*",
+        "handle": "zahowacoffee",
+        "instagram_url": "",
+        "cta_label": "Suivre @",
         "id": ""
       }
     },
@@ -337,8 +336,8 @@
     "recipes_grid",
     "video_demo",
     "coffret",
-    "multi_column_FB3RtQ",
     "testimonials",
+    "instagram_gallery_BtHqwj",
     "cercle",
     "faq"
   ]
