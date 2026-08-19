@@ -12,10 +12,11 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "color_scheme": "cafe",
         "image": "shopify://shop_images/hero-coffee.webp",
         "kicker": "— LANCEMENT BIENTÔT",
         "title": "Un café *épicé,* comme tu ne l'as jamais bu.",
-        "text": "Pour qui refuse le café sans âme.",
+        "text": "",
         "button_primary_label": "Rejoindre le Cercle Zahowa Privilège",
         "button_primary_link": "",
         "button_secondary_label": "Découvrir l'histoire",
@@ -31,6 +32,7 @@
     "marquee": {
       "type": "marquee",
       "settings": {
+        "color_scheme": "cafe",
         "items": "CASABLANCA\nFÈS\nMARRAKECH\nRABAT",
         "dark": true,
         "reverse": false
@@ -39,7 +41,7 @@
     "cities": {
       "type": "cities",
       "settings": {
-        "background_color": "#1a0f08",
+        "color_scheme": "cafe",
         "eyebrow": "Les origines",
         "title": "<p>Quatre villes,<br><em>quatre caractères</em></p>",
         "padding_top": 100,
@@ -49,6 +51,7 @@
     "maison": {
       "type": "maison",
       "settings": {
+        "color_scheme": "creme",
         "image": "shopify://shop_images/couple.jpg",
         "kicker": "Notre histoire",
         "title": "La *Maison*",
@@ -62,6 +65,7 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "color_scheme": "creme",
         "collection": "frontpage",
         "products_to_show": 4,
         "kicker": "Nos créations",
@@ -76,6 +80,7 @@
     "recipes_grid": {
       "type": "recipes-grid",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "La collection",
         "title": "Quatre recettes.",
         "subtitle": "Laquelle est la tienne ?",
@@ -87,6 +92,7 @@
     "rituel": {
       "type": "rituel",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "La méthode",
         "title": "Le *Rituel*",
         "text": "Trois gestes pour une infusion parfaite.",
@@ -97,6 +103,7 @@
     "video_demo": {
       "type": "video",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "Démo",
         "title": "Le *rituel* en vidéo",
         "text": "Découvrez en une minute comment infuser votre drip bag Zahowa.",
@@ -111,6 +118,7 @@
     "coffret": {
       "type": "coffret",
       "settings": {
+        "color_scheme": "creme",
         "image": "shopify://shop_images/Memepackagingpremium.png",
         "kicker": "L'idée cadeau",
         "title": "Coffret *Découverte*",
@@ -125,6 +133,7 @@
     "testimonials": {
       "type": "testimonials",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "Ils ont adopté le rituel",
         "title": "Ils *en parlent* mieux que nous",
         "text": "Des milliers de matins transformés à travers la France.",
@@ -137,25 +146,29 @@
         "id": ""
       }
     },
-    "faq": {
-      "type": "faq",
-      "settings": {
-        "kicker": "Questions fréquentes",
-        "title": "Vos *questions*",
-        "text": "Tout ce que vous devez savoir avant votre première infusion.",
-        "open_first": true,
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "cercle": {
       "type": "cercle",
+      "disabled": true,
       "settings": {
+        "color_scheme": "cafe",
         "kicker": "Le cercle privilège",
         "title": "Cercle *Fondateur*",
         "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
         "button_label": "Rejoindre le Cercle",
         "email_placeholder": "",
+        "id": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Questions fréquentes",
+        "title": "Vos *questions*",
+        "text": "Tout ce que vous devez savoir avant votre première infusion.",
+        "open_first": true,
+        "alt_bg": false,
         "id": ""
       }
     }
@@ -171,7 +184,7 @@
     "video_demo",
     "coffret",
     "testimonials",
-    "faq",
-    "cercle"
+    "cercle",
+    "faq"
   ]
 }
