@@ -167,6 +167,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "color_scheme": "creme",
         "collection": "notre-collection",
