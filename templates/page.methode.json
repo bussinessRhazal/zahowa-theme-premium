@@ -1,0 +1,101 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "image-banner",
+      "settings": {
+        "color_scheme": "cafe",
+        "title": "La *Méthode*"
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "color_scheme": "creme"
+      }
+    },
+    "brewing": {
+      "type": "brewing-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Déchirer",
+            "text": "Ouvrez le sachet le long de la ligne pointillée."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Accrocher",
+            "text": "Dépliez les anses et posez le drip bag sur votre tasse."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Verser",
+            "text": "Versez lentement 180 ml d'eau à 92 °C, en trois fois."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Déguster",
+            "text": "Laissez s'égoutter, retirez le sachet, respirez."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "color_scheme": "cafe",
+        "layout": "editorial"
+      }
+    },
+    "rules": {
+      "type": "multi-column",
+      "settings": {
+        "color_scheme": "creme",
+        "title": "Les trois *règles d'or*"
+      }
+    },
+    "video": {
+      "type": "video",
+      "settings": {
+        "color_scheme": "cafe"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "La boutique",
+        "title": "À vous de *jouer*"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Technique",
+        "title": "Questions *fréquentes*"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "intro",
+    "brewing",
+    "rules",
+    "video",
+    "featured",
+    "faq"
+  ]
+}
