@@ -218,6 +218,54 @@
     },
     "testimonials": {
       "type": "testimonials",
+      "blocks": {
+        "testimonial_a9GhJD": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/welcome-to-my-business.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_mNx8Pn": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/professional-man-smiling.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_YxpRig": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_TLRNh9": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/Mains_realistes_tasse.webp",
+            "name": "Camille R.",
+            "location": "Paris",
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_a9GhJD",
+        "testimonial_mNx8Pn",
+        "testimonial_YxpRig",
+        "testimonial_TLRNh9"
+      ],
       "settings": {
         "color_scheme": "creme",
         "kicker": "Ils ont adopté le rituel",
