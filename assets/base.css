@@ -2584,3 +2584,36 @@ html[data-animations="disabled"] [data-reveal] {
     overflow-x: auto;
   }
 }
+
+/* ---------- Section color schemes (P1) ---------- */
+.zw-scheme-creme {
+  --color-bg: #f5f0e8;
+  --color-bg-alt: #ece4d4;
+  --color-bg-card: #faf6ee;
+  --color-ink: #241610;
+  --color-ink-soft: #6b6057;
+  --color-border: #D9CDB4;
+  --zw-gold-text: #8a6d35;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.zw-scheme-cafe {
+  --color-bg: #241610;
+  --color-bg-alt: #1a0f08;
+  --color-bg-card: #2e1c13;
+  --color-ink: #f5f0e8;
+  --color-ink-soft: #A0968A;
+  --color-border: #4a382a;
+  --zw-gold-text: #c9a35c;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.zw-scheme-cafe .section__title,
+.zw-scheme-cafe .section__intro,
+.zw-scheme-cafe h1,
+.zw-scheme-cafe h2,
+.zw-scheme-cafe h3 {
+  color: inherit;
+}
