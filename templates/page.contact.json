@@ -1,9 +1,70 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
       "type": "main-contact",
       "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Avant de nous écrire",
+        "title": "Questions *fréquentes*"
+      }
+    },
+    "reassurance": {
+      "type": "reassurance-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison suivie en Europe",
+            "text": "Offerte dès 49 €"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "CB, PayPal, Apple Pay"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "spark",
+            "title": "Torréfaction artisanale",
+            "text": "En petits lots"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "arrow",
+            "title": "Satisfait ou remboursé",
+            "text": "30 jours"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "color_scheme": "creme"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "faq",
+    "reassurance"
+  ]
 }
