@@ -21,7 +21,7 @@
       "quantity": "Quantité",
       "note": "Note de commande",
       "continue": "Continuer mes achats",
-      "free_shipping_progress": "Plus que <strong>{amount}</strong> pour la livraison offerte",
+      "free_shipping_progress": "Plus que <strong>{{ amount }}</strong> pour la livraison offerte",
       "free_shipping_met": "Félicitations, la livraison est offerte !"
     },
     "newsletter": {
@@ -284,7 +284,7 @@
     },
     "main_collection": {
       "name": "Page collection",
-      "products_count": "{count} recettes",
+      "products_count": "{{ count }} recettes",
       "sort_by": "Trier par",
       "sort_featured": "En vedette",
       "sort_best_selling": "Meilleures ventes",
@@ -351,7 +351,7 @@
       "checkout": "Commander",
       "note": "Note de commande",
       "continue": "Continuer mes achats",
-      "free_shipping_progress": "Plus que <strong>{amount}</strong> pour la livraison offerte",
+      "free_shipping_progress": "Plus que <strong>{{ amount }}</strong> pour la livraison offerte",
       "free_shipping_met": "Félicitations, la livraison est offerte !"
     },
     "main_search": {
