@@ -32,7 +32,7 @@
           <article class="zh-featured-blog__card">
             <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
               {%- if article.image != blank -%}
-                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '450px', widths: '450, 700, 900', alt: article.image.alt | escape }}
+                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 100vw, 33vw', widths: '450, 700, 900', alt: article.image.alt | escape }}
               {%- else -%}
                 <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
               {%- endif -%}
