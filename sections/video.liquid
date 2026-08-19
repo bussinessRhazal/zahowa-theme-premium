@@ -1,4 +1,4 @@
-<section class="section video-section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section video-section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     {% if section.settings.kicker != blank or section.settings.title != blank %}
       <div class="section__header" data-reveal>
@@ -54,6 +54,22 @@
   "name": "t:sections.video.name",
   "settings": [
     {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
+    {
       "type": "text",
       "id": "kicker",
       "label": "t:sections.maison.kicker_label"
@@ -77,7 +93,10 @@
       "type": "video_url",
       "id": "video_url",
       "label": "t:sections.video.video_url_label",
-      "accept": ["youtube", "vimeo"],
+      "accept": [
+        "youtube",
+        "vimeo"
+      ],
       "info": "t:sections.video.video_url_info"
     },
     {
@@ -85,10 +104,22 @@
       "id": "aspect_ratio",
       "label": "t:sections.video.aspect_label",
       "options": [
-        { "value": "16-9", "label": "t:sections.video.ratio_169" },
-        { "value": "4-3", "label": "t:sections.video.ratio_43" },
-        { "value": "1-1", "label": "t:sections.video.ratio_11" },
-        { "value": "9-16", "label": "t:sections.video.ratio_916" }
+        {
+          "value": "16-9",
+          "label": "t:sections.video.ratio_169"
+        },
+        {
+          "value": "4-3",
+          "label": "t:sections.video.ratio_43"
+        },
+        {
+          "value": "1-1",
+          "label": "t:sections.video.ratio_11"
+        },
+        {
+          "value": "9-16",
+          "label": "t:sections.video.ratio_916"
+        }
       ],
       "default": "16-9"
     },

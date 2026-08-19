@@ -1,4 +1,4 @@
-<section class="section testimonials{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section testimonials{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     <div class="section__header" data-reveal>
       {% if section.settings.kicker != blank %}
@@ -84,6 +84,22 @@
   "max_blocks": 18,
   "settings": [
     {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
+    {
       "type": "text",
       "id": "kicker",
       "label": "t:sections.maison.kicker_label",
@@ -105,9 +121,18 @@
       "id": "columns",
       "label": "t:sections.testimonials.columns_label",
       "options": [
-        { "value": "1", "label": "t:sections.testimonials.columns_1" },
-        { "value": "2", "label": "t:sections.testimonials.columns_2" },
-        { "value": "3", "label": "t:sections.testimonials.columns_3" }
+        {
+          "value": "1",
+          "label": "t:sections.testimonials.columns_1"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.testimonials.columns_2"
+        },
+        {
+          "value": "3",
+          "label": "t:sections.testimonials.columns_3"
+        }
       ],
       "default": "3",
       "info": "t:sections.testimonials.columns_info"
@@ -205,9 +230,15 @@
     {
       "name": "t:sections.testimonials.name",
       "blocks": [
-        { "type": "testimonial" },
-        { "type": "testimonial" },
-        { "type": "testimonial" }
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
       ]
     }
   ]
