@@ -44,11 +44,12 @@
         "city_THg3Pr": {
           "type": "city",
           "settings": {
+            "image": "shopify://shop_images/recipe-casablanca_487e7821-6ca9-42f6-b8e9-628133713e74.webp",
             "fallback_color": "#2e1c13",
-            "name": "Fes",
-            "spice": "Cannelle",
+            "name": "Aube de Casablanca",
+            "spice": "Atlantique · Douceur",
             "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
-            "link": "",
+            "link": "shopify://products/aube-de-casablanca",
             "link_label": "Lire la recette"
           }
         },
@@ -56,10 +57,10 @@
           "type": "city",
           "settings": {
             "fallback_color": "#2e1c13",
-            "name": "Fes",
-            "spice": "Cannelle",
+            "name": "Grâce de Rabat",
+            "spice": "Royale · Feutrée",
             "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
-            "link": "",
+            "link": "shopify://products/grace-de-rabat",
             "link_label": "Lire la recette"
           }
         },
