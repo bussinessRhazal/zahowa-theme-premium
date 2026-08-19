@@ -118,51 +118,51 @@
         "padding_bottom": 100
       }
     },
-    "rituel": {
-      "type": "rituel",
+    "multi_column_FB3RtQ": {
+      "type": "multi-column",
       "blocks": {
-        "step_pRjLwm": {
-          "type": "step",
+        "column_RXjQA4": {
+          "type": "column",
           "settings": {
-            "icon": "cup",
-            "icon_size": "lg",
-            "title": "Step 1",
-            "text": "et installez le sachet sur votre tasse."
+            "icon": "leaf",
+            "title": "100% Naturel",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
           }
         },
-        "step_GAmYqL": {
-          "type": "step",
+        "column_me4k8k": {
+          "type": "column",
           "settings": {
-            "icon": "cup",
-            "icon_size": "lg",
-            "title": "Step 2",
-            "text": "et installez le sachet sur votre tasse."
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
           }
         },
-        "step_XtYDUz": {
-          "type": "step",
+        "column_Dj4EYR": {
+          "type": "column",
           "settings": {
-            "icon": "cup",
-            "icon_size": "lg",
-            "title": "Step 3",
-            "text": "et installez le sachet sur votre tasse."
+            "icon": "check",
+            "title": "Livraison soignée",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "step_pRjLwm",
-        "step_GAmYqL",
-        "step_XtYDUz"
+        "column_RXjQA4",
+        "column_me4k8k",
+        "column_Dj4EYR"
       ],
+      "name": "Zahowa — Multi-colonnes",
       "settings": {
         "color_scheme": "creme",
-        "kicker": "La méthode",
-        "title": "Le *Rituel*",
-        "text": "Trois gestes pour une infusion parfaite.",
-        "columns": "3",
-        "button_label": "Découvrir la méthode complète",
-        "button_link": "",
-        "alt_bg": false,
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
         "id": ""
       }
     },
@@ -333,7 +333,7 @@
     "marquee",
     "maison",
     "cities",
-    "rituel",
+    "multi_column_FB3RtQ",
     "featured_collection",
     "recipes_grid",
     "video_demo",
