@@ -176,13 +176,13 @@
         "type": "font_picker",
         "id": "font_display",
         "label": "t:settings_schema.typography.settings.font_display.label",
-        "default": "assistant_n4"
+        "default": "work_sans_n4"
       },
       {
         "type": "font_picker",
         "id": "font_body",
         "label": "t:settings_schema.typography.settings.font_body.label",
-        "default": "assistant_n4"
+        "default": "work_sans_n4"
       },
       {
         "type": "range",
@@ -208,7 +208,7 @@
         "type": "font_picker",
         "id": "font_data",
         "label": "t:settings_schema.typography.settings.font_data.label",
-        "default": "assistant_n4"
+        "default": "work_sans_n4"
       }
     ]
   },
