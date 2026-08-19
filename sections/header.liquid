@@ -1,4 +1,4 @@
-<header class="header{% if settings.header_transparent and template.name == 'index' %} header--transparent{% endif %}" data-header>
+<header class="zw-scheme-{{ section.settings.color_scheme }} header{% if settings.header_transparent and template.name == 'index' %} header--transparent{% endif %}" data-header>
   <div class="container header__inner">
     <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ shop.name }}">
       {%- if settings.logo != blank -%}
@@ -77,6 +77,22 @@
 {
   "name": "t:sections.header.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "link_list",
       "id": "menu",

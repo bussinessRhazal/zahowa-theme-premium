@@ -1,4 +1,4 @@
-<div class="announcement" {% if settings.enable_announcement == false %}hidden{% endif %}>
+<div class="zw-scheme-{{ section.settings.color_scheme }} announcement" {% if settings.enable_announcement == false %}hidden{% endif %}>
   <div class="container">
     {% if settings.announcement_link != blank %}
       <a href="{{ settings.announcement_link }}">
@@ -13,7 +13,24 @@
 {% schema %}
 {
   "name": "t:sections.announcement-bar.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "cafe"
+    }
+  ],
   "presets": [
     {
       "name": "t:sections.announcement-bar.name"
