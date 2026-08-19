@@ -41,6 +41,28 @@
     "cities": {
       "type": "cities",
       "blocks": {
+        "city_THg3Pr": {
+          "type": "city",
+          "settings": {
+            "fallback_color": "#2e1c13",
+            "name": "Fes",
+            "spice": "Cannelle",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "",
+            "link_label": "Lire la recette"
+          }
+        },
+        "city_VfKq7b": {
+          "type": "city",
+          "settings": {
+            "fallback_color": "#2e1c13",
+            "name": "Fes",
+            "spice": "Cannelle",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "",
+            "link_label": "Lire la recette"
+          }
+        },
         "city_6REmXR": {
           "type": "city",
           "settings": {
@@ -66,6 +88,8 @@
         }
       },
       "block_order": [
+        "city_THg3Pr",
+        "city_VfKq7b",
         "city_6REmXR",
         "city_JJpzgc"
       ],
