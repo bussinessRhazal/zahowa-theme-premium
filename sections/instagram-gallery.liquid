@@ -29,7 +29,7 @@
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '300px', widths: '300, 450, 600', alt: block.settings.image.alt | escape }}
+            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 50vw, 25vw', widths: '300, 450, 600', alt: block.settings.image.alt | escape }}
           {%- else -%}
             <div class="zh-instagram__placeholder" aria-hidden="true">
               {% render 'icon', name: 'instagram' %}

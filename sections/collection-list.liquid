@@ -34,7 +34,7 @@
           <a href="{{ link.url }}" class="zh-collection-list__card">
             <div class="zh-collection-list__media">
               {%- if target_collection.featured_image != blank -%}
-                {{ target_collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '400px', widths: '400, 600, 800', alt: target_collection.featured_image.alt | escape }}
+                {{ target_collection.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 50vw, 25vw', widths: '400, 600, 800', alt: target_collection.featured_image.alt | escape }}
               {%- else -%}
                 <div class="zh-collection-list__placeholder" aria-hidden="true">
                   {% render 'icon', name: 'diamond' %}
