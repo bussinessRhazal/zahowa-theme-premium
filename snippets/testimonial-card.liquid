@@ -1,18 +1,28 @@
 {% doc %}
-Renders a single testimonial card (stars, quote, author photo/initials).
+Renders a single testimonial card (stars, quote, author photo/initials, verified badge, product).
 @param {block} block - The testimonial block
+@param {boolean} [show_stars] - Show star rating (default true)
+@param {boolean} [show_verified] - Show verified badge when block is verified (default true)
+@param {string} [verified_text] - Label of the verified badge
 @example
-{% render 'testimonial-card', block: block %}
+{% render 'testimonial-card', block: block, show_stars: section.settings.show_stars %}
 {% enddoc %}
+{%- if show_stars == null -%}{%- assign show_stars = true -%}{%- endif -%}
+{%- if show_verified == null -%}{%- assign show_verified = true -%}{%- endif -%}
 <figure class="testimonial" {{ block.shopify_attributes }}>
-  <div class="testimonial__stars" aria-label="{{ block.settings.rating }}/5">
-    {% for i in (1..5) %}
-      <span class="testimonial__star{% if i > block.settings.rating %} testimonial__star--empty{% endif %}">
-        {% render 'icon', name: 'star' %}
-      </span>
-    {% endfor %}
-  </div>
+  {% if show_stars %}
+    <div class="testimonial__stars" aria-label="{{ block.settings.rating }}/5">
+      {% for i in (1..5) %}
+        <span class="testimonial__star{% if i > block.settings.rating %} testimonial__star--empty{% endif %}">
+          {% render 'icon', name: 'star' %}
+        </span>
+      {% endfor %}
+    </div>
+  {% endif %}
   <blockquote class="testimonial__text">“{{ block.settings.text }}”</blockquote>
+  {% if block.settings.product != blank %}
+    <p class="testimonial__product">{% render 'icon', name: 'cup' %} {{ block.settings.product }}</p>
+  {% endif %}
   <figcaption class="testimonial__author">
     {% if block.settings.photo != blank %}
       {% assign photo_alt = block.settings.photo.alt | escape | default: block.settings.name %}
@@ -28,6 +38,12 @@ Renders a single testimonial card (stars, quote, author photo/initials).
       <cite class="testimonial__name">{{ block.settings.name }}</cite>
       {% if block.settings.location != blank %}
         <span class="testimonial__location">{{ block.settings.location }}</span>
+      {% endif %}
+      {% if show_verified and block.settings.verified %}
+        <span class="testimonial__verified">
+          {% render 'icon', name: 'check' %}
+          {{ verified_text | default: 'Avis vérifié' }}
+        </span>
       {% endif %}
     </div>
   </figcaption>
