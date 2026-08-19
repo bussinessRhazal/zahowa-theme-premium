@@ -1,4 +1,4 @@
-<section class="account-wrap">
+<section class="zw-scheme-{{ section.settings.color_scheme }} account-wrap">
   <div class="container">
     <div class="account-header">
       <h1>{{ 'sections.main_account.title' | t }}</h1>
@@ -64,7 +64,24 @@
 {% schema %}
 {
   "name": "t:sections.main_account.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    }
+  ],
   "presets": [
     {
       "name": "t:sections.main_account.name"

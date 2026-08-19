@@ -17,10 +17,19 @@
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
+    <!-- Polices DS Zahowa : Cormorant Garamond + Jost + Inter, font-display: swap, chargement non bloquant -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@400;500&family=Inter:wght@400;500&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     >
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@400;500&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet"
+      >
+    </noscript>
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -58,6 +67,13 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
+    {%- if settings.animations_enable -%}
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+      <script src="{{ 'zw-animations.js' | asset_url }}" defer></script>
+    {%- else -%}
+      <script src="{{ 'zw-animations.js' | asset_url }}" defer></script>
+    {%- endif -%}
     <noscript>
       <style>
         [data-reveal] { opacity: 1 !important; transform: none !important; }
@@ -98,12 +114,13 @@
         --color-button-text: {{ settings.color_dark_button_text }};
         --color-error: #e57373;
         --color-success: #81c784;
+        --zw-gold-text: #c9a35c; /* Sur café, l'or plein passe déjà (7,4:1) */
       }
 
       :root {
-        --font-display: {{ settings.font_display.family }}, "Cormorant Garamond", "Playfair Display", Georgia, serif;
-        --font-body: {{ settings.font_body.family }}, "Jost", system-ui, sans-serif;
-        --font-data: {{ settings.font_data.family | default: 'JetBrains Mono' }}, "JetBrains Mono", ui-monospace, monospace;
+        --font-display: {{ settings.font_display.family }}, "Cormorant Garamond", Georgia, serif;
+        --font-body: {{ settings.font_body.family }}, "Jost", "Inter", system-ui, sans-serif;
+        --font-data: {{ settings.font_data.family | default: 'Inter' }}, "Inter", system-ui, sans-serif;
         --base-font-size: {{ settings.base_font_size }}px;
         --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
         --page-width: {{ settings.page_width }}px;
@@ -125,6 +142,8 @@
         --zw-ink-500: #6b6057;
         --zw-gold-400: #c9a35c;
         --zw-gold-600: #b8954a;
+        /* Or « texte » : AA 4,6:1 sur crème (l'or #c9a35c reste réservé aux bordures, ornements et grands titres) */
+        --zw-gold-text: #8a6d35;
       }
     </style>
   </head>

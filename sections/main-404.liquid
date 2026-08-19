@@ -1,4 +1,4 @@
-<section class="section" style="min-height:60vh;display:flex;align-items:center;">
+<section class="zw-scheme-{{ section.settings.color_scheme }} section" style="min-height:60vh;display:flex;align-items:center;">
   <div class="container" style="text-align:center;max-width:640px;">
     <p class="section__kicker" style="font-size:4rem;line-height:1;color:var(--color-gold);margin-bottom:0.5rem;">404</p>
     <h1 class="page-header__title">{{ 'sections.main_404.title' | t }}</h1>
@@ -13,7 +13,24 @@
 {% schema %}
 {
   "name": "t:sections.main_404.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    }
+  ],
   "presets": [
     {
       "name": "t:sections.main_404.name"

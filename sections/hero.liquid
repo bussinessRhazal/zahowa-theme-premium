@@ -1,12 +1,12 @@
 <section
-  class="hero{% if section.settings.center %} hero--center{% endif %}{% if section.settings.height == 'short' %} hero--short{% endif %}{% if settings.hero_parallax %} hero--parallax{% endif %}"
+  class="zw-scheme-{{ section.settings.color_scheme }} hero{% if section.settings.center %} hero--center{% endif %}{% if section.settings.height == 'short' %} hero--short{% endif %}{% if settings.hero_parallax %} hero--parallax{% endif %}"
   data-parallax
   {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}
 >
   <div class="hero__media">
     {% if section.settings.image != blank %}
       {% assign hero_alt = section.settings.image.alt | escape | default: shop.name %}
-      {{ section.settings.image | image_url: width: 2400 | image_tag: alt: hero_alt, loading: 'eager', fetchpriority: 'high', sizes: '100vw' }}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: alt: hero_alt, loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '800, 1200, 1600, 2400' }}
     {% else %}
       <div class="hero__placeholder"></div>
     {% endif %}
@@ -65,6 +65,22 @@
 {
   "name": "t:sections.hero.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "cafe"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -131,8 +147,14 @@
       "id": "height",
       "label": "t:sections.hero.height_label",
       "options": [
-        { "value": "full", "label": "t:sections.hero.height_full" },
-        { "value": "short", "label": "t:sections.hero.height_short" }
+        {
+          "value": "full",
+          "label": "t:sections.hero.height_full"
+        },
+        {
+          "value": "short",
+          "label": "t:sections.hero.height_short"
+        }
       ],
       "default": "full"
     },

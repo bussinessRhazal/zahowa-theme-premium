@@ -54,7 +54,7 @@
   }
 </script>
 
-<section class="product" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} product" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     <nav class="breadcrumb" aria-label="Fil d'Ariane">
       <a href="{{ routes.root_url }}">{{ 'sections.header.name' | t }}</a>
@@ -71,7 +71,7 @@
         <div class="product__gallery-main" data-gallery-main>
           {% if product.featured_image != blank %}
             {% assign pdp_alt = product.featured_image.alt | escape | default: product.title %}
-            {{ product.featured_image | image_url: width: 1200 | image_tag: alt: pdp_alt, loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 50vw, 100vw' }}
+            {{ product.featured_image | image_url: width: 1200 | image_tag: alt: pdp_alt, loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 749px) 100vw, 55vw', widths: '600, 900, 1200' }}
           {% endif %}
         </div>
         {% if product.images.size > 1 %}
@@ -85,6 +85,8 @@
               >
                 <img
                   src="{{ image | image_url: width: 200 }}"
+                  srcset="{{ image | image_url: width: 160 }} 160w, {{ image | image_url: width: 320 }} 320w"
+                  sizes="200px"
                   data-full="{{ image | image_url: width: 1200 }}"
                   alt="{{ image.alt | escape | default: product.title }}"
                   width="200"
@@ -236,6 +238,22 @@
 {
   "name": "t:sections.main_product.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "checkbox",
       "id": "show_vendor",

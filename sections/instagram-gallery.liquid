@@ -2,7 +2,7 @@
   Zahowa — Galerie Instagram (grille d'images + lien vers le profil)
 {%- endcomment -%}
 
-<section class="section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     {%- if section.settings.kicker != blank or section.settings.title != blank -%}
       <div class="section__header" data-reveal>
@@ -29,7 +29,7 @@
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '300px', widths: '300, 450, 600', alt: block.settings.image.alt | escape }}
+            {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 50vw, 25vw', widths: '300, 450, 600', alt: block.settings.image.alt | escape }}
           {%- else -%}
             <div class="zh-instagram__placeholder" aria-hidden="true">
               {% render 'icon', name: 'instagram' %}
@@ -154,9 +154,25 @@
 
 {% schema %}
 {
-  "name": "Zahowa — Galerie Instagram",
+  "name": "Galerie Instagram",
   "max_blocks": 6,
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "text",
       "id": "kicker",
@@ -210,12 +226,24 @@
       "name": "Zahowa — Galerie Instagram",
       "category": "Zahowa",
       "blocks": [
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" },
-        { "type": "image" }
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
       ]
     }
   ]

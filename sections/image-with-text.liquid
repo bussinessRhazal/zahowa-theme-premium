@@ -1,9 +1,9 @@
-<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container maison__grid">
     <div class="maison__media" data-reveal>
       {% if section.settings.image != blank %}
         {% assign iwt_alt = section.settings.image.alt | escape | default: section.settings.title %}
-        {{ section.settings.image | image_url: width: 1400 | image_tag: alt: iwt_alt, loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw' }}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: alt: iwt_alt, loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '480, 800, 1200' }}
       {% endif %}
     </div>
     <div class="maison__content" data-reveal>
@@ -32,6 +32,22 @@
 {
   "name": "t:sections.image_with_text.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "image_picker",
       "id": "image",

@@ -136,10 +136,10 @@
       if (!res.ok) return;
       const sections = await res.json();
       if (sections['cart-drawer']) {
-        const tmp = document.createElement('div');
-        tmp.innerHTML = sections['cart-drawer'];
-        const newBody = tmp.querySelector('[data-cart-body]');
-        if (newBody) body.innerHTML = newBody.innerHTML;
+        // P2 sécurité : parsing via DOMParser + replaceChildren (pas d'innerHTML direct)
+        const doc = new DOMParser().parseFromString(sections['cart-drawer'], 'text/html');
+        const newBody = doc.querySelector('[data-cart-body]');
+        if (newBody) body.replaceChildren(...newBody.childNodes);
       }
     } catch (e) {}
   }
@@ -312,7 +312,11 @@
       variantInput.dispatchEvent(new Event('change', { bubbles: true }));
       const money = formatMoney(variant.price);
       if (priceRow) {
-        priceRow.innerHTML = '<span class="product__price">' + money + '</span>';
+        // P2 sécurité : construction DOM au lieu d'innerHTML
+        const priceSpan = document.createElement('span');
+        priceSpan.className = 'product__price';
+        priceSpan.textContent = money;
+        priceRow.replaceChildren(priceSpan);
       }
       if (stickyPrice) stickyPrice.textContent = money;
       if (submitBtn) {

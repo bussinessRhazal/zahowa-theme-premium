@@ -2,7 +2,7 @@
   Zahowa — Articles à la une (3 derniers articles d'un blog)
 {%- endcomment -%}
 
-<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     {%- if section.settings.kicker != blank or section.settings.title != blank -%}
       <div class="section__header" data-reveal>
@@ -32,7 +32,7 @@
           <article class="zh-featured-blog__card">
             <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
               {%- if article.image != blank -%}
-                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '450px', widths: '450, 700, 900', alt: article.image.alt | escape }}
+                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 100vw, 33vw', widths: '450, 700, 900', alt: article.image.alt | escape }}
               {%- else -%}
                 <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
               {%- endif -%}
@@ -48,7 +48,7 @@
                 <p class="zh-featured-blog__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 130 }}</p>
               {%- endif -%}
               <a href="{{ article.url }}" class="zh-featured-blog__link">
-                {{ section.settings.read_more_label | default: 'Lire l\'article' | escape }}
+                {{ section.settings.read_more_label | default: "Lire l'article" | escape }}
               </a>
             </div>
           </article>
@@ -123,7 +123,7 @@
   }
 
   #shopify-section-{{ section.id }} .zh-featured-blog__title {
-    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-family: var(--zw-font-display, 'Cormorant Garamond', Georgia, serif);
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.3;
@@ -178,8 +178,24 @@
 
 {% schema %}
 {
-  "name": "Zahowa — Articles à la une",
+  "name": "Articles à la une",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "text",
       "id": "kicker",

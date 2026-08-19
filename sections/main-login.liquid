@@ -1,4 +1,4 @@
-<section class="auth-wrap">
+<section class="zw-scheme-{{ section.settings.color_scheme }} auth-wrap">
   <div class="container">
     <div class="auth-card">
       <h1>{{ 'sections.main_login.title' | t }}</h1>
@@ -60,7 +60,24 @@
 {% schema %}
 {
   "name": "t:sections.main_login.name",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    }
+  ],
   "presets": [
     {
       "name": "t:sections.main_login.name"

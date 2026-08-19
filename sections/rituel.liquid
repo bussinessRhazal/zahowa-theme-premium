@@ -1,4 +1,4 @@
-<section class="section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     <div class="section__header" data-reveal>
       {% if section.settings.kicker != blank %}
@@ -42,6 +42,22 @@
   "name": "t:sections.rituel.name",
   "max_blocks": 6,
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "text",
       "id": "kicker",
@@ -96,9 +112,15 @@
     {
       "name": "t:sections.rituel.name",
       "blocks": [
-        { "type": "step" },
-        { "type": "step" },
-        { "type": "step" }
+        {
+          "type": "step"
+        },
+        {
+          "type": "step"
+        },
+        {
+          "type": "step"
+        }
       ]
     }
   ]

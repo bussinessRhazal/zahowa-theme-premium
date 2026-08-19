@@ -2,7 +2,7 @@
   Zahowa — Newsletter (inscription email autonome, panneau vert nuit)
 {%- endcomment -%}
 
-<section class="section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
+<section class="zw-scheme-{{ section.settings.color_scheme }} section" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
     <div class="zh-newsletter" data-reveal>
       {%- if section.settings.kicker != blank -%}
@@ -28,7 +28,7 @@
             aria-label="{{ section.settings.placeholder | default: 'Votre adresse email' | escape }}"
             required
           >
-          <button type="submit" class="zh-newsletter__btn">{{ section.settings.button_label | default: 'S\'inscrire' | escape }}</button>
+          <button type="submit" class="zh-newsletter__btn">{{ section.settings.button_label | default: "S'inscrire" | escape }}</button>
         </div>
         {%- if form.posted_successfully? -%}
           <p class="zh-newsletter__success">{{ section.settings.success_message | default: 'Merci ! Votre inscription est confirmée.' }}</p>
@@ -65,7 +65,7 @@
   }
 
   #shopify-section-{{ section.id }} .zh-newsletter__title {
-    font-family: var(--zw-font-display, 'Playfair Display', Georgia, serif);
+    font-family: var(--zw-font-display, 'Cormorant Garamond', Georgia, serif);
     font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 400;
     line-height: 1.15;
@@ -162,6 +162,22 @@
 {
   "name": "Zahowa — Newsletter",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "cafe"
+    },
     {
       "type": "text",
       "id": "kicker",

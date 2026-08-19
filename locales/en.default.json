@@ -21,7 +21,7 @@
       "quantity": "Quantity",
       "note": "Order note",
       "continue": "Continue shopping",
-      "free_shipping_progress": "<strong>{amount}</strong> away from free shipping",
+      "free_shipping_progress": "<strong>{{ amount }}</strong> away from free shipping",
       "free_shipping_met": "Congratulations, shipping is free!"
     },
     "newsletter": {
@@ -284,7 +284,7 @@
     },
     "main_collection": {
       "name": "Collection page",
-      "products_count": "{count} recipes",
+      "products_count": "{{ count }} recipes",
       "sort_by": "Sort by",
       "sort_featured": "Featured",
       "sort_best_selling": "Best selling",
@@ -351,7 +351,7 @@
       "checkout": "Checkout",
       "note": "Order note",
       "continue": "Continue shopping",
-      "free_shipping_progress": "<strong>{amount}</strong> away from free shipping",
+      "free_shipping_progress": "<strong>{{ amount }}</strong> away from free shipping",
       "free_shipping_met": "Congratulations, shipping is free!"
     },
     "main_search": {

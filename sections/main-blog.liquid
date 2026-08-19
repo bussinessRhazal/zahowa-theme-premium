@@ -1,7 +1,8 @@
-<section class="section">
+<section class="zw-scheme-{{ section.settings.color_scheme }} section">
   <div class="container">
     <div class="page-header">
-      <h1 class="page-header__title">{{ blog.title | default: 'sections.main_blog.title' | t }}</h1>
+      {%- assign blog_title_default = 'sections.main_blog.title' | t -%}
+      <h1 class="page-header__title">{{ blog.title | default: blog_title_default }}</h1>
       {% if blog.description != blank %}
         <p class="page-header__text">{{ blog.description }}</p>
       {% endif %}
@@ -15,7 +16,7 @@
               {% if article.image != blank %}
                 {% assign blog_alt = article.image.alt | escape | default: article.title %}
                 <a href="{{ article.url }}" class="article-card__media">
-                  {{ article.image | image_url: width: 900 | image_tag: alt: blog_alt, loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw' }}
+                  {{ article.image | image_url: width: 900 | image_tag: alt: blog_alt, loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw', widths: '400, 600, 800' }}
                 </a>
               {% endif %}
               <div class="article-card__body">
@@ -63,6 +64,22 @@
 {
   "name": "t:sections.main_blog.name",
   "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        {
+          "value": "creme",
+          "label": "Crème (clair)"
+        },
+        {
+          "value": "cafe",
+          "label": "Café foncé (sombre)"
+        }
+      ],
+      "default": "creme"
+    },
     {
       "type": "range",
       "id": "posts_per_page",
