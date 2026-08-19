@@ -12,7 +12,7 @@
       {% if article.image != blank %}
         {% assign article_alt = article.image.alt | escape | default: article.title %}
         <div class="article__media">
-          {{ article.image | image_url: width: 1600 | image_tag: alt: article_alt, loading: 'lazy', sizes: '100vw' }}
+          {{ article.image | image_url: width: 1600 | image_tag: alt: article_alt, loading: 'lazy', sizes: '100vw', widths: '800, 1200, 1600' }}
         </div>
       {% endif %}
 
