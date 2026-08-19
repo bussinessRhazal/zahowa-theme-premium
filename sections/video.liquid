@@ -40,7 +40,7 @@
         ></iframe>
       {%- elsif section.settings.cover_image != blank -%}
         {% assign cover_alt = section.settings.cover_image.alt | escape | default: section.settings.title %}
-        {{ section.settings.cover_image | image_url: width: 1600 | image_tag: alt: cover_alt, loading: 'lazy', sizes: '100vw' }}
+        {{ section.settings.cover_image | image_url: width: 1600 | image_tag: alt: cover_alt, loading: 'lazy', sizes: '100vw', widths: '800, 1200, 1600, 2400' }}
         <p class="video-frame__placeholder-text">{{ 'sections.video.hint' | t }}</p>
       {%- else -%}
         <p class="video-frame__placeholder-text">{{ 'sections.video.hint' | t }}</p>

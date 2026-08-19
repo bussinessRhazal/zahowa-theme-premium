@@ -9,9 +9,9 @@
           <a href="{{ collection.url }}" class="card" data-reveal>
             <div class="card__media">
               {% if collection.image != blank %}
-                {{ collection.image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw' }}
+                {{ collection.image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '400, 600, 800' }}
               {% elsif collection.products.first != blank and collection.products.first.featured_image != blank %}
-                {{ collection.products.first.featured_image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw' }}
+                {{ collection.products.first.featured_image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', sizes: '(min-width: 990px) 25vw, 50vw', widths: '400, 600, 800' }}
               {% endif %}
             </div>
             <div class="card__body">

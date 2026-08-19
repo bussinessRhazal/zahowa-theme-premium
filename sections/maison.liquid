@@ -3,7 +3,7 @@
     <div class="maison__media" data-reveal>
       {% if section.settings.image != blank %}
         {% assign maison_alt = section.settings.image.alt | escape | default: section.settings.title %}
-        {{ section.settings.image | image_url: width: 1400 | image_tag: alt: maison_alt, loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw' }}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: alt: maison_alt, loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw', widths: '480, 800, 1200' }}
       {% else %}
         <div class="maison__placeholder"></div>
       {% endif %}
