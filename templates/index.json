@@ -120,6 +120,42 @@
     },
     "rituel": {
       "type": "rituel",
+      "blocks": {
+        "step_pRjLwm": {
+          "type": "step",
+          "settings": {
+            "title": "Step 1",
+            "text": "et installez le sachet sur votre tasse."
+          }
+        },
+        "step_GAmYqL": {
+          "type": "step",
+          "settings": {
+            "title": "Step 2",
+            "text": "et installez le sachet sur votre tasse."
+          }
+        },
+        "step_XtYDUz": {
+          "type": "step",
+          "settings": {
+            "title": "Step 3",
+            "text": "et installez le sachet sur votre tasse."
+          }
+        },
+        "step_dCeejf": {
+          "type": "step",
+          "settings": {
+            "title": "Step 4",
+            "text": "et installez le sachet sur votre tasse."
+          }
+        }
+      },
+      "block_order": [
+        "step_pRjLwm",
+        "step_GAmYqL",
+        "step_XtYDUz",
+        "step_dCeejf"
+      ],
       "settings": {
         "color_scheme": "creme",
         "kicker": "La méthode",
@@ -146,6 +182,7 @@
     },
     "recipes_grid": {
       "type": "recipes-grid",
+      "disabled": true,
       "settings": {
         "color_scheme": "creme",
         "kicker": "La collection",
