@@ -11,10 +11,8 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "disabled": true,
       "settings": {
         "color_scheme": "cafe",
-        "image": "shopify://shop_images/hero-coffee.webp",
         "kicker": "— LANCEMENT BIENTÔT",
         "title": "Un café *épicé,* comme tu ne l'as jamais bu.",
         "text": "",
@@ -30,104 +28,6 @@
         "id": ""
       }
     },
-    "hero_anime_rMyPUG": {
-      "type": "hero-anime",
-      "blocks": {
-        "recipe_phR8kr": {
-          "type": "recipe",
-          "settings": {
-            "name": "Aube de Casablanca",
-            "notes": "Miel · Fleur d'oranger",
-            "palette": "casablanca",
-            "product_url": ""
-          }
-        },
-        "recipe_VUejRe": {
-          "type": "recipe",
-          "settings": {
-            "name": "Grâce de Rabat",
-            "notes": "Caramel · Cannelle",
-            "palette": "rabat",
-            "product_url": ""
-          }
-        },
-        "recipe_Gz9gAc": {
-          "type": "recipe",
-          "settings": {
-            "name": "Âme de Fès",
-            "notes": "Cardamome · Cacao",
-            "palette": "fes",
-            "product_url": ""
-          }
-        },
-        "recipe_MWiHKF": {
-          "type": "recipe",
-          "settings": {
-            "name": "Fièvre de Marrakech",
-            "notes": "Gingembre · Piment doux",
-            "palette": "marrakech",
-            "product_url": ""
-          }
-        },
-        "floating_item_wR9RRt": {
-          "type": "floating_item",
-          "settings": {
-            "svg_fallback": "bean",
-            "size": 80
-          }
-        },
-        "floating_item_d8pFp4": {
-          "type": "floating_item",
-          "settings": {
-            "svg_fallback": "anise",
-            "size": 60
-          }
-        },
-        "floating_item_yTh6HA": {
-          "type": "floating_item",
-          "settings": {
-            "svg_fallback": "cinnamon",
-            "size": 80
-          }
-        },
-        "floating_item_VYGtcA": {
-          "type": "floating_item",
-          "settings": {
-            "svg_fallback": "leaf",
-            "size": 55
-          }
-        }
-      },
-      "block_order": [
-        "recipe_phR8kr",
-        "recipe_VUejRe",
-        "recipe_Gz9gAc",
-        "recipe_MWiHKF",
-        "floating_item_wR9RRt",
-        "floating_item_d8pFp4",
-        "floating_item_yTh6HA",
-        "floating_item_VYGtcA"
-      ],
-      "name": "Hero animé — Zahowa",
-      "settings": {
-        "kicker": "Zahowa Coffee — Lancement novembre 2026",
-        "title_line1": "Le café",
-        "title_emphasis": "épicé",
-        "title_line2": "comme tu ne l'as jamais vu",
-        "description": "<p>Des cafés de spécialité torréfiés avec soin, mariés aux épices du Maroc. Cardamome, cannelle, gingembre — chaque recette est un voyage.</p>",
-        "cta_label": "Découvrir la recette",
-        "cta_url": "",
-        "badge_text": "Café de spécialité — Montpellier",
-        "side_title": "",
-        "aria_label": "Zahowa Coffee — café de spécialité épicé",
-        "default_product_image": "shopify://shop_images/hero-coffee_a57b1f47-9dae-46b6-ad14-14a4a45dd171.webp",
-        "bg_inner": "#3a241a",
-        "bg_mid": "#241610",
-        "bg_outer": "#120a06",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
     "marquee": {
       "type": "marquee",
       "settings": {
@@ -137,18 +37,16 @@
         "reverse": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
+    "maison": {
+      "type": "maison",
       "settings": {
         "color_scheme": "creme",
-        "collection": "notre-collection",
-        "products_to_show": 4,
-        "kicker": "Nos créations",
-        "title": "Nos *Recettes*",
-        "text": "Quatre villes. Quatre caractères. Chacune un rituel.",
-        "portrait": false,
-        "show_view_all": true,
+        "image": "shopify://shop_images/couple.jpg",
+        "kicker": "Notre histoire",
+        "title": "La *Maison*",
+        "text": "<p>Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.</p>",
+        "button_label": "Découvrir l'histoire",
+        "button_link": "",
         "alt_bg": false,
         "id": ""
       }
@@ -219,31 +117,19 @@
         "padding_bottom": 100
       }
     },
-    "maison": {
-      "type": "maison",
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "color_scheme": "creme",
-        "image": "shopify://shop_images/couple.jpg",
-        "kicker": "Notre histoire",
-        "title": "La *Maison*",
-        "text": "<p>Née à Fès, Zahowa célèbre le mariage du café arabica et des épices marocaines. Chaque recette raconte une ville, chaque tasse un rituel.</p>",
-        "button_label": "Découvrir l'histoire",
-        "button_link": "",
+        "collection": "notre-collection",
+        "products_to_show": 4,
+        "kicker": "Nos créations",
+        "title": "Nos *Recettes*",
+        "text": "Quatre villes. Quatre caractères. Chacune un rituel.",
+        "portrait": false,
+        "show_view_all": true,
         "alt_bg": false,
-        "id": ""
-      }
-    },
-    "rituel": {
-      "type": "rituel",
-      "settings": {
-        "color_scheme": "cafe",
-        "kicker": "La méthode",
-        "title": "Le *Rituel*",
-        "text": "Trois gestes pour une infusion parfaite.",
-        "columns": "3",
-        "button_label": "Découvrir la méthode complète",
-        "button_link": "",
-        "alt_bg": true,
         "id": ""
       }
     },
@@ -413,19 +299,6 @@
         "id": ""
       }
     },
-    "faq": {
-      "type": "faq",
-      "disabled": true,
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Questions fréquentes",
-        "title": "Vos *questions*",
-        "text": "Tout ce que vous devez savoir avant votre première infusion.",
-        "open_first": true,
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "cercle": {
       "type": "cercle",
       "disabled": true,
@@ -438,22 +311,33 @@
         "email_placeholder": "",
         "id": ""
       }
+    },
+    "faq": {
+      "type": "faq",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Questions fréquentes",
+        "title": "Vos *questions*",
+        "text": "Tout ce que vous devez savoir avant votre première infusion.",
+        "open_first": true,
+        "alt_bg": false,
+        "id": ""
+      }
     }
   },
   "order": [
     "hero",
-    "hero_anime_rMyPUG",
     "marquee",
-    "featured_collection",
-    "cities",
     "maison",
-    "rituel",
+    "cities",
+    "featured_collection",
     "recipes_grid",
     "video_demo",
     "coffret",
     "testimonials",
     "instagram_gallery_BtHqwj",
-    "faq",
-    "cercle"
+    "cercle",
+    "faq"
   ]
 }
