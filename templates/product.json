@@ -86,7 +86,7 @@
         "products_to_show": 4,
         "kicker": "Pour continuer",
         "title": "Vous aimerez *aussi*",
-        "portrait": false,
+        "portrait": true,
         "alt_bg": false,
         "id": "",
         "current_product_id": ""
