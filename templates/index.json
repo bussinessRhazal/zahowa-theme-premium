@@ -241,6 +241,9 @@
         "color_scheme": "cafe",
         "eyebrow": "Les origines",
         "title": "<p>Quatre villes,<br/><em>quatre caractères</em></p>",
+        "show_cta": true,
+        "cta_label": "Voir nos recettes",
+        "cta_link": "shopify://collections/nos-recettes",
         "padding_top": 100,
         "padding_bottom": 100
       }
