@@ -11,6 +11,7 @@
   "sections": {
     "hero": {
       "type": "hero",
+      "disabled": true,
       "settings": {
         "color_scheme": "cafe",
         "kicker": "— LANCEMENT BIENTÔT",
