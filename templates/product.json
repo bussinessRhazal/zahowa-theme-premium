@@ -12,6 +12,18 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "tasting_scores_hKAQJt": {
+          "type": "tasting_scores",
+          "settings": {
+            "heading": "Profil de dégustation",
+            "label_1": "Intensité",
+            "score_1": 7,
+            "label_2": "Rondeur",
+            "score_2": 8,
+            "label_3": "Épices",
+            "score_3": 9
+          }
+        },
         "share_tB4JmG": {
           "type": "share",
           "settings": {
@@ -24,6 +36,7 @@
         }
       },
       "block_order": [
+        "tasting_scores_hKAQJt",
         "share_tB4JmG"
       ],
       "settings": {
