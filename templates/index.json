@@ -28,6 +28,103 @@
         "id": ""
       }
     },
+    "hero_anime_RFzcta": {
+      "type": "hero-anime",
+      "blocks": {
+        "recipe_tXXnnD": {
+          "type": "recipe",
+          "settings": {
+            "name": "Aube de Casablanca",
+            "notes": "Miel · Fleur d'oranger",
+            "palette": "casablanca",
+            "product_url": ""
+          }
+        },
+        "recipe_RUhUKX": {
+          "type": "recipe",
+          "settings": {
+            "name": "Grâce de Rabat",
+            "notes": "Caramel · Cannelle",
+            "palette": "rabat",
+            "product_url": ""
+          }
+        },
+        "recipe_eD6NYQ": {
+          "type": "recipe",
+          "settings": {
+            "name": "Âme de Fès",
+            "notes": "Cardamome · Cacao",
+            "palette": "fes",
+            "product_url": ""
+          }
+        },
+        "recipe_HEerYM": {
+          "type": "recipe",
+          "settings": {
+            "name": "Fièvre de Marrakech",
+            "notes": "Gingembre · Piment doux",
+            "palette": "marrakech",
+            "product_url": ""
+          }
+        },
+        "floating_item_jryJVg": {
+          "type": "floating_item",
+          "settings": {
+            "svg_fallback": "bean",
+            "size": 70
+          }
+        },
+        "floating_item_HMk6qC": {
+          "type": "floating_item",
+          "settings": {
+            "svg_fallback": "anise",
+            "size": 60
+          }
+        },
+        "floating_item_irxit4": {
+          "type": "floating_item",
+          "settings": {
+            "svg_fallback": "cinnamon",
+            "size": 80
+          }
+        },
+        "floating_item_aHTxyR": {
+          "type": "floating_item",
+          "settings": {
+            "svg_fallback": "leaf",
+            "size": 55
+          }
+        }
+      },
+      "block_order": [
+        "recipe_tXXnnD",
+        "recipe_RUhUKX",
+        "recipe_eD6NYQ",
+        "recipe_HEerYM",
+        "floating_item_jryJVg",
+        "floating_item_HMk6qC",
+        "floating_item_irxit4",
+        "floating_item_aHTxyR"
+      ],
+      "name": "Hero animé — Zahowa",
+      "settings": {
+        "kicker": "Zahowa Coffee — Lancement novembre 2026",
+        "title_line1": "Le café",
+        "title_emphasis": "épicé",
+        "title_line2": "",
+        "description": "<p>Des cafés de spécialité torréfiés avec soin, mariés aux épices du Maroc. Cardamome, cannelle, gingembre — chaque recette est un voyage.</p>",
+        "cta_label": "Découvrir la recette",
+        "cta_url": "",
+        "badge_text": "Café de spécialité — Montpellier",
+        "side_title": "Quatre recettes, quatre villes",
+        "aria_label": "Zahowa Coffee — café de spécialité épicé",
+        "bg_inner": "#3a241a",
+        "bg_mid": "#241610",
+        "bg_outer": "#120a06",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "marquee": {
       "type": "marquee",
       "settings": {
@@ -328,6 +425,7 @@
   },
   "order": [
     "hero",
+    "hero_anime_RFzcta",
     "marquee",
     "maison",
     "cities",
