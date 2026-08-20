@@ -38,6 +38,8 @@
             "name": "Aube de Casablanca",
             "notes": "Miel · Fleur d'oranger",
             "palette": "casablanca",
+            "product_image": "shopify://shop_images/Boxe_Casablanca.png",
+            "card_image": "shopify://shop_images/Memepackagingpremium_10d38fc2-24b4-4b0c-b399-966410c6e17f.png",
             "product_url": ""
           }
         },
@@ -71,6 +73,7 @@
         "floating_item_TtfL4h": {
           "type": "floating_item",
           "settings": {
+            "asset_spice": "none",
             "svg_fallback": "bean",
             "size": 70
           }
@@ -78,6 +81,7 @@
         "floating_item_yQQRWM": {
           "type": "floating_item",
           "settings": {
+            "asset_spice": "none",
             "svg_fallback": "anise",
             "size": 60
           }
@@ -85,6 +89,7 @@
         "floating_item_zwLrTk": {
           "type": "floating_item",
           "settings": {
+            "asset_spice": "none",
             "svg_fallback": "cinnamon",
             "size": 80
           }
@@ -92,6 +97,7 @@
         "floating_item_QdWLAX": {
           "type": "floating_item",
           "settings": {
+            "asset_spice": "none",
             "svg_fallback": "leaf",
             "size": 55
           }
@@ -119,7 +125,13 @@
         "badge_text": "Café de spécialité — Montpellier",
         "side_title": "Quatre recettes, quatre villes",
         "aria_label": "Zahowa Coffee — café de spécialité épicé",
+        "layout_mode": "fond",
+        "bg_position": "right",
+        "image_scale": 100,
         "default_product_image": "shopify://shop_images/39ae7803-b90b-4cd8-8f56-8ac4ab47efc6.jpg",
+        "show_steam": true,
+        "steam_x": 68,
+        "steam_y": 32,
         "bg_inner": "#3a241a",
         "bg_mid": "#241610",
         "bg_outer": "#120a06",
