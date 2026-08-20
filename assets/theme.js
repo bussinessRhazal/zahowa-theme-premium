@@ -342,8 +342,15 @@
     thumbs.forEach((thumb) => {
       thumb.addEventListener('click', () => {
         const img = thumb.querySelector('img');
-        if (!img) return;
-        main.querySelector('img').src = img.dataset.full || img.src;
+        const mainImg = main.querySelector('img');
+        if (!img || !mainImg) return;
+        const full = img.dataset.full || img.src;
+        /* srcset/sizes écrasent src dans le navigateur : il faut les retirer
+           pour que la nouvelle image s'affiche réellement */
+        mainImg.removeAttribute('srcset');
+        mainImg.removeAttribute('sizes');
+        mainImg.src = full;
+        if (img.alt) mainImg.alt = img.alt;
         thumbs.forEach((t) => t.classList.remove('is-active'));
         thumb.classList.add('is-active');
       });
