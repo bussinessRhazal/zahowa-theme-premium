@@ -1,6 +1,13 @@
 {%- comment -%}
-  Zahowa — Articles à la une (3 derniers articles d'un blog)
+  Zahowa — Articles à la une
+  Chaque bloc = un article choisi manuellement (photo, titre, date, lien).
+  Si aucun bloc : affiche les derniers articles du blog sélectionné.
+  Paramètres : blog, nombre d'articles par ligne, libellé du lien.
 {%- endcomment -%}
+
+{%- liquid
+  assign cols = section.settings.columns | default: 3
+-%}
 
 <section class="zw-scheme-{{ section.settings.color_scheme }} section{% if section.settings.alt_bg %} section--alt{% endif %}" {% if section.settings.id != blank %}id="{{ section.settings.id }}"{% endif %}>
   <div class="container">
@@ -18,54 +25,89 @@
       </div>
     {%- endif -%}
 
-    {%- liquid
-      if section.settings.blog != blank
-        assign featured_blog = blogs[section.settings.blog]
-      else
-        assign featured_blog = blogs.first
-      endif
-    -%}
+    {%- assign article_blocks = section.blocks | where: 'type', 'article' -%}
 
-    {%- if featured_blog != nil and featured_blog.articles.size > 0 -%}
-      <div class="zh-featured-blog" data-reveal>
-        {%- for article in featured_blog.articles limit: 3 -%}
-          <article class="zh-featured-blog__card">
-            <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
-              {%- if article.image != blank -%}
-                {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 100vw, 33vw', widths: '450, 700, 900', alt: article.image.alt | escape }}
-              {%- else -%}
-                <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
-              {%- endif -%}
-            </a>
-            <div class="zh-featured-blog__body">
-              <p class="zh-featured-blog__meta">
-                <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %B %Y' }}</time>
-              </p>
-              <h3 class="zh-featured-blog__title">
-                <a href="{{ article.url }}">{{ article.title | escape }}</a>
-              </h3>
-              {%- if article.excerpt_or_content != blank -%}
-                <p class="zh-featured-blog__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 130 }}</p>
-              {%- endif -%}
-              <a href="{{ article.url }}" class="zh-featured-blog__link">
-                {{ section.settings.read_more_label | default: "Lire l'article" | escape }}
+    <div class="zh-featured-blog zh-featured-blog--cols-{{ cols }}" data-reveal>
+      {%- if article_blocks.size > 0 -%}
+        {%- comment -%} Mode manuel : articles choisis dans les blocs {%- endcomment -%}
+        {%- for block in article_blocks -%}
+          {%- assign article = block.settings.article -%}
+          {%- if article != blank -%}
+            <article class="zh-featured-blog__card" {{ block.shopify_attributes }}>
+              <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
+                {%- if article.image != blank -%}
+                  {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 100vw, 33vw', widths: '450, 700, 900', alt: article.image.alt | escape }}
+                {%- else -%}
+                  <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
+                {%- endif -%}
               </a>
-            </div>
-          </article>
+              <div class="zh-featured-blog__body">
+                <p class="zh-featured-blog__meta">
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %B %Y' }}</time>
+                </p>
+                <h3 class="zh-featured-blog__title">
+                  <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                </h3>
+                <a href="{{ article.url }}" class="zh-featured-blog__link">
+                  {{ section.settings.read_more_label | default: "Lire l'article" | escape }}
+                </a>
+              </div>
+            </article>
+          {%- else -%}
+            <article class="zh-featured-blog__card zh-featured-blog__card--empty" {{ block.shopify_attributes }}>
+              <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
+              <div class="zh-featured-blog__body">
+                <p class="zh-featured-blog__empty-block">Choisissez un article pour ce bloc.</p>
+              </div>
+            </article>
+          {%- endif -%}
         {%- endfor -%}
-      </div>
-    {%- else -%}
-      <p class="zh-featured-blog__empty">
-        Sélectionnez un blog dans les réglages de la section (ou créez des articles).
-      </p>
-    {%- endif -%}
+      {%- else -%}
+        {%- comment -%} Mode automatique : derniers articles du blog {%- endcomment -%}
+        {%- liquid
+          if section.settings.blog != blank
+            assign featured_blog = blogs[section.settings.blog]
+          else
+            assign featured_blog = blogs.first
+          endif
+        -%}
+        {%- if featured_blog != nil and featured_blog.articles.size > 0 -%}
+          {%- for article in featured_blog.articles limit: cols -%}
+            <article class="zh-featured-blog__card">
+              <a href="{{ article.url }}" class="zh-featured-blog__media" tabindex="-1" aria-hidden="true">
+                {%- if article.image != blank -%}
+                  {{ article.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 749px) 100vw, 33vw', widths: '450, 700, 900', alt: article.image.alt | escape }}
+                {%- else -%}
+                  <div class="zh-featured-blog__placeholder">{% render 'icon', name: 'diamond' %}</div>
+                {%- endif -%}
+              </a>
+              <div class="zh-featured-blog__body">
+                <p class="zh-featured-blog__meta">
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d %B %Y' }}</time>
+                </p>
+                <h3 class="zh-featured-blog__title">
+                  <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                </h3>
+                <a href="{{ article.url }}" class="zh-featured-blog__link">
+                  {{ section.settings.read_more_label | default: "Lire l'article" | escape }}
+                </a>
+              </div>
+            </article>
+          {%- endfor -%}
+        {%- else -%}
+          <p class="zh-featured-blog__empty">
+            Ajoutez des blocs « Article » pour choisir vos articles, ou sélectionnez un blog.
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
   </div>
 </section>
 
 {%- style -%}
   #shopify-section-{{ section.id }} .zh-featured-blog {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat({{ cols }}, 1fr);
     gap: 1.5rem;
     margin-top: 2.5rem;
   }
@@ -96,7 +138,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4 / 3;
     background: var(--zw-coffee-950, #241610);
     color: var(--zw-gold-400, #c9a35c);
   }
@@ -127,7 +169,8 @@
     font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.3;
-    margin: 0 0 0.6rem;
+    margin: 0 0 1rem;
+    flex: 1;
   }
   #shopify-section-{{ section.id }} .zh-featured-blog__title a {
     color: inherit;
@@ -135,15 +178,6 @@
   }
   #shopify-section-{{ section.id }} .zh-featured-blog__title a:hover {
     color: var(--zw-gold-400, #c9a35c);
-  }
-
-  #shopify-section-{{ section.id }} .zh-featured-blog__excerpt {
-    font-family: var(--zw-font-body, 'Jost', sans-serif);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--color-ink-soft);
-    margin: 0 0 1rem;
-    flex: 1;
   }
 
   #shopify-section-{{ section.id }} .zh-featured-blog__link {
@@ -162,13 +196,22 @@
     border-color: currentColor;
   }
 
-  #shopify-section-{{ section.id }} .zh-featured-blog__empty {
+  #shopify-section-{{ section.id }} .zh-featured-blog__empty,
+  #shopify-section-{{ section.id }} .zh-featured-blog__empty-block {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 1rem;
     font-family: var(--zw-font-body, 'Jost', sans-serif);
+    font-size: 0.85rem;
     color: var(--color-ink-soft);
+    grid-column: 1 / -1;
   }
+  #shopify-section-{{ section.id }} .zh-featured-blog__empty-block { padding: 0; }
 
+  @media (max-width: 989px) {
+    #shopify-section-{{ section.id }} .zh-featured-blog--cols-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
   @media (max-width: 749px) {
     #shopify-section-{{ section.id }} .zh-featured-blog {
       grid-template-columns: 1fr;
@@ -209,14 +252,24 @@
       "default": "Le *Journal* Zahowa"
     },
     {
+      "type": "range",
+      "id": "columns",
+      "label": "Articles par ligne",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
       "type": "blog",
       "id": "blog",
-      "label": "Blog"
+      "label": "Blog (utilisé si aucun bloc article)",
+      "info": "Sans bloc article, les derniers articles de ce blog s'affichent automatiquement"
     },
     {
       "type": "text",
       "id": "read_more_label",
-      "label": "Libellé du lien \"Lire la suite\"",
+      "label": "Libellé du lien",
       "default": "Lire l'article"
     },
     {
@@ -231,6 +284,20 @@
       "label": "Ancre (id HTML)"
     }
   ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article à afficher"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
   "presets": [
     {
       "name": "Zahowa — Articles à la une",
