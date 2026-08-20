@@ -274,6 +274,7 @@
         "score_1": 6,
         "score_2": 4,
         "score_3": 5,
+        "button_mode": "paiement",
         "button_label": "Ajouter au panier",
         "link_label": "Voir la fiche complète",
         "fallback_url": "shopify://products/ame-de-fes"
@@ -406,6 +407,7 @@
         "color_scheme": "creme",
         "kicker": "Le Journal",
         "title": "Le *Journal* Zahowa",
+        "columns": 3,
         "blog": "journal",
         "read_more_label": "Lire l'article",
         "alt_bg": true,
