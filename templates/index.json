@@ -38,7 +38,6 @@
             "name": "Aube de Casablanca",
             "notes": "Miel · Fleur d'oranger",
             "palette": "casablanca",
-            "card_image": "shopify://shop_images/Boxe_Casablanca.png",
             "product_url": ""
           }
         },
@@ -124,8 +123,8 @@
         "bg_inner": "#3a241a",
         "bg_mid": "#241610",
         "bg_outer": "#120a06",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 160,
+        "padding_bottom": 160
       }
     },
     "marquee": {
