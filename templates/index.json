@@ -38,8 +38,6 @@
             "name": "Aube de Casablanca",
             "notes": "Miel · Fleur d'oranger",
             "palette": "casablanca",
-            "product_image": "shopify://shop_images/Boxe_Casablanca.png",
-            "card_image": "shopify://shop_images/Memepackagingpremium_10d38fc2-24b4-4b0c-b399-966410c6e17f.png",
             "product_url": ""
           }
         },
@@ -49,7 +47,6 @@
             "name": "Grâce de Rabat",
             "notes": "Caramel · Cannelle",
             "palette": "rabat",
-            "product_image": "shopify://shop_images/Boxe_Rabat.png",
             "product_url": ""
           }
         },
