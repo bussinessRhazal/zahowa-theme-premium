@@ -38,6 +38,8 @@
             "name": "Aube de Casablanca",
             "notes": "Miel · Fleur d'oranger",
             "palette": "casablanca",
+            "product_image": "shopify://shop_images/Boxe_Casablanca.png",
+            "card_image": "shopify://shop_images/services-3_50x_944d077b-39a7-4a37-a120-0383df1826f1.webp",
             "product_url": ""
           }
         },
@@ -72,7 +74,7 @@
           "type": "floating_item",
           "settings": {
             "svg_fallback": "bean",
-            "size": 70
+            "size": 80
           }
         },
         "floating_item_d8pFp4": {
@@ -117,7 +119,7 @@
         "cta_label": "Découvrir la recette",
         "cta_url": "",
         "badge_text": "Café de spécialité — Montpellier",
-        "side_title": "Quatre recettes, quatre villes",
+        "side_title": "",
         "aria_label": "Zahowa Coffee — café de spécialité épicé",
         "default_product_image": "shopify://shop_images/hero-coffee_a57b1f47-9dae-46b6-ad14-14a4a45dd171.webp",
         "bg_inner": "#3a241a",
