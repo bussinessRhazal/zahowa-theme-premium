@@ -178,22 +178,6 @@
         "id": ""
       }
     },
-    "featured_collection_ktykpe": {
-      "type": "featured-collection",
-      "name": "t:sections.featured_collection.name",
-      "settings": {
-        "color_scheme": "creme",
-        "collection": "debutants",
-        "products_to_show": 4,
-        "kicker": "Nos créations",
-        "title": "Nos *Recettes*",
-        "text": "",
-        "portrait": false,
-        "show_view_all": true,
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "cities": {
       "type": "cities",
       "blocks": {
@@ -477,7 +461,6 @@
     "hero_anime_FdjAM8",
     "marquee",
     "maison",
-    "featured_collection_ktykpe",
     "cities",
     "featured_collection",
     "recipes_grid",
