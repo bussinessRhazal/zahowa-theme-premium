@@ -57,6 +57,7 @@
             "name": "Grâce de Rabat",
             "notes": "Caramel · Cannelle",
             "palette": "rabat",
+            "product_image": "shopify://shop_images/1.png",
             "product_url": ""
           }
         },
@@ -66,6 +67,7 @@
             "name": "Âme de Fès",
             "notes": "Cardamome · Cacao",
             "palette": "fes",
+            "product_image": "shopify://shop_images/2.png",
             "product_url": ""
           }
         },
@@ -75,6 +77,7 @@
             "name": "Fièvre de Marrakech",
             "notes": "Gingembre · Piment doux",
             "palette": "marrakech",
+            "product_image": "shopify://shop_images/4.png",
             "product_url": ""
           }
         },
