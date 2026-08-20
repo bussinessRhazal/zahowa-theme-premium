@@ -78,12 +78,32 @@
     </div>
 
     {%- comment -%} ===== Produit central ===== {%- endcomment -%}
+  {%- liquid
+    assign center_img = section.settings.default_product_image
+    if center_img == blank
+      assign fr = section.blocks | where: 'type', 'recipe' | first
+      if fr and fr.settings.product_image != blank
+        assign center_img = fr.settings.product_image
+      endif
+    endif
+    assign show_center = true
+    if layout_mode == 'fond' and center_img == blank
+      assign show_center = false
+    endif
+  -%}
+  {%- if show_center -%}
     <div class="zwh__center" aria-hidden="true">
       <div class="zwh__glow"></div>
       <div class="zwh__product-tilt">
         <div class="zwh__product-spin">
           <div class="zwh__product-float">
             {%- assign default_img = section.settings.default_product_image -%}
+            {%- if default_img == blank -%}
+              {%- assign first_recipe = section.blocks | where: 'type', 'recipe' | first -%}
+              {%- if first_recipe and first_recipe.settings.product_image != blank -%}
+                {%- assign default_img = first_recipe.settings.product_image -%}
+              {%- endif -%}
+            {%- endif -%}
             {%- if default_img != blank -%}
               <img
                 class="zwh__product-img is-front"
@@ -112,6 +132,7 @@
         </div>
       </div>
     </div>
+  {%- endif -%}
 
     {%- comment -%} ===== Colonne droite : recettes ===== {%- endcomment -%}
     <div class="zwh__right">
@@ -290,7 +311,6 @@
         rgba(18, 10, 6, 0.15) 100%);
     }
     /* En mode fond : masquer le produit central */
-    #{{ sid }}.zwh--mode-fond .zwh__center { display: none; }
 
     /* ---------- Vapeur / grains ascendants ---------- */
     #{{ sid }} .zwh__steam {
@@ -629,8 +649,7 @@
         order: -1;
         min-height: 260px;
       }
-      #{{ sid }}.zwh--mode-fond .zwh__center { display: none; }
-      #{{ sid }} .zwh__product-tilt { width: calc(clamp(200px, 52vw, 320px) * var(--zwh-img-scale, 1)); }
+        #{{ sid }} .zwh__product-tilt { width: calc(clamp(200px, 52vw, 320px) * var(--zwh-img-scale, 1)); }
       #{{ sid }} .zwh__right {
         align-items: flex-start;
         max-width: none;
@@ -797,18 +816,16 @@
           smooth.nx += (pointer.nx - smooth.nx) * 0.05;
           smooth.ny += (pointer.ny - smooth.ny) * 0.05;
 
-          /* Tilt produit + flottement (désactivé en mode fond) */
-          if (!isBgMode) {
-            if (floatWrap && !isSwitching) {
-              var floatY = Math.sin(time * (Math.PI * 2 / 6)) * 14;
-              floatWrap.style.transform = 'translateY(' + floatY + 'px)';
-            }
-            if (spinWrap && !isSwitching) {
-              var rX = (-smooth.ny * 8).toFixed(2);
-              var rY = (smooth.nx * 8).toFixed(2);
-              spinWrap.style.transform =
-                'rotateX(' + rX + 'deg) rotateY(calc(' + rY + 'deg + ' + switchSpin + 'deg))';
-            }
+          /* Tilt produit + flottement (actif dans les 2 modes) */
+          if (floatWrap && !isSwitching) {
+            var floatY = Math.sin(time * (Math.PI * 2 / 6)) * 14;
+            floatWrap.style.transform = 'translateY(' + floatY + 'px)';
+          }
+          if (spinWrap && !isSwitching) {
+            var rX = (-smooth.ny * 8).toFixed(2);
+            var rY = (smooth.nx * 8).toFixed(2);
+            spinWrap.style.transform =
+              'rotateX(' + rX + 'deg) rotateY(calc(' + rY + 'deg + ' + switchSpin + 'deg))';
           }
 
           /* Parallaxe couches */
@@ -873,7 +890,6 @@
         }
 
         function swapProduct(newSrc) {
-          if (isBgMode) return;
           if (!newSrc || !frontImg || !backImg) return;
           if (frontImg.tagName !== 'IMG' || backImg.tagName !== 'IMG') {
             if (frontImg && frontImg.tagName === 'IMG') frontImg.src = newSrc;
@@ -944,7 +960,7 @@
         }
 
         function spinProduct(done) {
-          if (isBgMode || !hasGsap || reduced || !spinWrap) {
+          if (!hasGsap || reduced || !spinWrap) {
             if (done) done();
             return;
           }
@@ -1030,8 +1046,7 @@
 
           setActiveCard(card);
           updateCTA(card);
-          morphBackground(card);
-          crossfadeBackground(card);
+          /* Le fond (image + couleurs) reste fixe : seul le packaging central change. */
 
           var newSrc = card.getAttribute('data-product-src');
 
