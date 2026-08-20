@@ -32,6 +32,15 @@
     "hero_anime_FdjAM8": {
       "type": "hero-anime",
       "blocks": {
+        "floating_item_D3YLXW": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-cardamome2.png",
+            "asset_spice": "none",
+            "svg_fallback": "bean",
+            "size": 70
+          }
+        },
         "recipe_C3jBHE": {
           "type": "recipe",
           "settings": {
@@ -90,6 +99,7 @@
         "floating_item_zwLrTk": {
           "type": "floating_item",
           "settings": {
+            "image": "shopify://shop_images/spice-cannelle2.png",
             "asset_spice": "none",
             "svg_fallback": "cinnamon",
             "size": 80
@@ -98,6 +108,7 @@
         "floating_item_QdWLAX": {
           "type": "floating_item",
           "settings": {
+            "image": "shopify://shop_images/spice-rose.png",
             "asset_spice": "none",
             "svg_fallback": "leaf",
             "size": 55
@@ -105,6 +116,7 @@
         }
       },
       "block_order": [
+        "floating_item_D3YLXW",
         "recipe_C3jBHE",
         "recipe_zfPVWF",
         "recipe_RaDtQE",
