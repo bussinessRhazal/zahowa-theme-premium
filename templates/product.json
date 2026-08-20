@@ -46,7 +46,7 @@
         "show_description": true,
         "show_reviews": true,
         "review_count_text": "4,9/5 — 127 avis",
-        "show_trust": true,
+        "show_trust": false,
         "trust_1_title": "Paiement sécurisé",
         "trust_1_text": "Visa, Mastercard, PayPal",
         "trust_2_title": "Livraison offerte",
