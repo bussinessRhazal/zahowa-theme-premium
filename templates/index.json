@@ -28,10 +28,10 @@
         "id": ""
       }
     },
-    "hero_anime_RFzcta": {
+    "hero_anime_FdjAM8": {
       "type": "hero-anime",
       "blocks": {
-        "recipe_tXXnnD": {
+        "recipe_C3jBHE": {
           "type": "recipe",
           "settings": {
             "name": "Aube de Casablanca",
@@ -40,7 +40,7 @@
             "product_url": ""
           }
         },
-        "recipe_RUhUKX": {
+        "recipe_zfPVWF": {
           "type": "recipe",
           "settings": {
             "name": "Grâce de Rabat",
@@ -49,7 +49,7 @@
             "product_url": ""
           }
         },
-        "recipe_eD6NYQ": {
+        "recipe_RaDtQE": {
           "type": "recipe",
           "settings": {
             "name": "Âme de Fès",
@@ -58,7 +58,7 @@
             "product_url": ""
           }
         },
-        "recipe_HEerYM": {
+        "recipe_EbPNtk": {
           "type": "recipe",
           "settings": {
             "name": "Fièvre de Marrakech",
@@ -67,28 +67,28 @@
             "product_url": ""
           }
         },
-        "floating_item_jryJVg": {
+        "floating_item_TtfL4h": {
           "type": "floating_item",
           "settings": {
             "svg_fallback": "bean",
             "size": 70
           }
         },
-        "floating_item_HMk6qC": {
+        "floating_item_yQQRWM": {
           "type": "floating_item",
           "settings": {
             "svg_fallback": "anise",
             "size": 60
           }
         },
-        "floating_item_irxit4": {
+        "floating_item_zwLrTk": {
           "type": "floating_item",
           "settings": {
             "svg_fallback": "cinnamon",
             "size": 80
           }
         },
-        "floating_item_aHTxyR": {
+        "floating_item_QdWLAX": {
           "type": "floating_item",
           "settings": {
             "svg_fallback": "leaf",
@@ -97,14 +97,14 @@
         }
       },
       "block_order": [
-        "recipe_tXXnnD",
-        "recipe_RUhUKX",
-        "recipe_eD6NYQ",
-        "recipe_HEerYM",
-        "floating_item_jryJVg",
-        "floating_item_HMk6qC",
-        "floating_item_irxit4",
-        "floating_item_aHTxyR"
+        "recipe_C3jBHE",
+        "recipe_zfPVWF",
+        "recipe_RaDtQE",
+        "recipe_EbPNtk",
+        "floating_item_TtfL4h",
+        "floating_item_yQQRWM",
+        "floating_item_zwLrTk",
+        "floating_item_QdWLAX"
       ],
       "name": "Hero animé — Zahowa",
       "settings": {
@@ -425,7 +425,7 @@
   },
   "order": [
     "hero",
-    "hero_anime_RFzcta",
+    "hero_anime_FdjAM8",
     "marquee",
     "maison",
     "cities",
