@@ -690,6 +690,7 @@
       var isBgMode = LAYOUT_MODE === 'fond';
       var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var isMobile = window.matchMedia('(max-width: 989px)').matches;
+      var SPICE_SCALE = {{ section.settings.spice_scale | default: 100 | json }} / 100;
 
       function boot() {
         var root = document.getElementById(ROOT_ID);
@@ -707,6 +708,7 @@
         var tiltWrap = root.querySelector('.zwh__product-tilt');
         var spinWrap = root.querySelector('.zwh__product-spin');
         var floatWrap = root.querySelector('.zwh__product-float');
+        var centerWrap = root.querySelector('[data-zwh-center]');
         var frontImg = root.querySelector('[data-zwh-front]');
         var backImg = root.querySelector('[data-zwh-back]');
         var bgImgA = root.querySelector('[data-zwh-bg-a]');
@@ -1215,6 +1217,20 @@
       "type": "image_picker",
       "id": "default_product_image",
       "label": "Image produit par défaut (centre du hero)"
+    },
+    {
+      "type": "header",
+      "content": "Épices flottantes"
+    },
+    {
+      "type": "range",
+      "id": "spice_scale",
+      "label": "Taille des épices flottantes",
+      "min": 30,
+      "max": 250,
+      "step": 5,
+      "unit": "%",
+      "default": 100
     },
     {
       "type": "header",
