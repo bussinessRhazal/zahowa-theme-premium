@@ -36,6 +36,10 @@
     "font_data": "inter_n4",
     "logo": "shopify://shop_images/new_version_logo_SOLO-removebg-preview.webp",
     "social_instagram_url": "https://www.instagram.com/zahowacoffee/",
+    "social_facebook_url": "https://www.facebook.com/zahowacoffee/",
+    "social_tiktok_url": "https://www.tiktok.com/@zahowacoffee",
+    "social_linkedin_url": "https://www.linkedin.com/company/zahowacoffee",
+    "contact_email": "contact@zahowa.com",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
