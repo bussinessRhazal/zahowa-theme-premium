@@ -1,85 +1,58 @@
 /*
- * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
  */
 {
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {},
       "blocks": {
-        "scores": {
-          "type": "tasting_scores",
-          "settings": {}
-        },
-        "share": {
+        "share_tB4JmG": {
           "type": "share",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "scores",
-        "share"
-      ]
-    },
-    "sticky_atc": {
-      "type": "sticky-atc",
-      "settings": {
-        "color_scheme": "cafe"
-      }
-    },
-    "spices": {
-      "type": "ingredients-spices",
-      "settings": {
-        "color_scheme": "cafe",
-        "heading": "L'*assemblage*"
-      }
-    },
-    "brewing": {
-      "type": "brewing-steps",
-      "blocks": {
-        "step_1": {
-          "type": "step",
           "settings": {
-            "title": "Déchirer",
-            "text": "Ouvrez le sachet le long de la ligne pointillée."
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "title": "Accrocher",
-            "text": "Dépliez les anses et posez le drip bag sur votre tasse."
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "title": "Verser",
-            "text": "Versez lentement 180 ml d'eau à 92 °C, en trois fois."
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "title": "Déguster",
-            "text": "Laissez s'égoutter, retirez le sachet, respirez."
+            "label": "Partager cette recette",
+            "share_label": "Copier le lien",
+            "show_whatsapp": true,
+            "show_facebook": true,
+            "show_email": true
           }
         }
       },
       "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
+        "share_tB4JmG"
       ],
       "settings": {
         "color_scheme": "creme",
-        "layout": "compact"
+        "show_vendor": true,
+        "show_sku": true,
+        "show_description": true,
+        "show_reviews": true,
+        "review_count_text": "4,9/5 — 127 avis",
+        "show_trust": true,
+        "trust_1_title": "Paiement sécurisé",
+        "trust_1_text": "Visa, Mastercard, PayPal",
+        "trust_2_title": "Livraison offerte",
+        "trust_2_text": "dès 39€ d'achat",
+        "trust_3_title": "Retour facile",
+        "trust_3_text": "30 jours, satisfait ou remboursé",
+        "accordion_1_title": "Composition",
+        "accordion_1_content": "<p>Arabica & épices naturelles.</p>",
+        "accordion_2_title": "Instruction d'infusion",
+        "accordion_2_content": "<p>Ouvrez le sachet, installez-le sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C), laissez infuser 3–4 minutes.</p>",
+        "accordion_3_title": "Profil gustatif",
+        "accordion_3_content": "<p>Notes épicées et florales, rondeur du café arabica.</p>",
+        "id": ""
       }
     },
     "video_demo": {
       "type": "video",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "Démo",
         "title": "Comment *l'infuser*",
         "text": "Découvrez en une minute comment utiliser votre drip bag Zahowa.",
@@ -87,44 +60,29 @@
         "aspect_ratio": "16-9",
         "autoplay": false,
         "loop": false,
-        "alt_bg": true
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Ils l'ont goûtée",
-        "title": "Ils *en parlent* mieux que nous"
-      }
-    },
-    "subscription": {
-      "type": "subscription-offer",
-      "settings": {
-        "color_scheme": "cafe"
+        "alt_bg": true,
+        "id": ""
       }
     },
     "related": {
       "type": "related-products",
       "settings": {
+        "color_scheme": "creme",
         "recommendations": true,
         "collection": "frontpage",
         "products_to_show": 4,
         "kicker": "Pour continuer",
         "title": "Vous aimerez *aussi*",
         "portrait": false,
-        "alt_bg": false
+        "alt_bg": false,
+        "id": "",
+        "current_product_id": ""
       }
     }
   },
   "order": [
     "main",
-    "sticky_atc",
-    "spices",
-    "brewing",
     "video_demo",
-    "testimonials",
-    "subscription",
     "related"
   ]
 }
