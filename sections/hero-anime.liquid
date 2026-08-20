@@ -390,6 +390,7 @@
     #{{ sid }} .zwh__float-item {
       position: absolute;
       display: block;
+      pointer-events: none;
       color: var(--zwh-gold);
       opacity: 0.65;
       filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
@@ -566,6 +567,8 @@
       list-style: none;
       margin: 0; padding: 0;
       align-items: stretch;
+      position: relative;
+      z-index: 8;
     }
     #{{ sid }} .zwh__card-item { margin: 0; display: flex; }
     #{{ sid }} .zwh__card {
