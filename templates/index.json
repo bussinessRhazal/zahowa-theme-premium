@@ -356,27 +356,33 @@
       "blocks": {
         "image_pHiBpi": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/welcome-to-my-business.jpg"
+          }
         },
         "image_bHGNCz": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg"
+          }
         },
         "image_M3KBDb": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/professional-man-smiling.jpg"
+          }
         },
         "image_aQzMMF": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/2891deb95bd2a75c0a3e46f6eb785ee7.webp"
+          }
         },
         "image_RYUD79": {
           "type": "image",
-          "settings": {}
-        },
-        "image_XziFtE": {
-          "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/Mains_realistes_tasse.webp"
+          }
         }
       },
       "block_order": [
@@ -384,8 +390,7 @@
         "image_bHGNCz",
         "image_M3KBDb",
         "image_aQzMMF",
-        "image_RYUD79",
-        "image_XziFtE"
+        "image_RYUD79"
       ],
       "name": "Zahowa — Galerie Instagram",
       "settings": {
