@@ -2838,3 +2838,54 @@ html[data-animations="disabled"] [data-reveal] {
     transition: none;
   }
 }
+
+/* ---------- Social bar (section Réseaux sociaux) ---------- */
+
+.social-bar__wrap {
+  display: flex;
+}
+
+.social-bar--left .social-bar__wrap {
+  justify-content: flex-start;
+}
+
+.social-bar--center .social-bar__wrap {
+  justify-content: center;
+}
+
+.social-bar--center .section__header {
+  text-align: center;
+}
+
+.social-bar__list {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-bar__list-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-ink);
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.social-bar__wrap--lg .social-bar__list-link {
+  width: 54px;
+  height: 54px;
+}
+
+.social-bar__list-link:hover,
+.social-bar__list-link:focus-visible {
+  border-color: var(--color-gold);
+  color: var(--zw-gold-text);
+  transform: translateY(-2px);
+}
