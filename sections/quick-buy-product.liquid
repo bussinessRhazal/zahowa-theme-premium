@@ -308,6 +308,18 @@
       "content": "Boutons"
     },
     {
+      "type": "select",
+      "id": "button_mode",
+      "label": "Type de bouton d'achat",
+      "options": [
+        { "value": "panier", "label": "Ajouter au panier" },
+        { "value": "paiement", "label": "Acheter maintenant (paiement direct)" },
+        { "value": "les_deux", "label": "Les deux boutons" }
+      ],
+      "default": "panier",
+      "info": "« Acheter maintenant » envoie directement vers le paiement (Shop Pay, PayPal, carte…)"
+    },
+    {
       "type": "text",
       "id": "button_label",
       "label": "Libellé du bouton d'achat",
