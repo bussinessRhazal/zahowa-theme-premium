@@ -1,0 +1,339 @@
+{% comment %}
+  Section Vente rapide — Zahowa
+  Fiche produit condensée : visuel, nom, description, prix, profil dégustation,
+  composition, bouton d'ajout au panier. Tout est paramétrable.
+{% endcomment %}
+
+{%- liquid
+  assign p = section.settings.product
+  assign layout = section.settings.layout | default: 'gauche'
+  assign scheme = section.settings.color_scheme | default: 'creme'
+-%}
+
+<section class="qbp qbp--{{ scheme }} qbp--media-{{ layout }}" id="quick-buy-{{ section.id }}">
+  <div class="qbp__wrap">
+
+    {%- if section.settings.show_media and p != blank and p.featured_media -%}
+      <div class="qbp__media">
+        <img
+          src="{{ p.featured_media | image_url: width: 900 }}"
+          alt="{{ p.featured_media.alt | default: p.title | escape }}"
+          width="900"
+          height="{{ 900 | divided_by: p.featured_media.aspect_ratio | default: 900 | round }}"
+          loading="lazy">
+      </div>
+    {%- endif -%}
+
+    <div class="qbp__content">
+      {%- if section.settings.kicker != blank -%}
+        <p class="qbp__kicker">{{ section.settings.kicker | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.show_title -%}
+        <h2 class="qbp__title">
+          {%- if p != blank -%}
+            {{ p.title }}
+          {%- else -%}
+            {{ section.settings.fallback_title | default: 'Choisissez un produit' | escape }}
+          {%- endif -%}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.show_price and p != blank -%}
+        <p class="qbp__price">
+          {{ p.price | money }}
+          {%- if p.compare_at_price > p.price -%}
+            <s class="qbp__compare">{{ p.compare_at_price | money }}</s>
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.show_description -%}
+        <div class="qbp__desc">
+          {%- if section.settings.description_custom != blank -%}
+            {{ section.settings.description_custom }}
+          {%- elsif p != blank -%}
+            {{ p.description | strip_html | truncate: 320 }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_profile and p != blank -%}
+        {%- assign s1 = p.metafields.custom.intensite.value | default: p.metafields.custom.intensite -%}
+        {%- assign s2 = p.metafields.custom.rondeur.value | default: p.metafields.custom.rondeur -%}
+        {%- assign s3 = p.metafields.custom.epices.value | default: p.metafields.custom.epices -%}
+        {%- if s1 != blank or s2 != blank or s3 != blank or section.settings.score_1 > 0 or section.settings.score_2 > 0 or section.settings.score_3 > 0 -%}
+          {%- assign sc1 = s1 | default: section.settings.score_1 -%}
+          {%- assign sc2 = s2 | default: section.settings.score_2 -%}
+          {%- assign sc3 = s3 | default: section.settings.score_3 -%}
+          <div class="qbp__scores">
+            <p class="qbp__scores-title">{{ section.settings.profile_title | default: 'Profil de dégustation' | escape }}</p>
+            <div class="qbp__score">
+              <span class="qbp__score-label">{{ section.settings.label_1 | default: 'Intensité' | escape }}</span>
+              <span class="qbp__score-bar"><span class="qbp__score-fill" style="width: {{ sc1 | times: 10 }}%"></span></span>
+              <span class="qbp__score-val">{{ sc1 }}/10</span>
+            </div>
+            <div class="qbp__score">
+              <span class="qbp__score-label">{{ section.settings.label_2 | default: 'Rondeur' | escape }}</span>
+              <span class="qbp__score-bar"><span class="qbp__score-fill" style="width: {{ sc2 | times: 10 }}%"></span></span>
+              <span class="qbp__score-val">{{ sc2 }}/10</span>
+            </div>
+            <div class="qbp__score">
+              <span class="qbp__score-label">{{ section.settings.label_3 | default: 'Épices' | escape }}</span>
+              <span class="qbp__score-bar"><span class="qbp__score-fill" style="width: {{ sc3 | times: 10 }}%"></span></span>
+              <span class="qbp__score-val">{{ sc3 }}/10</span>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.show_composition -%}
+        {%- assign compo = section.settings.composition_custom -%}
+        {%- if compo == blank and p != blank -%}
+          {%- assign compo = p.metafields.custom.spices.value | default: p.metafields.custom.spices -%}
+        {%- endif -%}
+        {%- if compo != blank -%}
+          <p class="qbp__compo">
+            <span class="qbp__compo-label">{{ section.settings.composition_label | default: 'Composition' | escape }}</span>
+            {{ compo }}
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if p != blank -%}
+        {%- form 'product', p, class: 'qbp__form' -%}
+          <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+          <button type="submit" name="add" class="qbp__btn" {% unless p.available %}disabled{% endunless %}>
+            {%- if p.available -%}
+              {{ section.settings.button_label | default: 'Ajouter au panier' | escape }}
+            {%- else -%}
+              Épuisé
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+        {%- if section.settings.show_link -%}
+          <a class="qbp__link" href="{{ p.url }}">{{ section.settings.link_label | default: 'Voir la fiche complète' | escape }}</a>
+        {%- endif -%}
+      {%- else -%}
+        <a class="qbp__btn" href="{{ section.settings.fallback_url | default: routes.all_products_collection_url }}">
+          {{ section.settings.button_label | default: 'Découvrir' | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <style>
+    #quick-buy-{{ section.id }} {
+      padding: var(--qbp-pad, 5rem) 1.5rem;
+      background: {% if scheme == 'cafe' %}#241610{% else %}#f5f0e8{% endif %};
+      color: {% if scheme == 'cafe' %}#f5f0e8{% else %}#241610{% endif %};
+    }
+    #quick-buy-{{ section.id }} .qbp__wrap {
+      max-width: 1080px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+    #quick-buy-{{ section.id }}.qbp--media-droite .qbp__media { order: 2; }
+    #quick-buy-{{ section.id }} .qbp__media img {
+      width: 100%; height: auto; display: block;
+      border: 1px solid rgba(201, 163, 92, 0.35);
+    }
+    #quick-buy-{{ section.id }} .qbp__kicker {
+      margin: 0 0 0.75rem;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #c9a35c;
+    }
+    #quick-buy-{{ section.id }} .qbp__title {
+      margin: 0 0 0.75rem;
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.1;
+    }
+    #quick-buy-{{ section.id }} .qbp__price {
+      margin: 0 0 1.25rem; font-size: 1.25rem; color: #c9a35c;
+    }
+    #quick-buy-{{ section.id }} .qbp__compare {
+      opacity: 0.55; font-size: 0.95rem; margin-left: 0.5rem;
+    }
+    #quick-buy-{{ section.id }} .qbp__desc {
+      margin: 0 0 1.5rem; line-height: 1.7; opacity: 0.88; font-size: 0.98rem;
+    }
+    #quick-buy-{{ section.id }} .qbp__scores { margin: 0 0 1.5rem; }
+    #quick-buy-{{ section.id }} .qbp__scores-title {
+      margin: 0 0 0.75rem;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #c9a35c;
+    }
+    #quick-buy-{{ section.id }} .qbp__score {
+      display: grid; grid-template-columns: 90px 1fr 44px;
+      align-items: center; gap: 0.85rem; margin-bottom: 0.55rem;
+      font-size: 0.85rem;
+    }
+    #quick-buy-{{ section.id }} .qbp__score-bar {
+      height: 2px; background: {% if scheme == 'cafe' %}rgba(245,240,232,0.18){% else %}rgba(36,22,16,0.15){% endif %};
+      position: relative; display: block;
+    }
+    #quick-buy-{{ section.id }} .qbp__score-fill {
+      position: absolute; inset: 0 auto 0 0; background: #c9a35c; display: block;
+    }
+    #quick-buy-{{ section.id }} .qbp__score-val { text-align: right; opacity: 0.7; }
+    #quick-buy-{{ section.id }} .qbp__compo {
+      margin: 0 0 1.75rem; font-size: 0.9rem; line-height: 1.6; opacity: 0.88;
+    }
+    #quick-buy-{{ section.id }} .qbp__compo-label {
+      display: block; margin-bottom: 0.35rem;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: #c9a35c;
+    }
+    #quick-buy-{{ section.id }} .qbp__form { margin: 0 0 0.85rem; }
+    #quick-buy-{{ section.id }} .qbp__btn {
+      display: inline-block; padding: 1rem 2.6rem;
+      border: 1px solid #c9a35c; background: transparent; color: inherit;
+      font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; border-radius: 0;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    #quick-buy-{{ section.id }} .qbp__btn:hover { background: #c9a35c; color: #241610; }
+    #quick-buy-{{ section.id }} .qbp__btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    #quick-buy-{{ section.id }} .qbp__link {
+      font-size: 0.85rem; color: inherit; opacity: 0.7;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    @media (max-width: 749px) {
+      #quick-buy-{{ section.id }} .qbp__wrap { grid-template-columns: 1fr; }
+      #quick-buy-{{ section.id }}.qbp--media-droite .qbp__media { order: 0; }
+    }
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Vente rapide",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produit"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Palette",
+      "options": [
+        { "value": "creme", "label": "Crème" },
+        { "value": "cafe", "label": "Café foncé" }
+      ],
+      "default": "creme"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Position du visuel",
+      "options": [
+        { "value": "gauche", "label": "Gauche" },
+        { "value": "droite", "label": "Droite" }
+      ],
+      "default": "gauche"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Sur-titre",
+      "default": "Sélection du moment"
+    },
+    {
+      "type": "header",
+      "content": "Contenu affiché"
+    },
+    { "type": "checkbox", "id": "show_media", "label": "Afficher le visuel produit", "default": true },
+    { "type": "checkbox", "id": "show_title", "label": "Afficher le nom", "default": true },
+    { "type": "checkbox", "id": "show_price", "label": "Afficher le prix", "default": true },
+    { "type": "checkbox", "id": "show_description", "label": "Afficher la description", "default": true },
+    { "type": "checkbox", "id": "show_profile", "label": "Afficher le profil de dégustation", "default": true },
+    { "type": "checkbox", "id": "show_composition", "label": "Afficher la composition", "default": true },
+    { "type": "checkbox", "id": "show_link", "label": "Afficher le lien vers la fiche complète", "default": true },
+    {
+      "type": "header",
+      "content": "Textes personnalisés (optionnel)"
+    },
+    {
+      "type": "text",
+      "id": "fallback_title",
+      "label": "Titre (si aucun produit sélectionné)"
+    },
+    {
+      "type": "richtext",
+      "id": "description_custom",
+      "label": "Description personnalisée (remplace celle du produit)"
+    },
+    {
+      "type": "text",
+      "id": "composition_label",
+      "label": "Libellé composition",
+      "default": "Composition"
+    },
+    {
+      "type": "text",
+      "id": "composition_custom",
+      "label": "Composition personnalisée (remplace le metafield Épices)",
+      "info": "Ex. : Café arabica, cardamome, cacao"
+    },
+    {
+      "type": "header",
+      "content": "Profil de dégustation"
+    },
+    {
+      "type": "text",
+      "id": "profile_title",
+      "label": "Titre du profil",
+      "default": "Profil de dégustation"
+    },
+    { "type": "text", "id": "label_1", "label": "Libellé score 1", "default": "Intensité" },
+    { "type": "text", "id": "label_2", "label": "Libellé score 2", "default": "Rondeur" },
+    { "type": "text", "id": "label_3", "label": "Libellé score 3", "default": "Épices" },
+    {
+      "type": "range", "id": "score_1", "label": "Score 1 (secours si pas de metafield)",
+      "min": 0, "max": 10, "step": 1, "default": 0
+    },
+    {
+      "type": "range", "id": "score_2", "label": "Score 2 (secours si pas de metafield)",
+      "min": 0, "max": 10, "step": 1, "default": 0
+    },
+    {
+      "type": "range", "id": "score_3", "label": "Score 3 (secours si pas de metafield)",
+      "min": 0, "max": 10, "step": 1, "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Boutons"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Libellé du bouton d'achat",
+      "default": "Ajouter au panier"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Libellé du lien fiche complète",
+      "default": "Voir la fiche complète"
+    },
+    {
+      "type": "url",
+      "id": "fallback_url",
+      "label": "Lien du bouton (si aucun produit sélectionné)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vente rapide",
+      "settings": {
+        "color_scheme": "creme",
+        "layout": "gauche",
+        "kicker": "Sélection du moment"
+      }
+    }
+  ]
+}
+{% endschema %}
