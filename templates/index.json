@@ -245,6 +245,37 @@
         "padding_bottom": 100
       }
     },
+    "quick_buy_product_Q4DYdJ": {
+      "type": "quick-buy-product",
+      "name": "Vente rapide",
+      "settings": {
+        "product": "ame-de-fes",
+        "color_scheme": "creme",
+        "layout": "gauche",
+        "kicker": "Sélection du moment",
+        "show_media": true,
+        "show_title": true,
+        "show_price": true,
+        "show_description": true,
+        "show_profile": true,
+        "show_composition": true,
+        "show_link": true,
+        "fallback_title": "",
+        "description_custom": "",
+        "composition_label": "Composition",
+        "composition_custom": "",
+        "profile_title": "Profil de dégustation",
+        "label_1": "Intensité",
+        "label_2": "Rondeur",
+        "label_3": "Épices",
+        "score_1": 6,
+        "score_2": 4,
+        "score_3": 5,
+        "button_label": "Ajouter au panier",
+        "link_label": "Voir la fiche complète",
+        "fallback_url": "shopify://products/ame-de-fes"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -463,6 +494,7 @@
     "marquee",
     "maison",
     "cities",
+    "quick_buy_product_Q4DYdJ",
     "featured_collection",
     "recipes_grid",
     "coffret",
