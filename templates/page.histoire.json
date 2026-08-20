@@ -3,16 +3,24 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-article",
-      "settings": {}
-    },
-    "article_footer": {
-      "type": "article-footer",
+    "banner": {
+      "type": "image-banner",
       "settings": {
-        "color_scheme": "dark",
-        "show_share": true,
-        "show_nav": true
+        "color_scheme": "cafe",
+        "title": "L'*Histoire*"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "creme"
+      }
+    },
+    "portrait": {
+      "type": "image-with-text",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Le fondateur"
       }
     },
     "featured": {
@@ -20,7 +28,7 @@
       "settings": {
         "color_scheme": "cafe",
         "kicker": "La boutique",
-        "title": "Les recettes *évoquées*"
+        "title": "L'histoire *se boit*"
       }
     },
     "cercle": {
@@ -31,8 +39,9 @@
     }
   },
   "order": [
+    "banner",
     "main",
-    "article_footer",
+    "portrait",
     "featured",
     "cercle"
   ]

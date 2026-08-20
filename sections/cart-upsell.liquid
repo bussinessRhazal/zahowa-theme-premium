@@ -1,0 +1,122 @@
+{{ 'new-sections.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign suggestions = ''
+  assign cart_product_ids = cart.items | map: 'product_id'
+
+  for i in (1..2)
+    assign key = 'fallback_product_' | append: i
+    assign p = section.settings[key]
+    if p != blank and p.available
+      unless cart_product_ids contains p.id
+        assign suggestions = suggestions | append: p.id | append: ','
+      endunless
+    endif
+  endfor
+-%}
+
+{%- if suggestions != blank -%}
+  <section class="zw-scheme-{{ section.settings.color_scheme }} section cart-upsell" data-cart-upsell>
+    <div class="container">
+      <div class="section__header" data-reveal>
+        {% if section.settings.heading != blank %}
+          <h2 class="section__title">
+            {{ section.settings.heading | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+          </h2>
+        {% endif %}
+        <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+      </div>
+
+      <div class="cart-upsell__grid">
+        {% for i in (1..2) %}
+          {%- assign key = 'fallback_product_' | append: i -%}
+          {%- assign p = section.settings[key] -%}
+          {%- if p != blank and p.available -%}
+            {%- unless cart_product_ids contains p.id -%}
+              {%- assign v = p.selected_or_first_available_variant -%}
+              <div class="cart-upsell__card" data-reveal>
+                {% if p.featured_image != blank %}
+                  <div class="cart-upsell__media">
+                    {{ p.featured_image | image_url: width: 320 | image_tag: loading: 'lazy', class: 'cart-upsell__image', widths: '160, 240, 320', sizes: '96px', alt: p.title }}
+                  </div>
+                {% endif %}
+                <div class="cart-upsell__info">
+                  <h3 class="cart-upsell__title">{{ p.title }}</h3>
+                  <p class="cart-upsell__price">{{ v.price | money }}</p>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn--gold cart-upsell__button"
+                  data-cart-upsell-add="{{ v.id }}"
+                  aria-label="{{ section.settings.button_label }} — {{ p.title | escape }}"
+                >
+                  {{ section.settings.button_label }}
+                </button>
+                <p class="cart-upsell__feedback" data-cart-upsell-feedback hidden role="status"></p>
+              </div>
+            {%- endunless -%}
+          {%- endif -%}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var root = document.querySelector('[data-cart-upsell]');
+      if (!root) return;
+
+      root.addEventListener('click', function (event) {
+        var btn = event.target.closest('[data-cart-upsell-add]');
+        if (!btn || btn.disabled) return;
+        var card = btn.closest('.cart-upsell__card');
+        var feedback = card && card.querySelector('[data-cart-upsell-feedback]');
+
+        btn.disabled = true;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: Number(btn.getAttribute('data-cart-upsell-add')), quantity: 1 })
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('add_failed');
+            // Rafraîchit la page panier pour refléter les totaux et lignes.
+            window.location.reload();
+          })
+          .catch(function () {
+            btn.disabled = false;
+            if (feedback) {
+              feedback.textContent = 'Une erreur est survenue. Réessayez.';
+              feedback.hidden = false;
+            }
+          });
+      });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Suggestion panier",
+  "tag": "section",
+  "class": "section-cart-upsell",
+  "enabled_on": { "templates": ["cart"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
+      ],
+      "default": "creme"
+    },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Complétez votre *rituel*" },
+    { "type": "product", "id": "fallback_product_1", "label": "Produit de repli 1 (coffret)" },
+    { "type": "product", "id": "fallback_product_2", "label": "Produit de repli 2 (recette)" },
+    { "type": "text", "id": "button_label", "label": "Libellé bouton", "default": "Ajouter" }
+  ],
+  "presets": [{ "name": "Suggestion panier" }]
+}
+{% endschema %}

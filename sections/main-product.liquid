@@ -171,6 +171,70 @@
           </button>
         {% endform %}
 
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'tasting_scores' %}
+              <div class="tasting-scores" data-reveal {{ block.shopify_attributes }}>
+                {% if block.settings.heading != blank %}
+                  <p class="tasting-scores__heading">{{ block.settings.heading }}</p>
+                {% endif %}
+                {%- assign score_1 = product.metafields.custom.intensite.value | default: block.settings.score_1 -%}
+                {%- assign score_2 = product.metafields.custom.rondeur.value | default: block.settings.score_2 -%}
+                {%- assign score_3 = product.metafields.custom.epices.value | default: block.settings.score_3 -%}
+                <div class="tasting-scores__row">
+                  <span class="tasting-scores__label">{{ block.settings.label_1 }}</span>
+                  <span class="tasting-scores__bar" role="img" aria-label="{{ block.settings.label_1 }} : {{ score_1 }}/10">
+                    <span class="tasting-scores__fill" style="width: {{ score_1 | times: 10 }}%"></span>
+                  </span>
+                  <span class="tasting-scores__value">{{ score_1 }}<small>/10</small></span>
+                </div>
+                <div class="tasting-scores__row">
+                  <span class="tasting-scores__label">{{ block.settings.label_2 }}</span>
+                  <span class="tasting-scores__bar" role="img" aria-label="{{ block.settings.label_2 }} : {{ score_2 }}/10">
+                    <span class="tasting-scores__fill" style="width: {{ score_2 | times: 10 }}%"></span>
+                  </span>
+                  <span class="tasting-scores__value">{{ score_2 }}<small>/10</small></span>
+                </div>
+                <div class="tasting-scores__row">
+                  <span class="tasting-scores__label">{{ block.settings.label_3 }}</span>
+                  <span class="tasting-scores__bar" role="img" aria-label="{{ block.settings.label_3 }} : {{ score_3 }}/10">
+                    <span class="tasting-scores__fill" style="width: {{ score_3 | times: 10 }}%"></span>
+                  </span>
+                  <span class="tasting-scores__value">{{ score_3 }}<small>/10</small></span>
+                </div>
+              </div>
+
+            {% when 'share' %}
+              <div class="product-share" data-reveal {{ block.shopify_attributes }}>
+                {% if block.settings.label != blank %}
+                  <span class="product-share__label">{{ block.settings.label }}</span>
+                {% endif %}
+                <div class="product-share__actions">
+                  <button type="button" class="product-share__btn" data-share-native data-share-url="{{ shop.url }}{{ product.url }}" data-share-title="{{ product.title | escape }}">
+                    {% render 'icon', name: 'arrow' %}
+                    <span>{{ block.settings.share_label }}</span>
+                  </button>
+                  {% if block.settings.show_whatsapp %}
+                    <a class="product-share__icon" href="https://wa.me/?text={{ product.title | url_encode }}%20{{ shop.url }}{{ product.url | url_encode }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                      {% render 'icon', name: 'whatsapp' %}
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_facebook %}
+                    <a class="product-share__icon" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url | url_encode }}" target="_blank" rel="noopener" aria-label="Facebook">
+                      {% render 'icon', name: 'facebook' %}
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_email %}
+                    <a class="product-share__icon" href="mailto:?subject={{ product.title | url_encode }}&body={{ shop.url }}{{ product.url | url_encode }}" aria-label="Email">
+                      {% render 'icon', name: 'mail' %}
+                    </a>
+                  {% endif %}
+                </div>
+                <span class="product-share__feedback" data-share-feedback role="status" aria-live="polite"></span>
+              </div>
+          {% endcase %}
+        {% endfor %}
+
         {% if section.settings.show_trust %}
           <div class="trust-block" data-reveal>
             <div class="trust-block__item">
@@ -375,6 +439,106 @@
       "type": "text",
       "id": "id",
       "label": "t:sections.hero.anchor_label"
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "tasting_scores",
+      "name": "Scores de dégustation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre",
+          "default": "Profil de dégustation"
+        },
+        {
+          "type": "paragraph",
+          "content": "Les valeurs des metafields produit (custom.intensite, custom.rondeur, custom.epices) priment sur les valeurs ci-dessous."
+        },
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "Score 1 — libellé",
+          "default": "Intensité"
+        },
+        {
+          "type": "range",
+          "id": "score_1",
+          "label": "Score 1 — valeur",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 7
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "Score 2 — libellé",
+          "default": "Rondeur"
+        },
+        {
+          "type": "range",
+          "id": "score_2",
+          "label": "Score 2 — valeur",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "text",
+          "id": "label_3",
+          "label": "Score 3 — libellé",
+          "default": "Épices"
+        },
+        {
+          "type": "range",
+          "id": "score_3",
+          "label": "Score 3 — valeur",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "default": 9
+        }
+      ]
+    },
+    {
+      "type": "share",
+      "name": "Partage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Libellé",
+          "default": "Partager cette recette"
+        },
+        {
+          "type": "text",
+          "id": "share_label",
+          "label": "Texte du bouton",
+          "default": "Copier le lien"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_whatsapp",
+          "label": "WhatsApp",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_facebook",
+          "label": "Facebook",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_email",
+          "label": "Email",
+          "default": true
+        }
+      ]
     }
   ],
   "presets": [

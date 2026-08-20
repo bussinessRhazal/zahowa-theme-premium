@@ -1,9 +1,23 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
       "type": "main-404",
       "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Retrouvez votre chemin",
+        "title": "Nos quatre *recettes*"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "featured"
+  ]
 }

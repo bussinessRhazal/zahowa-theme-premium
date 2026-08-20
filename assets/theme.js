@@ -350,7 +350,34 @@
     });
   }
 
-  /* ---------- Testimonials carousel ---------- */
+  /* ---------- Product share ---------- */
+  function initProductShare() {
+    document.querySelectorAll('[data-share-native]').forEach((btn) => {
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+      btn.addEventListener('click', async () => {
+        const url = btn.dataset.shareUrl || window.location.href;
+        const title = btn.dataset.shareTitle || document.title;
+        const feedback = btn.closest('.product-share')?.querySelector('[data-share-feedback]');
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+          } catch (e) { /* annulé */ }
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          if (feedback) {
+            feedback.textContent = 'Lien copié';
+            setTimeout(() => (feedback.textContent = ''), 2500);
+          }
+        } catch (e) {
+          window.prompt('Copiez le lien :', url);
+        }
+      });
+    });
+  }
+
   function initTestimonials() {
     const wraps = document.querySelectorAll('[data-testimonials]');
     wraps.forEach((wrap) => {
@@ -497,5 +524,6 @@
     initVariantSelector();
     initStickyATC();
     initTestimonials();
+    initProductShare();
   });
 })();

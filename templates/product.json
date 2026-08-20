@@ -1,34 +1,150 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "blocks": {
+        "tasting_scores_hKAQJt": {
+          "type": "tasting_scores",
+          "settings": {
+            "heading": "Profil de dégustation",
+            "label_1": "Intensité",
+            "score_1": 7,
+            "label_2": "Rondeur",
+            "score_2": 8,
+            "label_3": "Épices",
+            "score_3": 9
+          }
+        },
+        "share_tB4JmG": {
+          "type": "share",
+          "settings": {
+            "label": "Partager cette recette",
+            "share_label": "Copier le lien",
+            "show_whatsapp": true,
+            "show_facebook": true,
+            "show_email": true
+          }
+        }
+      },
+      "block_order": [
+        "tasting_scores_hKAQJt",
+        "share_tB4JmG"
+      ],
+      "settings": {
+        "color_scheme": "creme",
+        "show_vendor": true,
+        "show_sku": true,
+        "show_description": true,
+        "show_reviews": true,
+        "review_count_text": "4,9/5 — 127 avis",
+        "show_trust": false,
+        "trust_1_title": "Paiement sécurisé",
+        "trust_1_text": "Visa, Mastercard, PayPal",
+        "trust_2_title": "Livraison offerte",
+        "trust_2_text": "dès 39€ d'achat",
+        "trust_3_title": "Retour facile",
+        "trust_3_text": "30 jours, satisfait ou remboursé",
+        "accordion_1_title": "Composition",
+        "accordion_1_content": "<p>Arabica & épices naturelles.</p>",
+        "accordion_2_title": "Instruction d'infusion",
+        "accordion_2_content": "<p>Ouvrez le sachet, installez-le sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C), laissez infuser 3–4 minutes.</p>",
+        "accordion_3_title": "Profil gustatif",
+        "accordion_3_content": "<p>Notes épicées et florales, rondeur du café arabica.</p>",
+        "id": ""
+      }
     },
     "video_demo": {
       "type": "video",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "Démo",
         "title": "Comment *l'infuser*",
         "text": "Découvrez en une minute comment utiliser votre drip bag Zahowa.",
-        "video_url": "",
+        "video_url": "https://www.youtube.com/watch?v=XP4S4Nq_XwU",
         "aspect_ratio": "16-9",
         "autoplay": false,
         "loop": false,
-        "alt_bg": true
+        "alt_bg": true,
+        "id": ""
       }
     },
     "related": {
       "type": "related-products",
       "settings": {
+        "color_scheme": "creme",
         "recommendations": true,
-        "collection": "frontpage",
+        "collection": "tu-peux-aimer-aussi",
         "products_to_show": 4,
         "kicker": "Pour continuer",
         "title": "Vous aimerez *aussi*",
-        "portrait": false,
-        "alt_bg": false
+        "portrait": true,
+        "alt_bg": false,
+        "id": "",
+        "current_product_id": ""
+      }
+    },
+    "multi_column_GqA6De": {
+      "type": "multi-column",
+      "blocks": {
+        "column_WrAkMw": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Naturel",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mPXpYa": {
+          "type": "column",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eCMA4P": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison soignée",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WrAkMw",
+        "column_mPXpYa",
+        "column_eCMA4P"
+      ],
+      "name": "Zahowa — Multi-colonnes",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
+        "id": ""
       }
     }
   },
-  "order": ["main", "video_demo", "related"]
+  "order": [
+    "main",
+    "video_demo",
+    "related",
+    "multi_column_GqA6De"
+  ]
 }

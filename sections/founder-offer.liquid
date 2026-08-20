@@ -1,0 +1,192 @@
+{{ 'new-sections.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  comment
+    Compteur de places : priorité au métaobjet founder_circle
+    (champs places_restantes, ou places_totales/inscrits), puis au
+    metafield shop custom.places_restantes, sinon setting places_restantes.
+  endcomment
+  assign seats_left = section.settings.places_restantes
+  assign circle = shop.metaobjects.founder_circle.values.first
+  if circle != blank
+    if circle.places_restantes.value != blank
+      assign seats_left = circle.places_restantes.value
+    elsif circle.places_totales.value != blank and circle.inscrits.value != blank
+      assign seats_left = circle.places_totales.value | minus: circle.inscrits.value
+    endif
+  elsif shop.metafields.custom.places_restantes.value != blank
+    assign seats_left = shop.metafields.custom.places_restantes.value
+  endif
+-%}
+
+<section
+  class="zw-scheme-{{ section.settings.color_scheme }} section founder"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.heading != blank %}
+        <h2 class="section__title">
+          {{ section.settings.heading | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      {% if section.settings.intro != blank %}
+        <p class="section__intro">{{ section.settings.intro }}</p>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    <div class="founder__grid">
+      <div class="founder__benefits">
+        {% if section.blocks.size > 0 %}
+          <ul class="founder__list" role="list">
+            {% for block in section.blocks %}
+              <li class="founder__benefit" data-reveal {{ block.shopify_attributes }}>
+                <span class="founder__benefit-icon">{% render 'icon', name: 'diamond' %}</span>
+                <div>
+                  <h3 class="founder__benefit-title">{{ block.settings.title }}</h3>
+                  {% if block.settings.text != blank %}
+                    <p class="founder__benefit-text">{{ block.settings.text }}</p>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="founder__signup" data-reveal>
+        {% if section.settings.show_counter %}
+          <p class="founder__counter">
+            <span class="founder__counter-number">{{ seats_left }}</span>
+            <span class="founder__counter-label">{{ section.settings.counter_label }}</span>
+          </p>
+        {% endif %}
+
+        {% form 'customer', class: 'founder__form' %}
+          {%- if form.posted_successfully? -%}
+            <p class="founder__success" role="status">{{ section.settings.form_success }}</p>
+          {%- else -%}
+            <input type="hidden" name="contact[tags]" value="cercle-fondateur">
+            <label class="visually-hidden" for="FounderEmail-{{ section.id }}">Adresse email</label>
+            <input
+              type="email"
+              id="FounderEmail-{{ section.id }}"
+              name="contact[email]"
+              class="founder__input"
+              placeholder="Votre adresse email"
+              autocomplete="email"
+              required
+              aria-required="true"
+            >
+            {% if form.errors %}
+              <p class="founder__error" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+            {% endif %}
+            <button type="submit" class="btn btn--gold founder__submit">{{ section.settings.form_button_label }}</button>
+          {%- endif -%}
+        {% endform %}
+
+        {% if section.settings.form_disclaimer != blank %}
+          <p class="founder__disclaimer">{{ section.settings.form_disclaimer }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offre Cercle Fondateur",
+  "tag": "section",
+  "class": "section-founder-offer",
+  "enabled_on": { "templates": ["page"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
+      ],
+      "default": "creme"
+    },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Devenir *membre fondateur*" },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Deux cents personnes accompagneront la naissance de Zahowa. Voici ce que cela signifie."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_counter",
+      "label": "Afficher le compteur de places",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "places_restantes",
+      "label": "Places restantes (fallback si pas de métaobjet/metafield)",
+      "default": 200,
+      "info": "Remplacé automatiquement par le métaobjet founder_circle ou le metafield shop custom.places_restantes s'ils existent."
+    },
+    { "type": "text", "id": "counter_label", "label": "Libellé compteur", "default": "places restantes" },
+    { "type": "text", "id": "form_button_label", "label": "Libellé bouton formulaire", "default": "Réserver ma place" },
+    {
+      "type": "text",
+      "id": "form_success",
+      "label": "Message de confirmation",
+      "default": "Bienvenue dans le Cercle. Nous vous écrirons très vite."
+    },
+    {
+      "type": "text",
+      "id": "form_disclaimer",
+      "label": "Mention sous le formulaire",
+      "default": "Un email de confirmation, rien d'autre. Désinscription en un clic."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espacement haut",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espacement bas",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Privilège",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titre", "default": "Accès prioritaire" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Commandez 72 h avant l'ouverture publique." }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Offre Cercle Fondateur",
+      "blocks": [
+        { "type": "benefit", "settings": { "title": "Accès prioritaire", "text": "Commandez 72 h avant l'ouverture publique." } },
+        { "type": "benefit", "settings": { "title": "Coffret numéroté", "text": "Chaque premier coffret est numéroté et signé." } },
+        { "type": "benefit", "settings": { "title": "Prix fondateur", "text": "Un tarif préférentiel, garanti à vie sur l'abonnement." } },
+        { "type": "benefit", "settings": { "title": "Votre nom au Cercle", "text": "Les membres fondateurs figurent dans le livre de la Maison." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -11,11 +11,12 @@
   "sections": {
     "hero": {
       "type": "hero",
+      "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/hero-coffee.webp",
+        "color_scheme": "cafe",
         "kicker": "— LANCEMENT BIENTÔT",
         "title": "Un café *épicé,* comme tu ne l'as jamais bu.",
-        "text": "Pour qui refuse le café sans âme.",
+        "text": "",
         "button_primary_label": "Rejoindre le Cercle Zahowa Privilège",
         "button_primary_link": "",
         "button_secondary_label": "Découvrir l'histoire",
@@ -28,27 +29,145 @@
         "id": ""
       }
     },
+    "hero_anime_FdjAM8": {
+      "type": "hero-anime",
+      "blocks": {
+        "floating_item_D3YLXW": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-cardamome2.png",
+            "asset_spice": "none",
+            "svg_fallback": "bean",
+            "size": 70
+          }
+        },
+        "recipe_C3jBHE": {
+          "type": "recipe",
+          "settings": {
+            "name": "Aube de Casablanca",
+            "notes": "Miel · Fleur d'oranger",
+            "palette": "casablanca",
+            "product_image": "shopify://shop_images/3.png",
+            "product_url": ""
+          }
+        },
+        "recipe_zfPVWF": {
+          "type": "recipe",
+          "settings": {
+            "name": "Grâce de Rabat",
+            "notes": "Caramel · Cannelle",
+            "palette": "rabat",
+            "product_image": "shopify://shop_images/1.png",
+            "product_url": ""
+          }
+        },
+        "recipe_RaDtQE": {
+          "type": "recipe",
+          "settings": {
+            "name": "Âme de Fès",
+            "notes": "Cardamome · Cacao",
+            "palette": "fes",
+            "product_image": "shopify://shop_images/2.png",
+            "product_url": ""
+          }
+        },
+        "recipe_EbPNtk": {
+          "type": "recipe",
+          "settings": {
+            "name": "Fièvre de Marrakech",
+            "notes": "Gingembre · Piment doux",
+            "palette": "marrakech",
+            "product_image": "shopify://shop_images/4.png",
+            "product_url": ""
+          }
+        },
+        "floating_item_TtfL4h": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-cafe.png",
+            "asset_spice": "none",
+            "svg_fallback": "bean",
+            "size": 70
+          }
+        },
+        "floating_item_yQQRWM": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-anis.png",
+            "asset_spice": "none",
+            "svg_fallback": "anise",
+            "size": 60
+          }
+        },
+        "floating_item_zwLrTk": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-cannelle2.png",
+            "asset_spice": "none",
+            "svg_fallback": "cinnamon",
+            "size": 80
+          }
+        },
+        "floating_item_QdWLAX": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-rose.png",
+            "asset_spice": "none",
+            "svg_fallback": "leaf",
+            "size": 55
+          }
+        }
+      },
+      "block_order": [
+        "floating_item_D3YLXW",
+        "recipe_C3jBHE",
+        "recipe_zfPVWF",
+        "recipe_RaDtQE",
+        "recipe_EbPNtk",
+        "floating_item_TtfL4h",
+        "floating_item_yQQRWM",
+        "floating_item_zwLrTk",
+        "floating_item_QdWLAX"
+      ],
+      "name": "Hero animé — Zahowa",
+      "settings": {
+        "kicker": "Zahowa Coffee — Lancement novembre 2026",
+        "title_line1": "Le café",
+        "title_emphasis": "épicé",
+        "title_line2": "",
+        "description": "<p>Des cafés de spécialité torréfiés avec soin, mariés aux épices du Maroc. Cardamome, cannelle, gingembre — chaque recette est un voyage.</p>",
+        "cta_label": "Découvrir nos recettes",
+        "cta_url": "shopify://collections/nos-recettes",
+        "badge_text": "Zahowa — Spécialiste du café épicé",
+        "side_title": "Quatre Villes, quatre caractères",
+        "aria_label": "Zahowa Coffee — café de spécialité épicé",
+        "layout_mode": "fond",
+        "bg_position": "right",
+        "image_scale": 100,
+        "default_product_image": "shopify://shop_images/2.png",
+        "show_steam": true,
+        "steam_x": 68,
+        "steam_y": 32,
+        "bg_inner": "#3a241a",
+        "bg_mid": "#241610",
+        "bg_outer": "#120a06",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
     "marquee": {
       "type": "marquee",
       "settings": {
+        "color_scheme": "creme",
         "items": "CASABLANCA\nFÈS\nMARRAKECH\nRABAT",
         "dark": true,
         "reverse": false
       }
     },
-    "cities": {
-      "type": "cities",
-      "settings": {
-        "background_color": "#1a0f08",
-        "eyebrow": "Les origines",
-        "title": "<p>Quatre villes,<br><em>quatre caractères</em></p>",
-        "padding_top": 100,
-        "padding_bottom": 100
-      }
-    },
     "maison": {
       "type": "maison",
       "settings": {
+        "color_scheme": "creme",
         "image": "shopify://shop_images/couple.jpg",
         "kicker": "Notre histoire",
         "title": "La *Maison*",
@@ -59,10 +178,78 @@
         "id": ""
       }
     },
+    "cities": {
+      "type": "cities",
+      "blocks": {
+        "city_THg3Pr": {
+          "type": "city",
+          "settings": {
+            "image": "shopify://shop_images/recipe-casablanca_487e7821-6ca9-42f6-b8e9-628133713e74.webp",
+            "fallback_color": "#2e1c13",
+            "name": "Aube de Casablanca",
+            "spice": "Atlantique · Douceur",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "shopify://products/aube-de-casablanca",
+            "link_label": "Lire la recette"
+          }
+        },
+        "city_VfKq7b": {
+          "type": "city",
+          "settings": {
+            "image": "shopify://shop_images/recipe-rabat.webp",
+            "fallback_color": "#2e1c13",
+            "name": "Grâce de Rabat",
+            "spice": "Royale · Feutrée",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "shopify://products/grace-de-rabat",
+            "link_label": "Lire la recette"
+          }
+        },
+        "city_6REmXR": {
+          "type": "city",
+          "settings": {
+            "image": "shopify://shop_images/recipe-fes.webp",
+            "fallback_color": "#2e1c13",
+            "name": "Âme de Fès",
+            "spice": "Spirituelle · Millénaire",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "shopify://products/ame-de-fes",
+            "link_label": "Lire la recette"
+          }
+        },
+        "city_JJpzgc": {
+          "type": "city",
+          "settings": {
+            "image": "shopify://shop_images/recipe-marrakech.webp",
+            "fallback_color": "#2e1c13",
+            "name": "Fièvre de Marrakech",
+            "spice": "Intense · Charnelle",
+            "description": "La contemplation. Dans les ruelles sans fin, on trouve des tresors que personne d'autre ne voit. Mysterieux, intemporel.",
+            "link": "shopify://products/fievre-de-marrakech",
+            "link_label": "Lire la recette"
+          }
+        }
+      },
+      "block_order": [
+        "city_THg3Pr",
+        "city_VfKq7b",
+        "city_6REmXR",
+        "city_JJpzgc"
+      ],
+      "settings": {
+        "color_scheme": "cafe",
+        "eyebrow": "Les origines",
+        "title": "<p>Quatre villes,<br/><em>quatre caractères</em></p>",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
-        "collection": "frontpage",
+        "color_scheme": "creme",
+        "collection": "notre-collection",
         "products_to_show": 4,
         "kicker": "Nos créations",
         "title": "Nos *Recettes*",
@@ -75,7 +262,9 @@
     },
     "recipes_grid": {
       "type": "recipes-grid",
+      "disabled": true,
       "settings": {
+        "color_scheme": "creme",
         "kicker": "La collection",
         "title": "Quatre recettes.",
         "subtitle": "Laquelle est la tienne ?",
@@ -84,23 +273,14 @@
         "id": ""
       }
     },
-    "rituel": {
-      "type": "rituel",
-      "settings": {
-        "kicker": "La méthode",
-        "title": "Le *Rituel*",
-        "text": "Trois gestes pour une infusion parfaite.",
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "video_demo": {
       "type": "video",
       "settings": {
+        "color_scheme": "creme",
         "kicker": "Démo",
         "title": "Le *rituel* en vidéo",
         "text": "Découvrez en une minute comment infuser votre drip bag Zahowa.",
-        "video_url": "",
+        "video_url": "https://youtu.be/Pl4pud5kckY?si=8QEZqRkxxINDxwAM",
         "aspect_ratio": "16-9",
         "autoplay": false,
         "loop": false,
@@ -111,6 +291,7 @@
     "coffret": {
       "type": "coffret",
       "settings": {
+        "color_scheme": "creme",
         "image": "shopify://shop_images/Memepackagingpremium.png",
         "kicker": "L'idée cadeau",
         "title": "Coffret *Découverte*",
@@ -124,11 +305,72 @@
     },
     "testimonials": {
       "type": "testimonials",
+      "blocks": {
+        "testimonial_a9GhJD": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/welcome-to-my-business.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "product": "",
+            "verified": true,
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_mNx8Pn": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/professional-man-smiling.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "product": "",
+            "verified": true,
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_YxpRig": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg",
+            "name": "Camille R.",
+            "location": "Paris",
+            "product": "",
+            "verified": true,
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        },
+        "testimonial_TLRNh9": {
+          "type": "testimonial",
+          "settings": {
+            "photo": "shopify://shop_images/Mains_realistes_tasse.webp",
+            "name": "Camille R.",
+            "location": "Paris",
+            "product": "Âme de Fès",
+            "verified": true,
+            "rating": 5,
+            "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_a9GhJD",
+        "testimonial_mNx8Pn",
+        "testimonial_YxpRig",
+        "testimonial_TLRNh9"
+      ],
       "settings": {
+        "color_scheme": "cafe",
         "kicker": "Ils ont adopté le rituel",
         "title": "Ils *en parlent* mieux que nous",
         "text": "Des milliers de matins transformés à travers la France.",
         "columns": "3",
+        "show_stars": true,
+        "show_verified": true,
+        "verified_text": "Avis vérifié",
+        "per_view": "3",
         "autoplay": true,
         "autoplay_delay": 5,
         "show_arrows": true,
@@ -137,20 +379,76 @@
         "id": ""
       }
     },
-    "faq": {
-      "type": "faq",
+    "featured_blog_efm4aY": {
+      "type": "featured-blog",
+      "name": "Zahowa — Articles à la une",
       "settings": {
-        "kicker": "Questions fréquentes",
-        "title": "Vos *questions*",
-        "text": "Tout ce que vous devez savoir avant votre première infusion.",
-        "open_first": true,
-        "alt_bg": false,
+        "color_scheme": "creme",
+        "kicker": "Le Journal",
+        "title": "Le *Journal* Zahowa",
+        "blog": "journal",
+        "read_more_label": "Lire l'article",
+        "alt_bg": true,
+        "id": ""
+      }
+    },
+    "instagram_gallery_BtHqwj": {
+      "type": "instagram-gallery",
+      "blocks": {
+        "image_pHiBpi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/welcome-to-my-business.jpg"
+          }
+        },
+        "image_bHGNCz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg"
+          }
+        },
+        "image_M3KBDb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/professional-man-smiling.jpg"
+          }
+        },
+        "image_aQzMMF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/2891deb95bd2a75c0a3e46f6eb785ee7.webp"
+          }
+        },
+        "image_RYUD79": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Mains_realistes_tasse.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_pHiBpi",
+        "image_bHGNCz",
+        "image_M3KBDb",
+        "image_aQzMMF",
+        "image_RYUD79"
+      ],
+      "name": "Zahowa — Galerie Instagram",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "@zahowacoffee",
+        "title": "La communauté *Zahowa*",
+        "handle": "zahowacoffee",
+        "instagram_url": "",
+        "cta_label": "Suivre @",
         "id": ""
       }
     },
     "cercle": {
       "type": "cercle",
+      "disabled": true,
       "settings": {
+        "color_scheme": "cafe",
         "kicker": "Le cercle privilège",
         "title": "Cercle *Fondateur*",
         "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
@@ -158,20 +456,35 @@
         "email_placeholder": "",
         "id": ""
       }
+    },
+    "faq": {
+      "type": "faq",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Questions fréquentes",
+        "title": "Vos *questions*",
+        "text": "Tout ce que vous devez savoir avant votre première infusion.",
+        "open_first": true,
+        "alt_bg": false,
+        "id": ""
+      }
     }
   },
   "order": [
     "hero",
+    "hero_anime_FdjAM8",
     "marquee",
-    "cities",
     "maison",
+    "cities",
     "featured_collection",
     "recipes_grid",
-    "rituel",
     "video_demo",
     "coffret",
     "testimonials",
-    "faq",
-    "cercle"
+    "featured_blog_efm4aY",
+    "instagram_gallery_BtHqwj",
+    "cercle",
+    "faq"
   ]
 }

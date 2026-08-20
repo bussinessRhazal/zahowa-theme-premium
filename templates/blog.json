@@ -1,9 +1,21 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
       "type": "main-blog",
       "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "cafe"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "newsletter"
+  ]
 }

@@ -1,0 +1,1458 @@
+{%- liquid
+  assign sid = 'hero-anime-' | append: section.id
+  assign layout_mode = section.settings.layout_mode | default: 'fond'
+  assign bg_position = section.settings.bg_position | default: 'right'
+  assign image_scale = section.settings.image_scale | default: 100
+  assign bg_img = section.settings.bg_image
+-%}
+
+<section
+  id="{{ sid }}"
+  class="zwh zwh--mode-{{ layout_mode }}"
+  style="--zwh-bg-inner: {{ section.settings.bg_inner }}; --zwh-bg-mid: {{ section.settings.bg_mid }}; --zwh-bg-outer: {{ section.settings.bg_outer }}; --zwh-pt: {{ section.settings.padding_top }}px; --zwh-pb: {{ section.settings.padding_bottom }}px; --zwh-img-scale: {{ image_scale | divided_by: 100.0 }};"
+  aria-label="{{ section.settings.aria_label | default: 'Zahowa Coffee — café de spécialité épicé' | escape }}"
+>
+
+  {%- comment -%} ===== Fond plein écran (mode "fond") ===== {%- endcomment -%}
+  {%- if layout_mode == 'fond' -%}
+    <div class="zwh__bg" aria-hidden="true" data-zwh-bg>
+      <div class="zwh__bg-img zwh__bg-img--a"
+           style="background-image: url({% if bg_img != blank %}{{ bg_img | image_url: width: 2400 }}{% else %}{{ 'hero-zahowa-dripbag.jpg' | asset_url }}{% endif %}); background-position: {{ bg_position }} center;"
+           data-zwh-bg-a></div>
+      <div class="zwh__bg-img zwh__bg-img--b" data-zwh-bg-b></div>
+      <div class="zwh__bg-overlay"></div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Vapeur / grains ascendants (générés en JS) {%- endcomment -%}
+  <div class="zwh__steam" aria-hidden="true"></div>
+
+  {%- comment -%} ===== Volutes de vapeur (pur CSS) ===== {%- endcomment -%}
+  {%- if section.settings.show_steam -%}
+    <div class="zwh__wisps" aria-hidden="true"
+         style="left: {{ section.settings.steam_x | default: 68 }}%; top: {{ section.settings.steam_y | default: 32 }}%;">
+      <span class="zwh__wisp zwh__wisp--1"></span>
+      <span class="zwh__wisp zwh__wisp--2"></span>
+      <span class="zwh__wisp zwh__wisp--3"></span>
+      <span class="zwh__wisp zwh__wisp--4"></span>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Couches de parallaxe pour les épices flottantes {%- endcomment -%}
+  <div class="zwh__layer zwh__layer--far" data-depth="far" aria-hidden="true"></div>
+  <div class="zwh__layer zwh__layer--mid" data-depth="mid" aria-hidden="true"></div>
+
+  <div class="zwh__inner">
+
+    {%- comment -%} ===== Colonne gauche ===== {%- endcomment -%}
+    <div class="zwh__left">
+      {%- if section.settings.kicker != blank -%}
+        <p class="zwh__kicker">{{ section.settings.kicker | escape }}</p>
+      {%- endif -%}
+
+      <h1 class="zwh__title">
+        {{ section.settings.title_line1 | escape }}
+        {%- if section.settings.title_emphasis != blank -%}
+          <br><em class="zwh__title-em">{{ section.settings.title_emphasis | escape }}</em>
+        {%- endif -%}
+        {%- if section.settings.title_line2 != blank -%}
+          <br>{{ section.settings.title_line2 | escape }}
+        {%- endif -%}
+      </h1>
+
+      {%- if section.settings.description != blank -%}
+        <div class="zwh__desc">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      <div class="zwh__cta-wrap">
+        <a href="{{ section.settings.cta_url | default: '#' }}"
+           class="zwh__cta"
+           data-zwh-cta>
+          {{ section.settings.cta_label | default: 'Découvrir' | escape }}
+        </a>
+      </div>
+
+      {%- if section.settings.badge_text != blank -%}
+        <p class="zwh__badge">{{ section.settings.badge_text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ===== Produit central ===== {%- endcomment -%}
+  {%- liquid
+    assign center_img = section.settings.default_product_image
+    if center_img == blank
+      assign fr = section.blocks | where: 'type', 'recipe' | first
+      if fr and fr.settings.product_image != blank
+        assign center_img = fr.settings.product_image
+      endif
+    endif
+    assign show_center = true
+  -%}
+  {%- if show_center -%}
+    <div class="zwh__center is-hidden" aria-hidden="true" data-zwh-center>
+      <div class="zwh__glow"></div>
+      <div class="zwh__product-tilt">
+        <div class="zwh__product-spin">
+          <div class="zwh__product-float">
+            {%- assign default_img = section.settings.default_product_image -%}
+            {%- if default_img == blank -%}
+              {%- assign first_recipe = section.blocks | where: 'type', 'recipe' | first -%}
+              {%- if first_recipe and first_recipe.settings.product_image != blank -%}
+                {%- assign default_img = first_recipe.settings.product_image -%}
+              {%- endif -%}
+            {%- endif -%}
+            {%- if default_img != blank -%}
+              <img
+                class="zwh__product-img is-front"
+                src="{{ default_img | image_url: width: 900 }}"
+                alt=""
+                width="900"
+                height="900"
+                loading="eager"
+                data-zwh-front>
+            {%- else -%}
+              <div class="zwh__product-placeholder" data-zwh-front>
+                {{ 'product-1' | placeholder_svg_tag: 'zwh__product-placeholder-svg' }}
+              </div>
+            {%- endif -%}
+            {%- if default_img != blank -%}
+              <img
+                class="zwh__product-img is-back"
+                src="{{ default_img | image_url: width: 900 }}"
+                alt=""
+                width="900"
+                height="900"
+                loading="lazy"
+                data-zwh-back>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+    {%- comment -%} ===== Colonne droite : recettes ===== {%- endcomment -%}
+    <div class="zwh__right">
+      {%- if section.settings.side_title != blank -%}
+        <h2 class="zwh__side-title">{{ section.settings.side_title | escape }}</h2>
+      {%- endif -%}
+
+      {%- assign recipe_blocks = section.blocks | where: 'type', 'recipe' -%}
+      {%- if recipe_blocks.size > 0 -%}
+        <ul class="zwh__cards" role="list">
+          {%- for block in recipe_blocks -%}
+            {%- liquid
+              assign palette = block.settings.palette | default: 'casablanca'
+              case palette
+                when 'casablanca'
+                  assign p_inner = '#5a3a22'
+                  assign p_mid = '#33200f'
+                  assign p_outer = '#150b05'
+                when 'rabat'
+                  assign p_inner = '#4a2c1a'
+                  assign p_mid = '#2a180c'
+                  assign p_outer = '#120904'
+                when 'fes'
+                  assign p_inner = '#33221a'
+                  assign p_mid = '#1d130c'
+                  assign p_outer = '#0d0704'
+                when 'marrakech'
+                  assign p_inner = '#5c2a18'
+                  assign p_mid = '#33170c'
+                  assign p_outer = '#140803'
+                else
+                  assign p_inner = '#5a3a22'
+                  assign p_mid = '#33200f'
+                  assign p_outer = '#150b05'
+              endcase
+            -%}
+            <li class="zwh__card-item" {{ block.shopify_attributes }}>
+              <button
+                type="button"
+                class="zwh__card"
+                data-zwh-card
+                data-bg-inner="{{ p_inner }}"
+                data-bg-mid="{{ p_mid }}"
+                data-bg-outer="{{ p_outer }}"
+                data-cta-url="{{ block.settings.product_url | default: section.settings.cta_url | default: '#' }}"
+                {%- if block.settings.product_image != blank -%}
+                  data-product-src="{{ block.settings.product_image | image_url: width: 1600 }}"
+                {%- elsif block.settings.card_image != blank -%}
+                  data-product-src="{{ block.settings.card_image | image_url: width: 1600 }}"
+                {%- endif -%}
+                aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="{{ block.settings.name | default: 'Recette' | escape }}"
+              >
+                {%- if block.settings.card_image != blank or block.settings.product_image != blank -%}
+                  <span class="zwh__card-thumb">
+                    {%- if block.settings.card_image != blank -%}
+                      <img src="{{ block.settings.card_image | image_url: width: 240 }}"
+                           alt="" width="240" height="240" loading="lazy">
+                    {%- else -%}
+                      <img src="{{ block.settings.product_image | image_url: width: 240 }}"
+                           alt="" width="240" height="240" loading="lazy">
+                    {%- endif -%}
+                  </span>
+                {%- endif -%}
+                <span class="zwh__card-info">
+                  <span class="zwh__card-name">{{ block.settings.name | default: 'Recette' | escape }}</span>
+                  {%- if block.settings.notes != blank -%}
+                    <span class="zwh__card-notes">{{ block.settings.notes | escape }}</span>
+                  {%- endif -%}
+                </span>
+              </button>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="zwh__layer zwh__layer--near" data-depth="near" aria-hidden="true"></div>
+
+  {%- comment -%} ===== Fallback SVG : épices dessinées à la main (utilisées si un floating_item n'a ni image ni asset) ===== {%- endcomment -%}
+  <template data-zwh-svg-templates>
+    <svg class="zwh__spice zwh__spice--bean" viewBox="0 0 40 24" fill="none" aria-hidden="true">
+      <ellipse cx="20" cy="12" rx="18" ry="10" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M20 2 C 14 8, 14 16, 20 22 C 26 16, 26 8, 20 2 Z" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+    <svg class="zwh__spice zwh__spice--anise" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      {%- comment -%} étoile de badiane : 8 branches {%- endcomment -%}
+      <circle cx="20" cy="20" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M20 16 L20 4 M24.8 17.2 L33.3 8.7 M24 20 L36 20 M24.8 22.8 L33.3 31.3 M20 24 L20 36 M15.2 22.8 L6.7 31.3 M16 20 L4 20 M15.2 17.2 L6.7 8.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="zwh__spice zwh__spice--cinnamon" viewBox="0 0 14 48" fill="none" aria-hidden="true">
+      <rect x="3" y="2" width="8" height="44" rx="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7 6 L7 42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="zwh__spice zwh__spice--leaf" viewBox="0 0 24 44" fill="none" aria-hidden="true">
+      <path d="M12 2 C 2 12, 2 30, 12 42 C 22 30, 22 12, 12 2 Z" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 8 L12 36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12 14 L17 12 M12 20 L6 17 M12 26 L17 24 M12 32 L7 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </template>
+
+  {%- comment -%} Assets épices détourées (utilisées par le fallback automatique JS) {%- endcomment -%}
+  <template data-zwh-spice-assets>
+    <img data-spice="anis" src="{{ 'spice-anis.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <img data-spice="cardamome" src="{{ 'spice-cardamome.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <img data-spice="cannelle" src="{{ 'spice-cannelle.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <img data-spice="cafe" src="{{ 'spice-cafe.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+    <img data-spice="rose" src="{{ 'spice-rose.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+  </template>
+
+  {%- comment -%} Blocks floating_item : markup rendu ici, déplacé par JS dans les couches {%- endcomment -%}
+  <div class="zwh__float-src" aria-hidden="true" hidden>
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'floating_item' -%}
+        {%- assign asset_spice = block.settings.asset_spice | default: 'none' -%}
+        <span class="zwh__float-item"
+              data-svg="{{ block.settings.svg_fallback | default: 'bean' }}"
+              data-size="{{ block.settings.size | default: 70 }}"
+              {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 220 }}" alt="" width="220" height="220" loading="lazy">
+          {%- elsif asset_spice != 'none' -%}
+            <img src="{{ 'spice-' | append: asset_spice | append: '.png' | asset_url }}" alt="" width="320" height="320" loading="lazy">
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+
+  <style>
+    #{{ sid }} {
+      position: relative;
+      min-height: 100svh;
+      background: radial-gradient(circle at center,
+        var(--zwh-bg-inner, #3a241a) 0%,
+        var(--zwh-bg-mid, #241610) 50%,
+        var(--zwh-bg-outer, #120a06) 100%);
+      color: #f5f0e8;
+      font-family: 'Jost', 'Inter', sans-serif;
+      overflow: clip;
+      display: flex;
+      align-items: center;
+      padding: var(--zwh-pt, 40px) 4% var(--zwh-pb, 40px);
+      isolation: isolate;
+      --zwh-gold: #c9a35c;
+      --zwh-cream: #f5f0e8;
+      --zwh-glass-bg: rgba(245, 240, 232, 0.06);
+      --zwh-glass-border: rgba(201, 163, 92, 0.25);
+    }
+
+    #{{ sid }} *, #{{ sid }} *::before, #{{ sid }} *::after { box-sizing: border-box; }
+
+    /* ---------- Fond plein écran (mode "fond") ---------- */
+    #{{ sid }} .zwh__bg {
+      position: absolute; inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #{{ sid }} .zwh__bg-img {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+    #{{ sid }} .zwh__bg-img--b {
+      opacity: 0;
+    }
+    #{{ sid }} .zwh__bg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg,
+        rgba(18, 10, 6, 0.55) 0%,
+        rgba(18, 10, 6, 0.30) 50%,
+        rgba(18, 10, 6, 0.15) 100%);
+    }
+    /* En mode fond : masquer le produit central */
+
+    /* ---------- Vapeur / grains ascendants ---------- */
+    #{{ sid }} .zwh__steam {
+      position: absolute; inset: 0;
+      pointer-events: none; overflow: hidden; z-index: 1;
+    }
+    #{{ sid }} .zwh__steam-dot {
+      position: absolute; bottom: -4vh;
+      border-radius: 50%;
+      background: var(--zwh-gold);
+      animation: zwh-floatUp linear infinite;
+      will-change: transform, opacity;
+    }
+    @keyframes zwh-floatUp {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.4; }
+      85%  { opacity: 0.4; }
+      100% { transform: translateY(-110vh) translateX(30px) rotate(360deg); opacity: 0; }
+    }
+
+    /* ---------- Volutes de vapeur (pur CSS) ---------- */
+    #{{ sid }} .zwh__wisps {
+      position: absolute;
+      width: 0; height: 0;
+      pointer-events: none;
+      z-index: 4;
+    }
+    #{{ sid }} .zwh__wisp {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 46px; height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center,
+        rgba(245, 240, 232, 0.12) 0%,
+        rgba(245, 240, 232, 0.05) 45%,
+        rgba(245, 240, 232, 0) 75%);
+      filter: blur(8px);
+      opacity: 0;
+      transform: translate(-50%, 0) scale(0.6);
+      animation: zwh-wispRise 6.5s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+    #{{ sid }} .zwh__wisp--1 { animation-duration: 6.5s; animation-delay: 0s; }
+    #{{ sid }} .zwh__wisp--2 { animation-duration: 7.5s; animation-delay: -2.2s; width: 60px; height: 110px; filter: blur(10px); }
+    #{{ sid }} .zwh__wisp--3 { animation-duration: 5.2s; animation-delay: -3.8s; width: 38px; height: 76px; filter: blur(6px); }
+    #{{ sid }} .zwh__wisp--4 { animation-duration: 8s;   animation-delay: -5.5s; width: 54px; height: 100px; filter: blur(9px); }
+    @keyframes zwh-wispRise {
+      0% {
+        transform: translate(-50%, 0) translateX(0) scale(0.6);
+        opacity: 0;
+      }
+      25% {
+        opacity: 0.35;
+        transform: translate(-50%, -36px) translateX(9px) scale(0.85);
+      }
+      55% {
+        opacity: 0.22;
+        transform: translate(-50%, -76px) translateX(-10px) scale(1.05);
+      }
+      80% {
+        opacity: 0.10;
+        transform: translate(-50%, -104px) translateX(7px) scale(1.2);
+      }
+      100% {
+        transform: translate(-50%, -120px) translateX(-4px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Couches parallaxe ---------- */
+    #{{ sid }} .zwh__layer {
+      position: absolute; inset: 0;
+      pointer-events: none;
+      will-change: transform;
+    }
+    #{{ sid }} .zwh__layer--far  { z-index: 2; }
+    #{{ sid }} .zwh__layer--mid  { z-index: 3; }
+    #{{ sid }} .zwh__layer--near { z-index: 6; }
+
+    #{{ sid }} .zwh__float-item {
+      position: absolute;
+      display: block;
+      color: var(--zwh-gold);
+      opacity: 0.65;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+      will-change: transform;
+    }
+    #{{ sid }} .zwh__float-item img {
+      display: block; width: 100%; height: auto;
+    }
+    #{{ sid }} .zwh__float-item svg {
+      display: block; width: 100%; height: auto;
+      color: inherit;
+    }
+
+    /* ---------- Layout intérieur ---------- */
+    #{{ sid }} .zwh__inner {
+      position: relative; z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: min(78svh, 780px);
+    }
+
+    /* ---------- Colonne gauche ---------- */
+    #{{ sid }} .zwh__left {
+      display: flex; flex-direction: column;
+      gap: 1.75rem;
+      max-width: 560px;
+      justify-content: center;
+      z-index: 5;
+    }
+    #{{ sid }} .zwh__kicker {
+      margin: 0;
+      font-family: 'Jost', 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--zwh-gold);
+    }
+    #{{ sid }} .zwh__title {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(4rem, 9vw, 10rem);
+      line-height: 0.9;
+      color: var(--zwh-cream);
+      text-shadow: 0 2px 24px rgba(18, 10, 6, 0.35);
+    }
+    #{{ sid }} .zwh__title-em {
+      font-style: italic;
+      color: var(--zwh-gold);
+    }
+    #{{ sid }} .zwh__desc {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(245, 240, 232, 0.75);
+      max-width: 420px;
+    }
+    #{{ sid }}.zwh--mode-fond .zwh__desc {
+      color: rgba(245, 240, 232, 0.88);
+      text-shadow: 0 1px 12px rgba(18, 10, 6, 0.5);
+    }
+    #{{ sid }} .zwh__desc p { margin: 0 0 0.75em; }
+    #{{ sid }} .zwh__cta-wrap { margin-top: 0.5rem; }
+    #{{ sid }} .zwh__cta {
+      display: inline-flex; align-items: center;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--zwh-gold);
+      border-radius: 0;
+      background: transparent;
+      color: var(--zwh-cream);
+      font-family: 'Jost', 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+    #{{ sid }} .zwh__cta:hover,
+    #{{ sid }} .zwh__cta:focus-visible {
+      background: var(--zwh-gold);
+      color: #120a06;
+      outline: none;
+    }
+    #{{ sid }} .zwh__cta:focus-visible {
+      outline: 2px solid var(--zwh-gold);
+      outline-offset: 3px;
+    }
+    #{{ sid }} .zwh__badge {
+      margin: auto 0 0;
+      padding-top: 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.5);
+    }
+
+    /* ---------- Produit central ---------- */
+    #{{ sid }} .zwh__center {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #{{ sid }} .zwh__center.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    #{{ sid }} .zwh__glow {
+      position: absolute;
+      width: 60vmin; height: 60vmin;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 163, 92, 0.14) 0%, transparent 70%);
+    }
+    #{{ sid }} .zwh__product-tilt {
+      perspective: 1200px;
+      position: relative;
+      width: calc(clamp(240px, 34vw, 480px) * var(--zwh-img-scale, 1));
+    }
+    #{{ sid }} .zwh__product-spin {
+      transform-style: preserve-3d;
+      will-change: transform, filter;
+    }
+    #{{ sid }} .zwh__product-float {
+      position: relative;
+      will-change: transform;
+    }
+    #{{ sid }} .zwh__product-img {
+      display: block;
+      width: 100%; height: auto;
+      filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55));
+    }
+    #{{ sid }} .zwh__product-img.is-back {
+      position: absolute; inset: 0;
+      opacity: 0;
+    }
+    #{{ sid }} .zwh__product-placeholder {
+      width: 100%; aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #{{ sid }} .zwh__product-placeholder-svg {
+      width: 100%; height: 100%;
+      color: var(--zwh-gold);
+    }
+
+    /* ---------- Colonne droite ---------- */
+    #{{ sid }} .zwh__right {
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      z-index: 5;
+      max-width: 480px;
+    }
+    #{{ sid }} .zwh__side-title {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 3.4vw, 3.4rem);
+      line-height: 1.05;
+      text-align: right;
+      color: var(--zwh-cream);
+      text-shadow: 0 2px 18px rgba(18, 10, 6, 0.35);
+    }
+    #{{ sid }} .zwh__cards {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      margin: 0; padding: 0;
+      align-items: stretch;
+    }
+    #{{ sid }} .zwh__card-item { margin: 0; display: flex; }
+    #{{ sid }} .zwh__card {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.9rem;
+      width: 150px;
+      min-height: 190px;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 1.1rem 1rem 1.2rem;
+      background: var(--zwh-glass-bg);
+      border: 1px solid var(--zwh-glass-border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      text-align: center;
+      color: var(--zwh-cream);
+      font-family: 'Jost', 'Inter', sans-serif;
+      transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #{{ sid }}.zwh--mode-fond .zwh__card {
+      background: rgba(245, 240, 232, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    #{{ sid }} .zwh__card:hover {
+      background: rgba(245, 240, 232, 0.1);
+      transform: translateY(-4px);
+    }
+    #{{ sid }} .zwh__card:focus-visible {
+      outline: 2px solid var(--zwh-gold);
+      outline-offset: 3px;
+    }
+    #{{ sid }} .zwh__card.is-active {
+      border-color: var(--zwh-gold);
+    }
+    #{{ sid }} .zwh__card-thumb {
+      width: 84px; height: 84px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #{{ sid }} .zwh__card-thumb img {
+      width: 100%; height: auto; max-height: 84px; object-fit: contain;
+      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.45));
+      pointer-events: none;
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    #{{ sid }} .zwh__card:hover .zwh__card-thumb img {
+      transform: translateY(-8px) rotate(-6deg) scale(1.08);
+    }
+    #{{ sid }} .zwh__card-thumb-fallback {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--zwh-glass-border);
+      background: radial-gradient(circle, rgba(201, 163, 92, 0.35) 0%, rgba(201, 163, 92, 0.05) 100%);
+    }
+    #{{ sid }} .zwh__card-info { display: flex; flex-direction: column; gap: 0.25rem; }
+    #{{ sid }} .zwh__card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.1;
+    }
+    #{{ sid }} .zwh__card-notes {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    /* ---------- Mobile / tablette < 990px ---------- */
+    @media screen and (max-width: 989px) {
+      #{{ sid }} {
+        align-items: flex-start;
+        padding-top: calc(var(--zwh-pt, 40px) + 2rem);
+      }
+      #{{ sid }} .zwh__inner {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+        gap: 3rem;
+      }
+      #{{ sid }} .zwh__title { font-size: 4rem; }
+      #{{ sid }} .zwh__center {
+        position: relative;
+        inset: auto;
+        order: -1;
+        min-height: 260px;
+      }
+        #{{ sid }} .zwh__product-tilt { width: calc(clamp(200px, 52vw, 320px) * var(--zwh-img-scale, 1)); }
+      #{{ sid }} .zwh__right {
+        align-items: flex-start;
+        max-width: none;
+      }
+      #{{ sid }} .zwh__side-title { text-align: left; }
+      #{{ sid }} .zwh__cards {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+      }
+      #{{ sid }} .zwh__card { flex: 0 0 auto; }
+      #{{ sid }} .zwh__badge { margin-top: 0; padding-top: 1rem; }
+      /* Réduire les épices flottantes : JS n'en montre que 4 */
+    }
+
+    /* ---------- Motion réduit ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      #{{ sid }} .zwh__steam-dot { animation: none; opacity: 0; }
+      #{{ sid }} .zwh__wisp { animation: none; opacity: 0; }
+      #{{ sid }} .zwh__card,
+      #{{ sid }} .zwh__card-thumb img,
+      #{{ sid }} .zwh__cta { transition: none; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var ROOT_ID = {{ sid | json }};
+      var LAYOUT_MODE = {{ layout_mode | json }};
+      var isBgMode = LAYOUT_MODE === 'fond';
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.matchMedia('(max-width: 989px)').matches;
+
+      function boot() {
+        var root = document.getElementById(ROOT_ID);
+        if (!root) return;
+        if (root.dataset.zwhInit === '1') return;
+        root.dataset.zwhInit = '1';
+
+        var hasGsap = typeof window.gsap !== 'undefined';
+        var steamWrap = root.querySelector('.zwh__steam');
+        var layers = {
+          far: root.querySelector('.zwh__layer--far'),
+          mid: root.querySelector('.zwh__layer--mid'),
+          near: root.querySelector('.zwh__layer--near')
+        };
+        var tiltWrap = root.querySelector('.zwh__product-tilt');
+        var spinWrap = root.querySelector('.zwh__product-spin');
+        var floatWrap = root.querySelector('.zwh__product-float');
+        var frontImg = root.querySelector('[data-zwh-front]');
+        var backImg = root.querySelector('[data-zwh-back]');
+        var bgImgA = root.querySelector('[data-zwh-bg-a]');
+        var bgImgB = root.querySelector('[data-zwh-bg-b]');
+        var cards = Array.prototype.slice.call(root.querySelectorAll('[data-zwh-card]'));
+        var cta = root.querySelector('[data-zwh-cta]');
+
+        /* ---------- Vapeur / grains ascendants ---------- */
+        var steamCount = isMobile ? 12 : 18;
+        for (var s = 0; s < steamCount; s++) {
+          var dot = document.createElement('span');
+          dot.className = 'zwh__steam-dot';
+          var size = 3 + Math.random() * 6;
+          dot.style.width = size + 'px';
+          dot.style.height = size + 'px';
+          dot.style.left = (Math.random() * 100) + '%';
+          dot.style.opacity = '0';
+          dot.style.animationDuration = (9 + Math.random() * 9) + 's';
+          dot.style.animationDelay = (-Math.random() * 18) + 's';
+          steamWrap.appendChild(dot);
+        }
+
+        /* ---------- Épices flottantes ---------- */
+        var svgTpl = root.querySelector('[data-zwh-svg-templates]');
+        var spiceTpl = root.querySelector('[data-zwh-spice-assets]');
+        var srcItems = Array.prototype.slice.call(root.querySelectorAll('.zwh__float-src .zwh__float-item'));
+        var maxItems = isMobile ? 4 : 9;
+        var items = [];
+        var depths = ['far', 'mid', 'near'];
+
+        /* Si aucun block floating_item, générer 8 éléments à partir des assets épices */
+        if (srcItems.length === 0) {
+          var fallbackSpices = ['anis', 'cardamome', 'cannelle', 'cafe', 'rose', 'anis', 'cafe', 'cardamome'];
+          var fallbackSizes  = [90, 55, 110, 70, 48, 62, 128, 82];
+          for (var f = 0; f < fallbackSpices.length; f++) {
+            var fake = document.createElement('span');
+            fake.className = 'zwh__float-item';
+            fake.setAttribute('data-size', String(fallbackSizes[f]));
+            var spiceImg = spiceTpl ? spiceTpl.content.querySelector('[data-spice="' + fallbackSpices[f] + '"]') : null;
+            if (spiceImg) {
+              fake.appendChild(spiceImg.cloneNode(true));
+            } else {
+              fake.setAttribute('data-svg', 'bean');
+            }
+            srcItems.push(fake);
+          }
+        }
+
+        var positions = [
+          [12, 18], [82, 22], [70, 78], [20, 74],
+          [45, 12], [30, 48], [62, 44], [88, 58], [8, 52]
+        ];
+
+        srcItems.slice(0, maxItems).forEach(function (item, i) {
+          var clone = item.cloneNode(true);
+          var depth = depths[i % 3];
+          var size = parseInt(clone.getAttribute('data-size'), 10) || 70;
+
+          if (!clone.querySelector('img')) {
+            /* Fallback SVG inline */
+            var svgName = clone.getAttribute('data-svg') || 'bean';
+            var svg = svgTpl ? svgTpl.content.querySelector('.zwh__spice--' + svgName) : null;
+            if (svg) clone.appendChild(svg.cloneNode(true));
+          }
+          clone.style.width = size + 'px';
+
+          var pos = positions[i % positions.length];
+          var baseX = pos[0] + (Math.random() * 6 - 3);
+          var baseY = pos[1] + (Math.random() * 6 - 3);
+          clone.style.left = baseX + '%';
+          clone.style.top = baseY + '%';
+
+          layers[depth].appendChild(clone);
+
+          items.push({
+            el: clone,
+            rx: 0, ry: 0,
+            baseX: 0, baseY: 0,
+            angle: Math.random() * 360,
+            dur: 5 + Math.random() * 5,
+            phase: Math.random() * Math.PI * 2,
+            amp: 8 + Math.random() * 10
+          });
+        });
+
+        /* ---------- Souris / pointeur ---------- */
+        var pointer = { nx: 0, ny: 0, px: 0, py: 0 };
+        var smooth = { nx: 0, ny: 0 };
+        var pointerActive = false;
+
+        if (!isMobile && !reduced) {
+          root.addEventListener('mousemove', function (e) {
+            pointer.nx = (e.clientX / window.innerWidth) - 0.5;
+            pointer.ny = (e.clientY / window.innerHeight) - 0.5;
+            pointer.px = e.clientX;
+            pointer.py = e.clientY;
+            pointerActive = true;
+          });
+          root.addEventListener('mouseleave', function () {
+            pointer.nx = 0; pointer.ny = 0;
+            pointerActive = false;
+          });
+        }
+
+        var switchSpin = 0;
+        var isSwitching = false;
+
+        function animate() {
+          var time = performance.now() * 0.001;
+
+          smooth.nx += (pointer.nx - smooth.nx) * 0.05;
+          smooth.ny += (pointer.ny - smooth.ny) * 0.05;
+
+          /* Tilt produit + flottement (actif dans les 2 modes) */
+          if (floatWrap && !isSwitching) {
+            var floatY = Math.sin(time * (Math.PI * 2 / 6)) * 14;
+            floatWrap.style.transform = 'translateY(' + floatY + 'px)';
+          }
+          if (spinWrap && !isSwitching) {
+            var rX = (-smooth.ny * 8).toFixed(2);
+            var rY = (smooth.nx * 8).toFixed(2);
+            spinWrap.style.transform =
+              'rotateX(' + rX + 'deg) rotateY(calc(' + rY + 'deg + ' + switchSpin + 'deg))';
+          }
+
+          /* Parallaxe couches */
+          if (!reduced) {
+            layers.far.style.transform  = 'translate(' + (smooth.nx * -15) + 'px,' + (smooth.ny * -15) + 'px)';
+            layers.mid.style.transform  = 'translate(' + (smooth.nx * -30) + 'px,' + (smooth.ny * -30) + 'px)';
+            layers.near.style.transform = 'translate(' + (smooth.nx * 55) + 'px,' + (smooth.ny * 55) + 'px)';
+          }
+
+          /* Épices : flottement + répulsion */
+          if (!isSwitching) {
+            var rootRect = root.getBoundingClientRect();
+            items.forEach(function (it) {
+              var targetRx = 0, targetRy = 0, speedMult = 1;
+
+              if (pointerActive && !isMobile && !reduced) {
+                var r = it.el.getBoundingClientRect();
+                var cx = r.left + r.width / 2;
+                var cy = r.top + r.height / 2;
+                var dx = pointer.px - cx;
+                var dy = pointer.py - cy;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 400 && dist > 0.001) {
+                  var force = (400 - dist) / 400;
+                  targetRx = (dx / dist) * force * -80;
+                  targetRy = (dy / dist) * force * -80;
+                  speedMult = 1 + force * 5;
+                }
+              }
+
+              it.rx += (targetRx - it.rx) * 0.1;
+              it.ry += (targetRy - it.ry) * 0.1;
+              if (!reduced) it.angle += 0.2 * speedMult;
+
+              var ph = time * (Math.PI * 2 / it.dur) + it.phase;
+              var floatY = reduced ? 0 : Math.sin(ph) * it.amp;
+              var floatRot = reduced ? 0 : Math.cos(ph) * 6;
+
+              it.el.style.transform =
+                'translate(' + (it.rx + it.baseX) + 'px, ' + (it.ry + it.baseY + floatY) + 'px)' +
+                ' rotate(' + (it.angle + floatRot) + 'deg)';
+            });
+          }
+
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+        /* ---------- Sélecteur de recettes ---------- */
+        function setActiveCard(card) {
+          cards.forEach(function (c) {
+            c.classList.remove('is-active');
+            c.setAttribute('aria-pressed', 'false');
+          });
+          card.classList.add('is-active');
+          card.setAttribute('aria-pressed', 'true');
+        }
+
+        function updateCTA(card) {
+          var url = card.getAttribute('data-cta-url');
+          if (cta && url) cta.setAttribute('href', url);
+        }
+
+        /* Remplace la source du produit central de façon robuste :
+           si le front est un placeholder (div), on le remplace par un <img>. */
+        function setProductSrc(newSrc) {
+          if (!newSrc || !floatWrap) return;
+          var img = floatWrap.querySelector('img[data-zwh-front]');
+          if (!img) {
+            var ph = floatWrap.querySelector('[data-zwh-front]');
+            img = document.createElement('img');
+            img.className = 'zwh__product-img is-front';
+            img.setAttribute('data-zwh-front', '');
+            img.alt = '';
+            if (ph && ph.parentNode) {
+              ph.parentNode.replaceChild(img, ph);
+            } else {
+              floatWrap.appendChild(img);
+            }
+            frontImg = img;
+          }
+          img.src = newSrc;
+        }
+
+        /* Crossfade du fond (mode "fond") : si la carte a sa propre image,
+           on la passe en couche B ; sinon simple pulsation de la couche A. */
+        function crossfadeBackground(card) {
+          if (!isBgMode || !bgImgA || !bgImgB) return;
+          var newSrc = card.getAttribute('data-product-src');
+          if (!hasGsap || reduced) return;
+
+          if (newSrc) {
+            bgImgB.style.backgroundImage = 'url("' + newSrc + '")';
+            bgImgB.style.backgroundSize = 'cover';
+            bgImgB.style.backgroundPosition = bgImgA.style.backgroundPosition || 'right center';
+            gsap.fromTo(bgImgB, { opacity: 0 }, {
+              opacity: 1, duration: 1.1, ease: 'power2.inOut',
+              onComplete: function () {
+                bgImgA.style.backgroundImage = bgImgB.style.backgroundImage;
+                gsap.set(bgImgB, { opacity: 0 });
+              }
+            });
+          } else {
+            gsap.fromTo(bgImgA, { opacity: 1 }, {
+              opacity: 0.35, duration: 0.55, ease: 'power2.inOut',
+              yoyo: true, repeat: 1
+            });
+          }
+        }
+
+        function morphBackground(card) {
+          var colors = {
+            inner: card.getAttribute('data-bg-inner'),
+            mid: card.getAttribute('data-bg-mid'),
+            outer: card.getAttribute('data-bg-outer')
+          };
+          if (!colors.inner) return;
+          if (hasGsap && !reduced) {
+            gsap.to(root, {
+              '--zwh-bg-inner': colors.inner,
+              '--zwh-bg-mid': colors.mid,
+              '--zwh-bg-outer': colors.outer,
+              duration: 1.4,
+              ease: 'power2.inOut'
+            });
+          } else {
+            root.style.setProperty('--zwh-bg-inner', colors.inner);
+            root.style.setProperty('--zwh-bg-mid', colors.mid);
+            root.style.setProperty('--zwh-bg-outer', colors.outer);
+          }
+        }
+
+        /* Spin 720° géré entièrement par GSAP (rotationY dans son cache),
+           swap de l'image à mi-course, blur sinusoïdal. La boucle animate()
+           ne touche pas au transform tant que isSwitching est vrai. */
+        function spinProduct(newSrc, done) {
+          if (!hasGsap || reduced || !spinWrap) {
+            setProductSrc(newSrc);
+            if (done) done();
+            return;
+          }
+          var swapped = false;
+          gsap.to(spinWrap, {
+            rotationY: '+=720',
+            duration: 1.2,
+            ease: 'power2.inOut',
+            onUpdate: function () {
+              var p = this.progress();
+              spinWrap.style.filter = 'blur(' + (Math.sin(p * Math.PI) * 10).toFixed(1) + 'px)';
+              if (!swapped && p >= 0.5) {
+                swapped = true;
+                setProductSrc(newSrc);
+              }
+            },
+            onComplete: function () {
+              if (!swapped) setProductSrc(newSrc);
+              spinWrap.style.filter = 'none';
+              gsap.set(spinWrap, { rotationY: 0 });
+              if (done) done();
+            }
+          });
+        }
+
+        function implodeExplodeItems(done) {
+          if (!hasGsap || reduced || items.length === 0) {
+            if (done) done();
+            return;
+          }
+          var remaining = items.length;
+          var rootRect = root.getBoundingClientRect();
+          items.forEach(function (it) {
+            var r = it.el.getBoundingClientRect();
+            var centerX = rootRect.left + rootRect.width / 2 - (r.left + r.width / 2);
+            var centerY = rootRect.top + rootRect.height / 2 - (r.top + r.height / 2);
+            /* Compensation du transform courant (position relative de l'élément) */
+            var curX = it.rx + it.baseX;
+            var curY = it.ry + it.baseY;
+
+            var nextBaseX = (Math.random() - 0.5) * 160;
+            var nextBaseY = (Math.random() - 0.5) * 160;
+
+            var tl = gsap.timeline();
+            tl.to(it.el, {
+              x: centerX + curX, y: centerY + curY,
+              rotation: it.angle + 45,
+              scale: 0.1, opacity: 0,
+              duration: 0.5,
+              ease: 'power2.in'
+            })
+            .to(it.el, { duration: 0.25 })
+            .to(it.el, {
+              x: nextBaseX, y: nextBaseY,
+              rotation: it.angle + 90,
+              scale: 1, opacity: 0.65,
+              duration: 0.9,
+              ease: 'back.out(1.5)',
+              onComplete: function () {
+                it.baseX = nextBaseX;
+                it.baseY = nextBaseY;
+                it.rx = 0; it.ry = 0;
+                it.angle += 90;
+                gsap.set(it.el, { x: 0, y: 0, rotation: 0, clearProps: 'scale' });
+                remaining--;
+                if (remaining === 0 && done) done();
+              }
+            });
+          });
+        }
+
+        function switchRecipe(card) {
+          if (isSwitching) return;
+          isSwitching = true;
+
+          setActiveCard(card);
+          updateCTA(card);
+          /* Le fond (image + couleurs) reste fixe : seul le packaging central change. */
+
+          var newSrc = card.getAttribute('data-product-src');
+
+          /* Révèle le packaging central au premier clic sur une recette */
+          if (centerWrap && centerWrap.classList.contains('is-hidden')) {
+            centerWrap.classList.remove('is-hidden');
+          }
+
+          var finished = false;
+          function finish() {
+            if (finished) return;
+            finished = true;
+            isSwitching = false;
+          }
+
+          spinProduct(newSrc, finish);
+          implodeExplodeItems(null);
+          /* Sécurité : débloquer quoi qu'il arrive */
+          setTimeout(finish, 2500);
+        }
+
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            if (card.classList.contains('is-active')) return;
+            switchRecipe(card);
+          });
+        });
+
+        /* CTA initial = première carte si présente */
+        if (cards.length > 0) {
+          updateCTA(cards[0]);
+          morphBackground(cards[0]);
+        }
+      }
+
+      /* Attendre GSAP (chargé en defer) ou démarrer sans */
+      function whenReady() {
+        if (typeof window.gsap !== 'undefined') { boot(); return; }
+        var tries = 0;
+        var iv = setInterval(function () {
+          tries++;
+          if (typeof window.gsap !== 'undefined' || tries > 40) {
+            clearInterval(iv);
+            boot();
+          }
+        }, 50);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', whenReady);
+      } else {
+        whenReady();
+      }
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Hero animé — Zahowa",
+  "tag": "section",
+  "class": "zwh-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker (sur-titre)",
+      "default": "Zahowa Coffee — Lancement novembre 2026"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Titre — ligne 1",
+      "default": "Le café"
+    },
+    {
+      "type": "text",
+      "id": "title_emphasis",
+      "label": "Titre — mot en italique or",
+      "default": "épicé"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Titre — ligne 2 (optionnel)"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Des cafés de spécialité torréfiés avec soin, mariés aux épices du Maroc. Cardamome, cannelle, gingembre — chaque recette est un voyage.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Libellé du bouton",
+      "default": "Découvrir la recette"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Lien du bouton (par défaut)"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge discret",
+      "default": "Café de spécialité — Montpellier"
+    },
+    {
+      "type": "text",
+      "id": "side_title",
+      "label": "Titre secondaire (colonne droite)",
+      "default": "Quatre recettes, quatre villes"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Label d'accessibilité de la section",
+      "default": "Zahowa Coffee — café de spécialité épicé"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Mode d'affichage de l'image",
+      "default": "fond",
+      "options": [
+        { "value": "central", "label": "Centrale (produit flottant avec tilt)" },
+        { "value": "fond", "label": "Fond plein écran" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Image de fond (sinon : photo Zahowa par défaut)"
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Position de l'image de fond",
+      "default": "right",
+      "options": [
+        { "value": "left", "label": "Gauche" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right", "label": "Droite" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_scale",
+      "label": "Taille de l'image centrale (mode central)",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "image_picker",
+      "id": "default_product_image",
+      "label": "Image produit par défaut (centre du hero)"
+    },
+    {
+      "type": "header",
+      "content": "Vapeur"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_steam",
+      "label": "Afficher les volutes de vapeur",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "steam_x",
+      "label": "Position horizontale de la vapeur",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 68
+    },
+    {
+      "type": "range",
+      "id": "steam_y",
+      "label": "Position verticale de la vapeur",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Fond (tons café)"
+    },
+    {
+      "type": "color",
+      "id": "bg_inner",
+      "label": "Fond — centre",
+      "default": "#3a241a"
+    },
+    {
+      "type": "color",
+      "id": "bg_mid",
+      "label": "Fond — intermédiaire",
+      "default": "#241610"
+    },
+    {
+      "type": "color",
+      "id": "bg_outer",
+      "label": "Fond — extérieur",
+      "default": "#120a06"
+    },
+    {
+      "type": "header",
+      "content": "Espacement"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Marge supérieure (px)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Marge inférieure (px)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recette",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom de la recette",
+          "default": "Âme de Fès"
+        },
+        {
+          "type": "text",
+          "id": "notes",
+          "label": "Notes aromatiques",
+          "default": "Cardamome · Cannelle"
+        },
+        {
+          "type": "select",
+          "id": "palette",
+          "label": "Palette de fond",
+          "default": "fes",
+          "options": [
+            { "value": "casablanca", "label": "Casablanca — miel ambré (douceur matinale)" },
+            { "value": "rabat", "label": "Rabat — caramel (réconfort)" },
+            { "value": "fes", "label": "Fès — cacao profond (contemplation)" },
+            { "value": "marrakech", "label": "Marrakech — épices roux (audace)" }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Image produit (swap au centre / fond)"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Vignette de la carte (optionnel)"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Lien produit (met à jour le CTA)"
+        }
+      ]
+    },
+    {
+      "type": "floating_item",
+      "name": "Épice flottante",
+      "limit": 9,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (PNG transparent recommandé)"
+        },
+        {
+          "type": "select",
+          "id": "asset_spice",
+          "label": "Épice du thème (si pas d'image)",
+          "default": "none",
+          "options": [
+            { "value": "none", "label": "Aucune (dessin de secours)" },
+            { "value": "anis", "label": "Anis étoilé" },
+            { "value": "cardamome", "label": "Cardamome" },
+            { "value": "cannelle", "label": "Cannelle" },
+            { "value": "cafe", "label": "Grain de café" },
+            { "value": "rose", "label": "Rose" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "svg_fallback",
+          "label": "Dessin de secours (si ni image ni épice)",
+          "default": "bean",
+          "options": [
+            { "value": "bean", "label": "Grain de café" },
+            { "value": "anise", "label": "Étoile de badiane" },
+            { "value": "cinnamon", "label": "Bâton de cannelle" },
+            { "value": "leaf", "label": "Feuille" }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Taille (px)",
+          "min": 30,
+          "max": 160,
+          "step": 5,
+          "unit": "px",
+          "default": 70
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero animé — Zahowa",
+      "settings": {
+        "layout_mode": "central",
+        "show_steam": true,
+        "steam_x": 68,
+        "steam_y": 32
+      },
+      "blocks": [
+        {
+          "type": "recipe",
+          "settings": {
+            "name": "Aube de Casablanca",
+            "notes": "Miel · Fleur d'oranger",
+            "palette": "casablanca"
+          }
+        },
+        {
+          "type": "recipe",
+          "settings": {
+            "name": "Grâce de Rabat",
+            "notes": "Caramel · Cannelle",
+            "palette": "rabat"
+          }
+        },
+        {
+          "type": "recipe",
+          "settings": {
+            "name": "Âme de Fès",
+            "notes": "Cardamome · Cacao",
+            "palette": "fes"
+          }
+        },
+        {
+          "type": "recipe",
+          "settings": {
+            "name": "Fièvre de Marrakech",
+            "notes": "Gingembre · Piment doux",
+            "palette": "marrakech"
+          }
+        },
+        {
+          "type": "floating_item",
+          "settings": { "asset_spice": "anis", "size": 85 }
+        },
+        {
+          "type": "floating_item",
+          "settings": { "asset_spice": "cardamome", "size": 60 }
+        },
+        {
+          "type": "floating_item",
+          "settings": { "asset_spice": "cannelle", "size": 100 }
+        },
+        {
+          "type": "floating_item",
+          "settings": { "asset_spice": "cafe", "size": 70 }
+        },
+        {
+          "type": "floating_item",
+          "settings": { "asset_spice": "rose", "size": 50 }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

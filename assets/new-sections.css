@@ -1,0 +1,536 @@
+/* ============================================================
+   Zahowa — nouvelles sections (P0)
+   Variables du thème : --color-gold, --color-border, --color-bg,
+   --color-bg-card, --color-ink, --color-ink-soft, --zw-gold-text,
+   --font-display, --font-body, --radius
+   Mobile-first · breakpoints 750px / 990px
+   ============================================================ */
+
+/* ---------- 2.1 Sticky ATC ---------- */
+.sticky-atc {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 40;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-gold);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  visibility: hidden;
+}
+
+.sticky-atc--visible {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.sticky-atc__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 0.625rem 1rem;
+}
+
+.sticky-atc__info {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.sticky-atc__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-atc__variant {
+  font-size: 0.75rem;
+  color: var(--color-ink-soft);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sticky-atc__price {
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  color: var(--zw-gold-text);
+  margin: 0;
+}
+
+.sticky-atc__button {
+  flex: 0 0 auto;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
+}
+
+/* Mobile uniquement sauf réglage contraire */
+@media (min-width: 990px) {
+  .sticky-atc:not(.sticky-atc--desktop) {
+    display: none;
+  }
+}
+
+/* ---------- 2.2 Reassurance bar ---------- */
+.reassurance--bordered {
+  border-top: 1px solid var(--color-gold);
+  border-bottom: 1px solid var(--color-gold);
+}
+
+.reassurance__list {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* Scroll-snap horizontal mobile, pas d'autoplay */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.reassurance__list::-webkit-scrollbar {
+  display: none;
+}
+
+.reassurance__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 0 0 75%;
+  scroll-snap-align: start;
+}
+
+.reassurance__icon {
+  flex: 0 0 auto;
+  color: var(--color-gold);
+  display: inline-flex;
+  margin-top: 0.15rem;
+}
+
+.reassurance__title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.reassurance__text {
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  margin: 0.15rem 0 0;
+}
+
+@media (min-width: 750px) {
+  .reassurance__list {
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .reassurance__item {
+    flex: none;
+  }
+}
+
+/* ---------- 2.3 Ingredients / épices ---------- */
+.spices__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.spices__media {
+  width: 7rem;
+  aspect-ratio: 1;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.spices__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.spices__name {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.spices__origin {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--zw-gold-text);
+  margin: 0.25rem 0 0;
+}
+
+.spices__note {
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+  margin: 0.35rem 0 0;
+}
+
+@media (min-width: 750px) {
+  .spices__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 990px) {
+  .spices__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- 2.4 Brewing steps ---------- */
+.brewing__steps {
+  display: grid;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brewing__number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-gold);
+  margin: 0 0 0.75rem;
+}
+
+.brewing__media {
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.brewing__image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.brewing__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.brewing__text {
+  color: var(--color-ink-soft);
+  margin: 0.4rem 0 0;
+}
+
+.brewing__cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+@media (min-width: 750px) {
+  .brewing__steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 990px) {
+  .brewing__steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .brewing--editorial .brewing__steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+
+  .brewing--editorial .brewing__number {
+    font-size: 3.5rem;
+  }
+}
+
+/* ---------- 2.5 Subscription offer ---------- */
+.subscription__cards {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.subscription__card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.subscription__card--featured {
+  /* Mise en avant sobre : fine bordure or, pas de badge */
+  border-color: var(--color-gold);
+}
+
+.subscription__card-title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  margin: 0;
+}
+
+.subscription__card-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--zw-gold-text);
+  margin: 0;
+}
+
+.subscription__card-discount {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--zw-gold-text);
+  margin: 0;
+}
+
+.subscription__card-text {
+  font-size: 0.9375rem;
+  color: var(--color-ink-soft);
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.subscription__cta {
+  align-self: center;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 750px) {
+  .subscription__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- 2.6 Founder offer ---------- */
+.founder__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.founder__list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.founder__benefit {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+}
+
+.founder__benefit-icon {
+  color: var(--color-gold);
+  display: inline-flex;
+  margin-top: 0.35rem;
+}
+
+.founder__benefit-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.founder__benefit-text {
+  font-size: 0.9375rem;
+  color: var(--color-ink-soft);
+  margin: 0.25rem 0 0;
+}
+
+.founder__signup {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.founder__counter {
+  margin: 0 0 1.5rem;
+}
+
+.founder__counter-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-gold);
+}
+
+.founder__counter-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-ink-soft);
+}
+
+.founder__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.founder__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.founder__input:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.founder__success {
+  color: var(--zw-gold-text);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.founder__error {
+  color: #b03a2e;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.founder__disclaimer {
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  margin: 1rem 0 0;
+}
+
+@media (min-width: 750px) {
+  .founder__form {
+    flex-direction: row;
+  }
+
+  .founder__input {
+    flex: 1 1 auto;
+  }
+
+  .founder__submit {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 990px) {
+  .founder__grid {
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+/* ---------- 2.7 Cart upsell ---------- */
+.cart-upsell__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.cart-upsell__card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.cart-upsell__media {
+  flex: 0 0 5rem;
+}
+
+.cart-upsell__image {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+}
+
+.cart-upsell__info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cart-upsell__title {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  margin: 0;
+}
+
+.cart-upsell__price {
+  color: var(--zw-gold-text);
+  margin: 0.25rem 0 0;
+}
+
+.cart-upsell__button {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.75rem;
+}
+
+.cart-upsell__button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.cart-upsell__feedback {
+  flex-basis: 100%;
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: #b03a2e;
+}
+
+@media (min-width: 750px) {
+  .cart-upsell__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ---------- Accessibilité / motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .sticky-atc {
+    transition: none;
+  }
+}

@@ -1,9 +1,14 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "logo": "shopify://shop_images/new_version_logo_SOLO-removebg-preview.webp",
-    "font_display": "cormorant_n4",
-    "font_body": "jost_n4",
-    "font_data": "inter_n4",
     "color_bg": "#f5f0e8",
     "color_bg_alt": "#ece4d4",
     "color_bg_card": "#faf6ee",
@@ -26,24 +31,32 @@
     "color_dark_border": "#4a382a",
     "color_dark_button_bg": "#c9a35c",
     "color_dark_button_text": "#241610",
+    "font_display": "cormorant_n4",
+    "font_body": "jost_n4",
+    "font_data": "inter_n4",
+    "logo": "shopify://shop_images/new_version_logo_SOLO-removebg-preview.webp",
+    "social_instagram_url": "https://www.instagram.com/zahowacoffee/",
+    "social_facebook_url": "https://www.facebook.com/zahowacoffee/",
+    "social_tiktok_url": "https://www.tiktok.com/@zahowacoffee",
+    "social_linkedin_url": "https://www.linkedin.com/company/zahowacoffee",
+    "contact_email": "contact@zahowa.com",
+    "contact_phone": "(+33) 07 44 84 63 26",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
-        "settings": {}
+        "settings": {
+          "color_scheme": "cafe"
+        }
       },
       "header": {
         "type": "header",
         "settings": {
+          "color_scheme": "creme",
           "menu": "main-menu"
         }
       },
       "footer": {
         "type": "footer",
-        "settings": {
-          "color_scheme": "dark",
-          "tagline": "Un café épicé, comme tu ne l'as jamais bu",
-          "show_payment_icons": true
-        },
         "blocks": {
           "maison": {
             "type": "menu",
@@ -76,7 +89,13 @@
           "maison",
           "infos",
           "paiement"
-        ]
+        ],
+        "settings": {
+          "color_scheme": "dark",
+          "logo": "shopify://shop_images/ZAHOWA_1000_x_1000_px_1_df0e82f7-0423-459b-a532-12aaf5b274eb.svg",
+          "tagline": "Pour qui refuse le café sans âme.",
+          "show_payment_icons": true
+        }
       },
       "cart-drawer": {
         "type": "cart-drawer",

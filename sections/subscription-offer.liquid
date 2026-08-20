@@ -1,0 +1,120 @@
+{{ 'new-sections.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<section class="zw-scheme-{{ section.settings.color_scheme }} section subscription">
+  <div class="container">
+    <div class="section__header" data-reveal>
+      {% if section.settings.heading != blank %}
+        <h2 class="section__title">
+          {{ section.settings.heading | replace_first: '*', '<em class="section__title-accent">' | replace_first: '*', '</em>' }}
+        </h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="section__intro">{{ section.settings.text }}</p>
+      {% endif %}
+      <span class="section__rule">{% render 'icon', name: 'diamond' %}</span>
+    </div>
+
+    <div class="subscription__cards">
+      <div class="subscription__card" data-reveal>
+        <h3 class="subscription__card-title">Achat unique</h3>
+        <p class="subscription__card-price">{{ current_variant.price | money }}</p>
+        <p class="subscription__card-text">Une boîte, livrée une fois. Pour découvrir la recette.</p>
+        <button type="button" class="btn btn--gold subscription__cta" data-subscription-onetime>
+          Acheter une fois
+        </button>
+      </div>
+
+      <div class="subscription__card subscription__card--featured" data-reveal>
+        <h3 class="subscription__card-title">Abonnement</h3>
+        {% if section.settings.discount_label != blank %}
+          <p class="subscription__card-discount">{{ section.settings.discount_label }}</p>
+        {% endif %}
+        <p class="subscription__card-text">
+          Livré
+          {% case section.settings.frequency_default %}
+            {% when '2' %}toutes les 2 semaines
+            {% when '8' %}tous les 2 mois
+            {% else %}tous les mois
+          {% endcase %}, torréfié à la commande. Sans engagement.
+        </p>
+        <button type="button" class="btn btn--gold subscription__cta" data-subscription-recurring>
+          {{ section.settings.cta_label }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    // Délégation vers le vrai formulaire produit : aucune logique d'ajout dupliquée.
+    function submitMainForm(recurring) {
+      var form = document.querySelector('form[action*="/cart/add"]');
+      if (!form) return;
+      if (recurring) {
+        // Sélectionne le plan d'abonnement si le thème/app en expose un.
+        var plan = form.querySelector('input[name="selling_plan"][value]:not([value=""])');
+        if (plan) {
+          plan.checked = true;
+          plan.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      } else {
+        var onetime = form.querySelector('input[name="selling_plan"][value=""]');
+        if (onetime) {
+          onetime.checked = true;
+          onetime.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+      var submit = form.querySelector('[type="submit"]');
+      if (submit) submit.click(); else if (form.requestSubmit) form.requestSubmit();
+    }
+    var onceBtn = document.querySelector('[data-subscription-onetime]');
+    var recBtn = document.querySelector('[data-subscription-recurring]');
+    if (onceBtn) onceBtn.addEventListener('click', function () { submitMainForm(false); });
+    if (recBtn) recBtn.addEventListener('click', function () { submitMainForm(true); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Offre abonnement",
+  "tag": "section",
+  "class": "section-subscription-offer",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Couleur de fond",
+      "options": [
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
+      ],
+      "default": "cafe"
+    },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Ne jamais être *à court*" },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texte",
+      "default": "Recevez vos recettes chaque mois, torréfiées à la commande. Sans engagement, résiliable en un clic."
+    },
+    { "type": "text", "id": "discount_label", "label": "Mention remise", "default": "−10 % sur chaque envoi" },
+    {
+      "type": "select",
+      "id": "frequency_default",
+      "label": "Fréquence par défaut",
+      "options": [
+        { "value": "2", "label": "Toutes les 2 semaines" },
+        { "value": "4", "label": "Tous les mois" },
+        { "value": "8", "label": "Tous les 2 mois" }
+      ],
+      "default": "4"
+    },
+    { "type": "text", "id": "cta_label", "label": "Libellé bouton", "default": "Choisir l'abonnement" }
+  ],
+  "presets": [{ "name": "Offre abonnement" }]
+}
+{% endschema %}

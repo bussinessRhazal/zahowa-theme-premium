@@ -1,9 +1,180 @@
+/*
+ * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
+ */
 {
   "sections": {
     "main": {
       "type": "main-collection",
-      "settings": {}
+      "settings": {
+        "color_scheme": "creme",
+        "products_per_page": 12,
+        "portrait": true
+      }
+    },
+    "reassurance": {
+      "type": "reassurance-bar",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison suivie en Europe",
+            "text": "Offerte dès 49 €"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "CB, PayPal, Apple Pay"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "spark",
+            "title": "Torréfaction artisanale",
+            "text": "En petits lots"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "icon": "arrow",
+            "title": "Satisfait ou remboursé",
+            "text": "30 jours"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "color_scheme": "creme"
+      }
+    },
+    "multi_column_jzjGFW": {
+      "type": "multi-column",
+      "blocks": {
+        "column_GqANcK": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Naturel",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_9Qaz8r": {
+          "type": "column",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mEn7Dq": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison soignée",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_GqANcK",
+        "column_9Qaz8r",
+        "column_mEn7Dq"
+      ],
+      "name": "Zahowa — Multi-colonnes",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
+        "id": ""
+      }
+    },
+    "instagram_gallery_GEP49B": {
+      "type": "instagram-gallery",
+      "blocks": {
+        "image_UhHm3N": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_8we4Y9": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_dYMrjh": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_pJxyww": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_WgrUaA": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_epxYtM": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image_UhHm3N",
+        "image_8we4Y9",
+        "image_dYMrjh",
+        "image_pJxyww",
+        "image_WgrUaA",
+        "image_epxYtM"
+      ],
+      "name": "Zahowa — Galerie Instagram",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "@zahowacoffee",
+        "title": "La communauté *Zahowa*",
+        "handle": "zahowacoffee",
+        "instagram_url": "",
+        "cta_label": "Suivre @",
+        "id": ""
+      }
+    },
+    "coffret": {
+      "type": "coffret",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "Coffrets",
+        "title": "Plutôt un *coffret* ?"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Questions",
+        "title": "On vous *répond*"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "reassurance",
+    "multi_column_jzjGFW",
+    "instagram_gallery_GEP49B",
+    "coffret",
+    "faq"
+  ]
 }
