@@ -169,7 +169,7 @@
             <li class="zwh__card-item" {{ block.shopify_attributes }}>
               <button
                 type="button"
-                class="zwh__card{% if forloop.first %} is-active{% endif %}"
+                class="zwh__card"
                 data-zwh-card
                 data-bg-inner="{{ p_inner }}"
                 data-bg-mid="{{ p_mid }}"
@@ -893,26 +893,25 @@
           if (cta && url) cta.setAttribute('href', url);
         }
 
-        function swapProduct(newSrc) {
-          if (!newSrc || !frontImg || !backImg) return;
-          if (frontImg.tagName !== 'IMG' || backImg.tagName !== 'IMG') {
-            if (frontImg && frontImg.tagName === 'IMG') frontImg.src = newSrc;
-            return;
+        /* Remplace la source du produit central de façon robuste :
+           si le front est un placeholder (div), on le remplace par un <img>. */
+        function setProductSrc(newSrc) {
+          if (!newSrc || !floatWrap) return;
+          var img = floatWrap.querySelector('img[data-zwh-front]');
+          if (!img) {
+            var ph = floatWrap.querySelector('[data-zwh-front]');
+            img = document.createElement('img');
+            img.className = 'zwh__product-img is-front';
+            img.setAttribute('data-zwh-front', '');
+            img.alt = '';
+            if (ph && ph.parentNode) {
+              ph.parentNode.replaceChild(img, ph);
+            } else {
+              floatWrap.appendChild(img);
+            }
+            frontImg = img;
           }
-          backImg.src = newSrc;
-          if (hasGsap && !reduced) {
-            gsap.to(backImg, { opacity: 1, duration: 0.35, delay: 0.35 });
-            gsap.to(frontImg, {
-              opacity: 0, duration: 0.35, delay: 0.35,
-              onComplete: function () {
-                frontImg.src = newSrc;
-                gsap.set(frontImg, { opacity: 1 });
-                gsap.set(backImg, { opacity: 0 });
-              }
-            });
-          } else {
-            frontImg.src = newSrc;
-          }
+          img.src = newSrc;
         }
 
         /* Crossfade du fond (mode "fond") : si la carte a sa propre image,
@@ -963,37 +962,33 @@
           }
         }
 
-        function spinProduct(done) {
+        /* Spin 720° géré entièrement par GSAP (rotationY dans son cache),
+           swap de l'image à mi-course, blur sinusoïdal. La boucle animate()
+           ne touche pas au transform tant que isSwitching est vrai. */
+        function spinProduct(newSrc, done) {
           if (!hasGsap || reduced || !spinWrap) {
+            setProductSrc(newSrc);
             if (done) done();
             return;
           }
-          var spinObj = { val: 0, blur: 0 };
-          gsap.to(spinObj, {
-            val: 360, blur: 12,
-            duration: 0.6,
-            ease: 'power2.in',
+          var swapped = false;
+          gsap.to(spinWrap, {
+            rotationY: '+=720',
+            duration: 1.2,
+            ease: 'power2.inOut',
             onUpdate: function () {
-              switchSpin = spinObj.val;
-              spinWrap.style.filter = 'blur(' + spinObj.blur + 'px)';
+              var p = this.progress();
+              spinWrap.style.filter = 'blur(' + (Math.sin(p * Math.PI) * 10).toFixed(1) + 'px)';
+              if (!swapped && p >= 0.5) {
+                swapped = true;
+                setProductSrc(newSrc);
+              }
             },
             onComplete: function () {
+              if (!swapped) setProductSrc(newSrc);
+              spinWrap.style.filter = 'none';
+              gsap.set(spinWrap, { rotationY: 0 });
               if (done) done();
-              gsap.to(spinObj, {
-                val: 720, blur: 0,
-                duration: 1.4,
-                ease: 'back.out(0.7)',
-                onUpdate: function () {
-                  switchSpin = spinObj.val;
-                  spinWrap.style.filter = 'blur(' + spinObj.blur + 'px)';
-                  spinWrap.style.transform = 'rotateY(' + spinObj.val + 'deg)';
-                },
-                onComplete: function () {
-                  switchSpin = 0;
-                  spinWrap.style.filter = 'none';
-                  spinWrap.style.transform = 'rotateY(0deg)';
-                }
-              });
             }
           });
         }
@@ -1059,23 +1054,17 @@
             centerWrap.classList.remove('is-hidden');
           }
 
-          if (!hasGsap || reduced) {
-            /* Crossfade simple */
-            if (newSrc && frontImg && frontImg.tagName === 'IMG') frontImg.src = newSrc;
+          var finished = false;
+          function finish() {
+            if (finished) return;
+            finished = true;
             isSwitching = false;
-            return;
           }
 
-          spinProduct(function () {
-            swapProduct(newSrc);
-          });
-          implodeExplodeItems(function () {
-            isSwitching = false;
-          });
-          /* Sécurité : débloquer si les items n'existent pas */
-          if (items.length === 0) {
-            setTimeout(function () { isSwitching = false; }, 2200);
-          }
+          spinProduct(newSrc, finish);
+          implodeExplodeItems(null);
+          /* Sécurité : débloquer quoi qu'il arrive */
+          setTimeout(finish, 2500);
         }
 
         cards.forEach(function (card) {
