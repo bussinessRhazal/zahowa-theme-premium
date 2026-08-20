@@ -91,11 +91,60 @@
         "id": "",
         "current_product_id": ""
       }
+    },
+    "multi_column_GqA6De": {
+      "type": "multi-column",
+      "blocks": {
+        "column_WrAkMw": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Naturel",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mPXpYa": {
+          "type": "column",
+          "settings": {
+            "icon": "lock",
+            "title": "Paiement sécurisé",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eCMA4P": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "title": "Livraison soignée",
+            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WrAkMw",
+        "column_mPXpYa",
+        "column_eCMA4P"
+      ],
+      "name": "Zahowa — Multi-colonnes",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos promesses",
+        "title": "Le café, *simplement*",
+        "alt_bg": true,
+        "id": ""
+      }
     }
   },
   "order": [
     "main",
     "video_demo",
-    "related"
+    "related",
+    "multi_column_GqA6De"
   ]
 }
