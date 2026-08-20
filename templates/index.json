@@ -72,6 +72,7 @@
         "floating_item_TtfL4h": {
           "type": "floating_item",
           "settings": {
+            "image": "shopify://shop_images/spice-cafe.png",
             "asset_spice": "none",
             "svg_fallback": "bean",
             "size": 70
@@ -80,6 +81,7 @@
         "floating_item_yQQRWM": {
           "type": "floating_item",
           "settings": {
+            "image": "shopify://shop_images/spice-anis.png",
             "asset_spice": "none",
             "svg_fallback": "anise",
             "size": 60
