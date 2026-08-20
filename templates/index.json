@@ -87,7 +87,7 @@
             "image": "shopify://shop_images/spice-cafe.png",
             "asset_spice": "none",
             "svg_fallback": "bean",
-            "size": 70
+            "size": 105
           }
         },
         "floating_item_yQQRWM": {
@@ -96,7 +96,7 @@
             "image": "shopify://shop_images/spice-anis.png",
             "asset_spice": "none",
             "svg_fallback": "anise",
-            "size": 60
+            "size": 105
           }
         },
         "floating_item_zwLrTk": {
@@ -105,7 +105,7 @@
             "image": "shopify://shop_images/spice-cannelle2.png",
             "asset_spice": "none",
             "svg_fallback": "cinnamon",
-            "size": 80
+            "size": 105
           }
         },
         "floating_item_QdWLAX": {
@@ -114,7 +114,7 @@
             "image": "shopify://shop_images/spice-rose.png",
             "asset_spice": "none",
             "svg_fallback": "leaf",
-            "size": 55
+            "size": 105
           }
         }
       },
@@ -145,6 +145,7 @@
         "bg_position": "right",
         "image_scale": 100,
         "default_product_image": "shopify://shop_images/2.png",
+        "spice_scale": 100,
         "show_steam": true,
         "steam_x": 68,
         "steam_y": 32,
