@@ -260,7 +260,7 @@
         "show_profile": true,
         "show_composition": true,
         "show_link": true,
-        "fallback_title": "",
+        "fallback_title": "à venir",
         "description_custom": "",
         "composition_label": "Composition",
         "composition_custom": "",
