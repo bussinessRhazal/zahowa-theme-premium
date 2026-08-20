@@ -32,15 +32,6 @@
     "hero_anime_FdjAM8": {
       "type": "hero-anime",
       "blocks": {
-        "floating_item_D3YLXW": {
-          "type": "floating_item",
-          "settings": {
-            "image": "shopify://shop_images/spice-cardamome2.png",
-            "asset_spice": "none",
-            "svg_fallback": "bean",
-            "size": 70
-          }
-        },
         "recipe_C3jBHE": {
           "type": "recipe",
           "settings": {
@@ -81,6 +72,15 @@
             "product_url": ""
           }
         },
+        "floating_item_D3YLXW": {
+          "type": "floating_item",
+          "settings": {
+            "image": "shopify://shop_images/spice-cardamome2.png",
+            "asset_spice": "none",
+            "svg_fallback": "bean",
+            "size": 105
+          }
+        },
         "floating_item_TtfL4h": {
           "type": "floating_item",
           "settings": {
@@ -119,11 +119,11 @@
         }
       },
       "block_order": [
-        "floating_item_D3YLXW",
         "recipe_C3jBHE",
         "recipe_zfPVWF",
         "recipe_RaDtQE",
         "recipe_EbPNtk",
+        "floating_item_D3YLXW",
         "floating_item_TtfL4h",
         "floating_item_yQQRWM",
         "floating_item_zwLrTk",
