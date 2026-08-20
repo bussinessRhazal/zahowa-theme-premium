@@ -275,7 +275,7 @@
         "score_2": 4,
         "score_3": 5,
         "button_mode": "paiement",
-        "button_label": "Ajouter au panier",
+        "button_label": "Acheter maintenant",
         "link_label": "Voir la fiche complète",
         "fallback_url": "shopify://products/ame-de-fes"
       }
