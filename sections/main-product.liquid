@@ -97,6 +97,39 @@
             {% endfor %}
           </div>
         {% endif %}
+
+        {%- comment -%} Bloc(s) Partage : affichés sous les photos du produit {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'share' -%}
+              <div class="product-share product-share--under-gallery" data-reveal {{ block.shopify_attributes }}>
+                {% if block.settings.label != blank %}
+                  <span class="product-share__label">{{ block.settings.label }}</span>
+                {% endif %}
+                <div class="product-share__actions">
+                  <button type="button" class="product-share__btn" data-share-native data-share-url="{{ shop.url }}{{ product.url }}" data-share-title="{{ product.title | escape }}">
+                    {% render 'icon', name: 'arrow' %}
+                    <span>{{ block.settings.share_label }}</span>
+                  </button>
+                  {% if block.settings.show_whatsapp %}
+                    <a class="product-share__icon" href="https://wa.me/?text={{ product.title | url_encode }}%20{{ shop.url }}{{ product.url | url_encode }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                      {% render 'icon', name: 'whatsapp' %}
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_facebook %}
+                    <a class="product-share__icon" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url | url_encode }}" target="_blank" rel="noopener" aria-label="Facebook">
+                      {% render 'icon', name: 'facebook' %}
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_email %}
+                    <a class="product-share__icon" href="mailto:?subject={{ product.title | url_encode }}&body={{ shop.url }}{{ product.url | url_encode }}" aria-label="Email">
+                      {% render 'icon', name: 'mail' %}
+                    </a>
+                  {% endif %}
+                </div>
+                <span class="product-share__feedback" data-share-feedback role="status" aria-live="polite"></span>
+              </div>
+          {%- endif -%}
+        {%- endfor -%}
       </div>
 
       <div class="product__info" data-reveal>
