@@ -118,6 +118,7 @@
         "badge_text": "Café de spécialité — Montpellier",
         "side_title": "Quatre recettes, quatre villes",
         "aria_label": "Zahowa Coffee — café de spécialité épicé",
+        "default_product_image": "shopify://shop_images/39ae7803-b90b-4cd8-8f56-8ac4ab47efc6.jpg",
         "bg_inner": "#3a241a",
         "bg_mid": "#241610",
         "bg_outer": "#120a06",
