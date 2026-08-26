@@ -9,6 +9,49 @@
  */
 {
   "sections": {
+    "recettes_story_3KXNdE": {
+      "type": "recettes-story",
+      "blocks": {
+        "step_NAVkyf": {
+          "type": "step",
+          "settings": {
+            "numeral": "I",
+            "title": "Infuser",
+            "text": "Plonge le sachet mousseline dans l'eau frémissante, à 92°C."
+          }
+        },
+        "step_LDpEU3": {
+          "type": "step",
+          "settings": {
+            "numeral": "II",
+            "title": "Patienter",
+            "text": "Laisse le café et les épices se rencontrer, 5 à 6 minutes."
+          }
+        },
+        "step_cRWQk3": {
+          "type": "step",
+          "settings": {
+            "numeral": "III",
+            "title": "Déguster",
+            "text": "Retire le sachet. Respire. Le rituel commence."
+          }
+        }
+      },
+      "block_order": [
+        "step_NAVkyf",
+        "step_LDpEU3",
+        "step_cRWQk3"
+      ],
+      "name": "Manifeste & Rituel",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos Recettes",
+        "title": "Quatre épices. Quatre villes. *Un rituel.*",
+        "manifesto": "Chaque recette Zahowa est née d'un équilibre précis entre un café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel. Pas de sucre ajouté. Juste le café — et ce qui lui donne une âme.",
+        "manifesto_alt": "Le format sachet mousseline biodégradable (certifié OK Compost HOME) fait le reste : 92°C, 5 à 6 minutes, sans machine. Le même geste que ton thé du matin — avec un résultat que tu n'attendais pas.",
+        "rituel_title": "Le rituel"
+      }
+    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -47,6 +90,7 @@
     }
   },
   "order": [
+    "recettes_story_3KXNdE",
     "main",
     "coffret",
     "faq"
