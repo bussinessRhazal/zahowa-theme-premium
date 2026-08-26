@@ -30,7 +30,7 @@
         "title": "Comment choisir ton café",
         "text": "<p>Trouve le café qui correspond à ton goût et à ton moment de dégustation.</p>",
         "button_label": "Comment choisir ton café",
-        "button_link": "shopify://collections/nos-recettes",
+        "button_link": "shopify://blogs/news/comment-choisir-ton-cafe",
         "alt_bg": false,
         "id": "choisir-ton-cafe"
       }
