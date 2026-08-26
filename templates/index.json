@@ -407,7 +407,7 @@
         "color_scheme": "creme",
         "kicker": "Le Journal",
         "title": "Le *Journal* Zahowa",
-        "columns": 3,
+        "columns": 4,
         "blog": "journal",
         "read_more_label": "Lire l'article",
         "alt_bg": true,
