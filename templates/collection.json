@@ -21,6 +21,20 @@
         "rituel_title": ""
       }
     },
+    "rich_text_YB9HeL": {
+      "type": "rich-text",
+      "name": "t:sections.rich_text.name",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Le rituel Zahowa",
+        "title": "Comment choisir ton café",
+        "text": "<p>Trouve le café qui correspond à ton goût et à ton moment de dégustation.</p>",
+        "button_label": "Comment choisir ton café",
+        "button_link": "shopify://collections/nos-recettes",
+        "alt_bg": false,
+        "id": "choisir-ton-cafe"
+      }
+    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -60,6 +74,7 @@
   },
   "order": [
     "recettes_story_3KXNdE",
+    "rich_text_YB9HeL",
     "main",
     "coffret",
     "faq"
