@@ -8,7 +8,8 @@
       "settings": {
         "color_scheme": "creme",
         "products_per_page": 12,
-        "portrait": true
+        "portrait": true,
+        "show_description": false
       }
     },
     "reassurance": {
@@ -167,10 +168,20 @@
         "kicker": "Questions",
         "title": "On vous *répond*"
       }
+    },
+    "story": {
+      "type": "recettes-story",
+      "settings": {}
+    },
+    "choix": {
+      "type": "recettes-choix",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "story",
+    "choix",
     "reassurance",
     "multi_column_jzjGFW",
     "instagram_gallery_GEP49B",
