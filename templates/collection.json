@@ -39,7 +39,7 @@
         "title": "Plutôt un *coffret* ?",
         "text": "<p>Quatre villes. Quatre caractères. Une expérience à offrir ou à s'offrir. Une boîte précieuse, des sachets biodégradables, un rituel à partager.</p>",
         "button_label": "Découvrir nos coffrets",
-        "button_link": "",
+        "button_link": "shopify://collections/nos-coffrets",
         "reverse": false,
         "alt_bg": false,
         "id": ""
