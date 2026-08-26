@@ -1,11 +1,13 @@
 <section class="zw-scheme-{{ section.settings.color_scheme }} section">
   <div class="container">
-    <div class="page-header">
+  {% comment %}  
+   <div class="page-header">
       <h1 class="page-header__title">{{ collection.title }}</h1>
       {% if section.settings.show_description and collection.description != blank %}
         <p class="page-header__text">{{ collection.description }}</p>
       {% endif %}
-    </div>
+    </div> 
+    {% endcomment %}
 
     <div class="toolbar">
       <p class="toolbar__count">{{ 'sections.main_collection.products_count' | t: count: collection.products_count }}</p>
@@ -102,5 +104,3 @@
     }
   ]
 }{% endschema %}
-
-{% comment %} sync-bump-1 {% endcomment %}
