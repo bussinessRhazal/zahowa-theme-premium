@@ -13,7 +13,16 @@
       "type": "image-banner",
       "settings": {
         "color_scheme": "cafe",
-        "title": "L'*Histoire*"
+        "text_align": "center",
+        "min_height": 50,
+        "overlay_color": "#111111",
+        "eyebrow": "La Maison Zahowa",
+        "title": "L'*Histoire*",
+        "text": "Découvrez un café épicé, 100% naturel, inspiré des rituels marocains.",
+        "button_label": "",
+        "button_link": "",
+        "button_label_2": "",
+        "button_link_2": ""
       }
     },
     "main": {
@@ -26,21 +35,40 @@
       "type": "image-with-text",
       "settings": {
         "color_scheme": "creme",
-        "kicker": "Le fondateur"
+        "kicker": "Le fondateur",
+        "title": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "alt_bg": false,
+        "id": ""
       }
     },
     "featured": {
       "type": "featured-collection",
       "settings": {
         "color_scheme": "cafe",
+        "collection": "",
+        "products_to_show": 4,
         "kicker": "La boutique",
-        "title": "L'histoire *se boit*"
+        "title": "L'histoire *se boit*",
+        "text": "",
+        "portrait": false,
+        "show_view_all": true,
+        "alt_bg": false,
+        "id": ""
       }
     },
     "cercle": {
       "type": "cercle",
       "settings": {
-        "color_scheme": "creme"
+        "color_scheme": "creme",
+        "kicker": "Le cercle privilège",
+        "title": "Cercle *Fondateur*",
+        "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
+        "button_label": "Rejoindre le Cercle",
+        "email_placeholder": "",
+        "id": ""
       }
     }
   },
