@@ -25,12 +25,6 @@
         "button_link_2": ""
       }
     },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "color_scheme": "creme"
-      }
-    },
     "custom_liquid_EVgzip": {
       "type": "custom-liquid",
       "name": "Zahowa — Liquid personnalisé",
@@ -43,7 +37,6 @@
   },
   "order": [
     "banner",
-    "main",
     "custom_liquid_EVgzip"
   ]
 }
