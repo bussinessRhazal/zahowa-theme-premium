@@ -179,6 +179,76 @@
         "id": ""
       }
     },
+    "recettes_choix_crdbhK": {
+      "type": "recettes-choix",
+      "blocks": {
+        "recette_FQqnqk": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-casablanca-v2.jpg",
+            "name": "Aube de Casablanca",
+            "badge": "",
+            "accroche": "Tu aimes commencer la journée doucement. Douceur matinale, sans brusquer personne.",
+            "epices": "Anis vert · Vanille Bourbon",
+            "link": ""
+          }
+        },
+        "recette_3TK7AT": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-rabat-v2.jpg",
+            "name": "Grâce de Rabat",
+            "badge": "✦ Signature",
+            "accroche": "Tu cherches le réconfort dans ta tasse. Chaleur enveloppante. La recette de la mère du fondateur.",
+            "epices": "Cardamome · Miel d'acacia",
+            "link": ""
+          }
+        },
+        "recette_xWYUqA": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-fes-v2.jpg",
+            "name": "Âme de Fès",
+            "badge": "Premium",
+            "accroche": "Tu prends le temps de savourer. Floral et contemplatif. Pour les moments qui méritent d'être vécus lentement.",
+            "epices": "Rose Damascena · Safran",
+            "link": ""
+          }
+        },
+        "recette_9DVUYd": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-marrakech-v2.jpg",
+            "name": "Fièvre de Marrakech",
+            "badge": "",
+            "accroche": "Tu n'as pas peur de l'intensité. Franc, sans détour, sans excuse.",
+            "epices": "Poivre · Cacao · Clou de girofle",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "recette_FQqnqk",
+        "recette_3TK7AT",
+        "recette_xWYUqA",
+        "recette_9DVUYd"
+      ],
+      "name": "Choisir sa recette",
+      "settings": {
+        "color_scheme": "cafe",
+        "kicker": "",
+        "title": "Comment choisir *ta recette ?*",
+        "text": "",
+        "card_cta": "Découvrir",
+        "show_coffret": true,
+        "coffret_asset": "coffret-ouvert.jpg",
+        "coffret_kicker": "Pas encore sûr(e) de ton choix ?",
+        "coffret_title": "Le Coffret Découverte",
+        "coffret_text": "Les 4 recettes réunies — 3 sachets de chacune, 12 au total. Le meilleur point de départ pour trouver la tienne.",
+        "coffret_cta_label": "Découvrir le coffret",
+        "coffret_cta_link": ""
+      }
+    },
     "cities": {
       "type": "cities",
       "blocks": {
@@ -333,8 +403,6 @@
             "photo": "shopify://shop_images/welcome-to-my-business.jpg",
             "name": "Camille R.",
             "location": "Paris",
-            "product": "",
-            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -345,8 +413,6 @@
             "photo": "shopify://shop_images/professional-man-smiling.jpg",
             "name": "Camille R.",
             "location": "Paris",
-            "product": "",
-            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -357,8 +423,6 @@
             "photo": "shopify://shop_images/woman-enjoying-coffee-and-book-in-the-kitchen.jpg",
             "name": "Camille R.",
             "location": "Paris",
-            "product": "",
-            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -369,8 +433,6 @@
             "photo": "shopify://shop_images/Mains_realistes_tasse.webp",
             "name": "Camille R.",
             "location": "Paris",
-            "product": "Âme de Fès",
-            "verified": true,
             "rating": 5,
             "text": "Le drip bag Âme de Fès a transformé mes matins. Un rituel simple, une saveur incroyable."
           }
@@ -388,10 +450,6 @@
         "title": "Ils *en parlent* mieux que nous",
         "text": "Des milliers de matins transformés à travers la France.",
         "columns": "3",
-        "show_stars": true,
-        "show_verified": true,
-        "verified_text": "Avis vérifié",
-        "per_view": "3",
         "autoplay": true,
         "autoplay_delay": 5,
         "show_arrows": true,
@@ -498,6 +556,7 @@
     "hero_anime_FdjAM8",
     "marquee",
     "maison",
+    "recettes_choix_crdbhK",
     "cities",
     "quick_buy_product_Q4DYdJ",
     "featured_collection",
