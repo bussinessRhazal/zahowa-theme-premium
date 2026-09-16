@@ -63,6 +63,18 @@
     },
     "faq": {
       "type": "faq",
+      "blocks": {
+        "question_GJj7kH": {
+          "type": "question",
+          "settings": {
+            "question": "Comment utiliser un drip bag Zahowa ?",
+            "answer": "<p>Ouvrez le sachet, installez les ailes sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C) et laissez infuser 3 à 4 minutes. C'est tout !</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_GJj7kH"
+      ],
       "settings": {
         "color_scheme": "creme",
         "kicker": "Questions",
