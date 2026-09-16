@@ -379,21 +379,6 @@
         "id": ""
       }
     },
-    "coffret": {
-      "type": "coffret",
-      "settings": {
-        "color_scheme": "creme",
-        "image": "shopify://shop_images/Memepackagingpremium.png",
-        "kicker": "L'idée cadeau",
-        "title": "Coffret *Découverte*",
-        "text": "<p>Quatre villes. Quatre caractères. Une expérience à offrir ou à s'offrir. Une boîte précieuse, des sachets biodégradables, un rituel à partager.</p>",
-        "button_label": "Découvrir le coffret",
-        "button_link": "",
-        "reverse": false,
-        "alt_bg": false,
-        "id": ""
-      }
-    },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
@@ -513,6 +498,7 @@
         "image_aQzMMF",
         "image_RYUD79"
       ],
+      "disabled": true,
       "name": "Zahowa — Galerie Instagram",
       "settings": {
         "color_scheme": "creme",
@@ -561,7 +547,6 @@
     "quick_buy_product_Q4DYdJ",
     "featured_collection",
     "recipes_grid",
-    "coffret",
     "testimonials",
     "featured_blog_efm4aY",
     "instagram_gallery_BtHqwj",
