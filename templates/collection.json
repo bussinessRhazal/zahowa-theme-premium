@@ -64,13 +64,6 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "question_AANfXj": {
-          "type": "question",
-          "settings": {
-            "question": "Je ne sais pas laquelle choisir — par quoi commencer ?",
-            "answer": "<p>Par le Coffret Découverte : les 4 recettes, 3 sachets de chacune, 12 au total. Le meilleur moyen de trouver ta tasse avant de commander ta recette préférée.<br/></p>"
-          }
-        },
         "question_GJj7kH": {
           "type": "question",
           "settings": {
@@ -84,12 +77,19 @@
             "question": "Quelle différence entre les 4 recettes ?",
             "answer": "<p>Chaque recette est un caractère : Aube de Casablanca (anis vert, vanille Bourbon) pour la douceur, Grâce de Rabat ✦ Signature (cardamome, miel d'acacia) pour le réconfort, Âme de Fès Premium (rose Damascena, safran) pour la contemplation, Fièvre de Marrakech (poivre, cacao, clou de girofle) pour l'intensité.<br/><br/></p>"
           }
+        },
+        "question_AANfXj": {
+          "type": "question",
+          "settings": {
+            "question": "Je ne sais pas laquelle choisir — par quoi commencer ?",
+            "answer": "<p>Par le Coffret Découverte : les 4 recettes, 3 sachets de chacune, 12 au total. Le meilleur moyen de trouver ta tasse avant de commander ta recette préférée.<br/></p>"
+          }
         }
       },
       "block_order": [
-        "question_AANfXj",
         "question_GJj7kH",
-        "question_itHPdj"
+        "question_itHPdj",
+        "question_AANfXj"
       ],
       "settings": {
         "color_scheme": "creme",
