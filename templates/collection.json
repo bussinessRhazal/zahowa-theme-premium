@@ -64,6 +64,13 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "question_xmbpfc": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de sachets contient une boîte ?",
+            "answer": "<p>Ouvrez le sachet, installez les ailes sur votre tasse, versez lentement 200 ml d'eau chaude (92–96°C) et laissez infuser 3 à 4 minutes. C'est tout !</p>"
+          }
+        },
         "question_AAbyUE": {
           "type": "question",
           "settings": {
@@ -94,6 +101,7 @@
         }
       },
       "block_order": [
+        "question_xmbpfc",
         "question_AAbyUE",
         "question_GJj7kH",
         "question_itHPdj",
