@@ -64,6 +64,13 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "question_itHPdj": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle différence entre les 4 recettes ?",
+            "answer": "<p>Chaque recette est un caractère : Aube de Casablanca (anis vert, vanille Bourbon) pour la douceur, Grâce de Rabat ✦ Signature (cardamome, miel d'acacia) pour le réconfort, Âme de Fès Premium (rose Damascena, safran) pour la contemplation, Fièvre de Marrakech (poivre, cacao, clou de girofle) pour l'intensité.<br/><br/></p>"
+          }
+        },
         "question_GJj7kH": {
           "type": "question",
           "settings": {
@@ -73,6 +80,7 @@
         }
       },
       "block_order": [
+        "question_itHPdj",
         "question_GJj7kH"
       ],
       "settings": {
