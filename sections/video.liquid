@@ -43,8 +43,6 @@
         >
           <img
             src="https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/maxresdefault.jpg"
-            srcset="https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/mqdefault.jpg 320w, https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/hqdefault.jpg 480w, https://i.ytimg.com/vi/{{ section.settings.video_url.id }}/maxresdefault.jpg 1280w"
-            sizes="(max-width: 749px) 100vw, 66vw"
             alt="{{ section.settings.title | default: shop.name | escape }}"
             loading="lazy"
             width="1280" height="720"
