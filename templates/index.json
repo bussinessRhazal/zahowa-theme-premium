@@ -350,6 +350,22 @@
         "fallback_url": "shopify://products/ame-de-fes"
       }
     },
+    "featured_collection_nLxhPE": {
+      "type": "featured-collection",
+      "name": "t:sections.featured_collection.name",
+      "settings": {
+        "color_scheme": "creme",
+        "collection": "",
+        "products_to_show": 6,
+        "kicker": "Nos créations",
+        "title": "Nos *Recettes*",
+        "text": "",
+        "portrait": false,
+        "show_view_all": true,
+        "alt_bg": false,
+        "id": ""
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "disabled": true,
@@ -545,6 +561,7 @@
     "recettes_choix_crdbhK",
     "cities",
     "quick_buy_product_Q4DYdJ",
+    "featured_collection_nLxhPE",
     "featured_collection",
     "recipes_grid",
     "testimonials",
