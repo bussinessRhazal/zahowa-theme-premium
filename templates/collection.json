@@ -7,22 +7,10 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/*
- * IMPORTANT: auto-generated file. Peut être mis à jour par l'éditeur Shopify.
- */
 {
   "sections": {
     "recettes_story_3KXNdE": {
       "type": "recettes-story",
-      "name": "Manifeste & Rituel",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Nos Recettes",
-        "title": "Quatre *épices*. Quatre villes. Un rituel qui changent ta façon de boire le café.",
-        "manifesto": "Chaque recette Zahowa est née d'un équilibre précis entre un café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel. Pas de sucre ajouté. Juste le café — et ce qui lui donne une âme.",
-        "manifesto_alt": "",
-        "rituel_title": ""
-      },
       "blocks": {
         "step1": {
           "type": "step",
@@ -53,7 +41,16 @@
         "step1",
         "step2",
         "step3"
-      ]
+      ],
+      "name": "Manifeste & Rituel",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos Recettes",
+        "title": "Quatre *épices*. Quatre villes. Un rituel qui changent ta façon de boire le café.",
+        "manifesto": "Chaque recette Zahowa est née d'un équilibre précis entre un café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel. Pas de sucre ajouté. Juste le café — et ce qui lui donne une âme.",
+        "manifesto_alt": "",
+        "rituel_title": ""
+      }
     },
     "main": {
       "type": "main-collection",
@@ -104,62 +101,11 @@
         "alt_bg": false,
         "id": ""
       }
-    },
-    "choix": {
-      "type": "recettes-choix",
-      "blocks": {
-        "r1": {
-          "type": "recette",
-          "settings": {
-            "asset_fallback": "sachet-casablanca-v2.jpg",
-            "name": "Aube de Casablanca",
-            "accroche": "Tu aimes commencer la journée doucement. Douceur matinale, sans brusquer personne.",
-            "epices": "Anis vert · Vanille Bourbon"
-          }
-        },
-        "r2": {
-          "type": "recette",
-          "settings": {
-            "asset_fallback": "sachet-rabat-v2.jpg",
-            "name": "Grâce de Rabat",
-            "badge": "✦ Signature",
-            "accroche": "Tu cherches le réconfort dans ta tasse. Chaleur enveloppante. La recette de la mère du fondateur.",
-            "epices": "Cardamome · Miel d'acacia"
-          }
-        },
-        "r3": {
-          "type": "recette",
-          "settings": {
-            "asset_fallback": "sachet-fes-v2.jpg",
-            "name": "Âme de Fès",
-            "badge": "Premium",
-            "accroche": "Tu prends le temps de savourer. Floral et contemplatif. Pour les moments qui méritent d'être vécus lentement.",
-            "epices": "Rose Damascena · Safran"
-          }
-        },
-        "r4": {
-          "type": "recette",
-          "settings": {
-            "asset_fallback": "sachet-marrakech-v2.jpg",
-            "name": "Fièvre de Marrakech",
-            "accroche": "Tu n'as pas peur de l'intensité. Franc, sans détour, sans excuse.",
-            "epices": "Poivre · Cacao · Clou de girofle"
-          }
-        }
-      },
-      "block_order": [
-        "r1",
-        "r2",
-        "r3",
-        "r4"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "recettes_story_3KXNdE",
     "main",
-    "choix",
     "coffret",
     "rich_text_YB9HeL",
     "faq"
