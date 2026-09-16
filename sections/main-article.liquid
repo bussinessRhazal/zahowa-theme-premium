@@ -1,70 +1,59 @@
-<section class="zw-scheme-{{ section.settings.color_scheme }} section">
+<section class="zw-scheme-{{ section.settings.color_scheme }} section zwa">
   <div class="container">
-    <article class="article">
-      <div class="article__header">
-        <p class="article__date">{{ article.published_at | date: '%d %B %Y' }}</p>
-        <h1 class="page-header__title">{{ article.title }}</h1>
-        {% if article.author != blank %}
-          <p>{{ 'sections.main_article.author' | t }} {{ article.author }}</p>
-        {% endif %}
-      </div>
+    <article class="zwa__article">
+
+      <header class="zwa__header">
+        <p class="zwa__meta">
+          <span class="zwa__date">{{ article.published_at | date: '%d %B %Y' }}</span>
+          {% if section.settings.show_author and article.author != blank %}
+            <span class="zwa__sep" aria-hidden="true"></span>
+            <span class="zwa__author">{{ article.author }}</span>
+          {% endif %}
+        </p>
+        <h1 class="zwa__title">{{ article.title }}</h1>
+        <span class="zwa__rule" aria-hidden="true"></span>
+      </header>
 
       {% if article.image != blank %}
         {% assign article_alt = article.image.alt | escape | default: article.title %}
-        <div class="article__media">
-          {{ article.image | image_url: width: 1600 | image_tag: alt: article_alt, loading: 'lazy', sizes: '100vw', widths: '800, 1200, 1600' }}
-        </div>
+        <figure class="zwa__media">
+          {{ article.image | image_url: width: 2000 | image_tag: alt: article_alt, loading: 'eager', sizes: '(min-width: 1200px) 1100px, 100vw', widths: '800, 1200, 1600, 2000' }}
+        </figure>
       {% endif %}
 
-      <div class="article__content">
+      <div class="zwa__body{% if section.settings.drop_cap %} zwa__body--dropcap{% endif %}">
         {{ article.content }}
       </div>
 
       {% if article.tags.size > 0 %}
-        <p class="article-card__date" style="margin-top:2rem;">
-          {{ 'sections.main_article.tags' | t }} :
+        <footer class="zwa__tags">
           {% for tag in article.tags %}
-            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" style="text-decoration:underline;">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+            <a class="zwa__tag" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
           {% endfor %}
-        </p>
+        </footer>
       {% endif %}
 
       {% if blog.comments_enabled? %}
-        <div style="margin-top:3rem;border-top:1px solid var(--color-border);padding-top:2rem;">
-          <h2>{{ 'sections.main_article.comments' | t }} ({{ article.comments_count }})</h2>
-
+        <div class="zwa__comments">
+          <h2 class="zwa__comments-title">{{ 'sections.main_article.comments' | t }} ({{ article.comments_count }})</h2>
           {% if article.comments_count > 0 %}
-            <div style="display:grid;gap:1.2rem;margin-bottom:2rem;">
+            <div class="zwa__comments-list">
               {% for comment in article.comments %}
-                <div style="background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:1.2rem;">
+                <div class="zwa__comment">
                   <strong>{{ comment.author }}</strong>
-                  <p style="margin-top:0.4rem;">{{ comment.content }}</p>
-                  <p class="article-card__date">{{ comment.created_at | date: '%d %B %Y' }}</p>
+                  <p>{{ comment.content }}</p>
+                  <p class="zwa__comment-date">{{ comment.created_at | date: '%d %B %Y' }}</p>
                 </div>
               {% endfor %}
             </div>
           {% endif %}
-
           {% if article.comments_allowed? %}
             {% form 'new_comment', article %}
-              <div class="form-field">
-                <label for="CommentAuthor">{{ 'sections.main_article.comment_name' | t }}</label>
-                <input type="text" name="comment[author]" id="CommentAuthor" required>
-              </div>
-              <div class="form-field">
-                <label for="CommentEmail">{{ 'sections.main_article.comment_email' | t }}</label>
-                <input type="email" name="comment[email]" id="CommentEmail" required>
-              </div>
-              <div class="form-field">
-                <label for="CommentBody">{{ 'sections.main_article.comment_body' | t }}</label>
-                <textarea name="comment[body]" id="CommentBody" required></textarea>
-              </div>
-              {% if form.errors %}
-                <div class="form-errors">{{ form.errors | default_errors }}</div>
-              {% endif %}
-              {% if form.posted_successfully? %}
-                <p class="form-success">{{ 'sections.main_article.moderated' | t }}</p>
-              {% endif %}
+              <div class="form-field"><label for="CommentAuthor">{{ 'sections.main_article.comment_name' | t }}</label><input type="text" name="comment[author]" id="CommentAuthor" required></div>
+              <div class="form-field"><label for="CommentEmail">{{ 'sections.main_article.comment_email' | t }}</label><input type="email" name="comment[email]" id="CommentEmail" required></div>
+              <div class="form-field"><label for="CommentBody">{{ 'sections.main_article.comment_body' | t }}</label><textarea name="comment[body]" id="CommentBody" required></textarea></div>
+              {% if form.errors %}<div class="form-errors">{{ form.errors | default_errors }}</div>{% endif %}
+              {% if form.posted_successfully? %}<p class="form-success">{{ 'sections.main_article.moderated' | t }}</p>{% endif %}
               <button type="submit" class="btn btn--primary">{{ 'sections.main_article.comment_submit' | t }}</button>
             {% endform %}
           {% else %}
@@ -72,9 +61,91 @@
           {% endif %}
         </div>
       {% endif %}
+
     </article>
   </div>
 </section>
+
+<style>
+  .zwa__article{ max-width: 72rem; margin: 0 auto; }
+
+  /* Header éditorial aligné à gauche */
+  .zwa__header{ text-align: left; max-width: 46rem; }
+  .zwa__meta{
+    display: flex; align-items: center; gap: .9rem;
+    font-size: .7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .22em;
+    color: var(--color-gold-dark, #a5823f); margin-bottom: 1.4rem;
+  }
+  .zwa__sep{ width: 2.2rem; height: 1px; background: var(--color-gold, #c9a35c); }
+  .zwa__title{
+    font-family: var(--font-display); font-weight: 500;
+    font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.15;
+    letter-spacing: -.01em; margin: 0;
+  }
+  .zwa__rule{
+    display: block; width: 4.5rem; height: 1px; margin-top: 1.8rem;
+    background: var(--color-gold, #c9a35c);
+  }
+
+  /* Image large, respirante */
+  .zwa__media{ margin: 2.8rem 0 3.2rem; }
+  .zwa__media img{
+    display: block; width: 100%; height: auto;
+    max-height: 34rem; object-fit: cover;
+  }
+
+  /* Corps de lecture */
+  .zwa__body{ max-width: 44rem; font-size: 1.06rem; line-height: 1.9; }
+  .zwa__body p{ margin: 0 0 1.6rem; }
+  .zwa__body--dropcap > p:first-of-type::first-letter{
+    font-family: var(--font-display); font-style: italic;
+    font-size: 3.4em; line-height: .85; float: left;
+    padding: .08em .12em 0 0; color: var(--color-gold-dark, #a5823f);
+  }
+  .zwa__body h2, .zwa__body h3{
+    font-family: var(--font-display); font-weight: 500;
+    line-height: 1.3; margin: 2.6rem 0 1rem;
+  }
+  .zwa__body h2{ font-size: 1.7rem; }
+  .zwa__body h3{ font-size: 1.35rem; font-style: italic; }
+  .zwa__body strong{ font-weight: 600; }
+  .zwa__body em{ font-family: var(--font-display); font-size: 1.06em; }
+  .zwa__body blockquote{
+    margin: 2.4rem 0; padding: .2rem 0 .2rem 1.6rem;
+    border-left: 1px solid var(--color-gold, #c9a35c);
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.3rem; line-height: 1.6;
+  }
+  .zwa__body ul, .zwa__body ol{ margin: 0 0 1.6rem; padding-left: 1.3rem; }
+  .zwa__body li{ margin-bottom: .55rem; }
+  .zwa__body img{ width: 100%; height: auto; margin: 2rem 0; }
+  .zwa__body a{ color: inherit; text-decoration: underline; text-decoration-color: var(--color-gold, #c9a35c); text-underline-offset: 3px; }
+  .zwa__body hr{ border: 0; width: 3rem; height: 1px; background: var(--color-gold, #c9a35c); margin: 2.6rem 0; }
+
+  /* Tags en pastilles outline or */
+  .zwa__tags{ display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2.8rem; }
+  .zwa__tag{
+    padding: .45rem 1rem; border: 1px solid rgba(201,163,92,.5);
+    font-size: .68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .18em; text-decoration: none; color: inherit;
+    transition: background .3s ease, color .3s ease;
+  }
+  .zwa__tag:hover{ background: var(--color-gold, #c9a35c); color: #241610; }
+
+  /* Commentaires */
+  .zwa__comments{ max-width: 44rem; margin-top: 3.5rem; padding-top: 2.4rem; border-top: 1px solid rgba(201,163,92,.3); }
+  .zwa__comments-title{ font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; margin-bottom: 1.6rem; }
+  .zwa__comments-list{ display: grid; gap: 1.2rem; margin-bottom: 2rem; }
+  .zwa__comment{ border: 1px solid var(--color-border); padding: 1.2rem 1.4rem; }
+  .zwa__comment p{ margin: .4rem 0 0; }
+  .zwa__comment-date{ font-size: .75rem; opacity: .6; }
+
+  @media (max-width: 749px){
+    .zwa__media{ margin: 2rem 0 2.4rem; }
+    .zwa__media img{ max-height: 22rem; }
+  }
+</style>
 
 {% schema %}
 {
@@ -85,22 +156,14 @@
       "id": "color_scheme",
       "label": "Couleur de fond",
       "options": [
-        {
-          "value": "creme",
-          "label": "Crème (clair)"
-        },
-        {
-          "value": "cafe",
-          "label": "Café foncé (sombre)"
-        }
+        { "value": "creme", "label": "Crème (clair)" },
+        { "value": "cafe", "label": "Café foncé (sombre)" }
       ],
       "default": "creme"
-    }
+    },
+    { "type": "checkbox", "id": "show_author", "label": "Afficher l'auteur", "default": true },
+    { "type": "checkbox", "id": "drop_cap", "label": "Lettrine en début d'article", "default": true }
   ],
-  "presets": [
-    {
-      "name": "t:sections.main_article.name"
-    }
-  ]
+  "presets": [{ "name": "t:sections.main_article.name" }]
 }
 {% endschema %}
