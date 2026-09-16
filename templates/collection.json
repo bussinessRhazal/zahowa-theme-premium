@@ -3,161 +3,85 @@
  */
 {
   "sections": {
+    "recettes_story_3KXNdE": {
+      "type": "recettes-story",
+      "name": "Manifeste & Rituel",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Nos Recettes",
+        "title": "Quatre *épices*. Quatre villes. Un rituel qui changent ta façon de boire le café.",
+        "manifesto": "Chaque recette Zahowa est née d'un équilibre précis entre un café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel. Pas de sucre ajouté. Juste le café — et ce qui lui donne une âme.",
+        "manifesto_alt": "",
+        "rituel_title": ""
+      },
+      "blocks": {
+        "step1": {
+          "type": "step",
+          "settings": {
+            "numeral": "I",
+            "title": "Infuser",
+            "text": "Plonge le sachet mousseline dans l'eau frémissante, à 92°C."
+          }
+        },
+        "step2": {
+          "type": "step",
+          "settings": {
+            "numeral": "II",
+            "title": "Patienter",
+            "text": "Laisse le café et les épices se rencontrer, 5 à 6 minutes."
+          }
+        },
+        "step3": {
+          "type": "step",
+          "settings": {
+            "numeral": "III",
+            "title": "Déguster",
+            "text": "Retire le sachet. Respire. Le rituel commence."
+          }
+        }
+      },
+      "block_order": [
+        "step1",
+        "step2",
+        "step3"
+      ]
+    },
     "main": {
       "type": "main-collection",
       "settings": {
+        "show_description": true,
         "color_scheme": "creme",
         "products_per_page": 12,
         "portrait": true
-      }
-    },
-    "reassurance": {
-      "type": "reassurance-bar",
-      "blocks": {
-        "item_1": {
-          "type": "item",
-          "settings": {
-            "icon": "check",
-            "title": "Livraison suivie en Europe",
-            "text": "Offerte dès 49 €"
-          }
-        },
-        "item_2": {
-          "type": "item",
-          "settings": {
-            "icon": "lock",
-            "title": "Paiement sécurisé",
-            "text": "CB, PayPal, Apple Pay"
-          }
-        },
-        "item_3": {
-          "type": "item",
-          "settings": {
-            "icon": "spark",
-            "title": "Torréfaction artisanale",
-            "text": "En petits lots"
-          }
-        },
-        "item_4": {
-          "type": "item",
-          "settings": {
-            "icon": "arrow",
-            "title": "Satisfait ou remboursé",
-            "text": "30 jours"
-          }
-        }
-      },
-      "block_order": [
-        "item_1",
-        "item_2",
-        "item_3",
-        "item_4"
-      ],
-      "settings": {
-        "color_scheme": "creme"
-      }
-    },
-    "multi_column_jzjGFW": {
-      "type": "multi-column",
-      "blocks": {
-        "column_GqANcK": {
-          "type": "column",
-          "settings": {
-            "icon": "leaf",
-            "title": "100% Naturel",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_9Qaz8r": {
-          "type": "column",
-          "settings": {
-            "icon": "lock",
-            "title": "Paiement sécurisé",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_mEn7Dq": {
-          "type": "column",
-          "settings": {
-            "icon": "check",
-            "title": "Livraison soignée",
-            "text": "Des épices entières sélectionnées à la main, jamais d'arômes artificiels.",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_GqANcK",
-        "column_9Qaz8r",
-        "column_mEn7Dq"
-      ],
-      "name": "Zahowa — Multi-colonnes",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Nos promesses",
-        "title": "Le café, *simplement*",
-        "alt_bg": true,
-        "id": ""
-      }
-    },
-    "instagram_gallery_GEP49B": {
-      "type": "instagram-gallery",
-      "blocks": {
-        "image_UhHm3N": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_8we4Y9": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_dYMrjh": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_pJxyww": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_WgrUaA": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_epxYtM": {
-          "type": "image",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "image_UhHm3N",
-        "image_8we4Y9",
-        "image_dYMrjh",
-        "image_pJxyww",
-        "image_WgrUaA",
-        "image_epxYtM"
-      ],
-      "name": "Zahowa — Galerie Instagram",
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "@zahowacoffee",
-        "title": "La communauté *Zahowa*",
-        "handle": "zahowacoffee",
-        "instagram_url": "",
-        "cta_label": "Suivre @",
-        "id": ""
       }
     },
     "coffret": {
       "type": "coffret",
       "settings": {
         "color_scheme": "cafe",
+        "image": "shopify://shop_images/Memepackagingpremium_10d38fc2-24b4-4b0c-b399-966410c6e17f.png",
         "kicker": "Coffrets",
-        "title": "Plutôt un *coffret* ?"
+        "title": "Plutôt un *coffret* ?",
+        "text": "<p>Quatre villes. Quatre caractères. Une expérience à offrir ou à s'offrir. Une boîte précieuse, des sachets biodégradables, un rituel à partager.</p>",
+        "button_label": "Découvrir nos coffrets",
+        "button_link": "shopify://collections/nos-coffrets",
+        "reverse": false,
+        "alt_bg": false,
+        "id": ""
+      }
+    },
+    "rich_text_YB9HeL": {
+      "type": "rich-text",
+      "name": "t:sections.rich_text.name",
+      "settings": {
+        "color_scheme": "creme",
+        "kicker": "Le rituel Zahowa",
+        "title": "Comment choisir ton café",
+        "text": "<p>Trouve le café qui correspond à ton goût et à ton moment de dégustation.</p>",
+        "button_label": "Comment choisir ton café",
+        "button_link": "shopify://blogs/news/comment-choisir-ton-cafe",
+        "alt_bg": false,
+        "id": "choisir-ton-cafe"
       }
     },
     "faq": {
@@ -165,16 +89,70 @@
       "settings": {
         "color_scheme": "creme",
         "kicker": "Questions",
-        "title": "On vous *répond*"
+        "title": "On vous *répond*",
+        "text": "",
+        "open_first": true,
+        "alt_bg": false,
+        "id": ""
       }
+    },
+    "choix": {
+      "type": "recettes-choix",
+      "blocks": {
+        "r1": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-casablanca-v2.jpg",
+            "name": "Aube de Casablanca",
+            "accroche": "Tu aimes commencer la journée doucement. Douceur matinale, sans brusquer personne.",
+            "epices": "Anis vert · Vanille Bourbon"
+          }
+        },
+        "r2": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-rabat-v2.jpg",
+            "name": "Grâce de Rabat",
+            "badge": "✦ Signature",
+            "accroche": "Tu cherches le réconfort dans ta tasse. Chaleur enveloppante. La recette de la mère du fondateur.",
+            "epices": "Cardamome · Miel d'acacia"
+          }
+        },
+        "r3": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-fes-v2.jpg",
+            "name": "Âme de Fès",
+            "badge": "Premium",
+            "accroche": "Tu prends le temps de savourer. Floral et contemplatif. Pour les moments qui méritent d'être vécus lentement.",
+            "epices": "Rose Damascena · Safran"
+          }
+        },
+        "r4": {
+          "type": "recette",
+          "settings": {
+            "asset_fallback": "sachet-marrakech-v2.jpg",
+            "name": "Fièvre de Marrakech",
+            "accroche": "Tu n'as pas peur de l'intensité. Franc, sans détour, sans excuse.",
+            "epices": "Poivre · Cacao · Clou de girofle"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "settings": {}
     }
   },
   "order": [
+    "recettes_story_3KXNdE",
     "main",
-    "reassurance",
-    "multi_column_jzjGFW",
-    "instagram_gallery_GEP49B",
+    "choix",
     "coffret",
+    "rich_text_YB9HeL",
     "faq"
   ]
 }
