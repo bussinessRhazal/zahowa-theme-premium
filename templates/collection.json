@@ -112,7 +112,7 @@
         "kicker": "Questions",
         "title": "On vous *répond*",
         "text": "",
-        "open_first": true,
+        "open_first": false,
         "alt_bg": false,
         "id": ""
       }
