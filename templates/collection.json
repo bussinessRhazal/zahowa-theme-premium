@@ -64,6 +64,13 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "question_AAbyUE": {
+          "type": "question",
+          "settings": {
+            "question": "Y a-t-il du sucre ou des arômes ajoutés ?",
+            "answer": "<p>Non. Uniquement du café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel, pas de sucre ajouté — la douceur vient des épices, pas d'un additif.</p>"
+          }
+        },
         "question_GJj7kH": {
           "type": "question",
           "settings": {
@@ -87,6 +94,7 @@
         }
       },
       "block_order": [
+        "question_AAbyUE",
         "question_GJj7kH",
         "question_itHPdj",
         "question_AANfXj"
