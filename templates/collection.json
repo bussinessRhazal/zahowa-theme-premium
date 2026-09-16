@@ -64,20 +64,6 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "question_xmbpfc": {
-          "type": "question",
-          "settings": {
-            "question": "Combien de sachets contient une boîte ?",
-            "answer": "<p>Chaque boîte recette contient 10 sachets — soit 10 tasses. Le Coffret Découverte en contient 16 (4 de chaque recette).</p>"
-          }
-        },
-        "question_AAbyUE": {
-          "type": "question",
-          "settings": {
-            "question": "Y a-t-il du sucre ou des arômes ajoutés ?",
-            "answer": "<p>Non. Uniquement du café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel, pas de sucre ajouté — la douceur vient des épices, pas d'un additif.</p>"
-          }
-        },
         "question_GJj7kH": {
           "type": "question",
           "settings": {
@@ -98,14 +84,28 @@
             "question": "Je ne sais pas laquelle choisir — par quoi commencer ?",
             "answer": "<p>Par le Coffret Découverte : les 4 recettes, 3 sachets de chacune, 12 au total. Le meilleur moyen de trouver ta tasse avant de commander ta recette préférée.<br/></p>"
           }
+        },
+        "question_AAbyUE": {
+          "type": "question",
+          "settings": {
+            "question": "Y a-t-il du sucre ou des arômes ajoutés ?",
+            "answer": "<p>Non. Uniquement du café Arabica de spécialité et des épices naturelles sélectionnées. Pas d'arôme artificiel, pas de sucre ajouté — la douceur vient des épices, pas d'un additif.</p>"
+          }
+        },
+        "question_xmbpfc": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de sachets contient une boîte ?",
+            "answer": "<p>Chaque boîte recette contient 10 sachets — soit 10 tasses. Le Coffret Découverte en contient 16 (4 de chaque recette).</p>"
+          }
         }
       },
       "block_order": [
-        "question_xmbpfc",
-        "question_AAbyUE",
         "question_GJj7kH",
         "question_itHPdj",
-        "question_AANfXj"
+        "question_AANfXj",
+        "question_AAbyUE",
+        "question_xmbpfc"
       ],
       "settings": {
         "color_scheme": "creme",
