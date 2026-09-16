@@ -355,27 +355,11 @@
       "name": "t:sections.featured_collection.name",
       "settings": {
         "color_scheme": "creme",
-        "collection": "",
+        "collection": "notre-collection",
         "products_to_show": 6,
         "kicker": "Nos créations",
         "title": "Nos *Recettes*",
         "text": "",
-        "portrait": false,
-        "show_view_all": true,
-        "alt_bg": false,
-        "id": ""
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "color_scheme": "creme",
-        "collection": "notre-collection",
-        "products_to_show": 4,
-        "kicker": "Nos créations",
-        "title": "Nos *Recettes*",
-        "text": "Quatre villes. Quatre caractères. Chacune un rituel.",
         "portrait": false,
         "show_view_all": true,
         "alt_bg": false,
@@ -525,32 +509,6 @@
         "cta_label": "Suivre @",
         "id": ""
       }
-    },
-    "cercle": {
-      "type": "cercle",
-      "disabled": true,
-      "settings": {
-        "color_scheme": "cafe",
-        "kicker": "Le cercle privilège",
-        "title": "Cercle *Fondateur*",
-        "text": "Rejoignez le Cercle et participez à l'évolution de nos recettes. Accès anticipé, éditions limitées et rituels réservés.",
-        "button_label": "Rejoindre le Cercle",
-        "email_placeholder": "",
-        "id": ""
-      }
-    },
-    "faq": {
-      "type": "faq",
-      "disabled": true,
-      "settings": {
-        "color_scheme": "creme",
-        "kicker": "Questions fréquentes",
-        "title": "Vos *questions*",
-        "text": "Tout ce que vous devez savoir avant votre première infusion.",
-        "open_first": true,
-        "alt_bg": false,
-        "id": ""
-      }
     }
   },
   "order": [
@@ -562,12 +520,9 @@
     "cities",
     "quick_buy_product_Q4DYdJ",
     "featured_collection_nLxhPE",
-    "featured_collection",
     "recipes_grid",
     "testimonials",
     "featured_blog_efm4aY",
-    "instagram_gallery_BtHqwj",
-    "cercle",
-    "faq"
+    "instagram_gallery_BtHqwj"
   ]
 }
