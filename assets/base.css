@@ -2889,3 +2889,27 @@ html[data-animations="disabled"] [data-reveal] {
   color: var(--zw-gold-text);
   transform: translateY(-2px);
 }
+
+/* featured-collection : alignement grille */
+.collection-grid--center,
+.collection-grid--right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+.collection-grid--center { justify-content: center; }
+.collection-grid--right { justify-content: flex-end; }
+.collection-grid--center > *,
+.collection-grid--right > * {
+  flex: 1 1 250px;
+  max-width: calc(25% - 1.35rem);
+}
+@media (max-width: 749px) {
+  .collection-grid--center,
+  .collection-grid--right { gap: 1rem; }
+  .collection-grid--center > *,
+  .collection-grid--right > * {
+    flex: 1 1 calc(50% - .5rem);
+    max-width: calc(50% - .5rem);
+  }
+}
