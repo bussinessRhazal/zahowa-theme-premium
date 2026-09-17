@@ -77,6 +77,22 @@
         "id": ""
       }
     },
+    "featured_collection_rHn3rD": {
+      "type": "featured-collection",
+      "name": "t:sections.featured_collection.name",
+      "settings": {
+        "color_scheme": "creme",
+        "collection": "nos-coffrets",
+        "products_to_show": 4,
+        "kicker": "Nos créations",
+        "title": "Nos *Coffrets*",
+        "text": "",
+        "portrait": false,
+        "show_view_all": true,
+        "alt_bg": false,
+        "id": ""
+      }
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -138,6 +154,7 @@
     "recettes_story_3KXNdE",
     "main",
     "featured_collection_BcE9VW",
+    "featured_collection_rHn3rD",
     "faq"
   ]
 }
