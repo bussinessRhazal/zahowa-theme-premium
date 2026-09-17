@@ -17,7 +17,7 @@
 
     {% assign collection = section.settings.collection %}
     {% if collection != blank and collection.products.size > 0 %}
-      <div class="collection-grid">
+      <div class="collection-grid{% if section.settings.grid_align != 'left' %} collection-grid--{{ section.settings.grid_align }}{% endif %}">
         {% for product in collection.products limit: section.settings.products_to_show %}
           {% render 'product-card', product: product, portrait: section.settings.portrait %}
         {% endfor %}
@@ -61,6 +61,17 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured_collection.collection_label"
+    },
+    {
+      "type": "select",
+      "id": "grid_align",
+      "label": "Alignement des produits",
+      "options": [
+        { "value": "left", "label": "Gauche" },
+        { "value": "center", "label": "Centré" },
+        { "value": "right", "label": "Droite" }
+      ],
+      "default": "left"
     },
     {
       "type": "range",
