@@ -355,7 +355,7 @@
       "name": "t:sections.featured_collection.name",
       "settings": {
         "color_scheme": "creme",
-        "collection": "nos-recettes",
+        "collection": "nos-selections",
         "products_to_show": 6,
         "kicker": "Nos créations",
         "title": "Nos *Recettes*",
