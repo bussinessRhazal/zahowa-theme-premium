@@ -355,10 +355,10 @@
       "name": "t:sections.featured_collection.name",
       "settings": {
         "color_scheme": "creme",
-        "collection": "nos-selections",
-        "products_to_show": 6,
+        "collection": "selections-du-moment",
+        "products_to_show": 3,
         "kicker": "Nos créations",
-        "title": "Séléction du *moment*",
+        "title": "Séléctions du *moment*",
         "text": "",
         "portrait": false,
         "show_view_all": true,
