@@ -11,37 +11,6 @@
   "sections": {
     "recettes_story_3KXNdE": {
       "type": "recettes-story",
-      "blocks": {
-        "step1": {
-          "type": "step",
-          "settings": {
-            "numeral": "I",
-            "title": "Infuser",
-            "text": "Plonge le sachet mousseline dans l'eau frémissante, à 92°C."
-          }
-        },
-        "step2": {
-          "type": "step",
-          "settings": {
-            "numeral": "II",
-            "title": "Patienter",
-            "text": "Laisse le café et les épices se rencontrer, 5 à 6 minutes."
-          }
-        },
-        "step3": {
-          "type": "step",
-          "settings": {
-            "numeral": "III",
-            "title": "Déguster",
-            "text": "Retire le sachet. Respire. Le rituel commence."
-          }
-        }
-      },
-      "block_order": [
-        "step1",
-        "step2",
-        "step3"
-      ],
       "name": "Manifeste & Rituel",
       "settings": {
         "color_scheme": "creme",
