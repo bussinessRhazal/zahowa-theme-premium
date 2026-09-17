@@ -61,6 +61,22 @@
         "portrait": true
       }
     },
+    "featured_collection_8wPTpM": {
+      "type": "featured-collection",
+      "name": "t:sections.featured_collection.name",
+      "settings": {
+        "color_scheme": "creme",
+        "collection": "nos-recettes",
+        "products_to_show": 4,
+        "kicker": "Nos créations",
+        "title": "Nos *Recettes*",
+        "text": "",
+        "portrait": false,
+        "show_view_all": true,
+        "alt_bg": false,
+        "id": ""
+      }
+    },
     "featured_collection_BcE9VW": {
       "type": "featured-collection",
       "name": "t:sections.featured_collection.name",
@@ -153,6 +169,7 @@
   "order": [
     "recettes_story_3KXNdE",
     "main",
+    "featured_collection_8wPTpM",
     "featured_collection_BcE9VW",
     "featured_collection_rHn3rD",
     "faq"
