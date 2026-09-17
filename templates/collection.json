@@ -54,6 +54,7 @@
     },
     "main": {
       "type": "main-collection",
+      "disabled": true,
       "settings": {
         "show_description": true,
         "color_scheme": "creme",
